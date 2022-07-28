@@ -6,7 +6,7 @@ from Manuscript.introduction import introduction
 from Manuscript.methods import methods
 from Figures.legends import legends
 from Utils.Settings import manuscript_folder
-# to work with citations use {Abi-Saab, 1999 #888} # is the record number in the endnote library
+# to work with citations use {Abi-Saab, 1999 #888}. A Endnote travelling library is provided in the manuscript folder.
 
 doc = DocxTemplate(f"{manuscript_folder}/Manuscript_template.docx")
 
