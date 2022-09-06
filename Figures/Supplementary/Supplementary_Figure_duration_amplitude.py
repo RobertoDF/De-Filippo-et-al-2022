@@ -18,16 +18,16 @@ for session_id, sel in tqdm(ripples_calcs.items()):
     ripples = ripples_calcs[session_id][3].copy()
     ripples = ripples.groupby("Probe number-area").filter(lambda group: group["∫Ripple"].var() > var_thr)
     ripples["Session"] = session_id
-    ripples_all.append(ripples[["Duration (s)", "∫Ripple", "Session"]])
+    ripples_all.append(ripples[["Duration (s)", "Amplitude (mV)", "Session"]])
 
 ripples_all = pd.concat(ripples_all)
 with sns.plotting_context("paper", font_scale=2.0):
-    g = sns.lmplot(data=ripples_all, col="Session", x="∫Ripple", y="Duration (s)", col_wrap=7,
+    g = sns.lmplot(data=ripples_all, col="Session", x="Amplitude (mV)", y="Duration (s)", col_wrap=7,
                    scatter_kws={"alpha": 0.6, "s": 5, "color": (0.4, 0.4, 0.4)},
                    line_kws={"alpha": 0.8, "color": "#D7263D", "linestyle": "--"})
 
 for ax, session_id in zip(g.axes.flat, ripples_all["Session"].unique()):
-    y = ripples_all[ripples_all["Session"] == session_id]["∫Ripple"]
+    y = ripples_all[ripples_all["Session"] == session_id]["Amplitude (mV)"]
     x = ripples_all[ripples_all["Session"] == session_id]["Duration (s)"]
     r, _ = pearsonr(x, y)
 
@@ -35,4 +35,4 @@ for ax, session_id in zip(g.axes.flat, ripples_all["Session"].unique()):
             size='xx-large', color='black', weight='semibold')
 
 plt.show()
-#plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_duration_strength", dpi=300)
+#plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_duration_amplitude", dpi=300)

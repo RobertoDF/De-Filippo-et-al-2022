@@ -7,4 +7,5 @@ discussion = "Our work shows for the first time that strong ripples propagation 
              "high-memory demand {Fernández-Ruiz, 2019 #1121}, these results suggest a possible distinctive role of the hippocampal" \
              " septal pole in these situations. This is consistent with previous studies that highlighted " \
              "the role of the septal hippocampus in memory tasks and information processing {Hock, 1998 #1122;Moser, 1993 #1123;Moser, 1995 #1124;Steffenach, 2005 #1128;" \
-             "Kheirbek, 2013 #1126;McGlinchey, 2018 #1125;Fanselow, 2010 #1129;Maras, 2014 #1130;Bradfield, 2020 #1131;Qin, 2020 #1132}."
+             "Kheirbek, 2013 #1126;McGlinchey, 2018 #1125;Fanselow, 2010 #1129;Maras, 2014 #1130;Bradfield, 2020 #1131;Qin, 2020 #1132}."\
+             "Ripple generation seems to be homogeneous across the hippocampal longitudinal axis {Patel, 2013 #1133}"

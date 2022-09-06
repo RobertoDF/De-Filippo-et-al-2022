@@ -1,7 +1,9 @@
 from Utils.Results_variables import *
 
 results = {"Distance explains the majority of the ripple strength correlation variability.":
-            f"We analyzed the LFP signals across the visual cortex, hippocampal formation and brain stem (Supplementary Figure 1) simultaneous to ripples detected "
+            f"We studied ripple propagation along the hippocampal longitudinal axis in" \
+             " an open-access dataset provided by the Allen Institute. "
+            "We analyzed the LFP signals across the visual cortex, hippocampal formation and brain stem (Supplementary Figure 1) simultaneous to ripples detected "
             f"in the CA1 of {summary_table['Session'].unique().shape[0]} animals (average session duration = "
             f"{round(np.mean(list(sessions_durations.values())),1)} ± {round(sem(list(sessions_durations.values())),1)} seconds, average ripple incidence = "
             f"{round(np.mean(list(ripple_freq_total.values()))*10,2)} ± {round(sem(list(ripple_freq_total.values()))*10,2)} per 10s). "
