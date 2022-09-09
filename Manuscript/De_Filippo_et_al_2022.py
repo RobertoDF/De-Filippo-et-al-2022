@@ -23,7 +23,7 @@ affiliations =  "¹ Charité Universitätsmedizin Berlin, corporate member of Fr
 
 
 correspondence_to = "roberto.de-filippo@charite.de and dietmar.schmitz@charite.de"
-keywords = "Hippocampal ripples, Ripples propagation, Anisotropy"
+keywords = "Hippocampal ripples, Ripples propagation"
 
 acknowledgements = "This study was supported by the German Research Foundation Deutsche Forschungsgemeinschaft (DFG), " \
                    "project 184695641 - SFB 958, project 327654276 - SFB 1315, Germany's Excellence Strategy - Exc-2049-390688087) and by the " \

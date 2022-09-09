@@ -5,7 +5,7 @@ results = {"Distance explains the majority of the ripple strength correlation va
              " an open-access dataset provided by the Allen Institute. "
             "We analyzed the LFP signals across the visual cortex, hippocampal formation and brain stem (Supplementary Figure 1) simultaneous to ripples detected "
             f"in the CA1 of {summary_table['Session'].unique().shape[0]} animals (average session duration = "
-            f"{round(np.mean(list(sessions_durations.values())),1)} ± {round(sem(list(sessions_durations.values())),1)} seconds, average ripple incidence = "
+            f"{round(np.mean(list(sessions_durations.values())),1)} ± {round(sem(list(sessions_durations.values())),1)} seconds, average ripple incidence during non-running epochs = "
             f"{round(np.mean(list(ripple_freq_total.values()))*10,2)} ± {round(sem(list(ripple_freq_total.values()))*10,2)} per 10s). "
             f"Ripples were detected on the CA1 channel with the strongest ripple activity (n ripples = {np.sum(list( number_ripples_per_session_best_CA1_channel.values()))}). "
             f"Ripple strength (∫Ripple) was calculated as the integral of the filtered LFP envelope (Supplementary Figure 2B)."
@@ -49,9 +49,9 @@ results = {"Distance explains the majority of the ripple strength correlation va
             f"A biased direction of propagation can be explained by an unequal chance of ripple generation across space. "
             f"We could assume that selecting strong ripples we are biasing our focus towards ripples whose generation point (seed) is situated nearby our reference "
             f"location, this would contribute to explain the unbalanced lag. This notion would, however, fail to explain the different directionality we observed between strong ripples"
-            f" in medial and lateral locations, this hints at a more complex situation. ",
+            f" in medial and lateral locations, this hints at a more complex situation.",
 
-            "Ripples propagation along the hippocampal longitudinal axis is anisotropic.":
+            "Ripples propagates differentially along the hippocampal longitudinal axis.":
             f"To analyze the propagation of ripples along the hippocampal longitudinal axis we focused on sessions from which ripples were clearly "
             f"detected in at least two different hippocampal sections at the same time (n = {trajectories_by_strength['Session'].unique().shape[0]}). "
             f"We followed the propagation of strong and common ripples detected in the reference location across the hippocampus (Figure 2A-B) and built an average spatio-temporal propagation map "
@@ -60,13 +60,13 @@ results = {"Distance explains the majority of the ripple strength correlation va
             f" and common ripples travelling in the opposite direction (Figure 2C-D-E). "
             f"Ripples detected in the lateral section did not show such strikingly divergent propagation (Figure 2F-G) whereas in the central section the propagation was "
             f"divergent only laterally and not medially (Figure 2H-I). This peculiar propagation profile suggests "
-            "a not previously described underlying anisotropy along the hippocampal longitudinal axis, the property of exhibiting direction-dependent qualities. "
-            f"To understand the mechanism underlying such variability in propagation "
+            "a not previously described underlying directionality along the hippocampal longitudinal axis, with strong ripples generated rarely laterally to the reference point. "
+            f"To understand the mechanism underlying such difference in propagation "
             f"we examined the location of the seed for each ripple in sessions in which ripples were clearly detected "
             f"in every hippocampal section (n sessions = {seed_ripples_by_hip_section_summary_strong['Session id'].unique().shape[0]})"
             f". In common ripples, regardless of the reference location,"
-            f" the majority of ripples started from the lateral section (Figure 3A)."
-            f" On the other hand, strong ripples displayed a more heterogenous picture. We identified two principles relative to "
+            f" the majority of ripples started from the lateral section (Figure 3A left)."
+            f" On the other hand, strong ripples displayed a more heterogenous picture (Figure 3A right). We identified two principles relative to "
             f"strong ripples generation:"
             f" In all hippocampal sections the majority of strong ripples are locally generated, and a greater number of strong ripples is generated medially than laterally. "
             f"Looking at the central section we can appreciate the difference between the number of strong ripples "
@@ -78,17 +78,17 @@ results = {"Distance explains the majority of the ripple strength correlation va
             f"not in the lateral section (Figure 3B). "
             f"These seed location profiles "
             f"explain "
-            f"the propagation anisotropy, major unbalances in seeds location cause propagation patterns with clear directionality"
-            f" on the contrary lag measurements hovering around zero are the result of "
+            f"the propagation idiosyncrasies, major unbalances in seeds location cause propagation patterns with clear directionality, "
+            f"on the contrary, lag measurements hovering around zero are the result of "
             f"averaging between two similarly numbered groups of ripples with opposite direction of propagation. Conversely, "
-            f"propagation speed did not change depending on the seed location (Supplementary Figure 4).  "
+            f"propagation speed did not change depending on the seed location (Supplementary Figure 4). "
             f"The reason why strong ripples are only in a minority of cases"
             f" generated in the lateral section remains nevertheless unclear. Using a 'strength conservation index' (SCI) "
             f"we measured the ability of a ripple to retain its strength during propagation "
             f"(a ripple with SCI = 1 is in the top 10% in all hippocampal sections). We observed that ripples generated laterally "
             f"were effectively less able to retain their strength propagating towards the medial pole (Supplementary Figure 5). This result is not simply "
             f"explained by differences in ∫Ripple along the medio-lateral (M-L) axis, as no such gradient was observed (R² = {round(r_ML_strength**2,4)}, Supplementary Figure 6). Curiously, "
-            f"ripple amplitude showed a weak trend in the opposite direction (R² = {round(r_ML_amp**2,2)}), with higher amplitude ripples in the lateral section (Supplementary Figure 7).  ",
+            f"ripple amplitude showed a weak trend in the opposite direction (R² = {round(r_ML_amp**2,2)}), with higher amplitude ripples in the lateral section (Supplementary Figure 7).",
 
             "The hippocampal medial/septal pole can generate longer strong ripples able to better engage neural networks.":
             f"To understand the reason behind the differential propagation we focused uniquely on the central section, "

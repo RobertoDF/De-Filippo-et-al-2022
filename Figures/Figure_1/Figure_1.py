@@ -2,7 +2,7 @@ import pylustrator
 import matplotlib.pyplot as plt
 from Utils.Settings import output_folder, output_folder_figures_calculations
 
-
+# TODO riple strength is ripple power in panel a b c
 pylustrator.start()
 
 pylustrator.load("Figure_1_relplot_corrs.py", offset=[0, 0])
