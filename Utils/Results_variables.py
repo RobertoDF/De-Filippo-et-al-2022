@@ -7,6 +7,7 @@ from tqdm import tqdm
 from scipy.stats import pearsonr
 import pandas as pd
 from scipy.stats import zscore
+import pingouin as pg
 from Figures.Figure_4.Figure_4_clusters_per_ripple_early_late import ttest_early_clus_per_ripple, ttest_late_clus_per_ripple
 from Figures.Figure_4.Figure_4_spiking_rate_early_late import ttest_late_spiking, ttest_early_spiking
 
@@ -166,3 +167,14 @@ with open(f"{output_folder_figures_calculations}/temp_data_figure_4.pkl", 'rb') 
     tot_summary, summary_fraction_active_clusters_per_ripples, \
     summary_fraction_active_clusters_per_ripples_by_neuron_type = dill.load(f)
 
+
+
+with open(f'{output_folder_calculations}/ripples_features_sessions_across_all_ML.pkl', 'rb') as f:
+    out = dill.load(f)
+
+ripples_number_by_section = pd.concat([q[8] for q in out])
+
+ripples_number_by_section[ripples_number_by_section.index==ripples_number_by_section["Reference"]].groupby(["Reference"]).sem()
+
+p_value_ripples_per_section = pg.kruskal(ripples_number_by_section[ripples_number_by_section.index==ripples_number_by_section["Reference"]],
+                                         dv="Count detected ripples", between="Reference")["p-unc"]

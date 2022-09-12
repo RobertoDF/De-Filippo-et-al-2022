@@ -9,7 +9,8 @@ introduction= "Hippocampal ripples are brief oscillatory events detected in the 
               "Accordingly, ripples are considered to play a crucial role in memory processes and reorganization of memory engrams {Girardeau, 2011 #1148; Buzsáki, 2015 #1110;Diba, 2007 #1111;" \
               "Foster, 2006 #1112; Xu, 2019 #1113;Takahashi, 2015 #1114;Davidson, 2009 #1116; Pfeiffer, 2015 #1117;" \
               "Dragoi, 2011 #1118; Girardeau, 2009 #1120}. " \
-              "Ripples duration exhibits a skewed distribution with only a minority of long-duration ripples (>100 ms). Interestingly, the fraction of long-duration ripples " \
+              "Ripples duration exhibits a skewed distribution with only a minority of long-duration ripples (>100 ms). " \
+              "Interestingly, the fraction of long-duration ripples " \
               "is increased in novel contexts, in tasks memory-demanding and during correct recalls {Fernández-Ruiz, 2019 #1121}. " \
               " Reducing ripple duration artificially causes degraded working memory performance {Jadhav, 2012 #1135}, on the contrary, " \
               "prolongation has a beneficial effect {Fernández-Ruiz, 2019 #1121}. " \
@@ -21,9 +22,12 @@ introduction= "Hippocampal ripples are brief oscillatory events detected in the 
               "It is therefore of interest to identify the possible electro-physiological peculiarities of this ripple subgroup. Do strong ripples propagate differently " \
               "compared to common ripples? Are strong ripples generated homogeneously along the hippocampal longitudinal axis? Do ripples have a preferred longitudinal " \
               "directionality? " \
-              "In this study we focused our attention on ripples generation and propagation within the hippocampal formation. Connectivity with cortical and sub-cortical areas varies  " \
-              "along the longitudinal axis of the hippocampus {Moser, 1998 #1149; Vogel, 2020 #1151; Fanselow, 2010 #1150} and the different connectivity contributes " \
+              "In this study we focused our attention on ripples generation and propagation within the hippocampal formation. " \
+              "Connectivity with cortical and sub-cortical areas varies  " \
+              "along the longitudinal axis of the hippocampus {Moser, 1998 #1149; Strange, 2014 #1158; Vogel, 2020 #1151; Fanselow, 2010 #1150}, " \
+              "the different cortical connectivity contributes " \
               "to explain the functional organization gradient between a predominantly spatio-visual (septal pole) and emotional (temporal pole) processing. " \
+              "Additionally, monoamine neuromodulators show stronger projections to ventral regions of the hippocampus. " \
               "Ripples generated in the septal and temporal hippocampal pole has already been shown to be temporally independent and able to engage " \
               "different networks downstream {Sosa, 2020 #1154}. Consequentially, an inhomogeneous generation chance along the longitudinal axis " \
               "might have an impact on the identity of the neurons contacted downstream by different ripples subgroups. " \

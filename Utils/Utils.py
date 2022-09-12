@@ -1027,7 +1027,6 @@ def find_ripples_clusters_new(ripples, source_area):
 
         _["Source M-L (µm)"] = near_ripples.loc[near_ripples["Start (s)"].idxmin()]["M-L (µm)"]
 
-
         #if near_ripples.shape[0] > 1:
             # # linear regression to determine direction
             # y = near_ripples["M-L (µm)"]
