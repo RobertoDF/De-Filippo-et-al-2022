@@ -72,30 +72,10 @@ for session_id in tqdm(ripples_calcs.keys()):
         source_area = str(ripples["Probe number"].max()) + "-CA1"
         reference = "Lateral"
 
-        try:
-            ripples["Z-scored ∫Ripple"] = ripples.groupby("Probe number-area").apply(
-                lambda group: zscore(group["∫Ripple"], ddof=1)).droplevel(0)
-        except:
-            ripples["Z-scored ∫Ripple"] = ripples.groupby("Probe number-area").apply(
-                lambda group: zscore(group["∫Ripple"], ddof=1)).T
-
-        ripples["Local strong"] = ripples.groupby("Probe number").apply(
-            lambda x: x["∫Ripple"] > x["∫Ripple"].quantile(.9)).sort_index(level=1).values
-
         inputs.append([ripples, source_area, session_id, reference])
 
         source_area = ripples.groupby("Probe number-area").mean()['L-R (µm)'].sub(center).abs().idxmin()
         reference = "Central"
-
-        try:
-            ripples["Z-scored ∫Ripple"] = ripples.groupby("Probe number-area").apply(
-                lambda group: zscore(group["∫Ripple"], ddof=1)).droplevel(0)
-        except:
-            ripples["Z-scored ∫Ripple"] = ripples.groupby("Probe number-area").apply(
-                lambda group: zscore(group["∫Ripple"], ddof=1)).T
-
-        ripples["Local strong"] = ripples.groupby("Probe number").apply(
-            lambda x: x["∫Ripple"] > x["∫Ripple"].quantile(.9)).sort_index(level=1).values
 
         inputs.append([ripples, source_area, session_id, reference])
 
@@ -115,7 +95,7 @@ def extract_features(ripples, source_area, session_id, reference):
     real_ripple_summary["Strong"] = real_ripple_summary["∫Ripple"] > real_ripple_summary["∫Ripple"].quantile(.9)
 
     _ = real_ripple_summary[real_ripple_summary["Spatial engagement"] > .5]["Source M-L (µm)"].value_counts() /   \
-        real_ripple_summary[real_ripple_summary["Spatial engagement"] > .5].shape[0] # detected in at least two probes
+        real_ripple_summary[real_ripple_summary["Spatial engagement"] > .5].shape[0] # detected in at least half of the probes
     out_by_hip_section = pd.Series()
     out_by_hip_section["Medial seed"] = _[_.index < medial_lim_lm].sum()
     out_by_hip_section["Lateral seed"] = _[_.index > lateral_lim_lm].sum()
@@ -190,7 +170,6 @@ def extract_features(ripples, source_area, session_id, reference):
     count_detected_ripples = count_detected_ripples.groupby("Location seed").mean()
     count_detected_ripples["Session id"] = session_id
     count_detected_ripples["Reference"] = reference
-
 
     return out_seed_ripples, global_strength_strong_ripples, ripples_features, out_source_common_ripples, \
            percentage_strong_and_source, spatial_engagement, out_source_strong_ripples, \
