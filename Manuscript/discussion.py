@@ -23,9 +23,10 @@ discussion = "Our work shows for the first time that strong ripples propagates d
              "towards the septal pole retaining its strong status (top 10%). Conversely strong ripples generated in the septal pole have a sizable chance of " \
              "propagate longitudinally and still be in the top 10% in terms of ripple strength. Ripples generated in the septal pole and in the " \
              "intermediate hippocampus have a significantly different ability of engaging the hippocampal networks in the 50-120 ms window " \
-             "post ripple start, ripples generated in the septal pole engage more neurons, both excitatory and inhibitory, and, moreover, " \
+             "post ripple start, ripples generated in the septal pole activate more neurons, both excitatory and inhibitory, and, moreover, " \
              "can elicit an higher spiking rate per neuron. This is reflected by the fact that the position on the longitudinal axis explains " \
-             f"{r_common*100}% and {r_strong*100}% of the variability in ripple duration in common and strong ripples respectively." \
+             f"{r_common*100}% and {r_strong*100}% of the variability in ripple duration in common and strong ripples respectively. Consistenly, the" \
+             "temporal hippocampus has been shown to produce shorter ripples booth in awake and sleep {Sosa, 2020 #1154}." \
              "Long duration ripples has been shown to be of particular importance in situations of " \
              "high-memory demand {Fernández-Ruiz, 2019 #1121}, previous studies highlighted " \
              "the role of septal hippocampus in memory tasks and information processing {Hock, 1998 #1122;Moser, 1993 #1123;Moser, 1995 #1124;Steffenach, 2005 #1128;" \
@@ -33,5 +34,5 @@ discussion = "Our work shows for the first time that strong ripples propagates d
              "Ripple generation seems to be homogeneous across the hippocampal longitudinal axis {Patel, 2013 #1133}. " \
              "Our results can explain the specific role of septal hippocampus in memory tasks with its ability of generating particularly long" \
              "ripples that are able to strongly engage networks in the entire top half of the hippocampal formation for an extended time. What " \
-             "is the reason that enables the septal pole to generate longer ripples? We can speculate that the different input connectivity might play a role. " \
+             "is the reason that enables the septal pole to generate longer ripples? We can speculate that the different neuromodulatory input might play a role. " \
              ""

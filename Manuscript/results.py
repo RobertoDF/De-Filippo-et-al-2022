@@ -123,4 +123,12 @@ results = {"Distance explains the majority of the ripple strength correlation va
             f"Dividing again the clusters into putative excitatory and inhibitory, significant differences between medial and lateral ripples "
             f"were present only in the late phase. Spiking frequency and number of engaged neurons were significant higher in medial ripples both in putative excitatory"
             f" and inhibitory clusters (Supplementary Figure 10). In summary, the prolonged spiking observed in medial ripples was caused both by an increased"
-            f" number of engaged neurons and a higher spiking rate per cell, both in putative excitatory and inhibitory neurons."}
+            f" number of engaged neurons and a higher spiking rate per cell, both in putative excitatory and inhibitory neurons. "
+            f"The disparity in network engagement can be possibly "
+            f"in part explained by electrophysiological differences across hippocampal sections (e.g. higher firing rate). "
+            f"We did not find differences in the number of firing neurons (medial = {round(normalized_cluster_count_per_probe['Medial'].mean(), 2)}, "
+            f"lateral = {round(normalized_cluster_count_per_probe['Lateral'].mean(), 2)}, p-value = {test_cluster_count}, Mann-Whitney U test)"
+            f" or firing rate (Supplementary Figure 11), "
+            f"we did, however, found differences in waveform duration, recovery slope and peak-through ratio. "
+            f"The waveform duration distribution showed a clear right shift in the lateral section, indicating longer duration."
+            f"It is unclear how these differences relate to network engagement. "}
