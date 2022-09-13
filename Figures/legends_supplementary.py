@@ -67,5 +67,15 @@ legends_supplementary = {
       "(A) Average spiking rate in early (left) and late (right) phase post-ripple start grouped by ripple seed location and putative neuron identity. "
       "Asterisks mean p<0.05, ANOVA with pairwise Tukey post-hoc test. "
       "(B) Fraction of active neurons per ripple in early (left) and late (right) phase post-ripple start grouped by ripple "
-      "seed location and putative neuron identity. Asterisks mean p < 0.05, ANOVA with pairwise Tukey post-hoc test."
+      "seed location and putative neuron identity. Asterisks mean p < 0.05, ANOVA with pairwise Tukey post-hoc test.",
+
+"Supplementary Figure 11. Units features in medial and lateral sections":
+      f"(A) Kernel density estimate plot of waveform duration (p-value={'{:.2e}'.format(p_val_wav_dur)}), firing rate (p-value={'{:.2e}'.format(p_val_fir_rate)}), "
+      f"waveform amplitude (p-value={'{:.2e}'.format(p_val_wav_amp)}), waveform repolarization slope (p-value={'{:.2e}'.format(p_val_wav_repolarization_slope)}), "
+      f"waveform recovery slope (p-value={'{:.2e}'.format(p_val_wav_rec_slope)}) and waveform peak-through ratio (p-value={'{:.2e}'.format(p_val_wav_PT_ratio)}) grouped by hippocampal section."
+      "Asterisks mean p<0.05, Mann-Whitney U test. "
+      f"(B) Cumulative distribution plot of waveform duration (p-value={'{:.2e}'.format(p_val_ks_wav_dur)}), firing rate (p-value={'{:.2e}'.format(p_val_ks_fir_rate)}), "
+      f"waveform amplitude (p-value={'{:.2e}'.format(p_val_ks_wav_amp)}), waveform repolarization slope (p-value={'{:.2e}'.format(p_val_ks_wav_repolarization_slope)}), "
+      f"waveform recovery slope (p-value={'{:.2e}'.format(p_val_ks_wav_rec_slope)}) and waveform peak-through ratio (p-value={'{:.2e}'.format(p_val_ks_wav_PT_ratio)}) grouped by hippocampal section."
+      "Asterisks mean p < 0.05, Kolgomorov-Smirnov test."
 }

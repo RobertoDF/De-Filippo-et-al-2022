@@ -6,7 +6,7 @@ from allensdk.brain_observatory.ecephys.ecephys_project_cache import EcephysProj
 from scipy.stats import zscore
 from sklearn.preprocessing import MinMaxScaler
 from Utils.Settings import var_thr, neuropixel_dataset, output_folder_figures_calculations, output_folder_calculations, \
-    output_folder_processed_lfps, root_github_repo
+    output_folder_processed_lfps, root_github_repo, waveform_dur_thr
 from Utils.Utils import find_ripples_clusters_new, get_ML_limits
 from Utils.Utils import spike_summary, clean_ripples_calculations, acronym_to_main_area
 from tqdm import tqdm
@@ -29,7 +29,7 @@ def consolidate_spiking(spike_clusters, kind):
         cluster_id = [q[0] for q in spike_clusters[(session_id, 'HPF', 'central')][1][0]]
 
         spiking_rate_table_medial_seed = pd.DataFrame(spike_rate, columns=pd.MultiIndex.from_arrays(
-            [(units.loc[cluster_id, "waveform_duration"] < .4).map(
+            [(units.loc[cluster_id, "waveform_duration"] < waveform_dur_thr).map(
             {False: "Putative exc", True: "Putative inh"}), cluster_id], names=["Neuron type", "Cluster id"]))
 
         spiking_rate_table_medial_seed = spiking_rate_table_medial_seed.loc[:,
@@ -42,7 +42,7 @@ def consolidate_spiking(spike_clusters, kind):
         cluster_id = [q[0] for q in spike_clusters[(session_id, 'HPF', 'central')][2][0]]
 
         spiking_rate_table_lateral_seed = pd.DataFrame(spike_rate, columns=pd.MultiIndex.from_arrays(
-            [(units.loc[cluster_id, "waveform_duration"] < .4).map(
+            [(units.loc[cluster_id, "waveform_duration"] < waveform_dur_thr).map(
             {False: "Putative exc", True: "Putative inh"}), cluster_id], names=["Neuron type", "Cluster id"]))
         spiking_rate_table_lateral_seed = spiking_rate_table_lateral_seed.loc[:,
                                           (spiking_rate_table_lateral_seed != 0).any(axis=0)] # delete cluster with always zero spikes

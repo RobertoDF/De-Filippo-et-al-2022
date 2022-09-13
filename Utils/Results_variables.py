@@ -178,3 +178,54 @@ ripples_number_by_section[ripples_number_by_section.index==ripples_number_by_sec
 
 p_value_ripples_per_section = pg.kruskal(ripples_number_by_section[ripples_number_by_section.index==ripples_number_by_section["Reference"]],
                                          dv="Count detected ripples", between="Reference")["p-unc"]
+
+
+
+with open(f'{output_folder_calculations}/clusters_features_per_section.pkl', 'rb') as f:
+    total_clusters = dill.load(f)
+
+total_units = total_clusters[(total_clusters["waveform_PT_ratio"]<5)&(total_clusters["isi_violations"]<.5)&(total_clusters["amplitude_cutoff"]<.1)&(total_clusters["presence_ratio"]>.1)]
+
+def count_clusters(group):
+    _ = pd.Series([group.query("Location=='Medial'").shape[0] / group.query("Location=='Medial'")["probe_id"].unique().shape[0],
+                      group.query("Location=='Lateral'").shape[0] /
+                      group.query("Location=='Lateral'")["probe_id"].unique().shape[0]])
+    _.index=["Medial", "Lateral"]
+    return _
+
+normalized_cluster_count_per_probe = total_clusters.query("Location=='Medial'| Location=='Lateral'").groupby("session_id").apply(lambda group: count_clusters(group))
+normalized_cluster_count_per_probe.mean()
+normalized_cluster_count_per_probe.sem()
+
+def check_waveform_duration(group):
+    _ = pd.Series([group.query("Location=='Medial'")["waveform_duration"].mean(),
+                      group.query("Location=='Lateral'")["waveform_duration"].mean() ])
+    _.index=["Medial", "Lateral"]
+    return _
+
+waveform_duration_per_session = total_units.query("Location=='Medial'| Location=='Lateral'").groupby("session_id").apply(lambda group: check_waveform_duration(group))
+waveform_duration_per_session.mean()
+waveform_duration_per_session.sem()
+pg.normality(waveform_duration_per_session)
+pg.ttest(waveform_duration_per_session["Medial"], waveform_duration_per_session["Lateral"])
+
+def count_clusters_type(group):
+    _ = pd.Series([group[(group["Location"] == "Medial") & (group["Neuron type"]=="Putative exc")].shape[0] /\
+                   group[(group["Location"] == "Medial") & (group["Neuron type"] == "Putative inh")].shape[0],
+                   group[(group["Location"] == "Lateral") & (group["Neuron type"] == "Putative exc")].shape[0] /\
+                   group[(group["Location"] == "Lateral") & (group["Neuron type"] == "Putative inh")].shape[0]
+                   ])
+    _.index=["Medial ratio (exc/inh)", "Lateral ratio (exc/inh)"]
+    return _
+
+ratio_exc_inh_per_session=total_clusters.query("Location=='Medial'| Location=='Lateral'").groupby("session_id").apply(lambda group: count_clusters_type(group))
+ratio_exc_inh_per_session.mean()
+
+
+
+for param in total_clusters.columns:
+    try:
+        _ = pg.ttest(total_units.query("Location=='Medial'")[param], total_units.query("Location=='Lateral'")[param])["p-val"][0]
+        print(param, ": ", _)
+    except:
+        pass
