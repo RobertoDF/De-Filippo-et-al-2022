@@ -53,4 +53,4 @@ discussion = "Our work shows for the first time that strong ripples propagates d
              "combine the different kind of informatiosn processed in the distinct hippocampal sections and further relaying the " \
              "intgrated information back to the neocortex in acccordance with the two-stage memory hypothesis {Diekelmann, 2010 #1172, Marr, 1971 #1173," \
              "Buzsáki, 1989 #1174, Rasch, 2007 #1175, McClelland, 1995 #1176}.  " \
-             "" \
+
