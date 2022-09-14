@@ -34,5 +34,5 @@ discussion = "Our work shows for the first time that strong ripples propagates d
              "Ripple generation seems to be homogeneous across the hippocampal longitudinal axis {Patel, 2013 #1133}. " \
              "Our results can explain the specific role of septal hippocampus in memory tasks with its ability of generating particularly long" \
              "ripples that are able to strongly engage networks in the entire top half of the hippocampal formation for an extended time. What " \
-             "is the reason that enables the septal pole to generate longer ripples? We can speculate that the different input connectivity might play a role. " \
+             "is the reason that enables the septal pole to generate longer ripples? We can speculate that the different neuromodulatory input might play a role. " \
              ""

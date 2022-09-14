@@ -194,8 +194,8 @@ def count_clusters(group):
     return _
 
 normalized_cluster_count_per_probe = total_clusters.query("Location=='Medial'| Location=='Lateral'").groupby("session_id").apply(lambda group: count_clusters(group))
-normalized_cluster_count_per_probe.mean()
-normalized_cluster_count_per_probe.sem()
+pg.normality(normalized_cluster_count_per_probe)
+test_cluster_count = pg.mwu(normalized_cluster_count_per_probe["Medial"], normalized_cluster_count_per_probe["Lateral"])["p-val"][0]
 
 def check_waveform_duration(group):
     _ = pd.Series([group.query("Location=='Medial'")["waveform_duration"].mean(),
