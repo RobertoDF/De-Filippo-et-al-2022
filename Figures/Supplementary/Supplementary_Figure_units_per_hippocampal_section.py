@@ -1,4 +1,4 @@
-from Utils.Settings import output_folder_calculations, output_folder_supplementary, var_thr
+from Utils.Settings import output_folder_calculations, output_folder_supplementary, var_thr, waveform_PT_ratio_thr, isi_violations_thr, amplitude_cutoff_thr, presence_ratio_thr
 import dill
 import pingouin as pg
 from scipy.stats import ks_2samp
@@ -11,13 +11,19 @@ import Utils.Style
 with open(f'{output_folder_calculations}/clusters_features_per_section.pkl', 'rb') as f:
     total_clusters = dill.load(f)
 
-total_units = total_clusters[(total_clusters["waveform_PT_ratio"]<5)&(total_clusters["isi_violations"]<.5)&(total_clusters["amplitude_cutoff"]<.1)&(total_clusters["presence_ratio"]>.1)]
+total_units = total_clusters[(total_clusters["waveform_PT_ratio"]<waveform_PT_ratio_thr)&
+                             (total_clusters["isi_violations"]<isi_violations_thr)&
+                             (total_clusters["amplitude_cutoff"]<amplitude_cutoff_thr)&
+                             (total_clusters["presence_ratio"]>presence_ratio_thr)]
 
 total_units = total_units.rename(columns={"waveform_duration": "Waveform duration", "firing_rate":"Firing rate", "waveform_amplitude":"Waveform amplitude",
                                           "waveform_repolarization_slope":"Waveform repolarization slope", "waveform_recovery_slope":"Waveform recovery slope",
                                           "waveform_PT_ratio":"Waveform PT ratio"} )
 
-def plot_distributions(ax0, ax1, param, legend):
+total_clusters = total_clusters.rename(columns={"waveform_duration": "Waveform duration", "firing_rate":"Firing rate", "waveform_amplitude":"Waveform amplitude",
+                                          "waveform_repolarization_slope":"Waveform repolarization slope", "waveform_recovery_slope":"Waveform recovery slope",
+                                          "waveform_PT_ratio":"Waveform PT ratio"} )
+def plot_distributions(total_units, ax0, ax1, param, legend):
     print(param)
     sns.kdeplot(ax=ax0, palette=palette_ML, data=total_units.query("Location=='Medial'| Location=='Lateral'"), x=param, hue="Location", common_norm=False)
     sns.ecdfplot(ax=ax1,  palette=palette_ML, data=total_units.query("Location=='Medial'| Location=='Lateral'"), x=param, hue="Location")
@@ -40,7 +46,7 @@ def plot_distributions(ax0, ax1, param, legend):
     p_val_ks = ks_2samp(total_units[total_units["Location"] == "Medial"][param],
              total_units[total_units["Location"] == "Lateral"][param])[1]
 
-    print("ks: p_val_ks")
+    print("ks:", p_val_ks)
     if p_val_ks<.05:
         ax1.text(.6, .7, "*",
                     transform=ax1.transAxes,
@@ -57,30 +63,32 @@ param="Waveform duration"
 ax0 = ax[0,0]
 ax1 = ax[0,1]
 legend = True
-plot_distributions(ax0, ax1, param, legend)
+plot_distributions(total_units, ax0, ax1, param, legend)
 param="Firing rate"
 ax0 = ax[1,0]
 ax1 = ax[1,1]
 legend = False
-plot_distributions(ax0, ax1, param, legend)
+plot_distributions(total_clusters[total_clusters["presence_ratio"]>presence_ratio_thr], ax0, ax1, param, legend)
+ax[1,0].set_xlim(-5,20)
+ax[1,1].set_xlim(-5,20)
 param="Waveform amplitude"
 ax0 = ax[2,0]
 ax1 = ax[2,1]
-plot_distributions(ax0, ax1, param, legend)
+plot_distributions(total_units, ax0, ax1, param, legend)
 param="Waveform repolarization slope"
 ax0 = ax[3,0]
 ax1 = ax[3,1]
-plot_distributions(ax0, ax1, param, legend)
+plot_distributions(total_units, ax0, ax1, param, legend)
 param="Waveform recovery slope"
 ax0 = ax[4,0]
 ax1 = ax[4,1]
-plot_distributions(ax0, ax1, param, legend)
+plot_distributions(total_units, ax0, ax1, param, legend)
 ax[4,0].set_xlim(-.5,.1)
 ax[4,1].set_xlim(-.5,.1)
 param="Waveform PT ratio"
 ax0 = ax[5,0]
 ax1 = ax[5,1]
-plot_distributions(ax0, ax1, param, legend)
+plot_distributions(total_units, ax0, ax1, param, legend)
 ax[5,0].set_xlim(0,1)
 ax[5,1].set_xlim(0,1)
 

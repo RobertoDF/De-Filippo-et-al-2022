@@ -1,6 +1,6 @@
 import dill
 from Utils.Utils import clean_ripples_calculations
-from Utils.Settings import clip_ripples_clusters, var_thr, output_folder_figures_calculations, output_folder_calculations, minimum_ripples_count_generated_in_lateral_or_medial_spike_analysis
+from Utils.Settings import presence_ratio_thr, waveform_PT_ratio_thr, isi_violations_thr, amplitude_cutoff_thr, clip_ripples_clusters, var_thr, output_folder_figures_calculations, output_folder_calculations, minimum_ripples_count_generated_in_lateral_or_medial_spike_analysis
 from scipy.stats import sem
 import numpy as np
 from tqdm import tqdm
@@ -184,7 +184,10 @@ p_value_ripples_per_section = pg.kruskal(ripples_number_by_section[ripples_numbe
 with open(f'{output_folder_calculations}/clusters_features_per_section.pkl', 'rb') as f:
     total_clusters = dill.load(f)
 
-total_units = total_clusters[(total_clusters["waveform_PT_ratio"]<5)&(total_clusters["isi_violations"]<.5)&(total_clusters["amplitude_cutoff"]<.1)&(total_clusters["presence_ratio"]>.1)]
+total_units = total_clusters[(total_clusters["waveform_PT_ratio"]<waveform_PT_ratio_thr)&
+                             (total_clusters["isi_violations"]<isi_violations_thr)&
+                             (total_clusters["amplitude_cutoff"]<amplitude_cutoff_thr)&
+                             (total_clusters["presence_ratio"]>presence_ratio_thr)]
 
 def count_clusters(group):
     _ = pd.Series([group.query("Location=='Medial'").shape[0] / group.query("Location=='Medial'")["probe_id"].unique().shape[0],
@@ -223,9 +226,9 @@ ratio_exc_inh_per_session.mean()
 
 
 
-for param in total_clusters.columns:
-    try:
-        _ = pg.ttest(total_units.query("Location=='Medial'")[param], total_units.query("Location=='Lateral'")[param])["p-val"][0]
-        print(param, ": ", _)
-    except:
-        pass
+# for param in total_clusters.columns:
+#     try:
+#         _ = pg.ttest(total_units.query("Location=='Medial'")[param], total_units.query("Location=='Lateral'")[param])["p-val"][0]
+#         print(param, ": ", _)
+#     except:
+#         pass

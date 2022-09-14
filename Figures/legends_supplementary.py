@@ -42,16 +42,16 @@ legends_supplementary = {
       "(B) Strength conservation index in common ripples grouped by reference location.",
 
    "Supplementary Figure 6. Spatial location does not influence ∫Ripple.":
-      "Relationship between Z-scored ∫Ripple (top row)/∫Ripple (bottom row) and each spatial axis (M-L, A-P or D-V). Spatial location "
+      "Relationship between Z-scored ∫Ripple (top row) or ∫Ripple (bottom row) and each spatial axis (M-L, A-P or D-V). Spatial location "
       f"has a negligible effect on ∫Ripple.",
 
    "Supplementary Figure 7. Spatial location does not influence ripple amplitude.":
-      "Relationship between Z-scored amplitude (top row)/ amplitude (bottom row) and each spatial axis (M-L, A-P or D-V). Spatial location "
+      "Relationship between Z-scored amplitude (top row) or amplitude (bottom row) and each spatial axis (M-L, A-P or D-V). Spatial location "
       f"has a negligible effect on ripple amplitude.",
 
    "Supplementary Figure 8. Putative excitatory and inhibitory neurons show similiar spiking patterns in lateral and medial ripples.":
       "Grand average of the differences between medial and lateral ripples induced spiking activity in "
-      "putative excitatory (top) and inhibitory neurons (bottom).",
+      "putative excitatory (A) and inhibitory neurons (B).",
 
    "Supplementary Figure 9. Spiking rate and fraction of active neurons are significantly higher in medial ripples":
       f"(A) Fraction of active neurons per ripple grouped by ripple seed location. (Medial seed={100*round(data_sup_9_fraction_clu.groupby('Location seed').mean()['Fraction active neurons per ripple (%)']['Medial seed'], 2)}±"

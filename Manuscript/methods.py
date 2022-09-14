@@ -5,6 +5,7 @@ import dill
 from tqdm import tqdm
 import pandas as pd
 from Utils.Settings import minimum_ripples_count_generated_in_lateral_or_medial_spike_analysis, neuropixel_dataset, lowcut, highcut, fs_lfp, ripple_dur_lim, min_ripple_distance, ripple_power_sp_thr, ripple_thr, start_w, stop_w, thr_rip_cluster
+from Utils.Settings import waveform_PT_ratio_thr, isi_violations_thr, amplitude_cutoff_thr, presence_ratio_thr
 from tqdm import tqdm
 import numpy as np
 
@@ -122,5 +123,13 @@ methods = {"Dataset": f"Our analysis was based on the Visual Coding - Neuropixel
                                               f" To compare spiking activity between sessions we interpolated (xarray.DataArray.interp) the difference between medial ripples-induced spiking and"
                                               f" lateral ripples-induced spiking over space (this was necessary because probes in each sessions have different M-L coordinates) and time. We calculated the number of active cells (at least one spike) "
                                               f"and spiking rate of each cluster per ripple in a window of {window_spike_clu[1]} s starting from ripple start. We repeated the analysis separating "
-                                              f"the 0-50 ms and 50-120 ms post ripple start windows."
+                                              f"the 0-50 ms and 50-120 ms post ripple start windows.",
+        "Units selection and features calculations": f"Clusters were filtered according to the following parameters: Waveform peak-trough ratio < {waveform_PT_ratio_thr}, "
+                           f"ISI violations < {isi_violations_thr}, "
+                           f"amplitude cutoff < {amplitude_cutoff_thr} and "
+                           f"Presence ratio > {presence_ratio_thr}. "
+                           f"For an explanation of the parameters see "
+                           f"https://github.com/AllenInstitute/ecephys_spike_sorting/blob/master/ecephys_spike_sorting/modules/quality_metrics/README.md and "
+                           f"https://brainmapportal-live-4cc80a57cd6e400d854-f7fdcae.divio-media.net/filer_public/80/75/8075a100-ca64-429a-b39a-569121b612b2/neuropixels_visual_coding_-_white_paper_v10.pdf."
+                           f"Firing rate was calculated on all clusters with presence ratio > {presence_ratio_thr}."
            }

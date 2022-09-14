@@ -2,7 +2,7 @@ introduction= "Hippocampal ripples are brief oscillatory events detected in the 
               " these events corresponds to the synchronized depolarization of a substantial number of neurons in various" \
               " hippocampal subregions {Hulse, 2016 #1141; Ylinen, 1995 #1140}. " \
               "An higher ripple incidence during memory encoding is associated with superior recall performance {Norman, 2019 #1142}, " \
-              " furthermore, ripple incidence is increased during successful memory retrieval {Vaz, 2019 #1147}. " \
+              " furthermore, ripple incidence is increased during successful memory retrieval {Vaz, 2019 #1147, Carr, 2011 #1169}. " \
               "Ripples are also involved in memory consolidation both in awake and sleep conditions {Jadhav, 2012 #1143; Roux, 2017 #1144; Sirota, 2003 #1145; Girardeau, 2009 #1146}, " \
               "disrupting awake ripples during learning causes a persisting performance degradation, the same effect can be achieved by " \
               "silencing ripples during post-learning sleep. " \

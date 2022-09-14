@@ -34,5 +34,23 @@ discussion = "Our work shows for the first time that strong ripples propagates d
              "Ripple generation seems to be homogeneous across the hippocampal longitudinal axis {Patel, 2013 #1133}. " \
              "Our results can explain the specific role of septal hippocampus in memory tasks with its ability of generating particularly long" \
              "ripples that are able to strongly engage networks in the entire top half of the hippocampal formation for an extended time. What " \
-             "is the reason that enables the septal pole to generate longer ripples? We can speculate that the different neuromodulatory input might play a role. " \
-             ""
+             "is the reason that enables the septal pole to generate longer ripples? There might for example be underlying electrophyisiological" \
+             " differences between the septal and intermediate hippocampus. Looking at units features we found some differences in the waveform shape and " \
+             "duration. We can hypothesize that longer action potentials and, consequentially, " \
+             "longer refractory periods hinder the ability" \
+             " to sustain protracted high frequency spiking. Accordingly we found an increased firing rate in the septal pole. This might contribute to " \
+             "explain the prolonged ripples observed in the septal pole." \
+             "We can also speculate that the neuromodulatory inputs gradient, monoamine fibers have been shown to be stronger in the ventral part {Strange, 2014 #1105}, " \
+             "might influence neurons responses. Serotonin {ul Haq, 2016 #1165, Wang, 2015 #1170}}, noradrenaline {Ul Haq, 2012 #1166,Novitskaya, 2016 #1171} and acetylcholine {Zhang, 2021 #1167} " \
+             "have all been shown to suppress ripples. In accordance with this, some ripples are coupled with a reduced activation of the locus coeruleus" \
+             " and the dorsal raphe nucleus in vivo {Ramirez-Villegas, 2015 #1168}. " \
+             "Ripples can be subdivided in different types according to the relationship between the hippocampal LFP and the ripple itself {Ramirez-Villegas, 2015 #1168}." \
+             "Intriguingly these subtypes are associated with two different brain-wide networks, the first communicating preferentially with " \
+             "the associative neocortex and a second one biased towards subcortical structures. Moreover, these different types of ripples have been " \
+             "proposed to possibly fulfill different functional roles. Given the different input/output connectivity between " \
+             "septal, intermediate and temporal hippocampus {Fanselow, 2010 #1129} we hypothesize that ripple generated at different points of " \
+             "the hippocampal longitudinal axis might as well have functional differences, with the strong ripples generated septally possibly able to " \
+             "combine the different kind of informatiosn processed in the distinct hippocampal sections and further relaying the " \
+             "intgrated information back to the neocortex in acccordance with the two-stage memory hypothesis {Diekelmann, 2010 #1172, Marr, 1971 #1173," \
+             "Buzsáki, 1989 #1174, Rasch, 2007 #1175, McClelland, 1995 #1176}.  " \
+             "" \

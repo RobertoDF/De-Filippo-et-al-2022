@@ -7,6 +7,9 @@ import pingouin as pg
 from Utils.Style import palette_ML
 from Utils.Settings import output_folder_figures_calculations, output_folder_supplementary
 from statannotations.Annotator import Annotator
+import pylustrator
+
+pylustrator.start()
 
 with open(f"{output_folder_figures_calculations}/temp_data_figure_4.pkl", 'rb') as f:
     space_sub_spike_times, target_area, units, field_to_use_to_compare, \
@@ -80,4 +83,17 @@ if ttest_late_spiking["p-val"].values[0] < 0.05:
 
 axs[1].set_title("Spiking rate")
 
+#% start: automatic generated code from pylustrator
+plt.figure(1).ax_dict = {ax.get_label(): ax for ax in plt.figure(1).axes}
+import matplotlib as mpl
+plt.figure(1).text(0.5, 0.5, 'New Text', transform=plt.figure(1).transFigure)  # id=plt.figure(1).texts[0].new
+plt.figure(1).texts[0].set_position([0.072857, 0.931429])
+plt.figure(1).texts[0].set_text("A")
+plt.figure(1).texts[0].set_weight("bold")
+plt.figure(1).text(0.5, 0.5, 'New Text', transform=plt.figure(1).transFigure)  # id=plt.figure(1).texts[1].new
+plt.figure(1).texts[1].set_position([0.494286, 0.931429])
+plt.figure(1).texts[1].set_text("B")
+plt.figure(1).texts[1].set_weight("bold")
+#% end: automatic generated code from pylustrator
+#plt.show()
 plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_9", dpi=300)

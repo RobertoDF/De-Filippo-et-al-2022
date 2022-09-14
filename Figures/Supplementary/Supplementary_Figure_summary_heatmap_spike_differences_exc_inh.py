@@ -28,6 +28,14 @@ plt.figure(1).texts[1].set_fontsize(7)
 plt.figure(1).texts[1].set_position([0.081395, 0.129014])
 plt.figure(1).texts[1].set_rotation(90.0)
 plt.figure(1).texts[1].set_text("Putative inhibitory")
+plt.figure(1).text(0.5, 0.5, 'New Text', transform=plt.figure(1).transFigure)  # id=plt.figure(1).texts[2].new
+plt.figure(1).texts[2].set_position([0.081395, 0.945561])
+plt.figure(1).texts[2].set_text("A")
+plt.figure(1).texts[2].set_weight("bold")
+plt.figure(1).text(0.5, 0.5, 'New Text', transform=plt.figure(1).transFigure)  # id=plt.figure(1).texts[3].new
+plt.figure(1).texts[3].set_position([0.081395, 0.439698])
+plt.figure(1).texts[3].set_text("B")
+plt.figure(1).texts[3].set_weight("bold")
 #% end: automatic generated code from pylustrator
 #plt.show()
 

@@ -58,4 +58,11 @@ window_spike_clu = (0, 0.12)
 
 waveform_dur_thr = 0.4
 
+# parameter for good units selection
+
+waveform_PT_ratio_thr = 5
+isi_violations_thr = .5
+amplitude_cutoff_thr = .1
+presence_ratio_thr = .1
+
 
