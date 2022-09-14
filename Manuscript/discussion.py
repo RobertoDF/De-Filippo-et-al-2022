@@ -25,7 +25,7 @@ discussion = "Our work shows for the first time that strong ripples propagates d
              "intermediate hippocampus have a significantly different ability of engaging the hippocampal networks in the 50-120 ms window " \
              "post ripple start, ripples generated in the septal pole activate more neurons, both excitatory and inhibitory, and, moreover, " \
              "can elicit an higher spiking rate per neuron. This is reflected by the fact that the position on the longitudinal axis explains " \
-             f"{r_common*100}% and {r_strong*100}% of the variability in ripple duration in common and strong ripples respectively. Consistenly, the" \
+             f"{round(r_common*100, 2)}% and {round(r_strong*100, 2)}% of the variability in ripple duration in common and strong ripples respectively. Consistenly, the" \
              "temporal hippocampus has been shown to produce shorter ripples booth in awake and sleep {Sosa, 2020 #1154}." \
              "Long duration ripples has been shown to be of particular importance in situations of " \
              "high-memory demand {Fernández-Ruiz, 2019 #1121}, previous studies highlighted " \
