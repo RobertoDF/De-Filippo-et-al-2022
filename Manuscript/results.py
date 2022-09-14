@@ -1,6 +1,6 @@
 from Utils.Results_variables import *
 
-results = {"Distance explains the majority of the ripple strength correlation variability.":
+results = {"Distance explains most of the ripple strength correlation variability.":
             f"We studied ripple propagation along the hippocampal longitudinal axis in" \
              " an open-access dataset provided by the Allen Institute. "
             "We analyzed the LFP signals across the visual cortex, hippocampal formation and brain stem (Supplementary Figure 1) simultaneous to ripples detected "
@@ -11,7 +11,7 @@ results = {"Distance explains the majority of the ripple strength correlation va
             f"Ripple strength (∫Ripple) was calculated as the integral of the filtered LFP envelope (Supplementary Figure 2B)."
             f" Clear ripples were observed uniquely in "
             f"the hippocampal formation (CA1, CA2, CA3, DG, SUB, ProS). Likewise, ripple-induced voltage deflections (RIVD) "
-            f" were also noticeably stronger in hippocampal areas (Supplementary Figure 2C-F). ∫Ripple was noticeably irregular in single sessions both across time and space, even"
+            f"were also noticeably stronger in hippocampal areas (Supplementary Figure 2C-F). ∫Ripple was noticeably irregular in single sessions both across time and space, even"
             f" between different CA1 locations (Supplementary Figure 2C). "
             f"We focused on the variability in ∫Ripple across pairs of CA1 recording locations "
             f"with clear ripple activity (n CA1 pairs = {summary_corrs[summary_corrs['Comparison'] == 'CA1-CA1'].shape[0]},"
@@ -23,7 +23,7 @@ results = {"Distance explains the majority of the ripple strength correlation va
             f"Distance between recording location could explain the majority ({round(r_squared_corr_distance*100, 2)}%) of this variability (Figure 1B) "
             f"with the top and bottom quartiles of ∫Ripple correlation showing significantly different average distances (Figure 1C-D). "
             f"Given the correlation variability we asked how reliably a ripple can travel along the hippocampal longitudinal axis. "
-            f"To answer this question we looked at ripples lag in sessions that included both long-distance (> {round(quartiles_distance[0.75], 2)} µm) and "
+            f"To answer this question, we looked at ripples lag in sessions that included both long-distance (> {round(quartiles_distance[0.75], 2)} µm) and "
             f"short-distance (< {round(quartiles_distance[0.25], 2)} µm) CA1 recording pairs (n sessions = {ripples_lags['Session'].unique().shape[0]}, n CA1 pairs = {ripples_lags['Session'].unique().shape[0] * 2}, Figure 1E). "
             f"Reference for the lag analysis was always the most medial recording location in each pair. "
             f"Almost half of the ripples in long-distance pairs ({round((ripples_lags_clipped[ripples_lags_clipped['Type']=='High distance (µm)'].groupby('Session').size()/ripples_lags[ripples_lags['Type']=='High distance (µm)'].groupby('Session').size()).mean()*100, 2)} ± "
@@ -64,11 +64,11 @@ results = {"Distance explains the majority of the ripple strength correlation va
             f"To understand the mechanism underlying such difference in propagation "
             f"we examined the location of the seed for each ripple in sessions in which ripples were clearly detected "
             f"in every hippocampal section (n sessions = {seed_ripples_by_hip_section_summary_strong['Session id'].unique().shape[0]})"
-            f". While we found no differences in the amount of ripples detected in each hippocampal "
+            f". While we found no differences in the number of ripples detected in each hippocampal "
             f"section (p-value = {round(p_value_ripples_per_section[0], 2)}, Kruskal-Wallis test), "
             f"we observed differences regarding ripple generation."
             f" In common ripples, regardless of the reference location,"
-            f" the majority of ripples started from the lateral section (Figure 3A left)."
+            f" most ripples started from the lateral section (Figure 3A left)."
             f" On the other hand, strong ripples displayed a more heterogenous picture (Figure 3A right). We identified two principles relative to "
             f"strong ripples generation:"
             f" In all hippocampal sections the majority of strong ripples are locally generated, and a greater number of strong ripples is generated medially than laterally. "
@@ -99,15 +99,16 @@ results = {"Distance explains the majority of the ripple strength correlation va
             f" ripples of each kind (n sessions = {len([q[0] for q in list(spike_hists.keys()) if q[1] == 'HPF'])}). "
             f"We looked at spiking activity associated with these "
             f"two classes of ripples "
-            f"in the hippocampal formation across the M-L axis (n clusters per session = {round(tot_summary.groupby('Session id').size().mean(), 2)} ± {round(tot_summary.groupby('Session id').size().sem(), 2)}, Figure 4A-B-C). To compare sessions we created interpolated maps of the difference between spiking induced"
+            f"in the hippocampal formation across the M-L axis (n clusters per session = {round(tot_summary.groupby('Session id').size().mean(), 2)} ± {round(tot_summary.groupby('Session id').size().sem(), 2)}, Figure 4A-B-C). "
+            f"To compare sessions, we created interpolated maps of the difference between spiking induced"
             f' by medial and lateral ripples (Figure 4D). Immediately following ripple start (0-50 ms, "early phase") spiking was '
             f"predictably influenced by ripple seed proximity: in the lateral section, lateral ripples induced more spiking (indicated by the blue color), "
             f"whereas in the medial section it was the medial ripples that dominated (indicated by the red color). "
             f'Surprisingly, in the 50-120 ms window post ripple start ("late phase"), medial ripples could elicit significantly higher '
             f"spiking activity than lateral ripples along"
             f" the entire M-L axis (Figure 4E). Dividing clusters in putative excitatory and inhibitory using the waveform duration "
-            f"we observed the same effect in both types of neuron (Supplementary Figure 8). "
-            f"In accordance with this result we found that the medial hippocampal section is able to generate longer "
+            f"we observed the same effect in both types of neurons (Supplementary Figure 8). "
+            f"In accordance with this result, we found that the medial hippocampal section is able to generate longer "
             f"ripples (Figure 4F). An important portion of the variance "
             f"in ripple duration is indeed explained by location on the M-L axis both in common (R² = {r_common}) and especially "
             f"in strong ripples (R² = {r_strong}). "
@@ -119,7 +120,7 @@ results = {"Distance explains the majority of the ripple strength correlation va
             f"the difference in fraction of active neurons per ripples between medial and lateral ripples was even more "
             f"striking (Cohen's d = {str(round(ttest_late_clus_per_ripple['cohen-d'].values[0], 2))}, Figure 4G). Inversely, "
             f"in the early phase lateral ripples could engage more neurons, although, the effect size was much smaller "
-            f"(Cohen's d = {str(round(ttest_early_clus_per_ripple['cohen-d'].values[0], 2))}). The same results was found in relation to the spiking rate, medial ripples "
+            f"(Cohen's d = {str(round(ttest_early_clus_per_ripple['cohen-d'].values[0], 2))}). The same result was found in relation to the spiking rate, medial ripples "
             f"caused a significant and considerable increase in spiking rate in the late phase (Cohen's d = {str(round(ttest_late_spiking['cohen-d'].values[0], 2))}, Figure 4H). "
             f"Dividing again the clusters into putative excitatory and inhibitory, significant differences between medial and lateral ripples "
             f"were present only in the late phase. Spiking frequency and number of engaged neurons were significant higher in medial ripples both in putative excitatory"
@@ -130,6 +131,6 @@ results = {"Distance explains the majority of the ripple strength correlation va
             f"We did not find differences in the number of firing neurons (medial = {round(normalized_cluster_count_per_probe['Medial'].mean(), 2)}, "
             f"lateral = {round(normalized_cluster_count_per_probe['Lateral'].mean(), 2)}, p-value = {test_cluster_count}, Mann-Whitney U test), " 
             f"we did, however, found differences in firing rate, waveform duration, and waveform shape (recovery slope and peak-through ratio)."
-            f" Firing rate and waveform duration exhibited respectively"
+            f" Firing rate and waveform duration exhibited respectively "
             f"a left- and right-shifted distribution in the lateral section, reflecting higher firing rate and shorter action potentials "
             f"in the medial section. "}
