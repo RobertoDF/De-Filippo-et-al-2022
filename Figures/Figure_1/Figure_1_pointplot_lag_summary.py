@@ -81,6 +81,7 @@ p_value_ttest_abs_lag = '{:0.2e}'.format(ttest["p-val"][0])
 
 axs[1].text(.3, .05, "Cohen's d: " + str(round(ttest["cohen-d"].values[0], 2)), transform=axs[1].transAxes, fontsize=6);
 
+
 plt.show()
 
 

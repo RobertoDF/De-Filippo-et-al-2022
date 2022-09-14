@@ -194,4 +194,8 @@ for n, ytick in enumerate(axs[0, 1].get_yticklabels()):
 for n, ytick in enumerate(axs[1, 1].get_yticklabels()):
     ytick.set_color(palette_timelags[ytick.get_text()])
 
+axs[0,0].set_xlim(-22, 32)
+axs[0,1].set_xlim(-22, 32)
+axs[1,0].set_xlim(-22, 32)
+axs[1,1].set_xlim(-22, 32)
 plt.show()
