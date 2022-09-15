@@ -12,7 +12,7 @@ results = {"Distance explains most of the ripple strength correlation variabilit
             f" Clear ripples were observed uniquely in "
             f"the hippocampal formation (CA1, CA2, CA3, DG, SUB, ProS). Likewise, ripple-induced voltage deflections (RIVD) "
             f"were also noticeably stronger in hippocampal areas (Supplementary Figure 2C-F). ∫Ripple was noticeably irregular in single sessions both across time and space, even"
-            f" between different CA1 locations (Supplementary Figure 2C). "
+            f" within the CA1 region (Supplementary Figure 2C). "
             f"We focused on the variability in ∫Ripple across pairs of CA1 recording locations "
             f"with clear ripple activity (n CA1 pairs = {summary_corrs[summary_corrs['Comparison'] == 'CA1-CA1'].shape[0]},"
             f" n sessions = {summary_corrs['Session'].unique().shape[0]}). "

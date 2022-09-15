@@ -19,19 +19,21 @@ introduction= "Hippocampal ripples are brief oscillatory events detected in the 
               "of long-duration/stronger ripples in situations of high mnemonic demand and are consistent with a possible " \
               "power law distribution where a minority of ripples" \
               " is responsible for a substantial part of memory requirements. " \
-              "It is therefore of interest to identify the possible electro-physiological peculiarities of this ripple subgroup. Do strong ripples propagate differently " \
+              "For this reason it is of interest to identify the possible electrophysiological peculiarities of this ripples subgroup. Do strong ripples propagate differently " \
               "compared to common ripples? Are strong ripples generated homogeneously along the hippocampal longitudinal axis? Do ripples have a preferred longitudinal " \
               "directionality? " \
               "In this study we focused our attention on ripples generation and propagation within the hippocampal formation. " \
-              "Connectivity with cortical and sub-cortical areas varies  " \
-              "along the longitudinal axis of the hippocampus {Moser, 1998 #1149; Strange, 2014 #1158; Vogel, 2020 #1151; Fanselow, 2010 #1150}, " \
-              "the different cortical connectivity contributes " \
+              "Hippocampal connectivity with cortical and sub-cortical areas varies considerably " \
+              "along the longitudinal axis {Moser, 1998 #1149; Fanselow, 2010 #1150}, gene expression as well exhibits both gradual and discrete " \
+              "transitions along the same axis {Vogel, 2020 #1151; Strange, 2014 #1158}, as a consequence, the hippocampus is considered to be functionally segmented. " \
+              "The different cortical connectivity contributes " \
               "to explain the functional organization gradient between a predominantly spatio-visual (septal pole) and emotional (temporal pole) processing. " \
               "Additionally, monoamine neuromodulators show stronger projections to ventral regions of the hippocampus. " \
               "Ripples generated in the septal and temporal hippocampal pole has already been shown to be temporally independent and able to engage " \
-              "different networks downstream {Sosa, 2020 #1154}. Consequentially, an inhomogeneous generation chance along the longitudinal axis " \
-              "might have an impact on the identity of the neurons contacted downstream by different ripples subgroups. " \
-              "Our work is based on the dataset provided by the Allen Institute {Siegle, 2021 #1127}, this dataset enabled us to study" \
+              "different neuron subpopulations downstream, even in the same brain area {Sosa, 2020 #1154}. Consequentially, an heterogeneous " \
+              "ripple generation chance along the longitudinal axis " \
+              "most probably has an impact on the frequency with which different downstream brain areas and neurons subgroups are activated. " \
+              "Our work is based on a dataset provided by the Allen Institute {Siegle, 2021 #1127}, this dataset enabled us to study" \
               " comprehensively ripples features " \
               "across the septal half of the hippocampus. Previous studies have looked at ripple propagation along the longitudinal " \
               "axes of the hippocampus {Patel, 2013 #1133; Kumar, 2020 #1153}" \
