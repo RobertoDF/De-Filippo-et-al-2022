@@ -8,7 +8,7 @@ results = {"Distance explains most of the ripple strength correlation variabilit
             f"{round(np.mean(list(sessions_durations.values())),1)} ± {round(sem(list(sessions_durations.values())),1)} seconds, average ripple incidence during non-running epochs = "
             f"{round(np.mean(list(ripple_freq_total.values()))*10,2)} ± {round(sem(list(ripple_freq_total.values()))*10,2)} per 10s). "
             f"Ripples were detected on the CA1 channel with the strongest ripple activity (n ripples = {np.sum(list( number_ripples_per_session_best_CA1_channel.values()))}). "
-            f"Ripple strength (∫Ripple) was calculated as the integral of the filtered LFP envelope (Supplementary Figure 2B)."
+            f"Ripple strength (∫Ripple) was calculated as the integral of the filtered LFP envelope between the start and end points for every detected ripple (Supplementary Figure 2B)."
             f" Clear ripples were observed uniquely in "
             f"the hippocampal formation (CA1, CA2, CA3, DG, SUB, ProS). Likewise, ripple-induced voltage deflections (RIVD) "
             f"were also noticeably stronger in hippocampal areas (Supplementary Figure 2C-F). Ripple strength was noticeably irregular in single sessions both across time and space, even"

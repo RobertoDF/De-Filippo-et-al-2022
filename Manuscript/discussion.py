@@ -7,8 +7,8 @@ discussion = "Our results show for the first time that strong ripples propagate 
              "in addition, despite the presence of connections within the hippocampal longitudinal axis {Witter, 2007 #1155; van Strien, 2009 #1156}, " \
              "in the vast majority of cases ripples do not propagate to the opposite pole {Sosa, 2020 #1154}. "\
              "In accordance with these results, " \
-             "we observed a strong effect of spatial distance on ripple power correlation confirming a previous study {Nitzan, 2022 #1157}: " \
-             "the power correlation, predictably, was higher in CA1 pairs " \
+             "we observed a strong effect of spatial distance on ripple strength correlation confirming a previous study {Nitzan, 2022 #1157}: " \
+             "the strength correlation, predictably, was higher in CA1 pairs " \
              "closer to each other. The effect of distance was also apparent on the ripple chance of propagation, only half of the ripples generated in " \
              "the septal pole were detected additionally in the intermediate hippocampus (lateral section in our analysis). " \
              "This chance is much higher compared to the one reported regarding propagation between " \
