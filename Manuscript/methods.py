@@ -130,6 +130,6 @@ methods = {"Dataset": f"Our analysis was based on the Visual Coding - Neuropixel
                            f"Presence ratio > {presence_ratio_thr}. "
                            f"For an explanation of the parameters see "
                            f"https://github.com/AllenInstitute/ecephys_spike_sorting/blob/master/ecephys_spike_sorting/modules/quality_metrics/README.md and "
-                           f"https://brainmapportal-live-4cc80a57cd6e400d854-f7fdcae.divio-media.net/filer_public/80/75/8075a100-ca64-429a-b39a-569121b612b2/neuropixels_visual_coding_-_white_paper_v10.pdf."
+                           f"https://brainmapportal-live-4cc80a57cd6e400d854-f7fdcae.divio-media.net/filer_public/80/75/8075a100-ca64-429a-b39a-569121b612b2/neuropixels_visual_coding_-_white_paper_v10.pdf. "
                            f"Firing rate was calculated on all clusters with presence ratio > {presence_ratio_thr}."
            }

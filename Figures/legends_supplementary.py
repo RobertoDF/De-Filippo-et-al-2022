@@ -11,7 +11,7 @@ legends_supplementary = {
    f"(B) First column: Raw LFP traces color coded according to probe identity, "
    f"superimposed in black the trace after high-pass filtering to show the presence of a ripple. Scale bar: 250 µV. "
    f"Middle column: Ripple envelope and associated ∫Ripple in red. Last column: Raw LFP trace and associated RIVD"
-   f" in blue."
+   f" in blue. "
    f"(C) Heatmaps of ∫Ripple (left) and RIVD (right) for the entirety of session {session_id_supp_fig1} and "
    f"for each recorded area. To note the variability in ∫Ripple over time and cross different CA1 locations."
    f"(D) Kernel density estimate plot showing the relationship between ∫Ripple and RIVD. Bar plot shows the "
