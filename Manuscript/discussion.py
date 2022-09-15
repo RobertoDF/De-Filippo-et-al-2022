@@ -21,12 +21,15 @@ discussion = "Our results show for the first time that strong ripples propagate 
              "Strong ripples, on the other hand, are generated mostly locally, i.e., a strong ripple detected in the medial section is most likely " \
              "generated in the medial section itself. Furthermore, only rarely a strong ripple generated in the intermediate hippocampus is able to propagate " \
              "towards the septal pole retaining its strong status (top 10%). Conversely strong ripples generated in the septal pole have a sizable chance of " \
-             "propagate longitudinally and still be in the top 10% in terms of ripple strength. We also show that ripples generated in the septal pole and in the " \
-             "intermediate hippocampus have a significantly different ability of engaging the hippocampal networks in the 50-120 ms window " \
+             "propagate longitudinally and still be in the top 10% in terms of ripple strength. Notably, we did not observe any" \
+             " difference in ripple strength along the longitudinal axis. " \
+             "Furthermore, We show that ripples generated in the septal pole and in the " \
+             "intermediate hippocampus have a significantly different ability of engaging hippocampal networks in the 50-120 ms window " \
              "post ripple start, ripples generated in the septal pole activate more neurons, both excitatory and inhibitory, and, moreover, " \
              "can elicit an higher spiking rate per neuron. This is reflected by the fact that the position on the longitudinal axis explains " \
              f"{round(r_common*100, 2)}% and {round(r_strong*100, 2)}% of the variability in ripple duration in common and strong ripples respectively. " \
-             "Consistently, the temporal hippocampus has been shown to produce shorter ripples both in awake and sleep conditions {Sosa, 2020 #1154}. " \
+             "Consistent with a possible duration gradient along the longitudinal axis, the temporal hippocampus has been shown to " \
+             "produce shorter ripples both in awake and sleep conditions {Sosa, 2020 #1154}. "\
              "Long duration ripples has been shown to be of particular importance in situations of " \
              "high-memory demand {Fernández-Ruiz, 2019 #1121}, previous studies highlighted " \
              "the role of septal hippocampus in memory tasks and information processing {Hock, 1998 #1122;Moser, 1993 #1123;Moser, 1995 #1124;Steffenach, 2005 #1128;" \
