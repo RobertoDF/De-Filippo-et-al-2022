@@ -11,8 +11,8 @@ discussion = "Our results show for the first time that strong ripples propagate 
              "the strength correlation, predictably, was higher in CA1 pairs " \
              "closer to each other. The effect of distance was also apparent on the ripple chance of propagation, only half of the ripples generated in " \
              "the septal pole were detected additionally in the intermediate hippocampus (lateral section in our analysis). " \
-             "This chance is much higher compared to the one reported regarding propagation between " \
-             "opposite poles (~3.7%, {Sosa, 2020 #1154}), it would be interesting to understand whether the temporal pole is also able to entrain the intermediate hippocampus " \
+             "This chance is much higher compared to the ~3.7% reported regarding propagation between " \
+             "opposite poles {Sosa, 2020 #1154}, it would be interesting to understand whether the temporal pole is also able to entrain the intermediate hippocampus " \
              "in similar fashion or it is a peculiarity of the septal pole. " \
              "A limitation of our work derives from the dataset being limited to the septal and intermediate hippocampus, " \
              "therefore we could not answer this question. \n" \
@@ -34,10 +34,10 @@ discussion = "Our results show for the first time that strong ripples propagate 
              "Consistent with a duration gradient along the longitudinal axis, the temporal hippocampus has been shown to " \
              "produce shorter ripples both in awake and sleep conditions {Sosa, 2020 #1154}. \n"\
             "What is the reason that enables the septal pole to generate longer ripples? There might be for example underlying electrophysiological" \
-             " differences between the septal and intermediate hippocampus. Looking at units features we found some differences in the waveform shape and " \
-             "duration. We can hypothesize that longer action potentials and, consequentially, " \
+             " differences between the septal and intermediate hippocampus. Looking at units electrophysiological features we found some differences in the waveform shape and " \
+             "duration,. We can hypothesize that slower action potentials and, consequentially, " \
              "longer refractory periods hinder the ability" \
-             " to sustain protracted high frequency spiking. Accordingly, we found an increased firing rate in the septal pole. " \
+             " to sustain protracted high frequency spiking. Accordingly, we found an increased firing rate and a smaller waveform duration in the septal pole. " \
              "This might contribute to explain the prolonged ripples observed in the septal pole. " \
              "We can also speculate that the neuromodulatory inputs gradient, monoamine fibers have been shown to be stronger in the ventral part {Strange, 2014 #1158}, " \
              "might influence neurons responses. Serotonin {ul Haq, 2016 #1165; Wang, 2015 #1170}, noradrenaline {Ul Haq, 2012 #1166; Novitskaya, 2016 #1171} and acetylcholine {Zhang, 2021 #1167} " \

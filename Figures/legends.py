@@ -63,7 +63,6 @@ legends = {"Figure 1. ∫Ripple correlation depends significantly on distance.":
            f" lateral reference = {round(fig_3_mean_common.loc['Lateral seed','Lateral'],2)} ± {round(fig_3_sem_common.loc['Lateral seed','Lateral'],2)} %). "
             f"(B) Ripple seed location comparison between strong and common ripples using a medial (left), "
            f"central (center) or lateral reference (right). "
-           f"{seed_ripples_by_hip_section_summary_common.shape[0]} CA1 locations in {seed_ripples_by_hip_section_summary_common['Session id'].unique().shape[0]} sessions. "
            f"Asterisks mean P<0.05, Kruskal-Wallis test with pairwise Mann-Whitney post-hoc test.",
 
             "Figure 4. Ripples travelling in the medio→lateral direction show prolonged neural circuit engagement.":
@@ -102,6 +101,6 @@ legends = {"Figure 1. ∫Ripple correlation depends significantly on distance.":
             f"{round(fig_4_summary_spiking_late[fig_4_summary_spiking_late['Location seed'] == 'Medial seed']['Spiking rate per 10 ms'].sem(), 3)}, "
             f"late/lateral seed = {round(fig_4_summary_spiking_late[fig_4_summary_spiking_late['Location seed'] == 'Lateral seed']['Spiking rate per 10 ms'].mean(), 2)} ± "
             f"{round(fig_4_summary_spiking_late[fig_4_summary_spiking_late['Location seed'] == 'Lateral seed']['Spiking rate per 10 ms'].sem(), 3)}, "
-            f"p-valu = {'{:.2e}'.format(fig_4_ttest_late_spiking['p-val'].values[0])}, Student's t-test."}
+            f"p-value = {'{:.2e}'.format(fig_4_ttest_late_spiking['p-val'].values[0])}, Student's t-test."}
 
 

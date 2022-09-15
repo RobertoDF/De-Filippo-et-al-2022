@@ -21,7 +21,7 @@ introduction= "Hippocampal ripples are brief oscillatory events detected in the 
               "of stronger ripples in situations of high mnemonic demand and are consistent with a possible " \
               "power law distribution where a minority of ripples" \
               " is responsible for a substantial part of memory requirements. " \
-              "For this reason, it is of interest to identify the possible electrophysiological peculiarities of this ripples subgroup. Do strong ripples propagate differently " \
+              "For this reason, it is of interest to identify the possible electrophysiological peculiarities of this subgroup of ripples. Do strong ripples propagate differently " \
               "compared to common ripples? Are strong ripples generated homogeneously along the hippocampal longitudinal axis? Do ripples have a preferred longitudinal " \
               "directionality? " \
               "In this study we focused our attention on ripples generation and propagation within the hippocampal formation. " \
@@ -32,7 +32,7 @@ introduction= "Hippocampal ripples are brief oscillatory events detected in the 
               "The different connectivity contributes " \
               "to explain the functional organization gradient between a predominantly spatio-visual (septal pole) and emotional (temporal pole) processing. " \
               "Ripples generated in the septal and temporal hippocampal pole has already been shown to be temporally independent and able to engage " \
-              "different neuron subpopulations, even in the same downstream brain area {Sosa, 2020 #1154}. Consequentially, an heterogeneous " \
+              "different neuron subpopulations, even in the same downstream brain area {Sosa, 2020 #1154}. Consequentially, a heterogeneous " \
               "ripple generation chance along the longitudinal axis " \
               "most probably has an impact on the frequency with which different brain areas and neurons subgroups are activated. " \
               "Our work is based on a dataset provided by the Allen Institute {Siegle, 2021 #1127}, this dataset enabled us to study" \

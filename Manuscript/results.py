@@ -48,7 +48,7 @@ results = {"Distance explains most of the ripple strength correlation variabilit
             f"(lag = {fig1_mean_lag_strong_ref_medial} ± {fig1_sem_lag_strong_ref_medial} ms) indicative of a "
             f"preferred medial→lateral travelling direction (Figure 1H top). "
             f"Surprisingly, the same was not true for strong ripples identified in the lateral section (lag = {fig1_mean_lag_strong_ref_lateral} ± {fig1_sem_lag_strong_ref_lateral} ms, Figure 1I). "
-            f"Strong and common ripples lag was significantly different between medial and lateral locations both in common and strong ripples. "
+            f"Strong and common ripples lags were significantly different between medial and lateral locations both in common and strong ripples. "
             f"A biased direction of propagation can be explained by an unequal chance of ripple generation across space. "
             f"We can assume that selecting strong ripples we are biasing our focus towards ripples whose generation point (seed) is situated nearby our reference "
             f"location, this would contribute to explain the unbalanced lag. This notion would, however, fail to explain the different directionality we observed between strong ripples"
@@ -137,5 +137,4 @@ results = {"Distance explains most of the ripple strength correlation variabilit
             f"lateral = {round(normalized_cluster_count_per_probe['Lateral'].mean(), 2)}, p-value = {'{:.2e}'.format(test_cluster_count)}, Mann-Whitney U test), " 
             f"we did, however, found differences in firing rate, waveform duration, and waveform shape (recovery slope and peak-through ratio)."
             f" Firing rate and waveform duration exhibited respectively "
-            f"a left- and right-shifted distribution in the lateral section, reflecting higher firing rate and shorter action potentials "
-            f"in the medial section."}
+            f"a left- and right-shifted distribution in the lateral section, reflecting lower firing rate and slower action potentials."}
