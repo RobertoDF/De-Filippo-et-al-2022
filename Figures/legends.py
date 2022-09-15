@@ -104,3 +104,4 @@ legends = {"Figure 1. ∫Ripple correlation depends significantly on distance.":
             f"p-value = {'{:.2e}'.format(fig_4_ttest_late_spiking['p-val'].values[0])}, Student's t-test."}
 
 
+
