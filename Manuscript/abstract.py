@@ -10,13 +10,13 @@ with open(f'{output_folder_calculations}/clean_ripples_calculations.pkl', 'rb') 
 abstract = "Hippocampal ripples are highly synchronous neural events critical for memory consolidation and retrieval. " \
            "A minority of strong ripples has been shown to be of particular importance in situations of increased memory demands. " \
            "The propagation dynamics of strong ripples inside the hippocampal formation are however still opaque. " \
-           f"We analyzed extensively ripple propagation within the septal half of the hippocampal formation in an open access dataset" \
+           f"We analyzed ripple propagation within the septal half of the hippocampal formation in an open access dataset" \
            f" provided by the Allen Institute. " \
            "Surprisingly, strong ripples propagate differentially in the septal and temporal direction along the hippocampal longitudinal axis. " \
-           "Most strong ripples are always generated locally, however, the septal hippocampal pole is able to generate" \
+           "Most strong ripples are always generated locally, moreover, the septal hippocampal pole is able to generate" \
            " longer ripples that engage more neurons" \
            " and elicit spiking activity for an extended time along the entire septal half of the hippocampal formation. Ripples generated septally " \
            "have therefore higher chances of retaining their strength while travelling within the hippocampus. " \
            f"A substantial portion of the variance in strong ripple duration (R² = {r_strong}) is explained solely by the ripple generation " \
-           f"point on the longitudinal axis.  " \
+           f"point on the longitudinal axis. " \
            "Our results suggest a possible distinctive role of the hippocampal septal pole in conditions of high memory demand. "

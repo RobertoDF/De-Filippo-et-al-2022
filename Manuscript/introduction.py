@@ -3,10 +3,12 @@ introduction= "Hippocampal ripples are brief oscillatory events detected in the 
               " hippocampal subregions {Hulse, 2016 #1141; Ylinen, 1995 #1140}. " \
               "An higher ripple incidence during memory encoding is associated with superior recall performance {Norman, 2019 #1142}, " \
               " furthermore, ripple incidence is increased during successful memory retrieval {Vaz, 2019 #1147; Carr, 2011 #1169}. " \
-              "Ripples are also involved in memory consolidation both in awake and sleep conditions {Jadhav, 2012 #1143; Roux, 2017 #1144; Sirota, 2003 #1145; Girardeau, 2009 #1146}, " \
+              "Ripples are also involved in memory consolidation both in awake and sleep conditions {Jadhav, 2012 #1143; Roux, 2017 #1144; " \
+              "Sirota, 2003 #1145; Girardeau, 2009 #1146}, " \
               "disrupting awake ripples during learning causes a persisting performance degradation, the same effect can be achieved by " \
               "silencing ripples during post-learning sleep. " \
-              "Accordingly, ripples are considered to play a crucial role in memory processes and reorganization of memory engrams {Girardeau, 2011 #1148; Buzsáki, 2015 #1110;Diba, 2007 #1111;" \
+              "Accordingly, ripples are considered to play a crucial role in memory processes and reorganization of memory engrams " \
+              "{Girardeau, 2011 #1148; Buzsáki, 2015 #1110;Diba, 2007 #1111;" \
               "Foster, 2006 #1112; Xu, 2019 #1113;Takahashi, 2015 #1114;Davidson, 2009 #1116; Pfeiffer, 2015 #1117;" \
               "Dragoi, 2011 #1118; Girardeau, 2009 #1120}. " \
               "Ripples duration exhibits a skewed distribution with only a minority of long-duration ripples (>100 ms). " \
