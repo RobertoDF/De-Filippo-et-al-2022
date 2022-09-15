@@ -11,7 +11,7 @@ from Utils.Settings import manuscript_folder
 doc = DocxTemplate(f"{manuscript_folder}/Manuscript_template.docx")
 
 title = "Differential ripple propagation along the hippocampal longitudinal axis"
-authors = "Roberto De Filippo¹ and Dietmar Schmitz¹²³⁴⁵"
+authors = "Roberto De Filippo\u00b9 and Dietmar Schmitz\u00b9\u00b2\u00b3\u2074\u2075"
 affiliations =  "¹ Charité Universitätsmedizin Berlin, corporate member of Freie Universität Berlin, Humboldt-Universität" \
                 " zu Berlin,and Berlin Institute of Health; Neuroscience Research Center, 10117 Berlin, Germany. \n" \
                 "² German Center for Neurodegenerative Diseases (DZNE) Berlin, 10117 Berlin, Germany. \n"\
