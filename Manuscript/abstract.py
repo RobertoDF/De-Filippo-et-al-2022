@@ -18,6 +18,6 @@ abstract = "Hippocampal ripples are highly synchronous neural events critical fo
            " longer ripples that engage more neurons" \
            " and elicit spiking activity for an extended time along the entire septal half of the hippocampal formation. Ripples generated septally " \
            "have therefore higher chances of retaining their strength while travelling within the hippocampus. " \
-           f"A substantial portion of the variance in strong ripple duration (R² = {r_strong}) is explained solely by the ripple generation " \
+           f"Moreover, a substantial portion of the variance in strong ripple duration (R² = {r_strong}) is explained solely by the ripple generation " \
            f"point on the longitudinal axis. " \
            "Our results are consistent with a possible distinctive role of the hippocampal septal pole in conditions of high memory demand. "
