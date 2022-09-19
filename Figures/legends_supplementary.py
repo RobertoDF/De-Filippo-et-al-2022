@@ -65,7 +65,7 @@ legends_supplementary = {
    "Supplementary Figure 10. Spiking rate and fraction of active neurons are increased in the late phase post-ripple "
    "start in medial ripples both in putative excitatory and inhibitory neurons.":
       "(A) Average spiking rate in early (left) and late (right) phase post-ripple start grouped by ripple seed location and putative neuron identity. "
-      "Asterisks mean p<0.05, ANOVA with pairwise Tukey post-hoc test. "
+      "Asterisks mean p < 0.05, ANOVA with pairwise Tukey post-hoc test. "
       "(B) Fraction of active neurons per ripple in early (left) and late (right) phase post-ripple start grouped by ripple "
       "seed location and putative neuron identity. Asterisks mean p < 0.05, ANOVA with pairwise Tukey post-hoc test.",
 

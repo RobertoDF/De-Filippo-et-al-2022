@@ -16,8 +16,12 @@ plt.figure(1).set_size_inches(8.900000/2.54, 8.900000/2.54, forward=True)
 plt.figure(1).axes[0].set_position([0.125000, 0.113318, 0.337458, 0.345966])
 plt.figure(1).axes[1].set_position([0.547727, 0.113318, 0.337458, 0.345966])
 plt.figure(1).axes[1].get_legend()._set_loc((0.564268, 0.987910))
-plt.figure(1).axes[2].set_position([0.123894, 0.589969, 0.337458, 0.345966])
+plt.figure(1).axes[2].set_ylim(0.043275815698154654, 0.5121126146247941)
+plt.figure(1).axes[2].set_yticks([0.1, 0.2, 0.30000000000000004, 0.4, 0.5])
+plt.figure(1).axes[2].set_yticklabels(["0.1", "0.2", "0.3", "0.4", "0.5"], fontsize=5)
+plt.figure(1).axes[2].set_position([0.125000, 0.589969, 0.337458, 0.345966])
 plt.figure(1).axes[2].yaxis.labelpad = -0.721239
+plt.figure(1).axes[2].yaxis.labelpad = 2.0
 plt.figure(1).axes[3].set_position([0.546621, 0.589969, 0.337458, 0.345966])
 plt.figure(1).text(0.5, 0.5, 'New Text', transform=plt.figure(1).transFigure)  # id=plt.figure(1).texts[0].new
 plt.figure(1).texts[0].set_position([0.020000, 0.954469])
@@ -97,10 +101,6 @@ plt.figure(1).texts[15].set_fontsize(6)
 plt.figure(1).texts[15].set_position([0.639385, 0.685011])
 plt.figure(1).texts[15].set_text("*")
 plt.figure(1).texts[15].set_weight("bold")
-
-if Adapt_for_Nature_style is True:
-    Naturize()
-
 #% end: automatic generated code from pylustrator
 #plt.show()
 
