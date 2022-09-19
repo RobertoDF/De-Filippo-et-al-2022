@@ -135,6 +135,6 @@ results = {"Distance explains most of the ripple strength correlation variabilit
             f"be in part explained by electrophysiological differences across hippocampal sections (e.g. higher firing rate). "
             f"We did not find differences in the number of firing neurons (medial = {round(normalized_cluster_count_per_probe['Medial'].mean(), 2)}, "
             f"lateral = {round(normalized_cluster_count_per_probe['Lateral'].mean(), 2)}, p-value = {'{:.2e}'.format(test_cluster_count)}, Mann-Whitney U test), " 
-            f"we did, however, found differences in firing rate, waveform duration, and waveform shape (recovery slope and peak-through ratio)."
+            f"we did, however, found differences in firing rate, waveform duration, and waveform shape (recovery slope and peak-through ratio, Supplementary Figure 11)."
             f" Firing rate and waveform duration exhibited respectively "
             f"a left- and right-shifted distribution in the lateral section, reflecting lower firing rate and slower action potentials."}

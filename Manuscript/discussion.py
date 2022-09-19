@@ -1,7 +1,8 @@
 from Utils.Results_variables import r_common, r_strong
 
 discussion = "Our results show for the first time that strong ripples propagate differentially along the hippocampal " \
-             "longitudinal axis. This propagation idiosyncrasy can be explained by a specific ability of the hippocampal septal (medial section in our analysis) pole to produce longer " \
+             "longitudinal axis. This propagation idiosyncrasy can be explained by a specific ability of the hippocampal septal pole " \
+             "(medial section in our analysis) to produce longer " \
              "ripples that better entrain the hippocampal network and spread across the longitudinal axis. " \
              "It was previously observed that ripples located at the septal and temporal pole are generated independently from each other, " \
              "in addition, despite the presence of connections within the hippocampal longitudinal axis {Witter, 2007 #1155; van Strien, 2009 #1156}, " \
@@ -50,7 +51,7 @@ discussion = "Our results show for the first time that strong ripples propagate 
              "proposed to possibly fulfill different functional roles. Given the different input/output connectivity between " \
              "septal, intermediate and temporal hippocampus {Fanselow, 2010 #1150} we hypothesize that ripple generated at different points of " \
              "the hippocampal longitudinal axis might as well have functional differences, with the longer ripples generated septally possibly able to " \
-             "combine the different kind of informations processed in the distinct hippocampal sections and further relaying the " \
+             "combine the different kind of informations processed in the distinct hippocampal sections and additionally relaying the " \
              "integrated information back to the neocortex in accordance with the two-stage memory hypothesis {Diekelmann, 2010 #1172; Marr, 1971 #1173;" \
              "Buzsáki, 1989 #1174; Rasch, 2007 #1175; McClelland, 1995 #1176}. \n" \
              "Long duration ripples have been shown to be of particular importance in situations of " \
