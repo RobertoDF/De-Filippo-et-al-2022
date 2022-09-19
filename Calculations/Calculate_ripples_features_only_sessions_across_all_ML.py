@@ -54,7 +54,7 @@ for session_id in tqdm(ripples_calcs.keys()):
     if np.any(ripples["L-R (µm)"].unique() < medial_lim) & np.any(ripples["L-R (µm)"].unique() > lateral_lim) & \
             np.any((ripples["L-R (µm)"].unique() > medial_lim) & (ripples["L-R (µm)"].unique() < lateral_lim)):
 
-        source_area = str(ripples["Probe number"].min()) + "-CA1"
+        seed_area = str(ripples["Probe number"].min()) + "-CA1"
         reference = "Medial"
 
         try:
@@ -67,17 +67,17 @@ for session_id in tqdm(ripples_calcs.keys()):
         ripples["Local strong"] = ripples.groupby("Probe number").apply(
             lambda x: x["∫Ripple"] > x["∫Ripple"].quantile(.9)).sort_index(level=1).values
 
-        inputs.append([ripples, source_area, session_id, reference])
+        inputs.append([ripples, seed_area, session_id, reference])
 
-        source_area = str(ripples["Probe number"].max()) + "-CA1"
+        seed_area = str(ripples["Probe number"].max()) + "-CA1"
         reference = "Lateral"
 
-        inputs.append([ripples, source_area, session_id, reference])
+        inputs.append([ripples, seed_area, session_id, reference])
 
-        source_area = ripples.groupby("Probe number-area").mean()['L-R (µm)'].sub(center).abs().idxmin()
+        seed_area = ripples.groupby("Probe number-area").mean()['L-R (µm)'].sub(center).abs().idxmin()
         reference = "Central"
 
-        inputs.append([ripples, source_area, session_id, reference])
+        inputs.append([ripples, seed_area, session_id, reference])
 
 def lr_classifier(row):
     if row["L-R (µm)"] < medial_lim:
@@ -88,13 +88,13 @@ def lr_classifier(row):
         v = "Central"
     return v
 
-def extract_features(ripples, source_area, session_id, reference):
+def extract_features(ripples, seed_area, session_id, reference):
 
-    real_ripple_summary = find_ripples_clusters_new(ripples, source_area)
+    real_ripple_summary = find_ripples_clusters_new(ripples, seed_area)
 
     real_ripple_summary["Strong"] = real_ripple_summary["∫Ripple"] > real_ripple_summary["∫Ripple"].quantile(.9)
 
-    _ = real_ripple_summary[real_ripple_summary["Spatial engagement"] > .5]["Source M-L (µm)"].value_counts() /   \
+    _ = real_ripple_summary[real_ripple_summary["Spatial engagement"] > .5]["seed M-L (µm)"].value_counts() /   \
         real_ripple_summary[real_ripple_summary["Spatial engagement"] > .5].shape[0] # detected in at least half of the probes
     out_by_hip_section = pd.Series()
     out_by_hip_section["Medial seed"] = _[_.index < medial_lim_lm].sum()
@@ -104,25 +104,25 @@ def extract_features(ripples, source_area, session_id, reference):
     out_seed_ripples["Session id"] = session_id
     out_seed_ripples["Reference"] = reference
 
-    _ = real_ripple_summary[real_ripple_summary["Strong"] == 1]["Source M-L (µm)"].value_counts() / \
+    _ = real_ripple_summary[real_ripple_summary["Strong"] == 1]["seed M-L (µm)"].value_counts() / \
              real_ripple_summary[real_ripple_summary["Strong"] == 1].shape[0]
     out_by_hip_strong_section = pd.Series()
     out_by_hip_strong_section["Medial seed"] = _[_.index < medial_lim_lm].sum()
     out_by_hip_strong_section["Lateral seed"] = _[_.index > lateral_lim_lm].sum()
     out_by_hip_strong_section["Central seed"] = _[(_.index < lateral_lim_lm) & (_.index > medial_lim_lm)].sum()
-    out_source_strong_ripples = pd.DataFrame(out_by_hip_strong_section, columns=["Percentage seed (%)"]) * 100
-    out_source_strong_ripples["Session id"] = session_id
-    out_source_strong_ripples["Reference"] = reference
+    out_seed_strong_ripples = pd.DataFrame(out_by_hip_strong_section, columns=["Percentage seed (%)"]) * 100
+    out_seed_strong_ripples["Session id"] = session_id
+    out_seed_strong_ripples["Reference"] = reference
     
-    _ = real_ripple_summary[(real_ripple_summary["Strong"] == 0) & (real_ripple_summary["Spatial engagement"] > .5)]["Source M-L (µm)"].value_counts() / \
+    _ = real_ripple_summary[(real_ripple_summary["Strong"] == 0) & (real_ripple_summary["Spatial engagement"] > .5)]["seed M-L (µm)"].value_counts() / \
              real_ripple_summary[(real_ripple_summary["Strong"] == 0) & (real_ripple_summary["Spatial engagement"] > .5)].shape[0] # detected in at least two probes
     out_by_hip_common_section = pd.Series()
     out_by_hip_common_section["Medial seed"] = _[_.index < medial_lim_lm].sum()
     out_by_hip_common_section["Lateral seed"] = _[_.index > lateral_lim_lm].sum()
     out_by_hip_common_section["Central seed"] = _[(_.index < lateral_lim_lm) & (_.index > medial_lim_lm)].sum()
-    out_source_common_ripples = pd.DataFrame(out_by_hip_common_section, columns=["Percentage seed (%)"]) * 100
-    out_source_common_ripples["Session id"] = session_id
-    out_source_common_ripples["Reference"] = reference
+    out_seed_common_ripples = pd.DataFrame(out_by_hip_common_section, columns=["Percentage seed (%)"]) * 100
+    out_seed_common_ripples["Session id"] = session_id
+    out_seed_common_ripples["Reference"] = reference
 
     _ = (real_ripple_summary["Spatial engagement"].value_counts() / real_ripple_summary.shape[0]).sort_index()
     y = _.values
@@ -154,10 +154,10 @@ def extract_features(ripples, source_area, session_id, reference):
     ripples_features = ripples.groupby(["Local strong", "M-L (µm)"])[["Peak frequency (Hz)", "Instantaneous Frequency (Hz)", "Peak power", "Duration (s)", "Amplitude (mV)", "∫Ripple" ]].mean()
     ripples_features["Session id"] = session_id
 
-    percentage_strong_and_source = pd.DataFrame(
-        pd.Series((real_ripple_summary[real_ripple_summary["Strong"] == 1]["Source"] == 1).sum() / real_ripple_summary[real_ripple_summary["Strong"]== 1]["Source"].shape[0],
-                  name="Percentage source"))
-    percentage_strong_and_source["Session id"] = session_id
+    percentage_strong_and_seed = pd.DataFrame(
+        pd.Series((real_ripple_summary[real_ripple_summary["Strong"] == 1]["seed"] == 1).sum() / real_ripple_summary[real_ripple_summary["Strong"]== 1]["seed"].shape[0],
+                  name="Percentage seed"))
+    percentage_strong_and_seed["Session id"] = session_id
 
 
     ripples["Location seed"] = ripples.apply(lr_classifier, axis=1)
@@ -171,8 +171,8 @@ def extract_features(ripples, source_area, session_id, reference):
     count_detected_ripples["Session id"] = session_id
     count_detected_ripples["Reference"] = reference
 
-    return out_seed_ripples, global_strength_strong_ripples, ripples_features, out_source_common_ripples, \
-           percentage_strong_and_source, spatial_engagement, out_source_strong_ripples, \
+    return out_seed_ripples, global_strength_strong_ripples, ripples_features, out_seed_common_ripples, \
+           percentage_strong_and_seed, spatial_engagement, out_seed_strong_ripples, \
             global_strength_common_ripples, count_detected_ripples
 
 

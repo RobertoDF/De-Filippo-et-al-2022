@@ -58,14 +58,17 @@ legends = {"Figure 1. ∫Ripple correlation depends significantly on distance.":
            "Figure 3. Ripples generation differences along the hippocampal longitudinal axis.":
            f"(A) Ripple seed location comparison between the three reference locations in "
            f"common ripples (left) and strong ripples (right). Majority of common ripples seeds are located in the lateral hippocampal "
-           f"section regardless of the reference location (medial reference = {round(fig_3_mean_common.loc['Lateral seed','Medial'],2)} ± {round(fig_3_sem_common.loc['Lateral seed','Medial'],2)} %,"
-           f" central reference = {round(fig_3_mean_common.loc['Lateral seed','Central'],2)} ± {round(fig_3_sem_common.loc['Lateral seed','Central'],2)} %,"
-           f" lateral reference = {round(fig_3_mean_common.loc['Lateral seed','Lateral'],2)} ± {round(fig_3_sem_common.loc['Lateral seed','Lateral'],2)} %). "
-            f"(B) Ripple seed location comparison between strong and common ripples using a medial (left), "
+           f"section regardless of the reference location (medial reference/lateral seed = {round(fig_3_mean_common.loc['Lateral seed','Medial'],2)} ± {round(fig_3_sem_common.loc['Lateral seed','Medial'],2)} %,"
+           f" central reference/lateral seed = {round(fig_3_mean_common.loc['Lateral seed','Central'],2)} ± {round(fig_3_sem_common.loc['Lateral seed','Central'],2)} %,"
+           f" lateral reference/lateral seed = {round(fig_3_mean_common.loc['Lateral seed','Lateral'],2)} ± {round(fig_3_sem_common.loc['Lateral seed','Lateral'],2)} %). "
+           f"Strong ripples are mainly local (medial reference/medial seed = {round(fig_3_mean_strong.loc['Medial seed','Medial'],2)} ± {round(fig_3_sem_strong.loc['Medial seed','Medial'],2)} %,"
+           f" central reference/central seed = {round(fig_3_mean_strong.loc['Central seed','Central'],2)} ± {round(fig_3_sem_strong.loc['Central seed','Central'],2)} %,"
+           f" lateral reference/lateral seed = {round(fig_3_mean_strong.loc['Lateral seed','Lateral'],2)} ± {round(fig_3_sem_strong.loc['Lateral seed','Lateral'],2)} %)."
+           f"(B) Ripple seed location comparison between strong and common ripples using a medial (left), "
            f"central (center) or lateral reference (right). "
            f"Asterisks mean P<0.05, Kruskal-Wallis test with pairwise Mann-Whitney post-hoc test.",
 
-            "Figure 4. Ripples travelling in the medio→lateral direction show prolonged neural circuit engagement.":
+            "Figure 4. Ripples travelling in the medio→lateral direction show prolonged network engagement.":
             f"(A) Recording location for session {session_id_fig4}. Circles colors indicate medio-lateral" \
                     f" location. Bigger circle represents the reference location. "
             f"(B) Spiking activity across the hippocampal M-L axis associated with a ripple generated medially (left column) "

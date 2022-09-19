@@ -86,28 +86,21 @@ with open(f'{output_folder_calculations}/ripples_features_sessions_across_all_ML
     out = dill.load(f)
 
 seed_ripples_by_hip_section_summary_common = pd.concat([q[3] for q in out])
+seed_ripples_by_hip_section_summary_strong = pd.concat([q[6] for q in out])
 seed_ripples_by_hip_section_summary_common= seed_ripples_by_hip_section_summary_common.reset_index().rename(columns={'index': 'Location seed'})
+seed_ripples_by_hip_section_summary_strong= seed_ripples_by_hip_section_summary_strong.reset_index().rename(columns={'index': 'Location seed'})
+
 data = seed_ripples_by_hip_section_summary_common
+sem_common = data.groupby(["Reference", "Location seed"])["Percentage seed (%)"].sem().reset_index().pivot(columns="Reference", index="Location seed", values="Percentage seed (%)")
+fig_3_sem_common = sem_common[["Medial","Central","Lateral"]]
+mean_common = data.groupby(["Reference", "Location seed"])["Percentage seed (%)"].mean().reset_index().pivot(columns="Reference", index="Location seed", values="Percentage seed (%)")
+fig_3_mean_common = mean_common[["Medial","Central","Lateral"]]
 
-sem_common=data.groupby(["Reference", "Location seed"])["Percentage seed (%)"].sem().reset_index().pivot(columns="Reference",index="Location seed",values="Percentage seed (%)")
-fig_3_sem_common=sem_common[["Medial","Central","Lateral"]]
-
-
-mean_common=data.groupby(["Reference", "Location seed"])["Percentage seed (%)"].mean().reset_index().pivot(columns="Reference",index="Location seed",values="Percentage seed (%)")
-fig_3_mean_common=mean_common[["Medial","Central","Lateral"]]
-
-seed_strong_ripples_by_hip_section_summary = pd.concat([q[6] for q in out])
-seed_strong_ripples_by_hip_section_summary = seed_strong_ripples_by_hip_section_summary.reset_index().rename(columns={'index': 'Location seed'})
-
-data = seed_strong_ripples_by_hip_section_summary
-mean_strong=data.groupby(["Reference", "Location seed"])["Percentage seed (%)"].mean().reset_index().pivot(columns="Reference",index="Location seed",values="Percentage seed (%)")
-mean_strong=mean_strong[["Medial","Central","Lateral"]]
-fig_3_mean_strong=mean_strong.reindex(["Medial","Central","Lateral"])
-
-
-sem_common=data.groupby(["Reference", "Location seed"])["Percentage seed (%)"].sem().reset_index().pivot(columns="Reference",index="Location seed",values="Percentage seed (%)")
-fig_3_sem_common=sem_common[["Medial","Central","Lateral"]]
-
+data = seed_ripples_by_hip_section_summary_strong
+sem_strong = data.groupby(["Reference", "Location seed"])["Percentage seed (%)"].sem().reset_index().pivot(columns="Reference", index="Location seed", values="Percentage seed (%)")
+fig_3_sem_strong = sem_strong[["Medial", "Central", "Lateral"]]
+mean_strong = data.groupby(["Reference", "Location seed"])["Percentage seed (%)"].mean().reset_index().pivot(columns="Reference", index="Location seed", values="Percentage seed (%)")
+fig_3_mean_strong = mean_strong[["Medial", "Central", "Lateral"]]
 
 
 # variables for figure 4
