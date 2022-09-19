@@ -1,6 +1,6 @@
 from Utils.Legends_variables import *
 
-legends = {"Figure 1. ∫Ripple correlation depends significantly on distance.":
+legends = {"Figure 1. Ripple strength correlation depends significantly on distance.":
                    f"(A) Correlation matrices showing the variabilty of ripple strength correlation between pairs of recording sites "
                    f"located in different CA1 locations in 4 example sessions. The number on the x and y axis labels indicates the probe number. Probes are numbered "
                    f"according to the position on the hippocampal longitudinal axis (0 is the most medial probe). "
@@ -12,7 +12,7 @@ legends = {"Figure 1. ∫Ripple correlation depends significantly on distance.":
                    f"p-value = {'{:.2e}'.format(fig1_p_value_violin)}, Mann-Whitney U test). "
                    f"(E) Top: Rendering of the long distance (top) and short distance (bottom) CA1 pairs, "
                    f"dark circles are the reference locations in each pair. "
-                   f"(F) Top and middle: scatter plots showing the relationship between ∫Ripple (at the reference location) and lag "
+                   f"(F) Top and middle: scatter plots showing the relationship between ripple strength (at the reference location) and lag "
                    f"for long distance (top, n ripples = {fig1_n_high_dist}) and short distance (middle, "
                    f"n ripples = {fig1_n_low_dist}) pairs. Bottom: kernel density estimate of the lags of long distance (pink) "
                    f"and short distance (turquoise) pairs. "
