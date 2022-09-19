@@ -13,7 +13,6 @@ with open(f'{output_folder_calculations}/clean_ripples_calculations.pkl', 'rb') 
     ripples_calcs = dill.load(f)
 
 
-
 input_rip = []
 for session_id in ripples_calcs.keys():
     ripples = ripples_calcs[session_id][3].copy()
