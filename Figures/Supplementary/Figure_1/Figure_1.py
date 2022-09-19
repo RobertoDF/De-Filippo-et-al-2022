@@ -1,7 +1,8 @@
 import matplotlib.pyplot as plt
 import pylustrator
 import pickle
-from Utils.Settings import output_folder_supplementary , output_folder_figures_calculations
+from Utils.Settings import output_folder_supplementary , output_folder_figures_calculations, Adapt_for_Nature_style
+from Utils.Utils import Naturize
 
 with open(f"{output_folder_figures_calculations}/temp_data_supp_figure_1.pkl", "rb") as fp:  # Unpickling
     _, _, session_id, _, _, _ = pickle.load(fp)
@@ -63,6 +64,10 @@ plt.figure(1).text(0.5, 0.5, 'New Text', transform=plt.figure(1).transFigure)  #
 plt.figure(1).texts[6].set_position([0.255583, 0.382583])
 plt.figure(1).texts[6].set_text("F")
 plt.figure(1).texts[6].set_weight("bold")
+
+if Adapt_for_Nature_style is True:
+    Naturize()
+
 #% end: automatic generated code from pylustrator
 #plt.show()
 plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_2", dpi=300)

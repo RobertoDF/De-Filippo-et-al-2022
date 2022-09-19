@@ -1,6 +1,7 @@
 from tqdm import tqdm
 from scipy.stats import zscore
-from Utils.Settings import output_folder_calculations, output_folder_supplementary, var_thr
+from Utils.Settings import output_folder_calculations, output_folder_supplementary, var_thr, Adapt_for_Nature_style
+from Utils.Utils import Naturize
 import dill
 from Utils.Utils import clean_ripples_calculations, corrfunc
 import seaborn as sns

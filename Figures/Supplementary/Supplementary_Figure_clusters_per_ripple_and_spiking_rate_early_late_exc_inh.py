@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import pylustrator
-from Utils.Settings import output_folder_supplementary, output_folder
+from Utils.Settings import output_folder_supplementary, output_folder, Adapt_for_Nature_style
+from Utils.Utils import Naturize
 import Utils.Style
 
 pylustrator.start()
@@ -96,6 +97,10 @@ plt.figure(1).texts[15].set_fontsize(6)
 plt.figure(1).texts[15].set_position([0.639385, 0.685011])
 plt.figure(1).texts[15].set_text("*")
 plt.figure(1).texts[15].set_weight("bold")
+
+if Adapt_for_Nature_style is True:
+    Naturize()
+
 #% end: automatic generated code from pylustrator
 #plt.show()
 

@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import pylustrator
-from Utils.Settings import output_folder_supplementary, output_folder_figures_calculations
+from Utils.Settings import output_folder_supplementary, output_folder_figures_calculations, Adapt_for_Nature_style
+from Utils.Utils import Naturize
 import dill
 
 with open(f"{output_folder_figures_calculations}/temp_data_figure_2.pkl", 'rb') as f:
@@ -58,6 +59,10 @@ plt.figure(1).text(0.5, 0.5, 'New Text', transform=plt.figure(1).transFigure)  #
 plt.figure(1).texts[5].set_position([0.286119, 0.324561])
 plt.figure(1).texts[5].set_text("F")
 plt.figure(1).texts[5].set_weight("bold")
+
+if Adapt_for_Nature_style is True:
+    Naturize()
+
 #% end: automatic generated code from pylustrator
 #plt.show()
 

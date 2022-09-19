@@ -1,7 +1,9 @@
 import matplotlib.pyplot as plt
 import pylustrator
 from Utils.Style import palette_ML, palette_timelags
-from Utils.Settings import output_folder, output_folder_figures_calculations
+from Utils.Settings import output_folder, output_folder_figures_calculations, Adapt_for_Nature_style
+from Utils.Utils import Naturize
+
 pylustrator.start()
 
 pylustrator.load("Figure_3_seed_by_ML_strong.py", offset=[0, 0])
@@ -57,6 +59,10 @@ plt.figure(1).texts[6].set_fontsize(8)
 plt.figure(1).texts[6].set_ha("center")
 plt.figure(1).texts[6].set_position([0.832856, 0.438257])
 plt.figure(1).texts[6].set_text("Lateral reference")
+
+if Adapt_for_Nature_style is True:
+    Naturize()
+
 #% end: automatic generated code from pylustrator
 #plt.show()
 plt.savefig(f"{output_folder}/Figure_3", dpi=300)

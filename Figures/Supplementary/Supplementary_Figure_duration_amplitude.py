@@ -2,7 +2,8 @@ import seaborn as sns
 from scipy.stats import pearsonr
 from tqdm import tqdm
 import dill
-from Utils.Settings import output_folder_calculations, output_folder_supplementary, var_thr
+from Utils.Settings import output_folder_calculations, output_folder_supplementary, var_thr, Adapt_for_Nature_style
+from Utils.Utils import Naturize
 from Utils.Utils import clean_ripples_calculations
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -33,6 +34,10 @@ for ax, session_id in zip(g.axes.flat, ripples_all["Session"].unique()):
 
     ax.text(.1, .2, f"R\u00b2={round(r ** 2, 2)}", horizontalalignment='left',
             size='xx-large', color='black', weight='semibold')
+
+
+if Adapt_for_Nature_style is True:
+    Naturize()
 
 plt.show()
 #plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_duration_amplitude", dpi=300)

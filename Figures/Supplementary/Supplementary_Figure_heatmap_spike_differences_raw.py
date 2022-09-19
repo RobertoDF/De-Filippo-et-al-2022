@@ -1,6 +1,7 @@
 import dill
 import matplotlib.pyplot as plt
-from Utils.Settings import output_folder_calculations, output_folder_figures_calculations
+from Utils.Settings import output_folder_calculations, output_folder_figures_calculations, Adapt_for_Nature_style
+from Utils.Utils import Naturize
 from Utils.Utils import postprocess_spike_hists
 import numpy as np
 

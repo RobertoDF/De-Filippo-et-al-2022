@@ -2,7 +2,8 @@ import seaborn as sns
 from scipy.stats import pearsonr
 from tqdm import tqdm
 import dill
-from Utils.Settings import output_folder_calculations, output_folder_supplementary, var_thr
+from Utils.Settings import output_folder_calculations, output_folder_supplementary, var_thr, Adapt_for_Nature_style
+from Utils.Utils import Naturize
 from Utils.Utils import clean_ripples_calculations
 import pandas as pd
 import matplotlib.pyplot as plt

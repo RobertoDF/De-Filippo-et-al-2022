@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import pylustrator
-from Utils.Settings import output_folder, output_folder_figures_calculations
+from Utils.Settings import output_folder, output_folder_figures_calculations, Adapt_for_Nature_style
+from Utils.Utils import Naturize
 from Utils.Style import palette_ML
 import dill
 
@@ -129,6 +130,10 @@ plt.figure(1).texts[15].set_fontsize(7)
 plt.figure(1).texts[15].set_ha("center")
 plt.figure(1).texts[15].set_position([0.105825, 0.468523])
 plt.figure(1).texts[15].set_text("Lateral reference")
+
+if Adapt_for_Nature_style is True:
+    Naturize()
+
 #% end: automatic generated code from pylustrator
 #plt.show()
 

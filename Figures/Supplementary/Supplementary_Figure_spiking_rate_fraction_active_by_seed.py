@@ -5,7 +5,8 @@ import seaborn as sns
 import Utils.Style
 import pingouin as pg
 from Utils.Style import palette_ML
-from Utils.Settings import output_folder_figures_calculations, output_folder_supplementary
+from Utils.Settings import output_folder_figures_calculations, output_folder_supplementary, Adapt_for_Nature_style
+from Utils.Utils import Naturize
 from statannotations.Annotator import Annotator
 import pylustrator
 
@@ -94,6 +95,10 @@ plt.figure(1).text(0.5, 0.5, 'New Text', transform=plt.figure(1).transFigure)  #
 plt.figure(1).texts[1].set_position([0.494286, 0.931429])
 plt.figure(1).texts[1].set_text("B")
 plt.figure(1).texts[1].set_weight("bold")
+
+if Adapt_for_Nature_style is True:
+    Naturize()
+
 #% end: automatic generated code from pylustrator
 #plt.show()
 plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_9", dpi=300)

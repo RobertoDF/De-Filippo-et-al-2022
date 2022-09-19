@@ -35,7 +35,7 @@ discussion = "Our results show for the first time that strong ripples propagate 
              "produce shorter ripples both in awake and sleep conditions {Sosa, 2020 #1154}. \n"\
             "What is the reason that enables the septal pole to generate longer ripples? There might be for example underlying electrophysiological" \
              " differences between the septal and intermediate hippocampus. Looking at units electrophysiological features we found some differences in the waveform shape and " \
-             "duration,. We can hypothesize that slower action potentials and, consequentially, " \
+             "duration. We can hypothesize that slower action potentials and, consequentially, " \
              "longer refractory periods hinder the ability" \
              " to sustain protracted high frequency spiking. Accordingly, we found an increased firing rate and a smaller waveform duration in the septal pole. " \
              "This might contribute to explain the prolonged ripples observed in the septal pole. " \

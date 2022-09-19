@@ -3,7 +3,8 @@ import pickle
 import matplotlib.pyplot as plt
 from matplotlib.colors import rgb2hex
 from Utils.Utils import color_to_labels, acronym_color_map
-from Utils.Settings import output_folder_figures_calculations, output_folder_supplementary
+from Utils.Settings import output_folder_figures_calculations, output_folder_supplementary, Adapt_for_Nature_style
+from Utils.Utils import Naturize
 
 # pylustrator.start()
 

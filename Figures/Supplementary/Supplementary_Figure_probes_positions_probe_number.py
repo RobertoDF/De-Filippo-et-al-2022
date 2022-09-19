@@ -1,7 +1,8 @@
 import dill
 import matplotlib.pyplot as plt
 import seaborn as sns
-from Utils.Settings import output_folder_figures_calculations, output_folder_supplementary
+from Utils.Settings import output_folder_figures_calculations, output_folder_supplementary, Adapt_for_Nature_style
+from Utils.Utils import Naturize
 from Utils.Utils import acronym_structure_path_map, summary_structures, summary_structures_finer
 import Utils.Style
 

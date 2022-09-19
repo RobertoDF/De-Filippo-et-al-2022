@@ -1,6 +1,7 @@
 from sklearn.metrics import r2_score
 import matplotlib.pyplot as plt
-from Utils.Settings import output_folder_figures_calculations, output_folder_supplementary
+from Utils.Settings import output_folder_figures_calculations, output_folder_supplementary, Adapt_for_Nature_style
+from Utils.Utils import Naturize
 from Utils.Utils import acronym_color_map
 import seaborn as sns
 import numpy as np

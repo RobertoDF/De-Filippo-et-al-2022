@@ -2,7 +2,8 @@ import matplotlib.pyplot as plt
 import pylustrator
 import dill
 from Utils.Style import palette_ML
-from Utils.Settings import output_folder, output_folder_figures_calculations
+from Utils.Settings import output_folder, output_folder_figures_calculations, Adapt_for_Nature_style
+from Utils.Utils import Naturize
 
 with open(f"{output_folder_figures_calculations}/temp_data_figure_4.pkl", 'rb') as f:
     space_sub_spike_times, target_area, units, field_to_use_to_compare,\
@@ -114,6 +115,10 @@ plt.figure(1).texts[13].set_fontsize(7)
 plt.figure(1).texts[13].set_ha("center")
 plt.figure(1).texts[13].set_position([0.152337, 0.943718])
 plt.figure(1).texts[13].set_text("Central reference")
+
+if Adapt_for_Nature_style is True:
+    Naturize()
+
 #% end: automatic generated code from pylustrator
 #plt.show()
 

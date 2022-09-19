@@ -1,4 +1,5 @@
-from Utils.Settings import output_folder_supplementary , output_folder_calculations
+from Utils.Settings import output_folder_supplementary , output_folder_calculations, Adapt_for_Nature_style
+from Utils.Utils import Naturize
 import dill
 import pingouin as pg
 import Utils.Style
@@ -96,6 +97,10 @@ plt.figure(1).text(0.5, 0.5, 'New Text', transform=plt.figure(1).transFigure)  #
 plt.figure(1).texts[1].set_position([0.490000, 0.955000])
 plt.figure(1).texts[1].set_text("B")
 plt.figure(1).texts[1].set_weight("bold")
+
+if Adapt_for_Nature_style is True:
+    Naturize()
+
 #% end: automatic generated code from pylustrator
 #plt.show()
 plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_5", dpi=300)

@@ -1,4 +1,5 @@
-from Utils.Settings import output_folder_calculations, output_folder_supplementary, var_thr, waveform_PT_ratio_thr, isi_violations_thr, amplitude_cutoff_thr, presence_ratio_thr
+from Utils.Settings import output_folder_calculations, output_folder_supplementary, var_thr, waveform_PT_ratio_thr, isi_violations_thr, amplitude_cutoff_thr, presence_ratio_thr, Adapt_for_Nature_style
+from Utils.Utils import Naturize
 import dill
 import pingouin as pg
 from scipy.stats import ks_2samp
@@ -105,6 +106,10 @@ plt.figure(1).text(0.5, 0.5, 'New Text', transform=plt.figure(1).transFigure)  #
 plt.figure(1).texts[1].set_position([0.512000, 0.981250])
 plt.figure(1).texts[1].set_text("B")
 plt.figure(1).texts[1].set_weight("bold")
+
+if Adapt_for_Nature_style is True:
+    Naturize()
+
 #% end: automatic generated code from pylustrator
 
 #plt.show()

@@ -31,10 +31,10 @@ introduction= "Hippocampal ripples are brief oscillatory events detected in the 
               "along its long axis. " \
               "The different connectivity contributes " \
               "to explain the functional organization gradient between a predominantly spatio-visual (septal pole) and emotional (temporal pole) processing. " \
-              "Ripples generated in the septal and temporal hippocampal pole has already been shown to be temporally independent and able to engage " \
+              "Ripples generated in the septal and temporal hippocampal pole have already been shown to be temporally independent and able to engage " \
               "different neuron subpopulations, even in the same downstream brain area {Sosa, 2020 #1154}. Consequentially, a heterogeneous " \
               "ripple generation chance along the longitudinal axis " \
-              "most probably has an impact on the frequency with which different brain areas and neurons subgroups are activated. " \
+              "most probably has an impact on the frequency with which different brain areas and neurons subgroups are activated by ripples. " \
               "Our work is based on a dataset provided by the Allen Institute {Siegle, 2021 #1127}, this dataset enabled us to study" \
               " comprehensively ripples features " \
               "across the septal half of the hippocampus. Previous studies have looked at ripple propagation along the longitudinal " \

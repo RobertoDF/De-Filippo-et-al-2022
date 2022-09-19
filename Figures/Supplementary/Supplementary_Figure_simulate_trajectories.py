@@ -1,4 +1,5 @@
-from Utils.Settings import output_folder_calculations, var_thr
+from Utils.Settings import output_folder_calculations, var_thr, Adapt_for_Nature_style
+from Utils.Utils import Naturize
 import dill
 from Utils.Utils import format_for_annotator
 import Utils.Style
@@ -9,6 +10,8 @@ import numpy as np
 import pandas as pd
 from statannotations.Annotator import Annotator
 import pingouin as pg
+
+# WIP
 
 with open(f'{output_folder_calculations}/clean_ripples_calculations.pkl', 'rb') as f:
     ripples_calcs = dill.load(f)

@@ -4,7 +4,7 @@ from pathlib import Path
 ## DIRECTORIES
 
 root_data = Path("/alzheimer/Roberto/Allen_Institute/")
-root_github_repo = Path("/home/roberto/Github/De-Filippo-et-al-2022")
+root_github_repo = Path("/home/roberto/Github/De-Filippo-et-al-2022/")
 neuropixel_dataset = Path(f'{root_data}/Visual') # directory Allen dataset
 output_folder_calculations = Path(f"{root_data}/Processed_data")
 output_folder_figures_calculations = Path(f"{root_data}/temp")
@@ -65,4 +65,7 @@ isi_violations_thr = .5
 amplitude_cutoff_thr = .1
 presence_ratio_thr = .1
 
+# Nature style figure letters
+
+Adapt_for_Nature_style = True
 

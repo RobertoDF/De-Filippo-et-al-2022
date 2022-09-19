@@ -1765,11 +1765,23 @@ def spike_summary(spike_hists, area_to_analyze, reference_location, medial_lim, 
 
 def format_for_annotator(out_test, field, between):
     out_test[field] = between
-    out_test = out_test[out_test["p-unc"] < .05]
+    try:
+        out_test = out_test[out_test["p-unc"] < .05]
+    except:
+        try:
+            out_test = out_test[out_test["p-tukey"] < .05]
+        except:
+            pass
     pair_A = tuple(zip(out_test[field], out_test["A"]))
     pair_B = tuple(zip(out_test[field], out_test["B"]))
     pairs = list(zip(pair_A, pair_B))
-    pvalues = out_test["p-unc"].values
+    try:
+        pvalues = out_test["p-unc"].values
+    except:
+        try:
+            pvalues = out_test["p-tukey"].values
+        except:
+            pass
     return pairs, pvalues
 
 def postprocess_spike_hists(out_hist_lateral, out_hist_medial, lrs):
@@ -1881,5 +1893,8 @@ def get_ML_limits(var_thr):
     ml_space = pd.concat(input_rip)
     return ml_space
 
-
+def Naturize():
+    for label in plt.figure(1).texts:
+        if len(label.get_text())==1:
+            label.set_text(label.get_text().lower())
 

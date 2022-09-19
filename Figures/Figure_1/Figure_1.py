@@ -1,6 +1,7 @@
 import pylustrator
 import matplotlib.pyplot as plt
-from Utils.Settings import output_folder, output_folder_figures_calculations
+from Utils.Settings import output_folder, output_folder_figures_calculations, Adapt_for_Nature_style
+from Utils.Utils import Naturize
 
 # TODO riple strength is ripple power in panel a b c
 pylustrator.start()
@@ -76,6 +77,10 @@ plt.figure(1).text(0.5, 0.5, 'New Text', transform=plt.figure(1).transFigure)  #
 plt.figure(1).texts[8].set_position([0.696761, 0.341808])
 plt.figure(1).texts[8].set_text("I")
 plt.figure(1).texts[8].set_weight("bold")
+
+if Adapt_for_Nature_style is True:
+    Naturize()
+
 #% end: automatic generated code from pylustrator
 #plt.show()
 plt.savefig(f"{output_folder}/Figure_1", dpi=300)
