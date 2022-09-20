@@ -11,7 +11,7 @@ introduction= "Hippocampal ripples are brief oscillatory events detected in the 
               "{Girardeau, 2011 #1148; Buzsáki, 2015 #1110;Diba, 2007 #1111;" \
               "Foster, 2006 #1112; Xu, 2019 #1113;Takahashi, 2015 #1114;Davidson, 2009 #1116; Pfeiffer, 2015 #1117;" \
               "Dragoi, 2011 #1118; Girardeau, 2009 #1120}. " \
-              "Ripples duration exhibits a skewed distribution with only a minority of long-duration ripples (>100 ms). " \
+              "Ripples duration exhibits a skewed distribution with only a minority of long-duration ripples (> 100 ms). " \
               "Interestingly, the fraction of long-duration ripples " \
               "is increased in novel contexts, in memory-demanding tasks and during correct recalls {Fernández-Ruiz, 2019 #1121}. " \
               "Reducing ripple duration artificially causes a degraded working memory performance {Jadhav, 2012 #1135} and, on the contrary, " \

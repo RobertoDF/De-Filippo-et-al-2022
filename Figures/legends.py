@@ -68,7 +68,7 @@ legends = {"Figure 1. Ripple strength correlation depends significantly on dista
            f" lateral reference/lateral seed = {round(fig_3_mean_strong.loc['Lateral seed','Lateral'],2)} ± {round(fig_3_sem_strong.loc['Lateral seed','Lateral'],2)} %)."
            f"(B) Ripple seed location comparison between strong and common ripples using a medial (left), "
            f"central (center) or lateral reference (right). "
-           f"Asterisks mean P<0.05, Kruskal-Wallis test with pairwise Mann-Whitney post-hoc test.",
+           f"Asterisks mean p < 0.05, Kruskal-Wallis test with pairwise Mann-Whitney post-hoc test.",
 
             "Figure 4. Ripples travelling in the medio→lateral direction show prolonged network engagement.":
             f"(A) Recording location for session {session_id_fig4}. Circles colors indicate medio-lateral" \

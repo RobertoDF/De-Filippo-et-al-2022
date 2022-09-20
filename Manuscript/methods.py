@@ -86,7 +86,7 @@ methods = {"Dataset": f"Our analysis was based on the Visual Coding - Neuropixel
                            f"The envelope of the filtered trace was calculated using the Hilbert transform (scipy.signal.hilbert). Ripple threshold was set at {ripple_thr} SDs. "
                            f"Start and stop times were calculated using a 2 SDs threshold "
                            f"on the smoothed envelope with window = 5 (pandas.DataFrame.rolling) to account for ripple phase distortions. "
-                           f"Ripple duration was limited at >{ripple_dur_lim[0]} s and <{ripple_dur_lim[1]} s. "
+                           f"Ripple duration was limited at > {ripple_dur_lim[0]} s and < {ripple_dur_lim[1]} s. "
                            f"Candidate ripples were excluded if preceded by another ripple in "
                            f"a window of {min_ripple_distance} s. We estimated power density of each candidate using a "
                            f"periodogram with constant detrending (scipy.signal.periodogram) on the raw LFP trace, "
