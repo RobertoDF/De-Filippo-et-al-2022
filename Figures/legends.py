@@ -1,5 +1,6 @@
 from Utils.Legends_variables import *
 from Utils.Settings import Adapt_for_Nature_style
+from Utils.Utils import Naturize_text
 
 legends = {"Figure 1. Ripple strength correlation depends significantly on distance.":
                    f"(A) Correlation matrices showing the variabilty of ripple strength correlation between pairs of recording sites "
@@ -109,19 +110,7 @@ legends = {"Figure 1. Ripple strength correlation depends significantly on dista
 
 
 if Adapt_for_Nature_style is True:
-    for k, v in legends.items():
-        v_list = list(v)
-        for n, char in enumerate(v_list):
-            try:
-                if (char.isupper()) & (v[n-1] == "(") & (v[n+1] == ")") & (char.isalpha() is True):
-                    v_list[n] = char.lower()
-                if (char.isupper()) & (v[n-1] != ".") & (v[n-2] != ".") & (char.isalpha() is True) & (v[n-1].isalpha() is False) & (v[n+1].isalpha() is False):
-                    v_list[n] = char.lower()
-                if (char.isupper()) & (v[n-1].isdigit() is True):
-                    v_list[n] = char.lower()
-            except:
-                pass
-        legends[k] = "".join(v_list)
+    legends = Naturize_text(legends)
 
 
 

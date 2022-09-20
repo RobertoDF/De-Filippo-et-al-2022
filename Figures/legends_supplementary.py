@@ -1,5 +1,6 @@
 from Utils.Legends_supplementary_variables import *
 from Utils.Settings import Adapt_for_Nature_style
+from Utils.Utils import Naturize_text
 
 legends_supplementary = {
     "Supplementary Figure 1. Spatial coordinates of all recorded brain regions.": "2D histograms (upper diagonal), "
@@ -81,16 +82,4 @@ legends_supplementary = {
 }
 
 if Adapt_for_Nature_style is True:
-    for k, v in legends_supplementary.items():
-        v_list = list(v)
-        for n, char in enumerate(v_list):
-            try:
-                if (char.isupper()) & (v[n-1] == "(") & (v[n+1] == ")") & (char.isalpha() is True):
-                    v_list[n] = char.lower()
-                if (char.isupper()) & (v[n-1] != ".") & (v[n-2] != ".") & (char.isalpha() is True) & (v[n-1].isalpha() is False) & (v[n+1].isalpha() is False):
-                    v_list[n] = char.lower()
-                if (char.isupper()) & (v[n-1].isdigit() is True):
-                    v_list[n] = char.lower()
-            except:
-                pass
-        legends_supplementary[k] = "".join(v_list)
+    legends_supplementary = Naturize_text(legends_supplementary)

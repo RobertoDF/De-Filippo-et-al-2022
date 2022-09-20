@@ -1898,3 +1898,18 @@ def Naturize():
         if len(label.get_text())==1:
             label.set_text(label.get_text().lower())
 
+def Naturize_text(legends_supplementary):
+    for k, v in legends_supplementary.items():
+        v_list = list(v)
+        for n, char in enumerate(v_list):
+            try:
+                if (char.isupper()) & (v[n-1] == "(") & (v[n+1] == ")") & (char.isalpha() is True):
+                    v_list[n] = char.lower()
+                if (char.isupper()) & (v[n-1] != ".") & (v[n-2] != ".") & (char.isalpha() is True) & (v[n-1].isalpha() is False) & (v[n+1].isalpha() is False):
+                    v_list[n] = char.lower()
+                if (char.isupper()) & (v[n-1].isdigit() is True):
+                    v_list[n] = char.lower()
+            except:
+                pass
+        legends_supplementary[k] = "".join(v_list)
+    return legends_supplementary

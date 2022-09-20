@@ -1,5 +1,6 @@
 from Utils.Results_variables import *
 from Utils.Settings import Adapt_for_Nature_style
+from Utils.Utils import Naturize_text
 
 results = {"Distance explains most of the ripple strength correlation variability.":
             f"We studied ripple propagation along the hippocampal longitudinal axis in" \
@@ -141,16 +142,4 @@ results = {"Distance explains most of the ripple strength correlation variabilit
             f"a left- and right-shifted distribution in the lateral section, reflecting lower firing rate and slower action potentials."}
 
 if Adapt_for_Nature_style is True:
-    for k, v in results.items():
-        v_list = list(v)
-        for n, char in enumerate(v_list):
-            try:
-                if (char.isupper()) & (v[n-1] == "(") & (v[n+1] == ")") & (char.isalpha() is True):
-                    v_list[n] = char.lower()
-                if (char.isupper()) & (v[n-1] != ".") & (v[n-2] != ".") & (char.isalpha() is True) & (v[n-1].isalpha() is False) & (v[n+1].isalpha() is False):
-                    v_list[n] = char.lower()
-                if (char.isupper()) & (v[n-1].isdigit() is True):
-                    v_list[n] = char.lower()
-            except:
-                pass
-        results[k] = "".join(v_list)
+    results = Naturize_text(results)
