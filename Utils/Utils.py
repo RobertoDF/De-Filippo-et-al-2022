@@ -1894,11 +1894,17 @@ def get_ML_limits(var_thr):
     return ml_space
 
 def Naturize():
+    """
+    Change figure panels lettering  to lowercase
+    """
     for label in plt.figure(1).texts:
         if len(label.get_text())==1:
             label.set_text(label.get_text().lower())
 
 def Naturize_text(legends_supplementary):
+    """
+    Change figure references to lowercase
+    """
     for k, v in legends_supplementary.items():
         v_list = list(v)
         for n, char in enumerate(v_list):
