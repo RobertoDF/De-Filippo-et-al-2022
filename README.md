@@ -1,6 +1,7 @@
 # Code for the reproduction of De Filippo et al., 2022.
+The ***complete*** manuscript (text and figures included) can be reproduced using the Python code present in this repository. Each number present in the text is an f-String that can be traced back to a data structure (see [Pyscipaper](https://github.com/RobertoDF/Pyscipaper)).
+
 ![Abstract](Manuscript/Abstract_De_Filippo_et_al_2022.jpg "Figure 1")
-The complete manuscript (text and figures included) can be reproduced using the Python code present in this repository. Each number present in the text is an f-String that can be traced back to a data structure (see https://github.com/RobertoDF/Pyscipaper).
 
 # Figures
 Figure 1          |  Figure 2
