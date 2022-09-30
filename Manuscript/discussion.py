@@ -15,12 +15,12 @@ discussion = "Our results show for the first time that strong ripples propagate 
              "This chance is much higher compared to the ~3.7% reported regarding propagation between " \
              "opposite poles {Sosa, 2020 #1154}, it would be interesting to understand whether the temporal pole is also able to entrain the intermediate hippocampus " \
              "in similar fashion or it is a peculiarity of the septal pole. " \
-             "A limitation of our work derives from the dataset being limited to the septal and intermediate hippocampus, " \
-             "therefore we could not answer this question. \n" \
-             "Ripples can arise at any location along the hippocampal longitudinal axis {Patel, 2013 #1133}. Our analysis shows that ripples are, however, " \
+             "A limitation of our work derives from the dataset being limited to the septal and intermediate hippocampus. \n" \
+             "Ripples can arise at any location along the hippocampal longitudinal axis {Patel, 2013 #1133}. " \
+             "Our analysis shows that ripples are, however, " \
              "not homogeneously generated across space. We observed important differences between strong ripples and common ripples generation. " \
-             "Common ripples followed a gradient with higher likelihood in the intermediate section and lowest in the septal pole. " \
-             "Strong ripples, on the other hand, are generated mostly locally (i.e. a strong ripple detected in the medial section is most likely " \
+             "Common ripples followed a gradient with higher generation probability in the intermediate section and lowest in the septal pole. " \
+             "Strong ripples, on the other hand, were mostly generated locally (i.e. a strong ripple detected in the medial section is most likely " \
              "generated in the medial section itself). Furthermore, only rarely a strong ripple generated in the intermediate hippocampus is able to propagate " \
              "towards the septal pole retaining its strong status (top 10%). Conversely strong ripples generated in the septal pole have" \
              " a significantly higher chance of " \
