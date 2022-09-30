@@ -51,4 +51,3 @@ context = {'title': title, "authors": authors, "affiliations": affiliations, "co
 doc.render(context, autoescape=True)
 
 doc.save(f"{manuscript_folder}/De Filippo et al., 2022.docx")
-
