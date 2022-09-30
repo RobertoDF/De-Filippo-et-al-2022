@@ -11,7 +11,7 @@ abstract = "Hippocampal ripples are highly synchronous neural events critical fo
            "The propagation dynamics of strong ripples inside the hippocampal formation are, however, still opaque. " \
            f"We analyzed ripple propagation within the hippocampal formation in a large open access dataset comprising " \
            f"{summary_table.groupby('Session')['Probe number'].unique().explode().shape[0]} Neuropixel recordings in " \
-           f"{summary_table['Session'].unique().shape[0]} awake, head-fixed mice." \
+           f"{summary_table['Session'].unique().shape[0]} awake, head-fixed mice. " \
            "Surprisingly, strong ripples (top 10% in ripple strength) " \
            "propagate differentially depending on their generation point along the hippocampal longitudinal axis. " \
            "The septal hippocampal pole is able to generate" \
