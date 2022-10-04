@@ -13,7 +13,7 @@ doc = DocxTemplate(f"{manuscript_folder}/Manuscript_template.docx")
 title = "Differential ripple propagation along the hippocampal longitudinal axis"
 authors = "Roberto De Filippo¹ and Dietmar Schmitz¹²³⁴⁵"
 affiliations =  "¹ Charité Universitätsmedizin Berlin, corporate member of Freie Universität Berlin, Humboldt-Universität" \
-                " zu Berlin,and Berlin Institute of Health; Neuroscience Research Center, 10117 Berlin, Germany. \n" \
+                " zu Berlin, and Berlin Institute of Health; Neuroscience Research Center, 10117 Berlin, Germany. \n" \
                 "² German Center for Neurodegenerative Diseases (DZNE) Berlin, 10117 Berlin, Germany. \n"\
                 "³ Charité-Universitätsmedizin Berlin, corporate member of Freie Universität Berlin, Humboldt-Universität Berlin, and "\
                 "Berlin Institute of Health, Einstein Center for Neuroscience, 10117 Berlin, Germany. \n"\
@@ -51,3 +51,4 @@ context = {'title': title, "authors": authors, "affiliations": affiliations, "co
 doc.render(context, autoescape=True)
 
 doc.save(f"{manuscript_folder}/De Filippo et al., 2022.docx")
+

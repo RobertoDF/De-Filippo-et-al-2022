@@ -16,7 +16,7 @@ abstract = "Hippocampal ripples are highly synchronous neural events critical fo
            "propagate differentially depending on their generation point along the hippocampal longitudinal axis. " \
            "The septal hippocampal pole is able to generate" \
            " longer ripples that engage more neurons " \
-           " and elicit spiking activity for an extended time along the longitudinal axis of the hippocampal formation. " \
+           " and elicit spiking activity for an extended time even at considerable distances. " \
            "Accordingly, a substantial portion of the variance in strong ripple duration" \
            f" (R² = {r_strong}) is explained by the ripple generation location on the longitudinal axis. " \
            "Our results are consistent with a possible distinctive role of the hippocampal septal pole in conditions of high memory demand. "
