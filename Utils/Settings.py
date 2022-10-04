@@ -67,5 +67,5 @@ presence_ratio_thr = .1
 
 # Nature style figure letters
 
-Adapt_for_Nature_style = True
+Adapt_for_Nature_style = False
 

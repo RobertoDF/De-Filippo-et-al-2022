@@ -11,9 +11,9 @@ with open(f"{output_folder_figures_calculations}/temp_data_figure_2.pkl", 'rb') 
 
 pylustrator.start()
 
-pylustrator.load("Figure_2_summary_medial.py")
-pylustrator.load("Figure_2_summary_lateral.py")
-pylustrator.load("Figure_2_summary_center.py")
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Supplementary/Figure_2/Figure_2_summary_medial.py")
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Supplementary/Figure_2/Figure_2_summary_lateral.py")
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Supplementary/Figure_2/Figure_2_summary_center.py")
 pylustrator.load(f"{output_folder_figures_calculations}/Figure_2_brainrender_medial_crop.png")
 pylustrator.load(f"{output_folder_figures_calculations}/Figure_2_brainrender_lateral_crop.png")
 pylustrator.load(f"{output_folder_figures_calculations}/Figure_2_brainrender_center_crop.png")

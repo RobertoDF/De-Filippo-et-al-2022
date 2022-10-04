@@ -19,14 +19,14 @@ summary_fraction_active_clusters_per_ripples_by_neuron_type = dill.load(f)
 pylustrator.start()
 
 pylustrator.load(f"{output_folder_figures_calculations}/Figure_4_brainrender_crop.png")
-pylustrator.load("Figure_4_example_medial_seed_ripple.py", offset=[0.25, 0])
-pylustrator.load("Figure_4_example_lateral_seed_ripple.py", offset=[0.49, 0])
-pylustrator.load("Figure_4_example_summary_hists_per_ML.py", offset=[0.72, 0])
-pylustrator.load("Figure_4_heatmap_spike_differences_interp.py")
-pylustrator.load("Figure_4_summary_heatmap_spike_differences_interp.py")
-pylustrator.load("Figure_4_duration_ML_by_ripple_strength.py")
-pylustrator.load("Figure_4_clusters_per_ripple_early_late.py")
-pylustrator.load("Figure_4_spiking_rate_early_late.py")
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_4/Figure_4_example_medial_seed_ripple.py", offset=[0.25, 0])
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_4/Figure_4_example_lateral_seed_ripple.py", offset=[0.49, 0])
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_4/Figure_4_example_summary_hists_per_ML.py", offset=[0.72, 0])
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_4/Figure_4_heatmap_spike_differences_interp.py")
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_4/Figure_4_summary_heatmap_spike_differences_interp.py")
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_4/Figure_4_duration_ML_by_ripple_strength.py")
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_4/Figure_4_clusters_per_ripple_early_late.py")
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_4/Figure_4_spiking_rate_early_late.py")
 
 #% start: automatic generated code from pylustrator
 plt.figure(1).ax_dict = {ax.get_label(): ax for ax in plt.figure(1).axes}

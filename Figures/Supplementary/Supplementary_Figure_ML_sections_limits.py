@@ -8,7 +8,7 @@ from Utils.Utils import Naturize
 pylustrator.start()
 
 pylustrator.load(f'{ output_folder_figures_calculations}/brainrender_hippocampal_sectors_crop.png', offset=[0, 0])
-pylustrator.load(f'Panel_histogram_LR.py')
+pylustrator.load(f'/home/roberto/Github/De-Filippo-et-al-2022/Figures/Supplementary/Panel_histogram_LR.py')
 
 #% start: automatic generated code from pylustrator
 plt.figure(1).ax_dict = {ax.get_label(): ax for ax in plt.figure(1).axes}

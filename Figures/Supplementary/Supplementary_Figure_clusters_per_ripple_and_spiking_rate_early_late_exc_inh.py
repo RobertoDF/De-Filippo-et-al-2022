@@ -6,8 +6,8 @@ import Utils.Style
 
 pylustrator.start()
 
-pylustrator.load("Panel_clusters_per_ripple_early_late_by_neuron_type.py")
-pylustrator.load("Panel_spiking_rate_early_late_by_neuron_type.py")
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Supplementary/Panel_clusters_per_ripple_early_late_by_neuron_type.py")
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Supplementary/Panel_spiking_rate_early_late_by_neuron_type.py")
 
 #% start: automatic generated code from pylustrator
 plt.figure(1).ax_dict = {ax.get_label(): ax for ax in plt.figure(1).axes}

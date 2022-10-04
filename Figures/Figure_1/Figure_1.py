@@ -3,18 +3,17 @@ import matplotlib.pyplot as plt
 from Utils.Settings import output_folder, output_folder_figures_calculations, Adapt_for_Nature_style
 from Utils.Utils import Naturize
 
-# TODO riple strength is ripple power in panel a b c
 pylustrator.start()
 
-pylustrator.load("Figure_1_relplot_corrs.py", offset=[0, 0])
-pylustrator.load("Figure_1_corr_distance_power_CA1_CA1.py", offset=[0, 0.2])
-pylustrator.load("Figure_1_violinplot_quartiles.py", offset=[0, 0.4])
-pylustrator.load("Figure_1_distribution_CA1_CA1_corr.py", offset=[0, 0.2])
-pylustrator.load("Figure_1_pointplot_lag.py", offset=[0, 0.2])
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_1/Figure_1_relplot_corrs.py", offset=[0, 0])
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_1/Figure_1_corr_distance_power_CA1_CA1.py", offset=[0, 0.2])
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_1/Figure_1_violinplot_quartiles.py", offset=[0, 0.4])
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_1/Figure_1_distribution_CA1_CA1_corr.py", offset=[0, 0.2])
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_1/Figure_1_pointplot_lag.py", offset=[0, 0.2])
 pylustrator.load(f"{output_folder_figures_calculations}/Figure_1_brainrender_high_dist.png")
 pylustrator.load(f"{output_folder_figures_calculations}/Figure_1_brainrender_low_dist.png")
-pylustrator.load("Figure_1_scatter_distribution.py", offset=[0, 0.2])
-pylustrator.load("Figure_1_pointplot_lag_summary.py", offset=[0, 0.2])
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_1/Figure_1_scatter_distribution.py", offset=[0, 0.2])
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_1/Figure_1_pointplot_lag_summary.py", offset=[0, 0.2])
 
 #% start: automatic generated code from pylustrator
 plt.figure(1).ax_dict = {ax.get_label(): ax for ax in plt.figure(1).axes}

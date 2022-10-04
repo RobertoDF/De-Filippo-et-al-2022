@@ -6,11 +6,11 @@ from Utils.Utils import Naturize
 
 pylustrator.start()
 
-pylustrator.load("Figure_3_seed_by_ML_strong.py", offset=[0, 0])
-pylustrator.load("Figure_3_seed_by_ML_common.py", offset=[0, 0])
-pylustrator.load("Figure_3_common_strong_comparison_medial.py", offset=[0, 0])
-pylustrator.load("Figure_3_common_strong_comparison_central.py", offset=[0, 0])
-pylustrator.load("Figure_3_common_strong_comparison_lateral.py", offset=[0, 0])
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_3/Figure_3_seed_by_ML_strong.py", offset=[0, 0])
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_3/Figure_3_seed_by_ML_common.py", offset=[0, 0])
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_3/Figure_3_common_strong_comparison_medial.py", offset=[0, 0])
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_3/Figure_3_common_strong_comparison_central.py", offset=[0, 0])
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_3/Figure_3_common_strong_comparison_lateral.py", offset=[0, 0])
 
 
 #% start: automatic generated code from pylustrator

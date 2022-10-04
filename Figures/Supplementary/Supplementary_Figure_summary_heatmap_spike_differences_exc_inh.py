@@ -6,8 +6,8 @@ import Utils.Style
 
 pylustrator.start()
 
-pylustrator.load("Panel_summary_heatmap_spike_differences_interp_inh.py")
-pylustrator.load("Panel_summary_heatmap_spike_differences_interp_exc.py")
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Supplementary/Panel_summary_heatmap_spike_differences_interp_inh.py")
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Supplementary/Panel_summary_heatmap_spike_differences_interp_exc.py")
 
 
 #% start: automatic generated code from pylustrator

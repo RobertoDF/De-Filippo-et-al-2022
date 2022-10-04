@@ -10,11 +10,11 @@ with open(f"{output_folder_figures_calculations}/temp_data_supp_figure_1.pkl", "
 pylustrator.start()
 
 pylustrator.load(f"{output_folder_figures_calculations}/probes_{session_id}_crop.png")
-pylustrator.load("Figure_1_heatmaps.py", offset=[0.7, 0])
-pylustrator.load("Figure_1_traces.py", offset=[0.27, 0.02])
-pylustrator.load("Figure_1_scatterplot _ripple_lfp_areas.py", offset=[0.25, 0.2])
-pylustrator.load("Figure_1_scatterplot _ripple_lfp_areas_summary.py", offset=[0.55, 0.2])
-pylustrator.load("Figure_1_violinplot_summary.py", offset=[0.15, 0.2])
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Supplementary/Figure_1/Figure_1_heatmaps.py", offset=[0.7, 0])
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Supplementary/Figure_1/Figure_1_traces.py", offset=[0.27, 0.02])
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Supplementary/Figure_1/Figure_1_scatterplot _ripple_lfp_areas.py", offset=[0.25, 0.2])
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Supplementary/Figure_1/Figure_1_scatterplot _ripple_lfp_areas_summary.py", offset=[0.55, 0.2])
+pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Supplementary/Figure_1/Figure_1_violinplot_summary.py", offset=[0.15, 0.2])
 
 #% start: automatic generated code from pylustrator
 plt.figure(1).ax_dict = {ax.get_label(): ax for ax in plt.figure(1).axes}
