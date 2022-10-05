@@ -29,7 +29,7 @@ legends_supplementary = {
                                                      "(B) Rendering of the 3 sections and associated recording locations (black dots).",
 
    "Supplementary Figure 4. Spatio-temporal lag maps of locally and not locally generated ripples": ""
-             "(A) Recording locations relative to (B). Red circles represents the reference locations across all sessions "
+             "Spatio-temporal profiles are symmetrical, strong indication of similar propagation speed regardless of seed position. (A) Recording locations relative to (B). Red circles represents the reference locations across all sessions "
                         f"(n sessions={trajectories_by_strength['Session'].unique().shape[0]}), black circles represents the remaining recording locations. "
                         f"(B) Left: Medio-lateral propagation of locally generated ripples (generated in the reference section), each line represents the average of one session. "
                         f"Middle: Medio-lateral propagation of non-locally generated ripples, each line represents the average of one session. "
