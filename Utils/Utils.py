@@ -1405,7 +1405,7 @@ def batch_trajectories(ripples_calcs, kind, func):
         if kind == "medial":
             position = "Medial"
             source_area = str(ripples["Probe number"].min()) + "-CA1"
-            if (np.any(ripples.groupby("Probe number-area").mean()["M-L (µm)"] < medial_lim)) & (np.any(ripples.groupby("Probe number-area").mean()["M-L (µm)"] > medial_lim)):
+            if (np.any(ripples.groupby("Probe number-area").mean()["M-L (µm)"] < medial_lim)) & (np.any(ripples.groupby("Probe number-area").mean()["M-L (µm)"] > medial_lim)): # check that there are recording sites in other hippocampal sections
                 spatial_infos.append([ripples.groupby("Probe number-area").mean().loc[source_area, :], pd.DataFrame(
                     ripples.groupby("Probe number-area").mean().loc[
                     ripples.groupby("Probe number-area").mean().index != source_area, :])])

@@ -33,7 +33,7 @@ acknowledgements = "This study was supported by the German Research Foundation D
                    "for support with brainrender. " \
                 "The authors declare that they have no competing interests. "
 
-contributions = "Conceptualization, data curation, formal analysis, investigation, visualization:  RDF. Writing - original draft: RDF. " \
+contributions = "Conceptualization, data curation, formal analysis, investigation, visualization: RDF. Writing - original draft: RDF. " \
                 "Writing - review & editing: RDF, DS. " \
                 "Funding acquisition: DS."
 

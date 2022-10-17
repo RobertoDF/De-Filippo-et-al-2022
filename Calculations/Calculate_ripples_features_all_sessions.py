@@ -31,7 +31,7 @@ input_rip = []
 for session_id in ripples_calcs.keys():
     ripples = ripples_calcs[session_id][3].copy()
     ripples = ripples.groupby("Probe number-area").filter(lambda group: group["∫Ripple"].var() > var_thr)
-    input_rip.append(ripples.groupby("Probe number-area").mean()["L-R (µm)"])
+    input_rip.append(ripples.groupby("Probe number-area")["L-R (µm)"].mean())
 
 lr_space = pd.concat(input_rip)
 

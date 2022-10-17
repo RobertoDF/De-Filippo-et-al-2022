@@ -163,7 +163,8 @@ for session_n in tqdm(loop_over):
                                 ["D-V (µm)", "A-P (µm)", "L-R (µm)"]])
                     ripples = pd.concat([ripples, pd.concat(out_t).reset_index(drop=True)], axis=1)
 
-                    out[session_id] = [output_calc, spatial_info, session.probes.index.values, ripples, [behavior, start_running, stop_running, start_quiet, stop_quiet], probe_selected_ripples]
+                    out[session_id] = [output_calc, spatial_info, session.probes.index.values, ripples,
+                                       [behavior, start_running, stop_running, start_quiet, stop_quiet], probe_selected_ripples]
                 else:
                     print("no LFP available")
             else:
