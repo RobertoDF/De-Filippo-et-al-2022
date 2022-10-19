@@ -12,7 +12,7 @@ bg-space==0.6.0
 bleach==5.0.1
 boto3==1.17.21
 botocore==1.20.112
-brainrender==2.0.5.3
+brainrender
 bs4==0.0.1
 cachetools==4.2.4
 certifi==2022.6.15

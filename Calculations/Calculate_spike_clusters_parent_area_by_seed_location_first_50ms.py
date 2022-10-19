@@ -6,7 +6,7 @@ from rich import print
 from tqdm.auto import tqdm
 from time import perf_counter
 from scipy.stats import zscore
-from Utils.Settings import window_spike_clu, output_folder_calculations, neuropixel_dataset, var_thr, minimum_ripples_count_spike_analysis, minimum_ripples_count_generated_in_lateral_or_medial_spike_analysis
+from Utils.Settings import window_spike_clu_early, output_folder_calculations, neuropixel_dataset, var_thr, minimum_ripples_count_spike_analysis, minimum_ripples_count_generated_in_lateral_or_medial_spike_analysis
 from Utils.Utils import acronym_to_main_area, clean_ripples_calculations, find_ripples_clusters_new, process_spikes_per_ripple,\
         batch_process_spike_clusters_by_seed_location
 
@@ -134,7 +134,7 @@ for session_id in tqdm(ripples_calcs.keys()):
                 lrs, out_clusters_medial, out_clusters_lateral, duration_ripples_medial, duration_ripples_lateral, units\
                     = batch_process_spike_clusters_by_seed_location(func, real_ripple_summary, units, spike_times,
                                                                            target_area,
-                                                                    field_to_use_to_compare, n_cpus, window_spike_clu)
+                                                                    field_to_use_to_compare, n_cpus, window_spike_clu_early)
 
                 spike_clusters[(session_id, target_area, type_source)] = [lrs, out_clusters_medial, out_clusters_lateral,
                                                                           duration_ripples_medial, duration_ripples_lateral, units]

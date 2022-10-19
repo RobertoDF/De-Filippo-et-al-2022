@@ -60,7 +60,7 @@ def consolidate_spiking(spike_clusters, kind):
 
 
         summary_spiking["L-R (µm)"] = units.loc[summary_spiking.index]["left_right_ccf_coordinate"]
-        summary_spiking["Location seed"] = kind
+        summary_spiking["Post ripple phase"] = kind
 
         summary_spiking["ecephys_structure_acronym"] = units.loc[summary_spiking.index, "ecephys_structure_acronym"]
         summary_spiking["waveform_duration"] = units.loc[summary_spiking.index,"waveform_duration"]
@@ -266,12 +266,12 @@ with open(f"{ output_folder_figures_calculations}/temp_data_figure_4.pkl", "wb")
     dill.dump([space_sub_spike_times, target_area, units, field_to_use_to_compare,
                session_id_example, lfp, lfp_per_probe,
                ripple_cluster_lateral_seed, ripple_cluster_medial_seed, source_area, ripples,
-               tot_summary_early,  summary_fraction_active_clusters_per_ripples_early, \
-summary_fraction_active_clusters_per_ripples_early_by_neuron_type,
+               tot_summary_early,  summary_fraction_active_clusters_per_ripples_early,
+               summary_fraction_active_clusters_per_ripples_early_by_neuron_type,
                tot_summary_late,  summary_fraction_active_clusters_per_ripples_late,
-                                   summary_fraction_active_clusters_per_ripples_late_by_neuron_type,
-               tot_summary, summary_fraction_active_clusters_per_ripples, \
-summary_fraction_active_clusters_per_ripples_by_neuron_type], fp)
+               summary_fraction_active_clusters_per_ripples_late_by_neuron_type,
+               tot_summary, summary_fraction_active_clusters_per_ripples,
+               summary_fraction_active_clusters_per_ripples_by_neuron_type], fp)
 
 
 # create brainrenders

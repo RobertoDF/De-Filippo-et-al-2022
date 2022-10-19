@@ -53,6 +53,8 @@ var_thr = 5
 
 window_spike_hist = (0.25, 0.25)
 window_spike_clu = (0, 0.12)
+window_spike_clu_late = (-0.05, 0.12)
+window_spike_clu_early = (0, 0.05)
 
 # inh-exc waveform duration threshold
 

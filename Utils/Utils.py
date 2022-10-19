@@ -1361,7 +1361,7 @@ def batch_trajectories(ripples_calcs, kind, func):
         ripples = ripples_calcs[session_id][3].copy()
         ripples = ripples[ripples["Area"] == "CA1"]
         ripples = ripples.groupby("Probe number-area").filter(lambda group: group["∫Ripple"].var() > var_thr)
-        input_rip.append(ripples.groupby("Probe number-area").mean()["M-L (µm)"])
+        input_rip.append(ripples.groupby("Probe number-area")["M-L (µm)"].mean())
 
     ml_space = pd.concat(input_rip)
 
@@ -1405,7 +1405,7 @@ def batch_trajectories(ripples_calcs, kind, func):
         if kind == "medial":
             position = "Medial"
             source_area = str(ripples["Probe number"].min()) + "-CA1"
-            if (np.any(ripples.groupby("Probe number-area").mean()["M-L (µm)"] < medial_lim)) & (np.any(ripples.groupby("Probe number-area").mean()["M-L (µm)"] > medial_lim)): # check that there are recording sites in other hippocampal sections
+            if (np.any(ripples.groupby("Probe number-area")["M-L (µm)"].mean() < medial_lim)) & (np.any(ripples.groupby("Probe number-area")["M-L (µm)"].mean() > medial_lim)): # check that there are recording sites in other hippocampal sections
                 spatial_infos.append([ripples.groupby("Probe number-area").mean().loc[source_area, :], pd.DataFrame(
                     ripples.groupby("Probe number-area").mean().loc[
                     ripples.groupby("Probe number-area").mean().index != source_area, :])])
@@ -1413,15 +1413,15 @@ def batch_trajectories(ripples_calcs, kind, func):
         elif kind == "lateral":
             position = "Lateral"
             source_area = str(ripples["Probe number"].max()) + "-CA1"
-            if (np.any(ripples.groupby("Probe number-area").mean()["M-L (µm)"] < lateral_lim)) & (np.any(ripples.groupby("Probe number-area").mean()["M-L (µm)"] > lateral_lim)):
+            if (np.any(ripples.groupby("Probe number-area")["M-L (µm)"].mean() < lateral_lim)) & (np.any(ripples.groupby("Probe number-area")["M-L (µm)"].mean() > lateral_lim)):
                 spatial_infos.append([ripples.groupby("Probe number-area").mean().loc[source_area, :], pd.DataFrame(
                                       ripples.groupby("Probe number-area").mean().loc[
                                       ripples.groupby("Probe number-area").mean().index != source_area, :])])
                 input_rip.append((session_id, ripples, spatial_info, source_area, position))
         elif kind == "center":
             position = "Center"
-            if (np.any(ripples.groupby("Probe number-area").mean()["M-L (µm)"].between(medial_lim, lateral_lim))) & (np.any(~ripples.groupby("Probe number-area").mean()["M-L (µm)"].between(medial_lim, lateral_lim))):
-                source_area = ripples.groupby("Probe number-area").mean()['M-L (µm)'].sub(center).abs().idxmin()
+            if (np.any(ripples.groupby("Probe number-area")["M-L (µm)"].mean().between(medial_lim, lateral_lim))) & (np.any(~ripples.groupby("Probe number-area")["M-L (µm)"].mean().between(medial_lim, lateral_lim))):
+                source_area = ripples.groupby("Probe number-area")["M-L (µm)"].mean().sub(center).abs().idxmin()
                 spatial_infos.append([ripples.groupby("Probe number-area").mean().loc[source_area, :], pd.DataFrame(
                     ripples.groupby("Probe number-area").mean().loc[
                     ripples.groupby("Probe number-area").mean().index != source_area, :])])
@@ -1520,7 +1520,7 @@ def process_spikes_per_ripple(time_center, space_sub_spike_times, window):
     out = []
     for cluster_id, spikes in time_space_sub_spike_times.items():
         out.append((cluster_id, len(spikes)/((window[1] + window[0]) * 100))) # per 10 ms
-
+        #out.append((cluster_id, len(spikes)/(((window[1] + window[0]) * 1000)/10))) # per 10 ms
     return out
 
 def batch_process_spike_hists_by_seed_location(func, real_ripple_summary, units, spike_times, target_area,

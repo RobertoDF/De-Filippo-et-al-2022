@@ -22,6 +22,7 @@ Figure 3         |  Figure 4
 6. Reproduce figures by running the associated code, e.g. Figures/Figure_1/Figure_1.py (output in Output_figures folder). Reproduce text by running Manuscript/De_Filippo_et_al_2022.py (output in Manucript folder, see [here](https://github.com/RobertoDF/Pyscipaper))
 
 All data can be recomputed from scratch with the functions provided in the Calculations folder, download the [Allen institute Neuropixel dataset](https://allensdk.readthedocs.io/en/latest/visual_coding_neuropixels.html) and change `neuropixel_dataset` in Utils/Settings.py.
+If you want to recompute all the brain renderings using [Brainrender](https://github.com/brainglobe/brainrender), you will need the latest version available on github (not yet on pip).
 
 ## Main figures data processing flow
 ![](Main_figs_flowchart.png)
