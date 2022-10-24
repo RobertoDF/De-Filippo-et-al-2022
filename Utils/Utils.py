@@ -975,6 +975,10 @@ def calculate_lags(high_distance, low_distance, sessions, invert_reference):
     return ripples_lags
 
 def find_ripples_clusters_new(ripples, source_area):
+    """
+    Reorganize ripples relative to one particular probe. Cluster together ripples happening in a window as the same ripple
+    travelling along the hippocampus.
+    """
 
     out = []
 
