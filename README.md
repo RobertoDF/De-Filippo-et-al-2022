@@ -25,6 +25,8 @@ All data can be recomputed from scratch with the functions provided in the Calcu
 If you want to recompute all the brain renderings using [Brainrender](https://github.com/brainglobe/brainrender), you will need the latest version available on github (not yet on pip).
 
 ## Main figures data processing flow
+Blue cylinder = database, Pink boxes = algorithms, Blue boxes = data structures. 
+
 ![](Main_figs_flowchart.png)
 
 ## Supplementary figures data processing flow
