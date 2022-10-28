@@ -10,7 +10,8 @@ from Utils.Settings import output_folder_processed_lfps, neuropixel_dataset
 
 # run this with python 3.8, 3.7 has a problem pickling multiprocessing module.
 # 1. Create environment: `conda create --name process_lfp python=3.8`
-# 2. Install requirements: `pip install --no-deps -r requirements_process_lfp.txt`
+# 2. Activate environment: 'conda activate process_lfp'
+# 3. Install requirements: `pip install --no-deps -r requirements_process_lfp.txt`
 
 
 t1_start = perf_counter()

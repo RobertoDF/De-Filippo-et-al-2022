@@ -11,6 +11,7 @@ from time import perf_counter
 import os
 from Utils.Settings import output_folder_calculations, neuropixel_dataset,  lowcut, highcut, fs_lfp, start_w, stop_w
 
+# Run this with the process_lfp environment, see comments in "Calculate_lfps.py"
 
 t1_start = perf_counter()
 
