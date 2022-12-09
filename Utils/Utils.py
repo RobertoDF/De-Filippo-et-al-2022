@@ -669,7 +669,7 @@ def corrfunc(x, y, ax=None, **kws):
     """Plot the correlation coefficient in the top left hand corner of a plot."""
     r, _ = pearsonr(x, y)
     ax = ax or plt.gca()
-    ax.annotate(f"r\u00b2={round(r, 3)}", xy=(.01, .9), xycoords=ax.transAxes)
+    ax.annotate(f"r={round(r, 3)}", xy=(.01, .9), xycoords=ax.transAxes)
 
 
 def R2func(x, y, ax=None, **kws):
