@@ -669,8 +669,14 @@ def corrfunc(x, y, ax=None, **kws):
     """Plot the correlation coefficient in the top left hand corner of a plot."""
     r, _ = pearsonr(x, y)
     ax = ax or plt.gca()
-    ax.annotate(f"R\u00b2={round(r ** 2, 3)}", xy=(.01, .9), xycoords=ax.transAxes)
+    ax.annotate(f"r\u00b2={round(r, 3)}", xy=(.01, .9), xycoords=ax.transAxes)
 
+
+def R2func(x, y, ax=None, **kws):
+    """Plot the correlation coefficient in the top left hand corner of a plot."""
+    r, _ = pearsonr(x, y)
+    ax = ax or plt.gca()
+    ax.annotate(f"R\u00b2={round(r ** 2, 3)}", xy=(.01, .9), xycoords=ax.transAxes)
 
 def is_outlier(s):
     lower_limit = s.mean() - (s.std() * 50)
@@ -683,7 +689,6 @@ def find_nearest(array,value):
         return array[idx-1]
     else:
         return array[idx]
-
 
 def calc_sync(n, reference_probe, starts):
     out = []

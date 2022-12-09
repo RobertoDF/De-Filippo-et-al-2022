@@ -149,7 +149,7 @@ data = pd.concat(out)
 data["Session"] = data["Session"].astype("category")
 data.reset_index(inplace=True)
 
-r_ML_amp, _ = pearsonr(data["Z-scored amplitude (mV)"], data["M-L (µm)"])
+r_ML_amp, p_ML_amp = pearsonr(data["Z-scored amplitude (mV)"], data["M-L (µm)"])
 r_ML_strength, _ = pearsonr(data["Z-scored ∫Ripple"], data["M-L (µm)"])
 
 with open(f"{output_folder_figures_calculations}/temp_data_figure_4.pkl", 'rb') as f:

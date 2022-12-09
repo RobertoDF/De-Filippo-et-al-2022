@@ -100,8 +100,10 @@ results = {"Distance explains most of the ripple strength correlation variabilit
             f"we measured the ability of a ripple to retain its strength during propagation "
             f"(a ripple with SCI = 1 is in the top 10% in all hippocampal sections). We observed that ripples generated laterally "
             f"were effectively less able to retain their strength propagating towards the medial pole (Supplementary Figure 7). This result is not simply "
-            f"explained by differences in ripple strength along the medio-lateral (M-L) axis, as no such gradient was observed (R² = {round(r_ML_strength**2,4)}, Supplementary Figure 8). Curiously, "
-            f"ripple amplitude showed a weak trend in the opposite direction (R² = {round(r_ML_amp**2,2)}), with higher amplitude ripples in the lateral section (Supplementary Figure 9).",
+            f"explained by differences in ripple strength along the medio-lateral (M-L) axis,"
+            f" as no such gradient was observed (R² = {round(r_ML_strength**2,4)}, Supplementary Figure 8). Curiously, "
+            f"ripple amplitude showed a weak trend in the opposite direction (r = {round(r_ML_amp,2)}, p-value = {'{:.2e}'.format(p_ML_amp)}), "
+            f"with higher amplitude ripples in the lateral section (Supplementary Figure 9).",
 
             "The hippocampal medial pole can generate longer ripples able to better engage neural networks.":
             f"To understand the reason behind the differential propagation we focused uniquely on the central section, "

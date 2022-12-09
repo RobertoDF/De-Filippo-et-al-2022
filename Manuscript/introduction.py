@@ -14,13 +14,14 @@ introduction= "Hippocampal ripples are brief oscillatory events detected in the 
               "Ripples duration exhibits a skewed distribution with only a minority of long-duration ripples (> 100 ms). " \
               "The fraction of long-duration ripples, ripple amplitude and within-ripple firing rate of both excitatory and inhibitory neurons  " \
               "are increased in both novel contexts and memory-demanding tasks {Fernández-Ruiz, 2019 #1121}. " \
-              "Hippocampal-neocortex interactions are increased during long-duration compared to short-duration ripples {Ngo, 2020 #1178}." \
               "Reducing ripple duration artificially causes a degraded working memory performance {Jadhav, 2012 #1135; Fernández-Ruiz, 2019 #1121} " \
               "and, on the contrary, prolongation induced by optogenetic-activation has a beneficial effect {Fernández-Ruiz, 2019 #1121}. " \
-              "Importantly, the artificial recruitment of additional neurons seems to be costrained by pre-existing resting potential dynamics {Noguchi, 2022 #1184}. " \
+              "Importantly, the artificial recruitment of additional neurons seems to be costrained by pre-existing resting potential dynamics {Noguchi, 2022 #1184}.   " \
+              "Hippocampal-neocortical interactions, suggested to be important for memory consolidation {Klinzing, 2019 #1190; Gais, 2007 #1191; Tukker, 2020 #1192}, are increased specifically " \
+              "during long-duration compared to short-duration ripples {Ngo, 2020 #1178}. " \
               "Ripple amplitude and duration are significantly correlated {Tong, 2021 #1186; Patel, 2013 #1133}, moreover, they are both related to the amount of " \
               "underlying spiking activity {Tong, 2021 #1186; Khodagholy, 2017 #1188}. It is possible to combine ripple strength and amplitude " \
-              "by considering the area of the high-pass filtered envelope ('ripple strength')." \
+              "by considering the area of the high-pass filtered envelope ('ripple strength'). " \
               "These results point at a specific role " \
               "of strong ripples (ripples with high strength) in situations of high mnemonic demand and are consistent with a possible " \
               "power law distribution where a minority of ripples" \
