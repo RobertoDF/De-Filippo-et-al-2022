@@ -28,11 +28,3 @@ If you want to recompute all the brain renderings using [Brainrender](https://gi
 Blue cylinder = database, Pink boxes = algorithms, Blue boxes = data structures. 
 
 ![](Main_figs_flowchart.png)
-
-## Supplementary figures data processing flow
-![](Supplementary_figs_flowchart.png)
-
-
-
-
-
