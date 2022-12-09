@@ -1,5 +1,4 @@
 import dill
-from Utils.Utils import clean_ripples_calculations
 from Utils.Settings import presence_ratio_thr, waveform_PT_ratio_thr, isi_violations_thr, amplitude_cutoff_thr, clip_ripples_clusters, var_thr, output_folder_figures_calculations, output_folder_calculations, minimum_ripples_count_generated_in_lateral_or_medial_spike_analysis
 from scipy.stats import sem
 import numpy as np
@@ -28,9 +27,6 @@ with open(f'{output_folder_calculations}/trajectories_by_strength.pkl', 'rb') as
 
 with open(f'{output_folder_calculations}/sessions_features.pkl', 'rb') as f:
     sessions_durations, sessions_durations_quiet, sessions_durations_running = dill.load(f)
-
-with open(f'{output_folder_calculations}/clean_ripples_calculations.pkl', 'rb') as f:
-    ripples_calcs = dill.load(f)
 
 
 with open(f"{output_folder_figures_calculations}/temp_data_figure_1.pkl", "rb") as fp:  # Unpickling
@@ -224,11 +220,66 @@ def count_clusters_type(group):
 ratio_exc_inh_per_session=total_clusters.query("Location=='Medial'| Location=='Lateral'").groupby("session_id").apply(lambda group: count_clusters_type(group))
 ratio_exc_inh_per_session.mean()
 
+with open(f'{output_folder_calculations}/clean_ripples_calculations.pkl', 'rb') as f:
+    ripples_calcs = dill.load(f)
+
+out = []
+ripples_all = []
+for session_id in tqdm(ripples_calcs.keys()):
+    ripples = ripples_calcs[session_id][3].copy()
+    sel_probe = ripples_calcs[session_id][5].copy()
+    ripples = ripples[ripples["Probe number"]==sel_probe]
+    ripples["Session"] = session_id
+    ripples_all.append(ripples[["Duration (s)", "∫Ripple", "Session", "Number spikes"]])
+
+ripples_all = pd.concat(ripples_all)
+
+r_list = []
+for session_id in ripples_all["Session"].unique():
+    x = ripples_all[ripples_all["Session"] == session_id]["∫Ripple"]
+    y = ripples_all[ripples_all["Session"] == session_id]["Duration (s)"]
+    r, p = pearsonr(x, y)
+    r_list.append(r)
+
+r_ripple_duration_amplitude_list = pd.DataFrame(r_list, columns=["r"])
+
+out = []
+ripples_all = []
+for session_id in tqdm(ripples_calcs.keys()):
+    ripples = ripples_calcs[session_id][3].copy()
+    sel_probe = ripples_calcs[session_id][5].copy()
+    ripples = ripples[ripples["Probe number"] == sel_probe]
+    ripples["Session"] = session_id
+    ripples["Spikes per 10 ms"] = ripples["Number spikes"]/(ripples["Duration (s)"]*100)
+    ripples_all.append(ripples[["Spikes per 10 ms", "Number spikes", "Number participating neurons", "∫Ripple", "Duration (s)", "Session"]])
 
 
-# for param in total_clusters.columns:
-#     try:
-#         _ = pg.ttest(total_units.query("Location=='Medial'")[param], total_units.query("Location=='Lateral'")[param])["p-val"][0]
-#         print(param, ": ", _)
-#     except:
-#         pass
+ripples_all = pd.concat(ripples_all)
+ripples_all = ripples_all[np.isfinite(ripples_all).all(1)]
+
+r_list = []
+for session_id in ripples_all["Session"].unique():
+    x = ripples_all[ripples_all["Session"] == session_id]["∫Ripple"]
+    y = ripples_all[ripples_all["Session"] == session_id]["Spikes per 10 ms"]
+    r, p = pearsonr(x, y)
+    r_list.append(r)
+
+r_list_strength = pd.DataFrame(r_list, columns=["r"])
+r_list_strength["Type"] = "∫Ripple - Spikes per 10 ms"
+
+
+r_list = []
+for session_id in ripples_all["Session"].unique():
+    x = ripples_all[ripples_all["Session"] == session_id]["Duration (s)"]
+    y = ripples_all[ripples_all["Session"] == session_id]["Spikes per 10 ms"]
+    r, p = pearsonr(x, y)
+    r_list.append(r)
+
+r_list_duration = pd.DataFrame(r_list, columns=["r"])
+r_list_duration["Type"] = "Duration (s) - Spikes per 10 ms"
+
+tot = pd.concat([r_list_strength, r_list_duration])
+
+t_test_corr_spikes_vs_dur_or_strength = '{:.2e}'.format(pg.ttest(tot[tot["Type"]=="Duration (s) - Spikes per 10 ms"]["r"],
+               tot[tot["Type"]=="∫Ripple - Spikes per 10 ms"]["r"])["p-val"][0])
+

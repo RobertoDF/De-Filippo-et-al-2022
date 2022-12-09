@@ -12,13 +12,17 @@ introduction= "Hippocampal ripples are brief oscillatory events detected in the 
               "Foster, 2006 #1112; Xu, 2019 #1113;Takahashi, 2015 #1114;Davidson, 2009 #1116; Pfeiffer, 2015 #1117;" \
               "Dragoi, 2011 #1118; Girardeau, 2009 #1120}. " \
               "Ripples duration exhibits a skewed distribution with only a minority of long-duration ripples (> 100 ms). " \
-              "Interestingly, the fraction of long-duration ripples " \
-              "is increased in novel contexts, in memory-demanding tasks and during correct recalls {Fernández-Ruiz, 2019 #1121}. " \
-              "Reducing ripple duration artificially causes a degraded working memory performance {Jadhav, 2012 #1135} and, on the contrary, " \
-              "prolongation has a beneficial effect {Fernández-Ruiz, 2019 #1121}. " \
-              "Ripple duration is directly proportional to ripple amplitude {Patel, 2013 #1133}, therefore, " \
-              "these results point at a specific role " \
-              "of stronger ripples in situations of high mnemonic demand and are consistent with a possible " \
+              "The fraction of long-duration ripples, ripple amplitude and within-ripple firing rate of both excitatory and inhibitory neurons  " \
+              "are increased in both novel contexts and memory-demanding tasks {Fernández-Ruiz, 2019 #1121}. " \
+              "Hippocampal-neocortex interactions are increased during long-duration compared to short-duration ripples {Ngo, 2020 #1178}." \
+              "Reducing ripple duration artificially causes a degraded working memory performance {Jadhav, 2012 #1135; Fernández-Ruiz, 2019 #1121} " \
+              "and, on the contrary, prolongation induced by optogenetic-activation has a beneficial effect {Fernández-Ruiz, 2019 #1121}. " \
+              "Importantly, the artificial recruitment of additional neurons seems to be costrained by pre-existing resting potential dynamics {Noguchi, 2022 #1184}. " \
+              "Ripple amplitude and duration are significantly correlated {Tong, 2021 #1186; Patel, 2013 #1133}, moreover, they are both related to the amount of " \
+              "underlying spiking activity {Tong, 2021 #1186; Khodagholy, 2017 #1188}. It is possible to combine ripple strength and amplitude " \
+              "by considering the area of the high-pass filtered envelope ('ripple strength')." \
+              "These results point at a specific role " \
+              "of strong ripples (ripples with high strength) in situations of high mnemonic demand and are consistent with a possible " \
               "power law distribution where a minority of ripples" \
               " is responsible for a substantial part of memory requirements. " \
               "For this reason, it is of interest to identify the possible electrophysiological peculiarities of this subgroup of ripples. Do strong ripples propagate differently " \

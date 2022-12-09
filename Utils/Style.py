@@ -7,7 +7,7 @@ sns.set_theme(context='paper', style="ticks", rc={'legend.frameon': False, "lege
 
 palette_figure_1 = {'CA1': "#301A4B",'DG': "#087E8B", 'CA2': "#F59A8C", 'CA3':"#5FAD56", 'SUB':"#AFA2FF",'ProS':"#FAC748"}
 
-palette_timelags ={"Strong ripples":"#F03A47", "Total ripples": "#505A5B", "Common ripples": "#507DBC", "Local": "#00A676", "Non-local": "#6E2594"}
+palette_timelags ={"Strong ripples":"#F03A47", "Long ripples":"#F03A47", "Total ripples": "#505A5B", "Common ripples": "#507DBC", "Local": "#00A676", "Non-local": "#6E2594"}
 
 color_palette = sns.color_palette("flare", 255)
 

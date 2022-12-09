@@ -31,6 +31,7 @@ ripple_dur_lim = [0.015, 0.250]
 min_ripple_distance = 0.05
 ripple_power_sp_thr = 100
 ripple_thr = 5 #SD
+thr_start_stop = 2 #SD
 
 # window for calculation ripple strength RIVD for correlation analysis
 

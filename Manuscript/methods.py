@@ -4,8 +4,8 @@ from allensdk.brain_observatory.ecephys.ecephys_project_cache import EcephysProj
 import dill
 from tqdm import tqdm
 import pandas as pd
-from Utils.Settings import minimum_ripples_count_generated_in_lateral_or_medial_spike_analysis, neuropixel_dataset, lowcut, highcut, fs_lfp, ripple_dur_lim, min_ripple_distance, ripple_power_sp_thr, ripple_thr, start_w, stop_w, thr_rip_cluster
-from Utils.Settings import waveform_PT_ratio_thr, isi_violations_thr, amplitude_cutoff_thr, presence_ratio_thr
+from Utils.Settings import thr_start_stop, minimum_ripples_count_generated_in_lateral_or_medial_spike_analysis, neuropixel_dataset, lowcut, highcut,\
+    fs_lfp, ripple_dur_lim, min_ripple_distance, ripple_power_sp_thr, ripple_thr, start_w, stop_w, thr_rip_cluster, waveform_PT_ratio_thr, isi_violations_thr, amplitude_cutoff_thr, presence_ratio_thr
 from tqdm import tqdm
 import numpy as np
 
@@ -86,15 +86,16 @@ methods = {"Dataset": f"Our analysis was based on the Visual Coding - Neuropixel
                            f" if multiple SD peaks were present across space (possibly caused by sharp waves in stratum radiatum and ripple activity in stratum pyramidale)"
                            f" we subsequently looked at the channel with higher skewness, in this way we could reliably identify the best ripple channel. "
                            f"The envelope of the filtered trace was calculated using the Hilbert transform (scipy.signal.hilbert). Ripple threshold was set at {ripple_thr} SDs. "
-                           f"Start and stop times were calculated using a 2 SDs threshold "
+                           f"Start and stop times were calculated using a {thr_start_stop} SDs threshold "
                            f"on the smoothed envelope with window = 5 (pandas.DataFrame.rolling) to account for ripple phase distortions. "
+                           f"Ripple amplitude was calculated as the 90th percentile of the envelope."
                            f"Ripple duration was limited at > {ripple_dur_lim[0]} s and < {ripple_dur_lim[1]} s. "
-                           f"Candidate ripples were excluded if preceded by another ripple in "
-                           f"a window of {min_ripple_distance} s. We estimated power density of each candidate using a "
+                           f"Candidate ripples with starting times closer than {min_ripple_distance} s were joined in a "
+                           f"single ripple with peak amplitude being the highest between the candidates. We estimated power density of each candidate using a "
                            f"periodogram with constant detrending (scipy.signal.periodogram) on the raw LFP trace, "
                            f"we checked the presence of a peak >"
                            f" {ripple_power_sp_thr} Hz, candidates not fulfilling this condition were discarded, this condition was meant to "
-                             f"reduce the number of detected false positives. Ripple candidates  detected during running epochs "
+                             f"reduce the number of detected false positives. Ripple candidates detected during running epochs "
                              f"were discarded, an animal was considered to be running if his standardized speed was higher than the 10th percentile plus 0.06. "
                              f"Candidates were also discarded if no behavioral data was available. Code for the detection of ripples resides in 'Calculate_ripples.py'. ",
 

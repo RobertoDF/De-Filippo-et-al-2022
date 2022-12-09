@@ -93,8 +93,9 @@ def extract_features(ripples, seed_area, session_id, reference):
     real_ripple_summary = find_ripples_clusters_new(ripples, seed_area)
 
     real_ripple_summary["Strong"] = real_ripple_summary["∫Ripple"] > real_ripple_summary["∫Ripple"].quantile(.9)
+    real_ripple_summary["Long"] = real_ripple_summary["∫Ripple"] > real_ripple_summary["Duration (s)"].quantile(.9)
 
-    _ = real_ripple_summary[real_ripple_summary["Spatial engagement"] > .5]["seed M-L (µm)"].value_counts() /   \
+    _ = real_ripple_summary[real_ripple_summary["Spatial engagement"] > .5]["Source M-L (µm)"].value_counts() /   \
         real_ripple_summary[real_ripple_summary["Spatial engagement"] > .5].shape[0] # detected in at least half of the probes
     out_by_hip_section = pd.Series()
     out_by_hip_section["Medial seed"] = _[_.index < medial_lim_lm].sum()
@@ -104,7 +105,7 @@ def extract_features(ripples, seed_area, session_id, reference):
     out_seed_ripples["Session id"] = session_id
     out_seed_ripples["Reference"] = reference
 
-    _ = real_ripple_summary[real_ripple_summary["Strong"] == 1]["seed M-L (µm)"].value_counts() / \
+    _ = real_ripple_summary[real_ripple_summary["Strong"] == 1]["Source M-L (µm)"].value_counts() / \
              real_ripple_summary[real_ripple_summary["Strong"] == 1].shape[0]
     out_by_hip_strong_section = pd.Series()
     out_by_hip_strong_section["Medial seed"] = _[_.index < medial_lim_lm].sum()
@@ -113,8 +114,18 @@ def extract_features(ripples, seed_area, session_id, reference):
     out_seed_strong_ripples = pd.DataFrame(out_by_hip_strong_section, columns=["Percentage seed (%)"]) * 100
     out_seed_strong_ripples["Session id"] = session_id
     out_seed_strong_ripples["Reference"] = reference
+
+    _ = real_ripple_summary[real_ripple_summary["Long"] == 1]["Source M-L (µm)"].value_counts() / \
+             real_ripple_summary[real_ripple_summary["Long"] == 1].shape[0]
+    out_by_hip_duration_section = pd.Series()
+    out_by_hip_duration_section["Medial seed"] = _[_.index < medial_lim_lm].sum()
+    out_by_hip_duration_section["Lateral seed"] = _[_.index > lateral_lim_lm].sum()
+    out_by_hip_duration_section["Central seed"] = _[(_.index < lateral_lim_lm) & (_.index > medial_lim_lm)].sum()
+    out_seed_long_ripples = pd.DataFrame(out_by_hip_duration_section, columns=["Percentage seed (%)"]) * 100
+    out_seed_long_ripples["Session id"] = session_id
+    out_seed_long_ripples["Reference"] = reference
     
-    _ = real_ripple_summary[(real_ripple_summary["Strong"] == 0) & (real_ripple_summary["Spatial engagement"] > .5)]["seed M-L (µm)"].value_counts() / \
+    _ = real_ripple_summary[(real_ripple_summary["Strong"] == 0) & (real_ripple_summary["Spatial engagement"] > .5)]["Source M-L (µm)"].value_counts() / \
              real_ripple_summary[(real_ripple_summary["Strong"] == 0) & (real_ripple_summary["Spatial engagement"] > .5)].shape[0] # detected in at least two probes
     out_by_hip_common_section = pd.Series()
     out_by_hip_common_section["Medial seed"] = _[_.index < medial_lim_lm].sum()
@@ -155,7 +166,7 @@ def extract_features(ripples, seed_area, session_id, reference):
     ripples_features["Session id"] = session_id
 
     percentage_strong_and_seed = pd.DataFrame(
-        pd.Series((real_ripple_summary[real_ripple_summary["Strong"] == 1]["seed"] == 1).sum() / real_ripple_summary[real_ripple_summary["Strong"]== 1]["seed"].shape[0],
+        pd.Series((real_ripple_summary[real_ripple_summary["Strong"] == 1]["Source"] == 1).sum() / real_ripple_summary[real_ripple_summary["Strong"]== 1]["Source"].shape[0],
                   name="Percentage seed"))
     percentage_strong_and_seed["Session id"] = session_id
 
@@ -173,7 +184,7 @@ def extract_features(ripples, seed_area, session_id, reference):
 
     return out_seed_ripples, global_strength_strong_ripples, ripples_features, out_seed_common_ripples, \
            percentage_strong_and_seed, spatial_engagement, out_seed_strong_ripples, \
-            global_strength_common_ripples, count_detected_ripples
+            global_strength_common_ripples, count_detected_ripples, out_seed_long_ripples
 
 
 with Pool(processes=int(len(inputs)/2)) as pool:

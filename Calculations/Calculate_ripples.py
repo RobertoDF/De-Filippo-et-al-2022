@@ -1,10 +1,11 @@
-from Utils.Utils import calculations_per_ripple, clean_ripples_calculations, select_quiet_part, ripple_finder, butter_bandpass_filter
+from Utils.Utils import acronym_to_main_area, calculations_per_ripple, clean_ripples_calculations, select_quiet_part, ripple_finder, butter_bandpass_filter
 from tqdm import tqdm
 import dill
 import numpy as np
 from scipy.signal import hilbert
 import pandas as pd
 import pickle
+from operator import itemgetter
 from allensdk.brain_observatory.ecephys.ecephys_project_cache import EcephysProjectCache
 from multiprocessing import Pool
 from time import perf_counter
@@ -28,8 +29,11 @@ loop_over = range(sessions.shape[0])
 for session_n in tqdm(loop_over):
     session_id = sessions.index.values[session_n]
     print(f"session number: {session_n}, {session_id}")
-    session_id = sessions.index.values[session_n]
     session = cache.get_session_data(session_id)  #, amplitude_cutoff_maximum = np.inf, presence_ratio_minimum = -np.inf, isi_violations_maximum = np.inf)
+    units = session.units
+    units["parent area"] = units["ecephys_structure_acronym"].apply(lambda area: acronym_to_main_area(area))
+    spike_times = session.spike_times
+    target_area = "HPF"
 
     if os.path.exists(f'/alzheimer/Roberto/Allen_Institute/Processed_lfps/lfp_errors_{session_id}.pkl') == True:
         with open(f'/alzheimer/Roberto/Allen_Institute/Processed_lfps/lfp_per_probe_{session_id}.pkl', 'rb') as f:
@@ -45,6 +49,10 @@ for session_n in tqdm(loop_over):
 
 
             if "CA1" in sessions.iloc[session_n]["ecephys_structure_acronyms"]:
+                space_sub_spike_times = dict(zip(units[units["parent area"] == target_area].index,
+                                                 itemgetter(*units[units["parent area"] == target_area].index)(
+                                                     spike_times)))
+
                 if len(lfp_per_probe) != 0:
 
                     ts = []
@@ -74,11 +82,11 @@ for session_n in tqdm(loop_over):
 
                     input_rip = []
                     for probe_n, lfp in enumerate(lfp_per_probe):
-                        for area in lfp.area.values:
-                            if area in ["CA1"]: #, "SUB", "ProS", "CA3", "CA2", "DG"]:
-                                print(f"Extract ripples from {probe_n}-{area}")
-                                sig = lfp.sel(area=area)
-                                input_rip.append((sig, fs, threshold_ripples, probe_n, area))
+                        for brain_area in lfp.area.values:
+                            if brain_area in ["CA1"]: #, "SUB", "ProS", "CA3", "CA2", "DG"]:
+                                print(f"Extract ripples from {probe_n}-{brain_area}")
+                                sig = lfp.sel(area=brain_area)
+                                input_rip.append((sig, fs, threshold_ripples, probe_n, brain_area, space_sub_spike_times))
 
                     with Pool(processes=len(input_rip)) as pool:
                         r = pool.starmap_async(ripple_finder, input_rip)
@@ -90,7 +98,7 @@ for session_n in tqdm(loop_over):
                     ripples = pd.concat(list_ripples)
                     ripples.reset_index(drop=True, inplace=True)
 
-                    ripples_subselect = ripples[["Start (s)", "Stop (s)", "Amplitude (mV)", "Probe number-area"]]
+                    ripples_subselect = ripples[["Start (s)", "Stop (s)", "Probe number-area"]]
 
                     sliced_lfp_per_probe = []
                     ripples_start = ripples_subselect[ripples_subselect["Probe number-area"] == f"{probe_selected_ripples}-CA1"][
@@ -111,8 +119,10 @@ for session_n in tqdm(loop_over):
                     input_corr = []
 
                     for start, stop, lfp in zip(ripples_start, ripples_stop, sliced_lfp_per_probe):
+
                         input_corr.append((start, stop, lfp, 120, 250, fs_lfp, length))
 
+                    # calculations_per_ripple acts on a bigger window, not just start - stop, to account for travelling delays
                     with Pool(processes=30) as pool:
                         r = pool.starmap_async(calculations_per_ripple, input_corr, chunksize=80)
                         res_calc_per_ripple = r.get()

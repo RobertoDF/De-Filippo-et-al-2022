@@ -8,7 +8,7 @@ from Utils.Settings import neuropixel_dataset, utils_folder
 from mpl_toolkits.axes_grid1.anchored_artists import AnchoredSizeBar
 import scipy
 import dill
-from Utils.Settings import var_thr, output_folder_calculations, ripple_dur_lim, min_ripple_distance, ripple_power_sp_thr, ripple_thr, minimum_ripples_count_lag_analysis, thr_rip_cluster
+from Utils.Settings import thr_start_stop, var_thr, output_folder_calculations, ripple_dur_lim, min_ripple_distance, ripple_power_sp_thr, ripple_thr, minimum_ripples_count_lag_analysis, thr_rip_cluster
 from matplotlib.lines import Line2D
 import os
 from Utils.Style import palette_ML
@@ -403,14 +403,14 @@ def closestNumber(n, m):
     return n1, n2
 
 
-def ripple_finder(sig, fs, threshold_ripples, probe_n, area):
+def ripple_finder(sig, fs, threshold_ripples, probe_n, brain_area, space_sub_spike_times):
 
     filtered = butter_bandpass_filter(np.nan_to_num(sig.values), lowcut, highcut, fs, order=6)
     analytic_signal = hilbert(filtered)
     amplitude_envelope = np.abs(analytic_signal)
     amplitude_envelope = pd.Series(amplitude_envelope, index=sig.time)
 
-    if acronym_to_graph_order(area) == 454:  # if area belongs to HPF
+    if acronym_to_graph_order(brain_area) == 454:  # if area belongs to HPF
         print("HPF specific threshold")
         threshold = np.std(amplitude_envelope) * ripple_thr
     else:
@@ -427,7 +427,7 @@ def ripple_finder(sig, fs, threshold_ripples, probe_n, area):
 
     prominences, left_bases, right_bases = signal.peak_prominences(amplitude_envelope, peaks)
     results_half = signal.peak_widths(amplitude_envelope.rolling(5, center=True).mean(), peaks, rel_height=1, prominence_data=(
-        peak_heights - np.std(amplitude_envelope) * 2, left_bases, right_bases))  # width evaluated at: np.std(amplitude_envelope) * 2
+        peak_heights - np.std(amplitude_envelope) * thr_start_stop, left_bases, right_bases))  # width evaluated at: np.std(amplitude_envelope) * 2
     peaks_width_sec = results_half[0] / fs
     mask = (peaks_width_sec > ripple_dur_lim[0]) & (peaks_width_sec < ripple_dur_lim[1])  # (peaks_width_sec > 0.015)   & (peaks_width_sec < 0.250) Tingley
     peak_heights = peak_heights[mask]
@@ -436,7 +436,7 @@ def ripple_finder(sig, fs, threshold_ripples, probe_n, area):
     peaks_start_sec = sig.time.values[np.rint(results_half[2]).astype(int)][mask]
     peaks_stop_sec = sig.time.values[np.rint(results_half[3]).astype(int)][mask]
 
-    array_diff = np.diff(peaks_start_sec) > min_ripple_distance # if nearer than x keep first one, we check on the start times because it assures peaks are more distant, opposite is not true!
+    array_diff = np.diff(peaks_start_sec) > min_ripple_distance # if nearer than x keep first one
     if array_diff.size != 0:
         array_diff[-1] = True
         start_mask = clean_start_time_ripples(array_diff)
@@ -448,15 +448,15 @@ def ripple_finder(sig, fs, threshold_ripples, probe_n, area):
         temp_peak1 = peaks_sec[stop_mask]
         temp_peak2 = peaks_sec[peak_mask]
         peaks_sec = np.maximum(temp_peak1, temp_peak2)
-        temp_height1 = peak_heights[stop_mask]
-        temp_height2 = peak_heights[peak_mask]
-        peak_heights = np.maximum(temp_height1, temp_height2)
+        # temp_height1 = peak_heights[stop_mask]
+        # temp_height2 = peak_heights[peak_mask]
+        # peak_heights = np.maximum(temp_height1, temp_height2)
 
-        ripples = pd.DataFrame([peaks_sec, peaks_start_sec, peaks_stop_sec,  peak_heights],
-                               index=["Peak (s)", "Start (s)", "Stop (s)", "Amplitude (mV)"]).T
+        ripples = pd.DataFrame([peaks_sec, peaks_start_sec, peaks_stop_sec],
+                               index=["Peak (s)", "Start (s)", "Stop (s)"]).T
 
         ripples["Probe number"] = probe_n
-        ripples["Area"] = area
+        ripples["Area"] = brain_area
         ripples["Duration (s)"] = ripples["Stop (s)"] - ripples["Start (s)"]
 
         instantaneous_frequency_pd = pd.DataFrame(instantaneous_frequency, index=sig.time[:-1].values, columns=["freq"])
@@ -478,13 +478,25 @@ def ripple_finder(sig, fs, threshold_ripples, probe_n, area):
         high_freq_integral = []
         power_peak = []
         freq_peak = []
+        amplitude = []
+        number_spikes_list = []
+        number_participating_neurons_list = []
 
         ripples_start = ripples["Start (s)"]
         ripples_stop = ripples["Stop (s)"]
 
         for start, stop in zip(ripples_start, ripples_stop):
+            time_space_sub_spike_times = {
+                cluster_id: spikes[(spikes > start) & (spikes < stop)] for
+                cluster_id, spikes in space_sub_spike_times.items()}
 
-            f, pxx = signal.periodogram(sig[(sig.index > start) & (sig.index < stop)], fs=fs, detrend="constant", scaling="spectrum")
+            number_spikes, number_participating_neurons = process_spike_and_neuron_numbers_per_ripple(
+                time_space_sub_spike_times)
+            number_spikes_list.append(number_spikes)
+            number_participating_neurons_list.append(number_participating_neurons)
+
+            ripple_lfp = sig[(sig.index > start) & (sig.index < stop)]
+            f, pxx = signal.periodogram(ripple_lfp, fs=fs, detrend="constant", scaling="spectrum")
             peaks, properties = signal.find_peaks(pxx, prominence=[0.002, None])
             if len(peaks) > 1:
                 peaks = peaks.max()
@@ -494,6 +506,7 @@ def ripple_finder(sig, fs, threshold_ripples, probe_n, area):
             freq_peak.append(f[peaks])
             power_peak.append(pxx[peaks]*1000)
             high_freq_integral.append(np.trapz(amplitude_envelope[(amplitude_envelope.index > start) & (amplitude_envelope.index < stop)]))
+            amplitude.append(amplitude_envelope[(amplitude_envelope.index > start) & (amplitude_envelope.index < stop)].quantile(.9))
 
         freq_peak = [el if isinstance(el, (int, float)) else np.nan for el in
                      freq_peak]  # don't want empty lists in the series
@@ -502,27 +515,27 @@ def ripple_finder(sig, fs, threshold_ripples, probe_n, area):
         ripples["∫Ripple"] = high_freq_integral
         ripples["Peak frequency (Hz)"] = freq_peak
         ripples["Peak power"] = power_peak
+        ripples["Amplitude (mV)"] = amplitude
+        ripples["Number spikes"] = number_spikes_list
+        ripples["Number participating neurons"] = number_participating_neurons_list
 
         ripples = ripples[~ripples["Start (s)"].duplicated(keep="last")]
-        ripples = ripples[~ripples["Stop (s)"].duplicated()]
 
         # filter by peak freq
-        print(probe_n, area, "Ripples retained by peak freq: ", ripples[ripples["Peak frequency (Hz)"] > 100].shape[0],
+        print(probe_n, brain_area, "Ripples retained by peak freq: ", ripples[ripples["Peak frequency (Hz)"] > 100].shape[0],
               ", total: ", ripples.shape[0])
         ripples = ripples[ripples["Peak frequency (Hz)"] > ripple_power_sp_thr]
-
-        # ripples = ripples.convert_dtypes() # this messes up things somehow
 
         print("Duplicated starts: " + str(
             np.sum(ripples["Start (s)"].duplicated(keep="last"))) + ", Duplicated stops: " + str(
             np.sum(ripples["Stop (s)"].duplicated())))
 
-        print(probe_n, area, "Ripples discarded: ", sum(~mask))# not counting joined ones
+        print(probe_n, brain_area, "Ripples discarded: ", sum(~mask))# not counting joined ones
 
-        print(probe_n, area, "Ripples detected: ", len(peaks_sec))
+        print(probe_n, brain_area, "Ripples detected: ", len(peaks_sec))
     else:
         ripples = pd.DataFrame()
-        print(probe_n, area, "no ripples detected!")
+        print(probe_n, brain_area, "no ripples detected!")
 
     return ripples
 
@@ -625,6 +638,7 @@ def calculations_per_ripple(start, stop, sliced_lfp_per_probe, lowcut, highcut, 
     res = pd.DataFrame([high_freq_area, AUC_pos, AUC_neg],
                        columns=pd.MultiIndex.from_tuples(probe_n_area, names=["probe_n", "area"]),
                        index=["Ripple area (mV*s)", "Positive area (mV*s)", "Negative area (mV*s)"])
+
     sorting_df = pd.DataFrame(
         [np.concatenate(areas), [acronym_to_graph_order(area.split("-")[0]) for area in np.concatenate(areas)]],
         index=["area", "graph_id"]).T
@@ -905,14 +919,15 @@ def calculate_lags(high_distance, low_distance, sessions, invert_reference):
     for n in tqdm(high_distance["Session"].unique()):
 
         data = high_distance[high_distance["Session"] == n]
-        _ = data.pivot(columns=['Probe number', "M-L (µm)"], values=['Start (s)', '∫Ripple']).reset_index(drop=True)
+        _ = data.pivot(columns=['Probe number', "M-L (µm)"], values=['Start (s)', '∫Ripple', "Duration (s)"]).reset_index(drop=True)
         if invert_reference == True:
-            _ = _.iloc[:, np.argsort(_.columns.get_level_values(1))[[2, 3, 0, 1]]]  # order by LR or ML
+            _ = _.iloc[:, np.argsort(_.columns.get_level_values(1))[[3,4,5,0,1,2]]]  #2, 3, 0, 1 order by LR or ML
         else:
             _ = _.iloc[:, np.argsort(_.columns.get_level_values(1))]  # order by LR or ML
         times_reference = _.iloc[:, 0].dropna().reset_index(drop=True)
-        times_secondary = _.iloc[:, 2].dropna().reset_index(drop=True)
+        times_secondary = _.iloc[:, 3].dropna().reset_index(drop=True)
         ripple_area_primary = _.iloc[:, 1].dropna().reset_index(drop=True)
+        duration_primary = _.iloc[:, 2].dropna().reset_index(drop=True)
         ripple_area_secondary = []
 
         out_diffs = []
@@ -928,19 +943,21 @@ def calculate_lags(high_distance, low_distance, sessions, invert_reference):
         diffs_high["Distance (µm)"] = data["Distance (µm)"].iloc[0]
         diffs_high['Start (s)'] = times_reference
         diffs_high['∫Ripple'] = ripple_area_primary
+        diffs_high['Duration (s)'] = duration_primary
         diffs_high['LR 1'] = _.columns.get_level_values(2)[0]
         diffs_high['LR 2'] = _.columns.get_level_values(2)[2]
         diffs_high['∫Ripple 2'] = ripple_area_secondary
 
         data = low_distance[low_distance["Session"] == n]
-        _ = data.pivot(columns=['Probe number', "M-L (µm)"], values=['Start (s)', '∫Ripple']).reset_index(drop=True)
+        _ = data.pivot(columns=['Probe number', "M-L (µm)"], values=['Start (s)', '∫Ripple' , "Duration (s)"]).reset_index(drop=True)
         if invert_reference == True:
-            _ = _.iloc[:, np.argsort(_.columns.get_level_values(1))[[2, 3, 0, 1]]]  # order by LR or ML
+            _ = _.iloc[:, np.argsort(_.columns.get_level_values(1))[[3,4,5,0,1,2]]]  # order by LR or ML
         else:
             _ = _.iloc[:, np.argsort(_.columns.get_level_values(1))]  # order by LR or ML
         times_reference = _.iloc[:, 0].dropna().reset_index(drop=True)
-        times_secondary = _.iloc[:, 2].dropna().reset_index(drop=True)
+        times_secondary = _.iloc[:, 3].dropna().reset_index(drop=True)
         ripple_area_primary = _.iloc[:, 1].dropna().reset_index(drop=True)
+        duration_primary = _.iloc[:, 2].dropna().reset_index(drop=True)
         ripple_area_secondary = []
 
         out_diffs = []
@@ -955,6 +972,7 @@ def calculate_lags(high_distance, low_distance, sessions, invert_reference):
         diffs_low["Distance (µm)"] = data["Distance (µm)"].iloc[0]
         diffs_low['Start (s)'] = times_reference
         diffs_low['∫Ripple'] = ripple_area_primary
+        diffs_low['Duration (s)'] = duration_primary
         diffs_low['LR 1'] = _.columns.get_level_values(2)[0]
         diffs_low['LR 2'] = _.columns.get_level_values(2)[2]
         diffs_low['∫Ripple 2'] = ripple_area_secondary
@@ -1153,6 +1171,65 @@ def find_ripples_clusters_new_total(ripples, session_id):
 
     return _.reindex(sorted(_.columns), axis=1)
 
+
+def get_trajectory_across_time_space_by_duration(session_id, ripples, spatial_info, source_area, position):
+    """
+    Divide strong and common ripples
+    """
+
+    #print(f"Processing session {session_id}-source area {source_area} ")
+
+    real_ripple_summary = find_ripples_clusters_new(ripples, source_area)
+
+    columns_to_keep = real_ripple_summary.loc[:, real_ripple_summary.columns.str.contains('lag')].columns
+    proben_area = [q.split(" ")[0] for q in columns_to_keep]
+    probe_n = [q.split("-")[0] for q in proben_area]
+    area = [q.split("-")[1] for q in proben_area]
+
+    pos = []
+    for p, a in zip(probe_n, area):
+        pos.append(spatial_info[(spatial_info["Probe number"] == int(p)) & (spatial_info["Area"] == a)]["M-L (µm)"])
+
+    lag_stronger = pd.concat([real_ripple_summary[
+                                    real_ripple_summary["Duration (s)"] > real_ripple_summary["Duration (s)"].quantile(.9)][
+                                    columns_to_keep].mean().reset_index(drop=True) * 1000,
+                                pd.concat(pos).reset_index(drop=True)], axis=1)
+    lag_stronger.columns = ["Lag (ms)", "M-L (µm)"]
+    lag_stronger.sort_values(by="M-L (µm)", inplace=True)
+    lag_stronger["Session"] = session_id
+    lag_stronger["Probe number-area"] = proben_area
+    lag_stronger["Type"] = "Strong ripples"
+    lag_stronger["Location"] = position
+
+    lag_weaker = pd.concat([real_ripple_summary[
+                                  real_ripple_summary["Duration (s)"] < real_ripple_summary["Duration (s)"].quantile(.9)][
+                                  columns_to_keep].mean().reset_index(drop=True) * 1000,
+                              pd.concat(pos).reset_index(drop=True)], axis=1)
+    lag_weaker.columns = ["Lag (ms)", "M-L (µm)"]
+    lag_weaker.sort_values(by="M-L (µm)", inplace=True)
+    lag_weaker["Session"] = session_id
+    lag_weaker["Probe number-area"] = proben_area
+    lag_weaker["Type"] = "Common ripples"
+    lag_weaker["Location"] = position
+
+    lag_tot = pd.concat([real_ripple_summary[
+                             columns_to_keep].mean().reset_index(drop=True) * 1000,
+                         pd.concat(pos).reset_index(drop=True)], axis=1)
+    lag_tot.columns = ["Lag (ms)", "M-L (µm)"]
+    lag_tot.sort_values(by="M-L (µm)", inplace=True)
+    lag_tot["Session"] = session_id
+    lag_tot["Probe number-area"] = proben_area
+    lag_tot["Type"] = "Total ripples"
+    lag_tot["Location"] = position
+
+    #print(f"Processing session {session_id}-source area {source_area} done!")
+
+    out = pd.concat([lag_stronger, lag_weaker, lag_tot]).reset_index(drop=True)
+
+    real_ripple_summary["Strong"] = real_ripple_summary["Duration (s)"] > real_ripple_summary["Duration (s)"].quantile(.9)
+
+
+    return out#, pd.concat([_, __, ___], axis=1).T
 
 def get_trajectory_across_time_space_by_strength(session_id, ripples, spatial_info, source_area, position):
     """
@@ -1526,6 +1603,20 @@ def process_spikes_per_ripple(time_center, space_sub_spike_times, window):
         out.append((cluster_id, len(spikes)/((window[1] + window[0]) * 100))) # per 10 ms
         #out.append((cluster_id, len(spikes)/(((window[1] + window[0]) * 1000)/10))) # per 10 ms
     return out
+
+def process_spike_and_neuron_numbers_per_ripple(time_space_sub_spike_times):
+
+    #delte empties
+    time_space_sub_spike_times = {i: j for i, j in time_space_sub_spike_times.items() if j.size > 0}
+
+    if len(list(time_space_sub_spike_times.keys()))> 0:
+        number_spikes = np.concatenate(list(time_space_sub_spike_times.values())).shape[0]
+        number_participating_neurons = len(time_space_sub_spike_times.keys())
+    else:
+        number_spikes = 0
+        number_participating_neurons = 0
+
+    return number_spikes,  number_participating_neurons
 
 def batch_process_spike_hists_by_seed_location(func, real_ripple_summary, units, spike_times, target_area,
                               field_to_use_to_compare, n_cpus, window):

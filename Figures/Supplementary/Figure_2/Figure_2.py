@@ -66,4 +66,4 @@ if Adapt_for_Nature_style is True:
 #% end: automatic generated code from pylustrator
 #plt.show()
 
-plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_4", dpi=300)
+plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_6", dpi=300)
