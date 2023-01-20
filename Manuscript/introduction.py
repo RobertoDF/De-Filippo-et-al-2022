@@ -21,7 +21,7 @@ introduction= "Hippocampal ripples are brief oscillatory events detected in the 
               "during long-duration compared to short-duration ripples {Ngo, 2020 #1178}. \n" \
               "Ripple amplitude and duration are significantly correlated {Tong, 2021 #1186; Patel, 2013 #1133}, moreover, they are both related to the amount of " \
               "underlying spiking activity {Tong, 2021 #1186; Khodagholy, 2017 #1188}. It is possible to combine ripple strength and amplitude " \
-              "by considering the area of the high-pass filtered envelope ('ripple strength'). \n" \
+              "by considering the area of the high-pass filtered envelope ('ripple strength'). \t \n" \
               "These results point at a specific role " \
               "of strong ripples (ripples with high strength) in situations of high mnemonic demand and are consistent with a possible " \
               "power law distribution where a minority of ripples" \

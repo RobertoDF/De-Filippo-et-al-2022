@@ -1966,7 +1966,7 @@ def plot_spike_hists_per_ML(means_cut):
         _[_["Time (ms)"].between(0, 100)].groupby("Seed")["Spiking per 10 ms"].sum()
         means_spiking.append(_[_["Time (ms)"].between(0, 100)].groupby("Seed")["Spiking per 10 ms"].mean())
 
-        axs[n].annotate(f"At {ML} µm M-L", xy=(.6, .98), xycoords=axs[n].transAxes,
+        axs[n].annotate(f"At {round(ML)} µm M-L", xy=(.6, .98), xycoords=axs[n].transAxes,
                         color=color_palette[round((ML-ml_space.min())/(ml_space.max()-ml_space.min())*255)], fontsize=6)
 
         print(_[_["Time (ms)"].between(0, 100)].groupby("Seed")["Spiking per 10 ms"].mean())
