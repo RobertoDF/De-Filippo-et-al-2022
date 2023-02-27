@@ -8,7 +8,7 @@ import Utils.Style
 from Utils.Settings import output_folder_figures_calculations
 
 with open(f"{output_folder_figures_calculations}/temp_data_figure_1.pkl", "rb") as fp:  # Unpickling
-    sessions, high_distance, low_distance, ripples_lags, ripples_lags_inverted_reference, ripples_calcs, summary_corrs = pickle.load(fp)
+    sessions, high_distance, low_distance, ripples_lags, ripples_lags_inverted_reference, ripples_calcs, summary_corrs, distance_tabs = pickle.load(fp)
 
 quartiles = summary_corrs[summary_corrs["Comparison"]=="CA1-CA1"]["Correlation"].quantile([0.25, 0.5, 0.75])
 quartiles_distance = summary_corrs[summary_corrs["Comparison"]=="CA1-CA1"]["Distance (µm)"].quantile([0.25, 0.5, 0.75])

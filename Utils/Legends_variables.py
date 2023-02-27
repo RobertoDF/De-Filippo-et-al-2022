@@ -13,7 +13,7 @@ fig1_p_value_violin = np.round(pvalues[0], 23)
 fig1_means_violinplot = np.round(violinplot_data.groupby("Correlation quartiles").mean().values, 2)
 fig1_sem_violinplot = np.round((violinplot_data.groupby("Correlation quartiles").std()/np.sqrt(violinplot_data.shape[0]/2)).values, 2)
 with open(f"{output_folder_figures_calculations}/temp_data_figure_1.pkl", "rb") as fp:  # Unpickling
-    sessions, high_distance, low_distance, ripples_lags, ripples_lags_inverted_reference, ripples_calcs, summary_corrs = dill.load(fp)
+    sessions, high_distance, low_distance, ripples_lags, ripples_lags_inverted_reference, ripples_calcs, summary_corrs, distance_tabs = dill.load(fp)
 
 clip = (-50, 50)
 ripples_lags_clipped = ripples_lags[ripples_lags["Lag (ms)"].between(clip[0], clip[1])]

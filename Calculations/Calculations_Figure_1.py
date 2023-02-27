@@ -15,7 +15,7 @@ with open(f'{output_folder_calculations}/clean_ripples_calculations.pkl', 'rb') 
 
 summary_corrs = calculate_corrs(ripples_calcs, sessions, var_thr)
 
-high_distance, low_distance = find_couples_based_on_distance(summary_corrs, ripples_calcs, sessions, var_thr)
+high_distance, low_distance, distance_tabs = find_couples_based_on_distance(summary_corrs, ripples_calcs, sessions, var_thr)
 
 
 invert_reference = False
@@ -25,7 +25,7 @@ invert_reference = True
 ripples_lags_inverted_reference = calculate_lags(high_distance, low_distance, sessions, invert_reference)
 
 with open(f"{output_folder_figures_calculations}/temp_data_figure_1.pkl", "wb") as fp:
-    pickle.dump([sessions, high_distance, low_distance, ripples_lags, ripples_lags_inverted_reference, ripples_calcs, summary_corrs], fp)
+    pickle.dump([sessions, high_distance, low_distance, ripples_lags, ripples_lags_inverted_reference, ripples_calcs, summary_corrs, distance_tabs], fp)
 
 from Figures.Figure_1.Util_Figure_1 import *
 

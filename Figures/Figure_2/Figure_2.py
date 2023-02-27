@@ -135,6 +135,5 @@ if Adapt_for_Nature_style is True:
     Naturize()
 
 #% end: automatic generated code from pylustrator
-#plt.show()
 
 plt.savefig(f"{output_folder}/Figure_2", dpi=300)

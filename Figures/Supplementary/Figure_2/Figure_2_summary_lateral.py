@@ -9,13 +9,13 @@ from Utils.Style import palette_timelags
 from Utils.Settings import output_folder_calculations
 
 with open(f'{output_folder_calculations}/trajectories_by_seed.pkl', 'rb') as f:
-    trajectories_by_strength = dill.load(f)
+    trajectories_by_seed = dill.load(f)
 
 fig, axs = plt.subplots(1, 3, figsize=(12, 8))
 
-plot_trajs_interp_by_seed(trajectories_by_strength[trajectories_by_strength["Location"] == "Lateral"], axs, [-20, 30])
+plot_trajs_interp_by_seed(trajectories_by_seed[trajectories_by_seed["Location"] == "Lateral"], axs, [-20, 30])
 
-interp_trajs = trajectories_by_strength[trajectories_by_strength["Location"] == "Lateral"]\
+interp_trajs = trajectories_by_seed[trajectories_by_seed["Location"] == "Lateral"]\
     .groupby(["Session", "Type"])\
     .progress_apply(lambda group: interpolate_and_reindex(group.set_index("M-L (µm)")["Lag (ms)"]))
 interp_trajs = pd.DataFrame(interp_trajs).reset_index()

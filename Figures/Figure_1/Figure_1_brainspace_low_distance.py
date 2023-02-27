@@ -5,7 +5,7 @@ from PIL import Image
 import numpy as np
 from Utils.Settings import output_folder_figures_calculations
 with open(f"{output_folder_figures_calculations}/temp_data_figure_1.pkl", "rb") as fp:  # Unpickling
-    sessions, high_distance, low_distance, ripples_lags, ripples_lags_inverted_reference, ripples_calcs, summary_corrs = pickle.load(fp)
+    sessions, high_distance, low_distance, ripples_lags, ripples_lags_inverted_reference, ripples_calcs, summary_corrs, distance_tabs = pickle.load(fp)
 
 settings.SHOW_AXES = False
 

@@ -16,10 +16,10 @@ palette_areas ={}
 for area in summary_table["Parent area"].unique():
     palette_areas[area] = '#' + ''.join(f'{i:02X}' for i in acronym_color_map[area])
 
-ax = sns.PairGrid( data=summary_table, vars=["D-V (µm)", "A-P (µm)", "M-L (µm)"], diag_sharey=False, dropna=True, hue="Parent area", palette=palette_areas)#
+ax = sns.PairGrid(data=summary_table, vars=["D-V (µm)", "A-P (µm)", "M-L (µm)"], diag_sharey=False, dropna=True, hue="Parent area", palette=palette_areas)#
 ax.map_upper(sns.histplot, alpha=0.5)
 ax.map_lower(sns.scatterplot,s=3)
 ax.map_diag(sns.kdeplot, alpha=0.5, linewidth=0, fill=True, multiple="stack")
 ax = ax.add_legend(fontsize=7)
-#plt.show()
-plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_1", dpi=300)
+plt.show()
+#plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_1", dpi=300)

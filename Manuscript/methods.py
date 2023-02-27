@@ -51,7 +51,7 @@ lfp_identity = pd.concat([session_id, mistakes], axis=1)
 
 
 with open(f"{output_folder_figures_calculations}/temp_data_figure_1.pkl", "rb") as fp:  # Unpickling
-    sessions, high_distance, low_distance, ripples_lags, ripples_lags_inverted_reference, ripples_calcs, summary_corrs = dill.load(fp)
+    sessions, high_distance, low_distance, ripples_lags, ripples_lags_inverted_reference, ripples_calcs, summary_corrs, distance_tabs = dill.load(fp)
 
 quartiles_distance = summary_corrs[summary_corrs["Comparison"] == "CA1-CA1"]["Distance (µm)"].quantile(
     [0.25, 0.5, 0.75])
@@ -118,7 +118,7 @@ methods = {"Dataset": f"Our analysis was based on the Visual Coding - Neuropixel
                                                f"divided according to ∫Ripple on the reference electrode in strong and common ripples. Lag maps were result of averaging lags for each probe. "
                                                                         f"Code for the calculations of propagation maps resides in 'Calculate_trajectories.py'.  ",
         "Ripple-associated spiking activity": f"We focused on sessions with clear ripple activity (envelope variance > {var_thr}) in all three hippocampal sections and at least {minimum_ripples_count_generated_in_lateral_or_medial_spike_analysis} "
-                                              f"ripples generated both medially and laterally. The reference was always placed in the central section, here it was possible"
+                                              f"ripples generated both medially and laterally. The reference was always placed in the central section, here it was possible."
                                               f" to identify ripples generated medially and laterally. We only considered ripples that were detected in at least half of the recording electrodes"
                                               ' (in the code: "spatial engagment" > 0.5). For each ripple we computed a histogram of spiking activity of regions belonging to the hippocampal formation (HPF) in a '
                                               f'window of {np.sum(window_spike_hist)} s '
@@ -126,7 +126,9 @@ methods = {"Dataset": f"Our analysis was based on the Visual Coding - Neuropixel
                                               f" To compare spiking activity between sessions we interpolated (xarray.DataArray.interp) the difference between medial ripples-induced spiking and"
                                               f" lateral ripples-induced spiking over space (this was necessary because probes in each sessions have different M-L coordinates) and time. We calculated the number of active cells (at least one spike) "
                                               f"and spiking rate of each cluster per ripple in a window of {window_spike_clu[1]} s starting from ripple start. We repeated the analysis separating "
-                                              f"the 0-50 ms and 50-120 ms post ripple start windows.",
+                                              f"the 0-50 ms and 50-120 ms post ripple start windows. "
+                                              f"The degree of association between ripple lags and M-L or A-P axis was calculated using partial correlation (https://pingouin-stats.org/build/html/generated/pingouin.partial_corr.html), "
+                                              f"in this way we could remove the effect of the other axis. ",
         "Units selection and features calculations": f"Clusters were filtered according to the following parameters: Waveform peak-trough ratio < {waveform_PT_ratio_thr}, "
                            f"ISI violations < {isi_violations_thr}, "
                            f"amplitude cutoff < {amplitude_cutoff_thr} and "

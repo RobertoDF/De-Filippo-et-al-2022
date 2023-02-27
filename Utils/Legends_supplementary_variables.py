@@ -1,4 +1,4 @@
-from Utils.Settings import output_folder_figures_calculations, output_folder_calculations
+from Utils.Settings import waveform_dur_thr, output_folder_figures_calculations, output_folder_calculations
 import pandas as pd
 import dill
 import pingouin as pg
@@ -58,52 +58,120 @@ total_units = total_clusters[(total_clusters["waveform_PT_ratio"]<5)&(total_clus
 
 
 
-param="waveform_duration"
-p_val_wav_dur = pg.mwu(total_units[total_units["Location"] == "Medial"][param],
-       total_units[total_units["Location"] == "Lateral"][param])["p-val"][0]
-
-param="waveform_recovery_slope"
-p_val_wav_rec_slope = pg.mwu(total_units[total_units["Location"] == "Medial"][param],
-       total_units[total_units["Location"] == "Lateral"][param])["p-val"][0]
-
-param="waveform_PT_ratio"
-p_val_wav_PT_ratio = pg.mwu(total_units[total_units["Location"] == "Medial"][param],
-       total_units[total_units["Location"] == "Lateral"][param])["p-val"][0]
-
-param="waveform_repolarization_slope"
-p_val_wav_repolarization_slope = pg.mwu(total_units[total_units["Location"] == "Medial"][param],
-       total_units[total_units["Location"] == "Lateral"][param])["p-val"][0]
-
-param="waveform_amplitude"
-p_val_wav_amp = pg.mwu(total_units[total_units["Location"] == "Medial"][param],
-       total_units[total_units["Location"] == "Lateral"][param])["p-val"][0]
-
-param="firing_rate"
-p_val_fir_rate = pg.mwu(total_units[total_units["Location"] == "Medial"][param],
-       total_units[total_units["Location"] == "Lateral"][param])["p-val"][0]
-
-
+total_units_inh = total_units[total_units["Waveform duration"]<waveform_dur_thr]
 
 param="waveform_duration"
-p_val_ks_wav_dur = ks_2samp(total_units[total_units["Location"] == "Medial"][param],
-             total_units[total_units["Location"] == "Lateral"][param])[1]
+p_val_wav_dur_inh = pg.mwu(total_units_inh[total_units_inh["Location"] == "Medial"][param],
+       total_units_inh[total_units_inh["Location"] == "Lateral"][param])["p-val"][0]
 
 param="waveform_recovery_slope"
-p_val_ks_wav_rec_slope = ks_2samp(total_units[total_units["Location"] == "Medial"][param],
-             total_units[total_units["Location"] == "Lateral"][param])[1]
+p_val_wav_rec_slope_inh = pg.mwu(total_units_inh[total_units_inh["Location"] == "Medial"][param],
+       total_units_inh[total_units_inh["Location"] == "Lateral"][param])["p-val"][0]
 
 param="waveform_PT_ratio"
-p_val_ks_wav_PT_ratio = ks_2samp(total_units[total_units["Location"] == "Medial"][param],
-             total_units[total_units["Location"] == "Lateral"][param])[1]
+p_val_wav_PT_ratio_inh = pg.mwu(total_units_inh[total_units_inh["Location"] == "Medial"][param],
+       total_units_inh[total_units_inh["Location"] == "Lateral"][param])["p-val"][0]
+
 
 param="waveform_repolarization_slope"
-p_val_ks_wav_repolarization_slope = ks_2samp(total_units[total_units["Location"] == "Medial"][param],
-             total_units[total_units["Location"] == "Lateral"][param])[1]
+p_val_wav_repolarization_slope_inh = pg.mwu(total_units_inh[total_units_inh["Location"] == "Medial"][param],
+       total_units_inh[total_units_inh["Location"] == "Lateral"][param])["p-val"][0]
+
 
 param="waveform_amplitude"
-p_val_ks_wav_amp = ks_2samp(total_units[total_units["Location"] == "Medial"][param],
-             total_units[total_units["Location"] == "Lateral"][param])[1]
+p_val_wav_amp_inh = pg.mwu(total_units_inh[total_units_inh["Location"] == "Medial"][param],
+       total_units_inh[total_units_inh["Location"] == "Lateral"][param])["p-val"][0]
+
 
 param="firing_rate"
-p_val_ks_fir_rate = ks_2samp(total_units[total_units["Location"] == "Medial"][param],
-             total_units[total_units["Location"] == "Lateral"][param])[1]
+p_val_fir_rate_inh = pg.mwu(total_units_inh[total_units_inh["Location"] == "Medial"][param],
+       total_units_inh[total_units_inh["Location"] == "Lateral"][param])["p-val"][0]
+
+
+
+param="waveform_duration"
+p_val_ks_wav_dur_inh = ks_2samp(total_units_inh[total_units_inh["Location"] == "Medial"][param],
+             total_units_inh[total_units_inh["Location"] == "Lateral"][param])[1]
+
+param="waveform_recovery_slope"
+p_val_ks_wav_rec_slope_inh = ks_2samp(total_units_inh[total_units_inh["Location"] == "Medial"][param],
+             total_units_inh[total_units_inh["Location"] == "Lateral"][param])[1]
+
+
+param="waveform_PT_ratio"
+p_val_ks_wav_PT_ratio_inh = ks_2samp(total_units_inh[total_units_inh["Location"] == "Medial"][param],
+             total_units_inh[total_units_inh["Location"] == "Lateral"][param])[1]
+
+
+param="waveform_repolarization_slope"
+p_val_ks_wav_repolarization_slope_inh = ks_2samp(total_units_inh[total_units_inh["Location"] == "Medial"][param],
+             total_units_inh[total_units_inh["Location"] == "Lateral"][param])[1]
+
+param="waveform_amplitude"
+p_val_ks_wav_amp_inh = ks_2samp(total_units_inh[total_units_inh["Location"] == "Medial"][param],
+             total_units_inh[total_units_inh["Location"] == "Lateral"][param])[1]
+
+
+param="firing_rate"
+p_val_ks_fir_rate_inh = ks_2samp(total_units_inh[total_units_inh["Location"] == "Medial"][param],
+             total_units_inh[total_units_inh["Location"] == "Lateral"][param])[1]
+
+
+total_units_exc = total_units[total_units["Waveform duration"]>=waveform_dur_thr]
+
+param="waveform_duration"
+p_val_wav_dur_exc = pg.mwu(total_units_exc[total_units_exc["Location"] == "Medial"][param],
+       total_units_exc[total_units_exc["Location"] == "Lateral"][param])["p-val"][0]
+
+param="waveform_recovery_slope"
+p_val_wav_rec_slope_exc = pg.mwu(total_units_exc[total_units_exc["Location"] == "Medial"][param],
+       total_units_exc[total_units_exc["Location"] == "Lateral"][param])["p-val"][0]
+
+param="waveform_PT_ratio"
+p_val_wav_PT_ratio_exc = pg.mwu(total_units_exc[total_units_exc["Location"] == "Medial"][param],
+       total_units_exc[total_units_exc["Location"] == "Lateral"][param])["p-val"][0]
+
+
+param="waveform_repolarization_slope"
+p_val_wav_repolarization_slope_exc = pg.mwu(total_units_exc[total_units_exc["Location"] == "Medial"][param],
+       total_units_exc[total_units_exc["Location"] == "Lateral"][param])["p-val"][0]
+
+
+param="waveform_amplitude"
+p_val_wav_amp_exc = pg.mwu(total_units_exc[total_units_exc["Location"] == "Medial"][param],
+       total_units_exc[total_units_exc["Location"] == "Lateral"][param])["p-val"][0]
+
+
+param="firing_rate"
+p_val_fir_rate_exc = pg.mwu(total_units_exc[total_units_exc["Location"] == "Medial"][param],
+       total_units_exc[total_units_exc["Location"] == "Lateral"][param])["p-val"][0]
+
+
+
+param="waveform_duration"
+p_val_ks_wav_dur_exc = ks_2samp(total_units_exc[total_units_exc["Location"] == "Medial"][param],
+             total_units_exc[total_units_exc["Location"] == "Lateral"][param])[1]
+
+param="waveform_recovery_slope"
+p_val_ks_wav_rec_slope_exc = ks_2samp(total_units_exc[total_units_exc["Location"] == "Medial"][param],
+             total_units_exc[total_units_exc["Location"] == "Lateral"][param])[1]
+
+
+param="waveform_PT_ratio"
+p_val_ks_wav_PT_ratio_exc = ks_2samp(total_units_exc[total_units_exc["Location"] == "Medial"][param],
+             total_units_exc[total_units_exc["Location"] == "Lateral"][param])[1]
+
+
+param="waveform_repolarization_slope"
+p_val_ks_wav_repolarization_slope_exc = ks_2samp(total_units_exc[total_units_exc["Location"] == "Medial"][param],
+             total_units_exc[total_units_exc["Location"] == "Lateral"][param])[1]
+
+param="waveform_amplitude"
+p_val_ks_wav_amp_exc = ks_2samp(total_units_exc[total_units_exc["Location"] == "Medial"][param],
+             total_units_exc[total_units_exc["Location"] == "Lateral"][param])[1]
+
+
+param="firing_rate"
+p_val_ks_fir_rate_exc = ks_2samp(total_units_exc[total_units_exc["Location"] == "Medial"][param],
+             total_units_exc[total_units_exc["Location"] == "Lateral"][param])[1]
+

@@ -26,8 +26,8 @@ for session_id in tqdm([q[0] for q in list(spike_hists.keys()) if q[1] == "HPF"]
 summary = xr.concat(out, dim="Session")
 
 
-fig, axs = plt.subplots(1)
-ax = summary.mean(dim="Session").diff("Seed").plot(cmap="seismic", add_colorbar=False)
+fig, axs = plt.subplots(1, figsize=(5,5))
+ax = summary.mean(dim="Session").diff("Seed").plot(cmap="seismic", add_colorbar=False, vmin=-10, vmax=10)
 axs.invert_yaxis()
 axs.set_ylim(3600, 1250)
 axs.vlines(x=0, ymin=axs.get_ylim()[0], ymax=axs.get_ylim()[1],  colors='white', ls='--', linewidth=1)

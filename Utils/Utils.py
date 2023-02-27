@@ -788,7 +788,7 @@ def clean_ripples_from_running(ripples, start_running, stop_running, behavior):
     return ripples.reset_index(drop=True)
 
 
-def find_couples_based_on_distance(summary_corrs, corrs_ripples_max, sessions, var_thr):
+def find_couples_based_on_distance(summary_corrs, ripples_calcs, sessions, var_thr):
 
     print(f"Threshold var = {var_thr}")
 
@@ -797,8 +797,9 @@ def find_couples_based_on_distance(summary_corrs, corrs_ripples_max, sessions, v
 
     high_distance = []
     low_distance = []
+    distance_tabs = []
 
-    for session_id, sel in corrs_ripples_max.items():
+    for session_id, sel in ripples_calcs.items():
 
         ripples = sel[3].copy()
 
@@ -811,13 +812,35 @@ def find_couples_based_on_distance(summary_corrs, corrs_ripples_max, sessions, v
             pos_matrix = ripples.groupby("Probe number-area").mean()[["D-V (µm)", "A-P (µm)", "M-L (µm)"]].T
 
             distance_matrix = pos_matrix.corr(method=calculate_distance)
-
             distance_tab = distance_matrix.where(np.triu(np.ones(distance_matrix.shape)).astype(np.bool))
             distance_tab.columns.name = None
             distance_tab.index.name = None
 
+            distance_matrix_dv = pos_matrix.corr(method=calculate_distance_dv)
+            distance_tab_dv = distance_matrix_dv.where(np.triu(np.ones(distance_matrix_dv.shape)).astype(np.bool))
+            distance_tab_dv.columns.name = None
+            distance_tab_dv.index.name = None
+
+            distance_matrix_ap = pos_matrix.corr(method=calculate_distance_ap)
+            distance_tab_ap = distance_matrix_ap.where(np.triu(np.ones(distance_matrix_ap.shape)).astype(np.bool))
+            distance_tab_ap.columns.name = None
+            distance_tab_ap.index.name = None
+
+            distance_matrix_ml = pos_matrix.corr(method=calculate_distance_ml)
+            distance_tab_ml = distance_matrix_ml.where(np.triu(np.ones(distance_matrix_ml.shape)).astype(np.bool))
+            distance_tab_ml.columns.name = None
+            distance_tab_ml.index.name = None
+
             distance_tab = distance_tab.stack().reset_index()
+            distance_tab_dv = distance_tab_dv.stack().reset_index()
+            distance_tab_ap = distance_tab_ap.stack().reset_index()
+            distance_tab_ml = distance_tab_ml.stack().reset_index()
+
             distance_tab.columns = ['Reference area', 'Secondary area', 'Distance (µm)']
+            distance_tab = pd.concat([distance_tab,  distance_tab_dv.iloc[:,2].rename("D-V (µm)"),
+                                       distance_tab_ap.iloc[:,2].rename("A-P (µm)"),
+                                       distance_tab_ml.iloc[:,2].rename("M-L (µm)")], axis=1)
+
             distance_tab = distance_tab[distance_tab["Distance (µm)"] > 1]
 
             high_distance_tab = distance_tab[distance_tab["Distance (µm)"] > quartiles_distance[0.75]]
@@ -849,16 +872,27 @@ def find_couples_based_on_distance(summary_corrs, corrs_ripples_max, sessions, v
                 selected_ripples["Age"] = sessions.loc[session_id]["age_in_days"]
 
                 low_distance.append(selected_ripples)
+                distance_tabs.append(distance_tab)
 
+    distance_tabs = pd.concat(distance_tabs)
     high_distance = pd.concat(high_distance).reset_index(drop=True)
     low_distance = pd.concat(low_distance).reset_index(drop=True)
 
     print("Computed distances")
 
-    return high_distance, low_distance
+    return high_distance, low_distance, distance_tabs
 
 def calculate_distance(x, y):
     return np.linalg.norm(x-y)
+
+def calculate_distance_dv(x, y):
+    return np.abs(x[0] - y[0] )
+
+def calculate_distance_ap(x, y):
+    return np.abs(x[1] - y[1])
+
+def calculate_distance_ml(x, y):
+    return np.abs(x[2] - y[2])
 
 def calculate_corrs(ripples_calcs, sessions, var_thr):
 
@@ -1252,13 +1286,13 @@ def get_trajectory_across_time_space_by_strength(session_id, ripples, spatial_in
 
     pos = []
     for p, a in zip(probe_n, area):
-        pos.append(spatial_info[(spatial_info["Probe number"] == int(p)) & (spatial_info["Area"] == a)]["M-L (µm)"])
+        pos.append(spatial_info[(spatial_info["Probe number"] == int(p)) & (spatial_info["Area"] == a)][["M-L (µm)", "A-P (µm)", "D-V (µm)"]])
 
     lag_stronger = pd.concat([real_ripple_summary[
                                     real_ripple_summary["∫Ripple"] > real_ripple_summary["∫Ripple"].quantile(.9)][
                                     columns_to_keep].mean().reset_index(drop=True) * 1000,
                                 pd.concat(pos).reset_index(drop=True)], axis=1)
-    lag_stronger.columns = ["Lag (ms)", "M-L (µm)"]
+    lag_stronger.columns = ["Lag (ms)", "M-L (µm)", "A-P (µm)", "D-V (µm)"]
     lag_stronger.sort_values(by="M-L (µm)", inplace=True)
     lag_stronger["Session"] = session_id
     lag_stronger["Probe number-area"] = proben_area
@@ -1269,7 +1303,7 @@ def get_trajectory_across_time_space_by_strength(session_id, ripples, spatial_in
                                   real_ripple_summary["∫Ripple"] < real_ripple_summary["∫Ripple"].quantile(.9)][
                                   columns_to_keep].mean().reset_index(drop=True) * 1000,
                               pd.concat(pos).reset_index(drop=True)], axis=1)
-    lag_weaker.columns = ["Lag (ms)", "M-L (µm)"]
+    lag_weaker.columns = ["Lag (ms)", "M-L (µm)", "A-P (µm)", "D-V (µm)"]
     lag_weaker.sort_values(by="M-L (µm)", inplace=True)
     lag_weaker["Session"] = session_id
     lag_weaker["Probe number-area"] = proben_area
@@ -1279,7 +1313,7 @@ def get_trajectory_across_time_space_by_strength(session_id, ripples, spatial_in
     lag_tot = pd.concat([real_ripple_summary[
                              columns_to_keep].mean().reset_index(drop=True) * 1000,
                          pd.concat(pos).reset_index(drop=True)], axis=1)
-    lag_tot.columns = ["Lag (ms)", "M-L (µm)"]
+    lag_tot.columns = ["Lag (ms)", "M-L (µm)", "A-P (µm)", "D-V (µm)"]
     lag_tot.sort_values(by="M-L (µm)", inplace=True)
     lag_tot["Session"] = session_id
     lag_tot["Probe number-area"] = proben_area
@@ -1327,13 +1361,13 @@ def get_trajectory_across_time_space_by_seed(session_id, ripples, spatial_info, 
 
     pos = []
     for p, a in zip(probe_n, area):
-        pos.append(spatial_info[(spatial_info["Probe number"] == int(p)) & (spatial_info["Area"] == a)]["M-L (µm)"])
+        pos.append(spatial_info[(spatial_info["Probe number"] == int(p)) & (spatial_info["Area"] == a)][["M-L (µm)", "A-P (µm)", "D-V (µm)"]])
 
     lag_local = pd.concat([real_ripple_summary[
                                     real_ripple_summary["Is source"]==True][
                                     columns_to_keep].mean().reset_index(drop=True) * 1000,
                                 pd.concat(pos).reset_index(drop=True)], axis=1)
-    lag_local.columns = ["Lag (ms)", "M-L (µm)"]
+    lag_local.columns = ["Lag (ms)", "M-L (µm)", "A-P (µm)", "D-V (µm)"]
     lag_local.sort_values(by="M-L (µm)", inplace=True)
     lag_local["Session"] = session_id
     lag_local["Probe number-area"] = proben_area
@@ -1344,7 +1378,7 @@ def get_trajectory_across_time_space_by_seed(session_id, ripples, spatial_info, 
                                   real_ripple_summary["Is source"]==False][
                                   columns_to_keep].mean().reset_index(drop=True) * 1000,
                               pd.concat(pos).reset_index(drop=True)], axis=1)
-    lag_non_local.columns = ["Lag (ms)", "M-L (µm)"]
+    lag_non_local.columns = ["Lag (ms)", "M-L (µm)", "A-P (µm)", "D-V (µm)"]
     lag_non_local.sort_values(by="M-L (µm)", inplace=True)
     lag_non_local["Session"] = session_id
     lag_non_local["Probe number-area"] = proben_area
@@ -1354,7 +1388,7 @@ def get_trajectory_across_time_space_by_seed(session_id, ripples, spatial_info, 
     lag_tot = pd.concat([real_ripple_summary[
                              columns_to_keep].mean().reset_index(drop=True) * 1000,
                          pd.concat(pos).reset_index(drop=True)], axis=1)
-    lag_tot.columns = ["Lag (ms)", "M-L (µm)"]
+    lag_tot.columns = ["Lag (ms)","M-L (µm)", "A-P (µm)", "D-V (µm)"]
     lag_tot.sort_values(by="M-L (µm)", inplace=True)
     lag_tot["Session"] = session_id
     lag_tot["Probe number-area"] = proben_area
@@ -1609,6 +1643,14 @@ def process_spikes_per_ripple(time_center, space_sub_spike_times, window):
         #out.append((cluster_id, len(spikes)/(((window[1] + window[0]) * 1000)/10))) # per 10 ms
     return out
 
+def extract_spikes_per_ripple(time_center, space_sub_spike_times, window):
+
+    time_space_sub_spike_times = {
+        cluster_id: spikes[(spikes > time_center - window[0]) & (spikes < time_center + window[1])] for
+        cluster_id, spikes in space_sub_spike_times.items()}
+
+    return time_space_sub_spike_times
+
 def process_spike_and_neuron_numbers_per_ripple(time_space_sub_spike_times):
 
     #delte empties
@@ -1663,6 +1705,47 @@ def batch_process_spike_hists_by_seed_location(func, real_ripple_summary, units,
         pool.close()
 
     return lrs, out_hist_medial, out_hist_lateral
+
+def batch_process_spike_hists_by_seed_location_and_strength(func, real_ripple_summary, units, spike_times, target_area,
+                              field_to_use_to_compare, n_cpus, window):
+
+    space_sub_spike_times = dict(zip(units[units[field_to_use_to_compare] == target_area].index,
+                                     itemgetter(*units[units[field_to_use_to_compare] == target_area].index)(
+                                         spike_times)))
+
+    probe_ids = units[units[field_to_use_to_compare] == target_area].sort_values("left_right_ccf_coordinate")[
+        "probe_id"].unique()
+    lrs = units[units[field_to_use_to_compare] == target_area].groupby("probe_id").mean().sort_values("left_right_ccf_coordinate")[
+        "left_right_ccf_coordinate"]
+    #print(units[units[field_to_use_to_compare] == target_area].sort_values("left_right_ccf_coordinate")[
+    #    "probe_id"].unique())
+    #print(f"probe_ids:{probe_ids}", f"Check lr corresponds: {lrs}")
+    units_probe_id = units["probe_id"]
+
+    input_process_spike_hists = []
+
+    for index, row in real_ripple_summary[real_ripple_summary["Local strong"] == True].iterrows():
+        time_center = row["Start (s)"] + row[row.index.str.contains('lag')].min()# either sum zero or sum a negative value
+        input_process_spike_hists.append\
+            ((time_center, space_sub_spike_times, probe_ids, lrs, units_probe_id,  window))
+
+    with Pool(processes=60) as pool:
+        r = pool.starmap_async(func, input_process_spike_hists, chunksize=250)
+        out_hist_strong = r.get()
+        pool.close()
+
+    input_process_spike_hists = []
+
+    for index, row in real_ripple_summary[real_ripple_summary["Local strong"] == False].iterrows():
+        time_center = row["Start (s)"] + row[row.index.str.contains('lag')].min()
+        input_process_spike_hists.append((time_center, space_sub_spike_times, probe_ids, lrs, units_probe_id, window))
+
+    with Pool(processes=n_cpus) as pool:
+        r = pool.starmap_async(func, input_process_spike_hists, chunksize=250)
+        out_hist_common = r.get()
+        pool.close()
+
+    return lrs, out_hist_strong, out_hist_common
 
 
 def batch_process_spike_clusters_by_seed_location(func, real_ripple_summary, units, spike_times, target_area,
@@ -1897,6 +1980,22 @@ def postprocess_spike_hists(out_hist_lateral, out_hist_medial, lrs):
     means = np.dstack([np.array(means_l), np.array(means_m)])
     means = xr.DataArray(means, coords=[("ML", mls), ("Time_ms", range(-240, 250, 10)),
                                         ("Seed", ["Lateral", "Medial"])])
+    means_cut = means.sel(Time_ms=slice(-55, 130))
+    return means_cut
+
+def postprocess_spike_hists_strength(out_hist_common, out_hist_strong, lrs):
+    means_strong = []
+    for n in range(len(out_hist_strong[0])):
+        means_strong.append(np.array([_[n] for _ in out_hist_strong]).mean(axis=0))
+
+    means_common = []
+    for n in range(len(out_hist_common[0])):
+        means_common.append(np.array([_[n] for _ in out_hist_common]).mean(axis=0))
+
+    mls = lrs - 5691.510009765625
+    means = np.dstack([np.array(means_strong), np.array(means_common)])
+    means = xr.DataArray(means, coords=[("ML", mls), ("Time_ms", range(-240, 250, 10)),
+                                        ("Strength", ["Strong", "Common"])])
     means_cut = means.sel(Time_ms=slice(-55, 130))
     return means_cut
 

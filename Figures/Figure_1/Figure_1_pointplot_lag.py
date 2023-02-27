@@ -8,7 +8,7 @@ from Utils.Settings import output_folder_figures_calculations, clip_ripples_clus
 import Utils.Style
 
 with open(f"{output_folder_figures_calculations}/temp_data_figure_1.pkl", "rb") as fp:  # Unpickling
-    sessions, high_distance, low_distance, ripples_lags, ripples_lags_inverted_reference, ripples_calcs, summary_corrs = pickle.load(fp)
+    sessions, high_distance, low_distance, ripples_lags, ripples_lags_inverted_reference, ripples_calcs, summary_corrs, distance_tabs = pickle.load(fp)
 
 ripples_lags = ripples_lags[ripples_lags["Lag (ms)"].between(clip_ripples_clusters[0], clip_ripples_clusters[1])]
 

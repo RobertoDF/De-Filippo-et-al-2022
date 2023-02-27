@@ -9,7 +9,6 @@ pylustrator.start()
 pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Supplementary/Panel_summary_heatmap_spike_differences_interp_inh.py")
 pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Supplementary/Panel_summary_heatmap_spike_differences_interp_exc.py")
 
-
 #% start: automatic generated code from pylustrator
 plt.figure(1).ax_dict = {ax.get_label(): ax for ax in plt.figure(1).axes}
 import matplotlib as mpl
@@ -42,6 +41,6 @@ if Adapt_for_Nature_style is True:
     Naturize()
 
 #% end: automatic generated code from pylustrator
-#plt.show()
+plt.show()
 
-plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_10", dpi=300)
+#plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_10", dpi=300)

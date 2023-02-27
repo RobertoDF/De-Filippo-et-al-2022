@@ -30,9 +30,10 @@ legends_supplementary = {
    f"(F) Violin plots showing the distribution of ∫Ripple and RIVD z-scored per session,"
    f" hippocampal regions (text in green) show the biggest responses.",
 
-    "Supplementary Figure 5. Hippocampal sections.": "(A) Histogram showing the three sections across the M-L axis, the hippocampus was divided in order to have "
+    "Supplementary Figure 5. Hippocampal sections.": "(A) Variance explained between 3D distances and distance on each spatial axis across CA1 recording locations. "
+                                                     "(B) Histogram showing the three sections across the M-L axis, the hippocampus was divided in order to have "
                                                       "an equal number of recordings in each section. "
-                                                     "(B) Rendering of the 3 sections and associated recording locations (black dots).",
+                                                     "(C) Rendering of the 3 sections and associated recording locations (black dots).",
 
    "Supplementary Figure 6. Spatio-temporal lag maps of locally and not locally generated ripples": ""
              "Spatio-temporal profiles are symmetrical, strong indication of similar propagation speed regardless of seed position. (A) Recording locations relative to (B). Red circles represents the reference locations across all sessions "
@@ -77,13 +78,21 @@ legends_supplementary = {
       "seed location and putative neuron identity. Asterisks mean p < 0.05, ANOVA with pairwise Tukey post-hoc test.",
 
 "Supplementary Figure 13. Units features in medial and lateral sections":
-      f"(A) Kernel density estimate plot of waveform duration (p-value={'{:.2e}'.format(p_val_wav_dur)}), firing rate (p-value={'{:.2e}'.format(p_val_fir_rate)}), "
-      f"waveform amplitude (p-value={'{:.2e}'.format(p_val_wav_amp)}), waveform repolarization slope (p-value={'{:.2e}'.format(p_val_wav_repolarization_slope)}), "
-      f"waveform recovery slope (p-value={'{:.2e}'.format(p_val_wav_rec_slope)}) and waveform peak-through ratio (p-value={'{:.2e}'.format(p_val_wav_PT_ratio)}) grouped by hippocampal section."
+      f"(A) Kernel density estimate plot of waveform duration (p-value={'{:.2e}'.format(p_val_wav_dur_inh)}), firing rate (p-value={'{:.2e}'.format(p_val_fir_rate_inh)}), "
+      f"waveform amplitude (p-value={'{:.2e}'.format(p_val_wav_amp_inh)}), waveform repolarization slope (p-value={'{:.2e}'.format(p_val_wav_repolarization_slope_inh)}), "
+      f"waveform recovery slope (p-value={'{:.2e}'.format(p_val_wav_rec_slope_inh)}) and waveform peak-through ratio (p-value={'{:.2e}'.format(p_val_wav_PT_ratio_inh)}) grouped by hippocampal section."
       "Asterisks mean p<0.05, Mann-Whitney U test. "
-      f"(B) Cumulative distribution plot of waveform duration (p-value={'{:.2e}'.format(p_val_ks_wav_dur)}), firing rate (p-value={'{:.2e}'.format(p_val_ks_fir_rate)}), "
-      f"waveform amplitude (p-value={'{:.2e}'.format(p_val_ks_wav_amp)}), waveform repolarization slope (p-value={'{:.2e}'.format(p_val_ks_wav_repolarization_slope)}), "
-      f"waveform recovery slope (p-value={'{:.2e}'.format(p_val_ks_wav_rec_slope)}) and waveform peak-through ratio (p-value={'{:.2e}'.format(p_val_ks_wav_PT_ratio)}) grouped by hippocampal section."
+      f"(B) Cumulative distribution plot of waveform duration (p-value={'{:.2e}'.format(p_val_ks_wav_dur_inh)}), firing rate (p-value={'{:.2e}'.format(p_val_ks_fir_rate_inh)}), "
+      f"waveform amplitude (p-value={'{:.2e}'.format(p_val_ks_wav_amp_inh)}), waveform repolarization slope (p-value={'{:.2e}'.format(p_val_ks_wav_repolarization_slope_inh)}), "
+      f"waveform recovery slope (p-value={'{:.2e}'.format(p_val_ks_wav_rec_slope_inh)}) and waveform peak-through ratio (p-value={'{:.2e}'.format(p_val_ks_wav_PT_ratio_inh)}) grouped by hippocampal section."
+      "Asterisks mean p < 0.05, Kolgomorov-Smirnov test."
+      f"(C) Kernel density estimate plot of waveform duration (p-value={'{:.2e}'.format(p_val_wav_dur_exc)}), firing rate (p-value={'{:.2e}'.format(p_val_fir_rate_exc)}), "
+      f"waveform amplitude (p-value={'{:.2e}'.format(p_val_wav_amp_exc)}), waveform repolarization slope (p-value={'{:.2e}'.format(p_val_wav_repolarization_slope_exc)}), "
+      f"waveform recovery slope (p-value={'{:.2e}'.format(p_val_wav_rec_slope_exc)}) and waveform peak-through ratio (p-value={'{:.2e}'.format(p_val_wav_PT_ratio_exc)}) grouped by hippocampal section."
+      "Asterisks mean p<0.05, Mann-Whitney U test. "
+      f"(D) Cumulative distribution plot of waveform duration (p-value={'{:.2e}'.format(p_val_ks_wav_dur_exc)}), firing rate (p-value={'{:.2e}'.format(p_val_ks_fir_rate_exc)}), "
+      f"waveform amplitude (p-value={'{:.2e}'.format(p_val_ks_wav_amp_exc)}), waveform repolarization slope (p-value={'{:.2e}'.format(p_val_ks_wav_repolarization_slope_exc)}), "
+      f"waveform recovery slope (p-value={'{:.2e}'.format(p_val_ks_wav_rec_slope_exc)}) and waveform peak-through ratio (p-value={'{:.2e}'.format(p_val_ks_wav_PT_ratio_exc)}) grouped by hippocampal section."
       "Asterisks mean p < 0.05, Kolgomorov-Smirnov test."
 }
 

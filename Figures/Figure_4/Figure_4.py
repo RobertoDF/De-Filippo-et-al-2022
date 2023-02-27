@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import pylustrator
 import dill
 from Utils.Style import palette_ML
-from Utils.Settings import output_folder, output_folder_figures_calculations, Adapt_for_Nature_style
+from Utils.Settings import output_folder, output_folder_figures_calculations, Adapt_for_Nature_style,root_github_repo, output_folder_figures_calculations
 from Utils.Utils import Naturize
 
 with open(f"{output_folder_figures_calculations}/temp_data_figure_4.pkl", 'rb') as f:
@@ -19,21 +19,21 @@ summary_fraction_active_clusters_per_ripples_by_neuron_type = dill.load(f)
 pylustrator.start()
 
 pylustrator.load(f"{output_folder_figures_calculations}/Figure_4_brainrender_crop.png")
-pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_4/Figure_4_example_medial_seed_ripple.py", offset=[0.25, 0])
-pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_4/Figure_4_example_lateral_seed_ripple.py", offset=[0.49, 0])
-pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_4/Figure_4_example_summary_hists_per_ML.py", offset=[0.72, 0])
-pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_4/Figure_4_heatmap_spike_differences_interp.py")
-pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_4/Figure_4_summary_heatmap_spike_differences_interp.py")
-pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_4/Figure_4_duration_ML_by_ripple_strength.py")
-pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_4/Figure_4_clusters_per_ripple_early_late.py")
-pylustrator.load("/home/roberto/Github/De-Filippo-et-al-2022/Figures/Figure_4/Figure_4_spiking_rate_early_late.py")
+pylustrator.load(f"{root_github_repo}/Figures/Figure_4/Figure_4_example_medial_seed_ripple.py", offset=[0.25, 0])
+pylustrator.load(f"{root_github_repo}//Figures/Figure_4/Figure_4_example_lateral_seed_ripple.py", offset=[0.49, 0])
+pylustrator.load(f"{root_github_repo}//Figures/Figure_4/Figure_4_example_summary_hists_per_ML.py", offset=[0.72, 0])
+pylustrator.load(f"{root_github_repo}//Figures/Figure_4/Figure_4_heatmap_spike_differences_interp.py")
+pylustrator.load(f"{root_github_repo}//Figures/Figure_4/Figure_4_summary_heatmap_spike_differences_interp.py")
+pylustrator.load(f"{root_github_repo}//Figures/Figure_4/Figure_4_duration_ML_by_ripple_strength.py")
+pylustrator.load(f"{root_github_repo}//Figures/Figure_4/Figure_4_clusters_per_ripple_early_late.py")
+pylustrator.load(f"{root_github_repo}//Figures/Figure_4/Figure_4_spiking_rate_early_late.py")
 
 #% start: automatic generated code from pylustrator
 plt.figure(1).ax_dict = {ax.get_label(): ax for ax in plt.figure(1).axes}
 import matplotlib as mpl
 plt.figure(1).set_size_inches(17.940000/2.54, 18.830000/2.54, forward=True)
 plt.figure(1).ax_dict[f"{output_folder_figures_calculations}/Figure_4_brainrender_crop.png"].set_position([-0.077024, 0.664205, 0.453828, 0.262319])
-plt.figure(1).ax_dict["/alzheimer/Roberto/Allen_Institute/temp/Figure_4_brainrender_crop.png"].set_position([-0.055388, 0.664205, 0.410557, 0.262319])
+plt.figure(1).ax_dict[f"{output_folder_figures_calculations}/Figure_4_brainrender_crop.png"].set_position([-0.055388, 0.664205, 0.410557, 0.262319])
 plt.figure(1).ax_dict["colorbar_example"].set_position([0.287960, 0.383508, 0.004811, 0.091667])
 plt.figure(1).ax_dict["colorbar_summary"].set_position([0.629875, 0.383258, 0.004824, 0.091917])
 plt.figure(1).axes[1].set_position([0.283278, 0.915118, 0.206323, 0.037263])

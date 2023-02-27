@@ -7,6 +7,7 @@ from scipy.stats import pearsonr
 import pandas as pd
 from scipy.stats import zscore
 import pingouin as pg
+from pingouin import partial_corr
 from Figures.Figure_4.Figure_4_clusters_per_ripple_early_late import ttest_early_clus_per_ripple, ttest_late_clus_per_ripple
 from Figures.Figure_4.Figure_4_spiking_rate_early_late import ttest_late_spiking, ttest_early_spiking
 
@@ -30,7 +31,9 @@ with open(f'{output_folder_calculations}/sessions_features.pkl', 'rb') as f:
 
 
 with open(f"{output_folder_figures_calculations}/temp_data_figure_1.pkl", "rb") as fp:  # Unpickling
-    sessions, high_distance, low_distance, ripples_lags, ripples_lags_inverted_reference, ripples_calcs, summary_corrs = dill.load(fp)
+    sessions, high_distance, low_distance, ripples_lags, ripples_lags_inverted_reference, ripples_calcs, summary_corrs, distance_tabs = dill.load(fp)
+
+corr_table_distance = distance_tabs.corr()
 
 _ = summary_corrs[(summary_corrs["Comparison"]=="CA1-CA1")]
 
@@ -282,4 +285,32 @@ tot = pd.concat([r_list_strength, r_list_duration])
 
 t_test_corr_spikes_vs_dur_or_strength = '{:.2e}'.format(pg.ttest(tot[tot["Type"]=="Duration (s) - Spikes per 10 ms"]["r"],
                tot[tot["Type"]=="∫Ripple - Spikes per 10 ms"]["r"])["p-val"][0])
+
+
+with open(f'{output_folder_calculations}/trajectories_by_seed.pkl', 'rb') as f:
+    trajectories_by_seed = dill.load(f)
+
+def rescale(x):
+    return x - x.min()
+
+trajectories_by_seed["rescaled M-L (µm)"] = trajectories_by_seed.groupby("Session")["M-L (µm)"].transform(lambda x: rescale(x))
+trajectories_by_seed["rescaled M-L (µm) abs"] = trajectories_by_seed["rescaled M-L (µm)"].abs()
+trajectories_by_seed["rescaled A-P (µm)"] = trajectories_by_seed.groupby("Session")["A-P (µm)"].transform(lambda x: rescale(x))
+trajectories_by_seed["rescaled A-P (µm) abs"] = trajectories_by_seed["rescaled A-P (µm)"].abs()
+
+res_medial_local_ap = partial_corr(data=trajectories_by_seed[(trajectories_by_seed["Location"] == "Medial")&(trajectories_by_seed["Type"] == "Local")],
+             y='Lag (ms)', x='rescaled A-P (µm)', covar=['rescaled M-L (µm)'], method='pearson')
+
+
+res_medial_local_ml  = partial_corr(data=trajectories_by_seed[(trajectories_by_seed["Location"] == "Medial")&(trajectories_by_seed["Type"] == "Local")],
+             y='Lag (ms)', covar='rescaled A-P (µm)', x=['rescaled M-L (µm)'], method='pearson')
+
+
+res_lateral_local_ap = partial_corr(data=trajectories_by_seed[(trajectories_by_seed["Location"] == "Lateral")&(trajectories_by_seed["Type"] == "Local")],
+             y='Lag (ms)', x='rescaled A-P (µm)', covar=['rescaled M-L (µm)'], method='pearson')
+
+
+res_lateral_local_ml = partial_corr(data=trajectories_by_seed[(trajectories_by_seed["Location"] == "Lateral")&(trajectories_by_seed["Type"] == "Local")],
+             y='Lag (ms)', covar='rescaled A-P (µm)', x=['rescaled M-L (µm)'], method='pearson')
+
 
