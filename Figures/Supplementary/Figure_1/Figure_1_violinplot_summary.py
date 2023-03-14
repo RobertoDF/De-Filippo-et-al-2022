@@ -19,5 +19,6 @@ ax = sns.violinplot(data=long_summary[long_summary["Count"] > min_count], x="Are
 color_to_labels(ax, "x", "major", pos=0)
 ax.legend(loc='upper right', frameon=False)
 ax.set_xticklabels(ax.get_xticklabels(), rotation=75);
+ax.set_xlabel("Brain area")
 
 plt.show()

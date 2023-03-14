@@ -37,10 +37,16 @@ plt.xlabel("Time from ripple start (ms)")
 plt.ylabel("M-L (µm)")
 cbar = plt.colorbar(ax, shrink=.5)
 cbar.ax.set_ylabel('Δ spiking per 10 ms', rotation=270, labelpad=8)
-cbar.ax.set_label("colorbar_exc") # needed to distinguish colobars
+cbar.ax.set_label("colorbar_common") # needed to distinguish colobars
 
 for d in ["left", "top", "bottom", "right"]:
     plt.gca().spines[d].set_visible(False)
 
 axs.set_title("Medial seed - Lateral seed", fontsize=7)
+
+axs.text(-0.1, 1.15, "C", transform=axs.transAxes,
+      fontsize=16, fontweight='bold', va='top', ha='right')
+
+axs.text(0.5, 1.15, "Common ripples", transform=axs.transAxes,
+      fontsize=10, fontweight='bold', va='top', ha='center')
 plt.show()

@@ -20,6 +20,9 @@ with open(f"{output_folder_figures_calculations}/temp_data_figure_4.pkl", 'rb') 
     tot_summary, summary_fraction_active_clusters_per_ripples, \
     summary_fraction_active_clusters_per_ripples_by_neuron_type = dill.load(f)
 
+PROPS = {
+    'medianprops':{'color':'white'},
+}
 fig, axs = plt.subplots(1, 2, figsize=(16, 8))
 
 data = pd.melt(tot_summary_early[["Lateral seed", "Medial seed", "Session id"]],
@@ -28,9 +31,10 @@ data = pd.melt(tot_summary_early[["Lateral seed", "Medial seed", "Session id"]],
     ["Session id", "Post ripple phase"]).mean().reset_index()
 
 sns.boxplot(data=data, x="Post ripple phase", y="Spiking rate per 10 ms", showfliers=False, ax=axs[0], palette=palette_ML,
-            order=["Medial seed", "Lateral seed"])
+            order=["Medial seed", "Lateral seed"], **PROPS)
 ax = sns.stripplot(data=tot_summary_early.groupby("Session id")[["Lateral seed", "Medial seed"]].mean(), ax=axs[0],
-                   dodge=True, size=2, color=".9", linewidth=0.6, jitter=0.1, order=["Medial seed", "Lateral seed"])
+                   dodge=True, size=2, color=".9", linewidth=0.6, jitter=0.1,
+                   order=["Medial seed", "Lateral seed"])
 axs[0].set_title("Early phase (0-50 ms)")
 
 print(pg.normality(data, dv="Spiking rate per 10 ms", group="Post ripple phase"))
@@ -59,7 +63,7 @@ data = pd.melt(tot_summary_late[["Lateral seed", "Medial seed", "Session id"]],
                value_name='Spiking rate per 10 ms').groupby(["Session id", "Post ripple phase"]).mean().reset_index()
 
 sns.boxplot(data=data, x="Post ripple phase", y="Spiking rate per 10 ms", showfliers=False, ax=axs[1], palette=palette_ML,
-            order=["Medial seed", "Lateral seed"])
+            order=["Medial seed", "Lateral seed"], **PROPS)
 ax = sns.stripplot(data=tot_summary_late.groupby("Session id")[["Lateral seed", "Medial seed"]].mean(), ax=axs[1],
                    dodge=True, size=2, color=".9", linewidth=0.6, jitter=0.1, order=["Medial seed", "Lateral seed"])
 

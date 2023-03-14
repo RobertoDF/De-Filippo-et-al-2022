@@ -41,5 +41,10 @@ cbar.ax.set_label("colorbar_inh") # needed to distinguish colobars
 for d in ["left", "top", "bottom", "right"]:
     plt.gca().spines[d].set_visible(False)
 
+
+
+axs.text(0.5, 1.15, "Putative inh", transform=axs.transAxes,
+      fontsize=10, fontweight='bold', va='top', ha='center', color="#00C2D1")
+
 axs.set_title("Medial seed - Lateral seed", fontsize=7)
 plt.show()

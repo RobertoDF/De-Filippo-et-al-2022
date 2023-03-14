@@ -57,9 +57,17 @@ legends_supplementary = {
       "Relationship between Z-scored amplitude (top row) or amplitude (bottom row) and each spatial axis (M-L, A-P or D-V). Spatial location "
       f"has a negligible effect on ripple amplitude.",
 
-   "Supplementary Figure 10. Putative excitatory and inhibitory neurons show similiar spiking patterns in lateral and medial ripples.":
-      "Grand average of the differences between medial and lateral ripples induced spiking activity in "
-      "putative excitatory (A) and inhibitory neurons (B).",
+   "Supplementary Figure 10. ":
+      "(A) Grand average of the differences between medial and lateral ripples induced spiking activity in "
+      "putative excitatory (left) and inhibitory neurons (right). Putative excitatory and inhibitory neurons "
+      "show similiar spiking patterns in lateral and medial ripples. "
+      "(B) Grand average of the differences between common and strong ripples induced spiking activity in "
+      "medial (left) and lateral ripples (right). Strong ripples are not associated with more spiking activity in the "
+      "early phase post ripple start (0-50 ms)."
+      "(C) Grand average of the differences between medial and lateral ripples induced spiking activity in "
+      "common (left) and strong ripples (right). Strong ripples are associated with considerable differences between medial and "
+      "lateral ripples."
+    ,
 
    "Supplementary Figure 11. Spiking rate and fraction of active neurons are significantly higher in medial ripples":
       f"(A) Fraction of active neurons per ripple grouped by ripple seed location. (Medial seed={100*round(data_sup_9_fraction_clu.groupby('Location seed').mean()['Fraction active neurons per ripple (%)']['Medial seed'], 2)}±"

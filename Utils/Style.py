@@ -12,5 +12,6 @@ palette_timelags ={"Strong ripples":"#F03A47", "Long ripples":"#F03A47", "Total 
 color_palette = sns.color_palette("flare", 255)
 
 palette_ML = {'Medial seed': color_palette[0], "Lateral seed": color_palette[254], 'Central seed':  color_palette[int(254/2)], 'Medial': color_palette[0], 'Central':  color_palette[int(254/2)], "Lateral": color_palette[254]}
+palette_HPF = {'DG':'#2292A4', 'CA3':'#FF4365', 'CA1':'#754668', 'ProS':'#EAC435', 'SUB':'#04080F'}
 
 palette_type_neuron={"Putative exc": "#D64933", "Putative inh": "#00C2D1"}

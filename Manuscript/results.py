@@ -152,11 +152,12 @@ results = {"Distance explains most of the ripple strength correlation variabilit
             f" number of engaged neurons and a higher spiking rate per cell, both in putative excitatory and inhibitory neurons. "
             f"The disparity in network engagement can possibly "
             f"be in part explained by electrophysiological differences across hippocampal sections (e.g. higher firing rate). "
-            f"We did not find differences in the number of firing neurons (medial = {round(normalized_cluster_count_per_probe['Medial'].mean(), 2)}, "
+            f"We did not find differences in the number of firing neurons across the entire hippocampal formation (medial = {round(normalized_cluster_count_per_probe['Medial'].mean(), 2)}, "
             f"lateral = {round(normalized_cluster_count_per_probe['Lateral'].mean(), 2)}, p-value = {'{:.2e}'.format(test_cluster_count)}, Mann-Whitney U test), " 
             f"we did, however, found differences in firing rate, waveform duration, and waveform shape (recovery slope and peak-through ratio, Supplementary Figure 13)."
-            f" Firing rate and waveform duration exhibited respectively "
-            f"a left- and right-shifted distribution in the lateral section, reflecting lower firing rate and slower action potentials."}
+            f" Firing rate and waveform duration in putative excitatory neurons exhibited respectively "
+            f"a left- and right-shifted distribution in the lateral section, reflecting lower firing rate and slower action potentials. "
+            f"Putative inhibitory interneurons in the lateral section showed both a slower action potential and a higher firing rate"}
 
 if Adapt_for_Nature_style is True:
     results = Naturize_text(results)

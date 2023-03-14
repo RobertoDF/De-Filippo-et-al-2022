@@ -20,10 +20,15 @@ with open(f"{output_folder_figures_calculations}/temp_data_figure_4.pkl", 'rb') 
     tot_summary, summary_fraction_active_clusters_per_ripples, \
     summary_fraction_active_clusters_per_ripples_by_neuron_type = dill.load(f)
 
+PROPS = {
+    'medianprops':{'color':'white'},
+}
+
 fig, axs = plt.subplots(1,2,figsize=(16,8))
 data = summary_fraction_active_clusters_per_ripples_early.groupby(["Session id", "Location seed"]).mean().reset_index()
 data["Fraction active neurons per ripple (%)"] = data["Fraction active neurons per ripple (%)"]  * 100
-sns.boxplot(data=data, x="Location seed", y="Fraction active neurons per ripple (%)", ax=axs[0],showfliers=False,  palette=palette_ML, order=["Medial seed", "Lateral seed"])
+sns.boxplot(data=data, x="Location seed", y="Fraction active neurons per ripple (%)",
+            ax=axs[0],showfliers=False,  palette=palette_ML, order=["Medial seed", "Lateral seed"], **PROPS)
 ax = sns.stripplot(data=data, x="Location seed", y="Fraction active neurons per ripple (%)",  ax=axs[0],  dodge=True, size=2, color=".9", linewidth=0.6, jitter=0.1, order=["Medial seed", "Lateral seed"])
 axs[0].set_title("Early phase (0-50 ms)")
 
@@ -50,7 +55,9 @@ if ttest_early_clus_per_ripple["p-val"].values[0]<0.05:
 
 data = summary_fraction_active_clusters_per_ripples_late.groupby(["Session id", "Location seed"]).mean().reset_index()
 data["Fraction active neurons per ripple (%)"] = data["Fraction active neurons per ripple (%)"]  * 100
-sns.boxplot(data=data, x="Location seed", y="Fraction active neurons per ripple (%)", ax=axs[1], showfliers=False, palette=palette_ML, order=["Medial seed", "Lateral seed"])
+
+sns.boxplot(data=data, x="Location seed", y="Fraction active neurons per ripple (%)", ax=axs[1],
+            showfliers=False, palette=palette_ML, order=["Medial seed", "Lateral seed"], **PROPS)
 ax = sns.stripplot(data=data, x="Location seed", y="Fraction active neurons per ripple (%)",  ax=axs[1],  dodge=True, size=2, color=".9", linewidth=0.6, jitter=0.1, order=["Medial seed", "Lateral seed"])
 axs[1].set_title("Late phase (50-120 ms)")
 

@@ -42,4 +42,10 @@ for d in ["left", "top", "bottom", "right"]:
     plt.gca().spines[d].set_visible(False)
 
 axs.set_title("Medial seed - Lateral seed", fontsize=7)
+
+axs.text(-0.1, 1.15, "A", transform=axs.transAxes,
+      fontsize=16, fontweight='bold', va='top', ha='right')
+
+axs.text(0.5, 1.15, "Putative exc", transform=axs.transAxes,
+      fontsize=10, fontweight='bold', va='top', ha='center', color="#D64933")
 plt.show()

@@ -8,10 +8,12 @@ from Utils.Settings import neuropixel_dataset, utils_folder
 from mpl_toolkits.axes_grid1.anchored_artists import AnchoredSizeBar
 import scipy
 import dill
+from statannotations.Annotator import Annotator
 from Utils.Settings import thr_start_stop, var_thr, output_folder_calculations, ripple_dur_lim, min_ripple_distance, ripple_power_sp_thr, ripple_thr, minimum_ripples_count_lag_analysis, thr_rip_cluster
 from matplotlib.lines import Line2D
+import pingouin as pg
 import os
-from Utils.Style import palette_ML
+from Utils.Style import palette_ML, palette_HPF
 from itertools import chain
 from scipy.stats import zscore
 from multiprocessing import Pool
@@ -198,6 +200,80 @@ def color_to_labels(axs, which_axes, minor_or_major, pos=1, *args, **kwargs):
                     color = [0, 0, 0]
                 xtick.set_color(color)
 
+
+def point_plot_modulation_ripples(summary_units_df_sub, dv, parent_area, order, filter_spiking, axs, ylabel):
+
+    _ = summary_units_df_sub[(filter_spiking) & (summary_units_df_sub['Parent brain region']==parent_area )].reset_index()[['Firing rate','unit_id','M-L',
+                                                                                                                    'Session id', 'Brain region', dv + ' medial', dv + ' lateral']]
+    _ = pd.wide_to_long(_.reset_index(), stubnames=dv, i=['Brain region','index'], j='Type', sep=' ', suffix=r'\w+').reset_index()
+    _['Type'] = _['Type'].str.capitalize()
+
+
+    ax = sns.pointplot(data=_, x='Brain region', y=dv, hue='Type', dodge=.5, errorbar='se',join=False,  palette=palette_ML, ax=axs, capsize=.2, order=order)
+    axs.axhline(1,color= 'k', linestyle='--')
+    color_to_labels_custom_palette(ax, 'x', 'major', palette_HPF, 1)
+    plt.xticks(rotation=45, ha='center')
+    axs.set_ylim((0,3))
+    axs.set_ylabel(ylabel)
+
+    stat = []
+    for area in _['Brain region'].unique():
+        sub = _[_['Brain region']==area]
+        if pg.normality(sub, group='Type', dv=dv)['normal'].all():
+            test = pg.ttest(sub[sub['Type']=='Medial'][dv], sub[sub['Type']=='Lateral'][dv])['p-val']
+        else:
+            test = pg.mwu(sub[sub['Type']=='Medial'][dv], sub[sub['Type']=='Lateral'][dv])['p-val']
+
+        if test[0] < .05:
+            stat.append(((area, 'Medial'), (area, 'Lateral')))
+
+    annot = Annotator(ax, data=_, pairs= stat,
+                       x='Brain region', y=dv, hue='Type', order=order)
+    (annot
+     .configure(test=None, test_short_name='custom test',  text_format='star', loc='inside', verbose=0)
+     .set_pvalues(pvalues=[.3]*len(stat))
+     .set_custom_annotations(['*']*len(stat))
+     .annotate());
+def color_to_labels_custom_palette(axs, which_axes, minor_or_major, palette, pos=1):
+    if which_axes == 'y':
+
+        if minor_or_major == 'minor':
+            for ytick in axs.get_yticklabels(minor='True'):
+                if ytick.get_text() != 'nan' and ytick.get_text() != []:
+                    name = ytick.get_text()
+                    name = pick_acronym(name, pos)
+                    color = palette[name]
+                else:
+                    color = [0, 0, 0]
+                ytick.set_color(color)
+        else:
+            for ytick in axs.get_yticklabels():
+                if ytick.get_text() != 'nan' and ytick.get_text() != []:
+                    name = ytick.get_text()
+                    name = pick_acronym(name, pos)
+                    color = rgb2hex([x / 255 for x in acronym_color_map.get(name)])
+                else:
+                    color = [0, 0, 0]
+                ytick.set_color(color)
+    else:
+        if minor_or_major == 'minor':
+            for xtick in axs.get_xticklabels(minor='True'):
+                if xtick.get_text() != 'nan' and xtick.get_text() != []:
+                    name = xtick.get_text()
+                    name = pick_acronym(name,pos)
+                    color = palette[name]
+                else:
+                    color = [0, 0, 0]
+                xtick.set_color(color)
+        else:
+            for xtick in axs.get_xticklabels():
+                if xtick.get_text() != 'nan' and xtick.get_text() != []:
+                    name = xtick.get_text()
+                    name = pick_acronym(name,pos)
+                    color = palette[name]
+                else:
+                    color = [0, 0, 0]
+                xtick.set_color(color)
 
 
 

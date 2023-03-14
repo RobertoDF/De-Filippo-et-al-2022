@@ -12,6 +12,9 @@ Figure 3         |  Figure 4
 :-------------------------:|:-------------------------:
 ![Figure 3](Output_figures/Figure_3.png "Figure 3") |  ![Figure 4](Output_figures/Figure_4.png "Figure 4")
 
+Figure 5         |  
+:-------------------------:|:-------------------------:
+![Figure 5](Output_figures/Figure_5.png "Figure 5") | 
 ### Instructions
 
 1. Clone this repository and download the pre-computed data from ~~[here](10.6084/m9.figshare.20209913)~~ a private link (available to reviewers only). It will be public upon publication.

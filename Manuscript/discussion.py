@@ -38,7 +38,8 @@ discussion = "Our results show for the first time that strong ripples propagate 
              " differences between the septal and intermediate hippocampus. Looking at units electrophysiological features we found some differences in the waveform shape and " \
              "duration. We can hypothesize that slower action potentials and, consequentially, " \
              "longer refractory periods hinder the ability" \
-             " to sustain protracted high frequency spiking. Accordingly, we found an increased firing rate and a smaller waveform duration in the septal pole. " \
+             " to sustain protracted high frequency spiking. Accordingly, we found an increased firing rate and a smaller waveform duration in putative excitatory " \
+             "neurons of the septal pole. " \
              "This might contribute to explain the prolonged ripples observed in the septal pole. " \
              "We can also speculate that the neuromodulatory inputs gradient, monoamine fibers have been shown to be stronger in the ventral part {Strange, 2014 #1158}, " \
              "might influence neurons responses. Serotonin {ul Haq, 2016 #1165; Wang, 2015 #1170}, noradrenaline {Ul Haq, 2012 #1166; Novitskaya, 2016 #1171} and acetylcholine {Zhang, 2021 #1167} " \
