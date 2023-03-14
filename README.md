@@ -9,7 +9,7 @@ Figure 1          |  Figure 2
 ![Figure 1](Output_figures/Figure_1.png "Figure 1") |  ![Figure 2](Output_figures/Figure_2.png "Figure 2")
 
 Figure 3         |  Figure 4 | Figure 5 
-:-------------------------:|:-------------------------:
+:-------------------------:|:-------------------------:| :-------------------------:
 ![Figure 3](Output_figures/Figure_3.png "Figure 3") |  ![Figure 4](Output_figures/Figure_4.png "Figure 4") | ![Figure 5](Output_figures/Figure_5.png "Figure 5") 
 
 
