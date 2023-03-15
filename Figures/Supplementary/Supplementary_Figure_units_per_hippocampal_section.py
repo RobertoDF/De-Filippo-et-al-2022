@@ -146,7 +146,7 @@ plt.figure(1).texts[3].set_position([0.629134, 0.988976])
 plt.figure(1).texts[3].set_text("Putative exc (waveform duration > 0.4 ms)")
 #% end: automatic generated code from pylustrator
 
-#plt.show()
+plt.show()
 plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_13", dpi=300)
 
 

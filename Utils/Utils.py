@@ -200,21 +200,52 @@ def color_to_labels(axs, which_axes, minor_or_major, pos=1, *args, **kwargs):
                     color = [0, 0, 0]
                 xtick.set_color(color)
 
+def plot_dist_ripple_mod(data, param, ax0):
+    g = sns.kdeplot(data=data, x=param,
+                    hue='Ripple seed', palette=palette_ML, ax=ax0, fill=True, gridsize=500, cut=0)
+    ax0.set_xlim((0, 15))
+    ax0.axvline(1,color= 'k', linestyle='--')
+    ax0.axvline(2,color= 'r', linestyle='--')
+    ax0.get_yaxis().set_visible(False)
 
-def point_plot_modulation_ripples(summary_units_df_sub, dv, parent_area, order, filter_spiking, axs, ylabel):
+    ax0.spines[['left']].set_visible(False)
 
-    _ = summary_units_df_sub[(filter_spiking) & (summary_units_df_sub['Parent brain region']==parent_area )].reset_index()[['Firing rate','unit_id','M-L',
+
+    norm_test = pg.normality(data=data, dv=param, group="Ripple seed")
+
+
+    if norm_test["normal"].all():
+        p_val = pg.ttest(data[data["Ripple seed"] == "Medial"][param],
+               data[data["Ripple seed"] == "Lateral"][param])["p-val"][0]
+        print("ttest: ", p_val)
+
+    else:
+        p_val = pg.mwu(data[data["Ripple seed"]=="Medial"][param], data[data["Ripple seed"]=="Lateral"][param])["p-val"][0]
+        cles = pg.mwu(data[data["Ripple seed"]=="Medial"][param], data[data["Ripple seed"]=="Lateral"][param])["CLES"][0]
+        print("mwu p-val and CLES: ", p_val, cles)
+
+    if p_val<.05:
+        ax0.text(.6, .7, "*",
+                    transform=ax0.transAxes,
+                    fontsize=15, ha='center', va='center');
+        ax0.text(.6, .8,  f"p-value = {'{:.2e}'.format(p_val)}",
+                        transform=ax0.transAxes,
+                        fontsize=10, ha='center', va='center');
+
+def point_plot_modulation_ripples(data, dv, parent_area, order, filter_spiking, axs, ylabel, ylim = [.5,3], palette=palette_HPF):
+
+    _ = data[(filter_spiking) & (data['Parent brain region']==parent_area )].reset_index()[['Firing rate','unit_id','M-L',
                                                                                                                     'Session id', 'Brain region', dv + ' medial', dv + ' lateral']]
     _ = pd.wide_to_long(_.reset_index(), stubnames=dv, i=['Brain region','index'], j='Type', sep=' ', suffix=r'\w+').reset_index()
     _['Type'] = _['Type'].str.capitalize()
 
 
     ax = sns.pointplot(data=_, x='Brain region', y=dv, hue='Type', dodge=.5, errorbar='se',join=False,  palette=palette_ML, ax=axs, capsize=.2, order=order)
-    axs.axhline(1,color= 'k', linestyle='--')
-    color_to_labels_custom_palette(ax, 'x', 'major', palette_HPF, 1)
+    ax.axhline(1,color= 'k', linestyle='--')
+    color_to_labels_custom_palette(ax, 'x', 'major', palette, 1)
     plt.xticks(rotation=45, ha='center')
-    axs.set_ylim((0,3))
-    axs.set_ylabel(ylabel)
+    ax.set_ylim(ylim)
+    ax.set_ylabel(ylabel)
 
     stat = []
     for area in _['Brain region'].unique():
@@ -227,13 +258,17 @@ def point_plot_modulation_ripples(summary_units_df_sub, dv, parent_area, order, 
         if test[0] < .05:
             stat.append(((area, 'Medial'), (area, 'Lateral')))
 
-    annot = Annotator(ax, data=_, pairs= stat,
-                       x='Brain region', y=dv, hue='Type', order=order)
-    (annot
-     .configure(test=None, test_short_name='custom test',  text_format='star', loc='inside', verbose=0)
-     .set_pvalues(pvalues=[.3]*len(stat))
-     .set_custom_annotations(['*']*len(stat))
-     .annotate());
+    if len(stat) > 0:
+        annot = Annotator(ax, data=_, pairs=stat,
+                          x='Brain region', y=dv, hue='Type', order=order)
+        (annot
+         .configure(test=None, test_short_name='custom test', text_format='star', loc='inside', verbose=0)
+         .set_pvalues(pvalues=[.3] * len(stat))
+         .set_custom_annotations(['*'] * len(stat))
+         .annotate());
+#axs[1].text(.6, .7, 'Cohen's d: ' + str(round(ttest_late_spiking['cohen-d'].values[0], 2)), transform=axs[1].transAxes,fontsize=6, ha='center', va='center');
+
+
 def color_to_labels_custom_palette(axs, which_axes, minor_or_major, palette, pos=1):
     if which_axes == 'y':
 
@@ -241,6 +276,7 @@ def color_to_labels_custom_palette(axs, which_axes, minor_or_major, palette, pos
             for ytick in axs.get_yticklabels(minor='True'):
                 if ytick.get_text() != 'nan' and ytick.get_text() != []:
                     name = ytick.get_text()
+                    print(name)
                     name = pick_acronym(name, pos)
                     color = palette[name]
                 else:
@@ -250,6 +286,7 @@ def color_to_labels_custom_palette(axs, which_axes, minor_or_major, palette, pos
             for ytick in axs.get_yticklabels():
                 if ytick.get_text() != 'nan' and ytick.get_text() != []:
                     name = ytick.get_text()
+                    print(name + "2")
                     name = pick_acronym(name, pos)
                     color = rgb2hex([x / 255 for x in acronym_color_map.get(name)])
                 else:
@@ -260,7 +297,7 @@ def color_to_labels_custom_palette(axs, which_axes, minor_or_major, palette, pos
             for xtick in axs.get_xticklabels(minor='True'):
                 if xtick.get_text() != 'nan' and xtick.get_text() != []:
                     name = xtick.get_text()
-                    name = pick_acronym(name,pos)
+                    name = pick_acronym(name, pos)
                     color = palette[name]
                 else:
                     color = [0, 0, 0]

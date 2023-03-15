@@ -16,7 +16,7 @@ results = {"Distance explains most of the ripple strength correlation variabilit
             f"Ripple strength and duration are highly correlated in each session (mean r = {round(r_ripple_duration_amplitude_list.mean()[0],2)} ± "
             f"{round(r_ripple_duration_amplitude_list.sem()[0],3)}, Supplementary Figure 2). "
             f"Notably ripple strength correlates significantly better "
-            f"with the hippocampal population spiking rate on a ripple-to-ripple basis compared to ripple duration alone (p = {t_test_corr_spikes_vs_dur_or_strength}, Supplementary Figure 3). "
+            f"with the hippocampal population spiking rate on a ripple-to-ripple basis compared to ripple duration alone (p-value = {t_test_corr_spikes_vs_dur_or_strength}, Supplementary Figure 3). "
             f"Clear ripples were observed uniquely in "
             f"the hippocampal formation (CA1, CA2, CA3, DG, SUB, ProS). Likewise, ripple-induced voltage "
             f"deflections (RIVD, integral of the unfiltered LFP envelope) "

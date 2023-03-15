@@ -19,34 +19,34 @@ scene = Scene()
 
 # Add to scene
 scene.add(Points(summary_units_df_sub[summary_units_df_sub["Brain region"]=="CA1"]
-                 [["A-P", "D-V", "M-L"]].values, name="CELLS", colors="#754668"))
+                 [["A-P", "D-V", "L-R"]].values, name="CELLS", colors="#754668"))
 
 
 #ca3 = scene.add_brain_region("CA3", alpha=0.15, color="#FF4365")
 
 # Add to scene
 scene.add(Points(summary_units_df_sub[summary_units_df_sub["Brain region"]=="CA3"]
-                 [["A-P", "D-V", "M-L"]].values, name="CELLS", colors="#FF4365"))
+                 [["A-P", "D-V", "L-R"]].values, name="CELLS", colors="#FF4365"))
 
 
 #ca3 = scene.add_brain_region("DG", alpha=0.15, color="#2292A4")
 
 # Add to scene
 scene.add(Points(summary_units_df_sub[summary_units_df_sub["Brain region"]=="DG"]
-                 [["A-P", "D-V", "M-L"]].values, name="CELLS", colors="#2292A4"))
+                 [["A-P", "D-V", "L-R"]].values, name="CELLS", colors="#2292A4"))
 
 
 #ProS = scene.add_brain_region("ProS", alpha=0.15, color="#EAC435")
 
 # Add to scene
 scene.add(Points(summary_units_df_sub[summary_units_df_sub["Brain region"]=="ProS"]
-                 [["A-P", "D-V", "M-L"]].values, name="CELLS", colors="#EAC435"))
+                 [["A-P", "D-V", "L-R"]].values, name="CELLS", colors="#EAC435"))
 
 #SUB = scene.add_brain_region("SUB", alpha=0.15, color="#04080F")
 
 # Add to scene
 scene.add(Points(summary_units_df_sub[summary_units_df_sub["Brain region"]=="SUB"]
-                 [["A-P", "D-V", "M-L"]].values, name="CELLS", colors="#04080F"))
+                 [["A-P", "D-V", "L-R"]].values, name="CELLS", colors="#04080F"))
 
 # render
 cam0 = {

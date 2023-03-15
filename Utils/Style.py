@@ -12,6 +12,11 @@ palette_timelags ={"Strong ripples":"#F03A47", "Long ripples":"#F03A47", "Total 
 color_palette = sns.color_palette("flare", 255)
 
 palette_ML = {'Medial seed': color_palette[0], "Lateral seed": color_palette[254], 'Central seed':  color_palette[int(254/2)], 'Medial': color_palette[0], 'Central':  color_palette[int(254/2)], "Lateral": color_palette[254]}
+
+palette_ML['Lateral ripple engagement'] = (0.29408557, 0.13721193, 0.38442775)
+palette_ML['Medial ripple engagement'] = (0.92891402, 0.68494686, 0.50173994)
+palette_ML['No preference'] = (0.8,.8,.8)
+
 palette_HPF = {'DG':'#2292A4', 'CA3':'#FF4365', 'CA1':'#754668', 'ProS':'#EAC435', 'SUB':'#04080F'}
 
 palette_type_neuron={"Putative exc": "#D64933", "Putative inh": "#00C2D1"}
