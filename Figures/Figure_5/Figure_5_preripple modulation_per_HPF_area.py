@@ -19,6 +19,7 @@ order= ['CA1',  'CA3', 'DG', 'ProS', 'SUB']
 dv = 'Pre-ripple modulation'
 ylabel='Pre-ripple modulation (20-0ms)'
 filter_spiking = summary_units_df_sub['Firing rate (20-0 ms) medial']>0.025
-point_plot_modulation_ripples(summary_units_df_sub, dv,parent_area,order,filter_spiking, axs, ylabel)
+ylim = [-.25, .5]
+point_plot_modulation_ripples(summary_units_df_sub, dv,parent_area,order,filter_spiking, axs, ylabel, ylim)
 
 plt.show()

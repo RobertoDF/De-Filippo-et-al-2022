@@ -18,7 +18,7 @@ fig, axs = plt.subplots(1,5)
 axs = axs.ravel()
 
 def my_autopct(pct):
-    return ('%.2f'  % pct + " %") if pct > 20 else ''
+    return ('%.2f'  % pct + " %") if pct > 5 else ''
 
 
 for q, area in zip(range(5), data.index.get_level_values('Brain region').unique()):
@@ -28,8 +28,16 @@ for q, area in zip(range(5), data.index.get_level_values('Brain region').unique(
     plt.setp(autopcts, **{'color':'white', 'weight':'bold', 'fontsize':3.5})
 
     axs[q].xaxis.set_label_position('top')
-    axs[q].set_title('Ripple type engagement', fontsize=3)
+    axs[q].set_title(area, fontsize=3)
 
+#% start: automatic generated code from pylustrator
+plt.figure(1).ax_dict = {ax.get_label(): ax for ax in plt.figure(1).axes}
+import matplotlib as mpl
+plt.figure(1).axes[0].texts[3].set_position([0.583121, -0.428003])
+plt.figure(1).axes[1].texts[3].set_position([0.593053, -0.325041])
+plt.figure(1).axes[3].texts[3].set_position([0.696500, -0.214948])
+plt.figure(1).axes[4].texts[3].set_position([0.597037, -0.259074])
+#% end: automatic generated code from pylustrator
 #plt.show()
 
 plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_18", dpi=300)

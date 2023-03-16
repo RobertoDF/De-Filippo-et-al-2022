@@ -20,16 +20,23 @@ summary_units_df = pd.concat(spikes_summary.values())
 
 neurons_per_area = summary_units_df.groupby('ecephys_structure_acronym').size()
 
-summary_units_df['Ripple modulation (0-50 ms) medial'] = summary_units_df['Firing rate (0-50 ms) medial'] / summary_units_df['Firing rate (100-0 ms) medial']
-summary_units_df['Ripple modulation (0-50 ms) lateral'] = summary_units_df['Firing rate (0-50 ms) lateral'] / summary_units_df['Firing rate (100-0 ms) lateral']
-summary_units_df['Ripple modulation (50-120 ms) medial'] = summary_units_df['Firing rate (50-120 ms) medial'] / summary_units_df['Firing rate (100-0 ms) medial']
-summary_units_df['Ripple modulation (50-120 ms) lateral'] = summary_units_df['Firing rate (50-120 ms) lateral'] / summary_units_df['Firing rate (100-0 ms) lateral']
-summary_units_df['Ripple modulation (0-120 ms) medial'] = summary_units_df['Firing rate (0-120 ms) medial'] / summary_units_df['Firing rate (100-0 ms) medial']
-summary_units_df['Ripple modulation (0-120 ms) lateral'] = summary_units_df['Firing rate (0-120 ms) lateral'] / summary_units_df['Firing rate (100-0 ms) lateral']
+summary_units_df['Ripple modulation (0-50 ms) medial'] = (summary_units_df['Firing rate (0-50 ms) medial'] - summary_units_df['Firing rate (120-0 ms) medial'] )/ \
+                                                            ( summary_units_df['Firing rate (120-0 ms) medial'])
+summary_units_df['Ripple modulation (0-50 ms) lateral'] = (summary_units_df['Firing rate (0-50 ms) lateral'] - summary_units_df['Firing rate (120-0 ms) lateral']) / \
+                                                            (summary_units_df['Firing rate (120-0 ms) lateral'])
+summary_units_df['Ripple modulation (50-120 ms) medial'] = (summary_units_df['Firing rate (50-120 ms) medial']- summary_units_df['Firing rate (120-0 ms) medial']) / \
+                                                               ( summary_units_df['Firing rate (120-0 ms) medial'])
+summary_units_df['Ripple modulation (50-120 ms) lateral'] = (summary_units_df['Firing rate (50-120 ms) lateral']- summary_units_df['Firing rate (120-0 ms) lateral']) / \
+                                                               ( summary_units_df['Firing rate (120-0 ms) lateral'])
+summary_units_df['Ripple modulation (0-120 ms) medial'] = (summary_units_df['Firing rate (0-120 ms) medial'] - summary_units_df['Firing rate (120-0 ms) medial'])/ \
+                                                            (summary_units_df['Firing rate (120-0 ms) medial'] )
+summary_units_df['Ripple modulation (0-120 ms) lateral'] = (summary_units_df['Firing rate (0-120 ms) lateral']-summary_units_df['Firing rate (120-0 ms) lateral'])/\
+                                                            ( summary_units_df['Firing rate (120-0 ms) lateral'])
 
-summary_units_df['Pre-ripple modulation medial'] = summary_units_df['Firing rate (20-0 ms) medial'] / summary_units_df['Firing rate (100-20 ms) medial']
-summary_units_df['Pre-ripple modulation lateral'] = summary_units_df['Firing rate (20-0 ms) lateral'] /  summary_units_df['Firing rate (100-20 ms) lateral']
-
+summary_units_df['Pre-ripple modulation medial'] = (summary_units_df['Firing rate (20-0 ms) medial'] - summary_units_df['Firing rate (120-20 ms) medial'] ) / \
+                                                (summary_units_df['Firing rate (120-20 ms) medial'] )
+summary_units_df['Pre-ripple modulation lateral'] = (summary_units_df['Firing rate (20-0 ms) lateral']-summary_units_df['Firing rate (120-20 ms) lateral']) /  \
+                                            (summary_units_df['Firing rate (120-20 ms) lateral'])
 
 
 summary_units_df_sub = summary_units_df[(summary_units_df['ecephys_structure_acronym'].isin(count_areas_recorded[count_areas_recorded>8].index))&
@@ -52,18 +59,24 @@ summary_units_df_sub.columns = summary_units_df_sub.columns.str.capitalize()
 
 summary_units_df_sub = summary_units_df_sub.rename(columns={"Left right ccf coordinate":"L-R", "Anterior posterior ccf coordinate":"A-P", "Dorsal ventral ccf coordinate":"D-V"})
 summary_units_df_sub = summary_units_df_sub.rename(columns={"Ecephys structure acronym":"Brain region", "Parent area":"Parent brain region"})
+
 summary_units_df_sub["M-L"] = summary_units_df_sub["L-R"] - 5691.510009765625
 
+
 def conditions_type_engagement(s):
-    if s['Ripple modulation (0-50 ms) medial']/s['Ripple modulation (0-50 ms) lateral']>2:
-        return 'Medial ripple engagement'
-    elif s['Ripple modulation (0-50 ms) lateral']/s['Ripple modulation (0-50 ms) medial']>2:
-        return  'Lateral ripple engagement'
+    if (s['Ripple modulation (0-50 ms) medial'] > .5) | (s['Ripple modulation (0-50 ms) lateral'] > .5):
+        if ((s['Ripple modulation (0-50 ms) medial']) / (s['Ripple modulation (0-50 ms) lateral'] + 1e-9)) > 2:
+            return 'Medial ripple engagement'
+        elif ((s['Ripple modulation (0-50 ms) lateral']) / (s['Ripple modulation (0-50 ms) medial'] + 1e-9)) > 2:
+            return 'Lateral ripple engagement'
+        else:
+            return 'No preference'
     else:
         return 'No preference'
 
+
 def conditions_ripple_engagement(s):
-    if (s['Ripple modulation (0-50 ms) medial']>2) | (s['Ripple modulation (0-50 ms) lateral']>2):
+    if (s['Ripple modulation (0-50 ms) medial'] > .5) | ((s['Ripple modulation (0-50 ms) lateral']) > .5):
         return 'Ripple engagement'
     else:
         return 'No engagement'
@@ -75,3 +88,4 @@ summary_units_df_sub['Ripple engagement'] = summary_units_df_sub[(summary_units_
 
 with open(f"{ output_folder_figures_calculations}/temp_data_figure_5.pkl", "wb") as fp:
     dill.dump(summary_units_df_sub, fp)
+

@@ -19,7 +19,7 @@ _ = pd.DataFrame(summary_units_df_sub[(summary_units_df_sub['Firing rate (0-120 
 
 
 def my_autopct(pct):
-    return ('%.2f' % pct + " %") if pct > 20 else ''
+    return ('%.2f' % pct + " %") if pct > 5 else ''
 
 fig, ax = plt.subplots()
 _, _, autopcts = ax.pie(_.values.squeeze(),colors=[palette_ML[key] for key in _.index], autopct=my_autopct)

@@ -17,7 +17,7 @@ fig, axs = plt.subplots(3, 2, figsize=(10,15))
 
 parent_area='Isocortex'
 order= ['VIS', 'VISam', 'VISpm', 'VISp', 'VISl', 'VISrl', 'VISal']
-ylim= [0.5,1.5]
+ylim= [-0.25,0.5]
 dv = 'Ripple modulation (0-50 ms)'
 ylabel = 'Early ripple modulation (0-50 ms)'
 filter_spiking = summary_units_df_sub['Firing rate (0-120 ms) medial']>0.025

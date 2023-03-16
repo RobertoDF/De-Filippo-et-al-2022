@@ -203,9 +203,9 @@ def color_to_labels(axs, which_axes, minor_or_major, pos=1, *args, **kwargs):
 def plot_dist_ripple_mod(data, param, ax0):
     g = sns.kdeplot(data=data, x=param,
                     hue='Ripple seed', palette=palette_ML, ax=ax0, fill=True, gridsize=500, cut=0)
-    ax0.set_xlim((0, 15))
-    ax0.axvline(1,color= 'k', linestyle='--')
-    ax0.axvline(2,color= 'r', linestyle='--')
+    ax0.set_xlim((-1, 15))
+    ax0.axvline(0,color= 'k', linestyle='--')
+    ax0.axvline(1,color= 'r', linestyle='--')
     ax0.get_yaxis().set_visible(False)
 
     ax0.spines[['left']].set_visible(False)
@@ -232,7 +232,7 @@ def plot_dist_ripple_mod(data, param, ax0):
                         transform=ax0.transAxes,
                         fontsize=10, ha='center', va='center');
 
-def point_plot_modulation_ripples(data, dv, parent_area, order, filter_spiking, axs, ylabel, ylim = [.5,3], palette=palette_HPF):
+def point_plot_modulation_ripples(data, dv, parent_area, order, filter_spiking, axs, ylabel, ylim = [-.5,2], palette=palette_HPF):
 
     _ = data[(filter_spiking) & (data['Parent brain region']==parent_area )].reset_index()[['Firing rate','unit_id','M-L',
                                                                                                                     'Session id', 'Brain region', dv + ' medial', dv + ' lateral']]
@@ -241,7 +241,7 @@ def point_plot_modulation_ripples(data, dv, parent_area, order, filter_spiking, 
 
 
     ax = sns.pointplot(data=_, x='Brain region', y=dv, hue='Type', dodge=.5, errorbar='se',join=False,  palette=palette_ML, ax=axs, capsize=.2, order=order)
-    ax.axhline(1,color= 'k', linestyle='--')
+    ax.axhline(0, color='k', linestyle='--')
     color_to_labels_custom_palette(ax, 'x', 'major', palette, 1)
     plt.xticks(rotation=45, ha='center')
     ax.set_ylim(ylim)

@@ -15,7 +15,7 @@ for area in summary_units_df_sub['Brain region'].unique():
     palette_areas[area] = '#' + ''.join(f'{i:02X}' for i in acronym_color_map[area]);
 fig, axs = plt.subplots(1,3,  figsize=(15,5))
 
-ylim = [.5, 1.5]
+ylim = [-.25, .5]
 parent_area='Isocortex'
 order= ['VIS', 'VISam', 'VISpm', 'VISp', 'VISl', 'VISrl', 'VISal']
 
