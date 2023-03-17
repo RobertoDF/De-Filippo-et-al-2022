@@ -19,7 +19,7 @@ for area in summary_units_df_sub["Parent brain region"].unique():
 
 g = sns.lmplot(data=summary_units_df_sub, x='Firing rate (0-50 ms)', y='Firing rate (120-0 ms)',
                hue='Parent brain region',
-               palette=palette_parent_areas, scatter_kws=dict(alpha=.3, s=3),
+               palette=palette_parent_areas, scatter_kws=dict(alpha=.3, s=.5),
                hue_order=['HPF', 'Isocortex', 'MB', 'TH'], height=5, aspect=1, legend=False)
 
 yg = {'HPF': .8, 'Isocortex': .85, 'MB': .9, 'TH': .95}

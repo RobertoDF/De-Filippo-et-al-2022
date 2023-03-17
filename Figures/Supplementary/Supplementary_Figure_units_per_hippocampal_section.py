@@ -1,13 +1,19 @@
 from Utils.Settings import output_folder_calculations, output_folder_supplementary, var_thr, waveform_PT_ratio_thr, waveform_dur_thr , isi_violations_thr, amplitude_cutoff_thr, presence_ratio_thr, Adapt_for_Nature_style
 from Utils.Utils import Naturize
 import dill
+import pandas as pd
+import numpy as np
 import pingouin as pg
 from scipy.stats import ks_2samp
 import matplotlib.pyplot as plt
 import seaborn as sns
 from Utils.Style import palette_ML
-import pylustrator
 import Utils.Style
+
+
+with open(f'{output_folder_calculations}/HPF_waveforms.pkl', 'rb') as f:
+    exc_lat, exc_med, inh_lat, inh_med, time = dill.load(f)
+
 
 with open(f'{output_folder_calculations}/clusters_features_per_section.pkl', 'rb') as f:
     total_clusters = dill.load(f)
@@ -57,97 +63,107 @@ def plot_distributions(total_units, ax0, ax1, param, legend):
         ax0.get_legend().remove()
         ax1.get_legend().remove()
 
-#pylustrator.start()
 
-fig, ax = plt.subplots(6, 4, figsize=(10,10))
+
+fig, ax = plt.subplots(8, 4, figsize=(10,10))
+
+ax1 = plt.subplot2grid((8, 4), (0, 0), colspan=2, rowspan=2)
+
+ax2 = plt.subplot2grid((8, 4), (0, 2), colspan=2, rowspan=2)
+
+pd.DataFrame(np.vstack(exc_lat), columns=time*1000).mean().plot( color=palette_ML["Lateral"], ax=ax2)
+pd.DataFrame(np.vstack(exc_med), columns=time*1000).mean().plot( color=palette_ML["Medial"], ax=ax2)
+
+pd.DataFrame(np.vstack(inh_lat), columns=time*1000).mean().plot( color=palette_ML["Lateral"], ax=ax1)
+pd.DataFrame(np.vstack(inh_med), columns=time*1000).mean().plot( color=palette_ML["Medial"], ax=ax1)
+
+ax1.set_xlabel("Time (ms)")
+ax2.set_xlabel("Time (ms)")
+
+ax1.set_xlabel("Time (ms)")
+ax2.set_xlabel("Time (ms)")
+
+ax1.set_title("Putative inhibitory")
+ax2.set_title("Putative excitatory")
+
+ax1.text(-0.1, 1.15, "A", transform=ax1.transAxes,
+      fontsize=16, fontweight='bold', va='top', ha='right')
+
+ax2.text(-0.1, 1.15, "B", transform=ax2.transAxes,
+      fontsize=16, fontweight='bold', va='top', ha='right')
+
 param="Waveform duration"
-ax0 = ax[0,0]
-ax1 = ax[0,1]
+ax0 = ax[2,0]
+ax1 = ax[2,1]
 legend = True
 plot_distributions(total_units[total_units["Waveform duration"]<waveform_dur_thr], ax0, ax1, param, legend)
 param="Firing rate"
-ax0 = ax[1,0]
-ax1 = ax[1,1]
-legend = False
-plot_distributions(total_units[(total_units["Waveform duration"]<waveform_dur_thr)&(total_units["presence_ratio"]>presence_ratio_thr)], ax0, ax1, param, legend)
-ax[1,0].set_xlim(-5,50)
-ax[1,1].set_xlim(-5,50)
-param="Waveform amplitude"
-ax0 = ax[2,0]
-ax1 = ax[2,1]
-plot_distributions(total_units[total_units["Waveform duration"]<waveform_dur_thr], ax0, ax1, param, legend)
-param="Waveform repolarization slope"
 ax0 = ax[3,0]
 ax1 = ax[3,1]
-plot_distributions(total_units[total_units["Waveform duration"]<waveform_dur_thr], ax0, ax1, param, legend)
-param="Waveform recovery slope"
+legend = False
+plot_distributions(total_units[(total_units["Waveform duration"]<waveform_dur_thr)&(total_units["presence_ratio"]>presence_ratio_thr)], ax0, ax1, param, legend)
+ax[3,0].set_xlim(-5,50)
+ax[3,1].set_xlim(-5,50)
+param="Waveform amplitude"
 ax0 = ax[4,0]
 ax1 = ax[4,1]
 plot_distributions(total_units[total_units["Waveform duration"]<waveform_dur_thr], ax0, ax1, param, legend)
-ax[4,0].set_xlim(-1,.1)
-ax[4,1].set_xlim(-1,.1)
-param="Waveform PT ratio"
+param="Waveform repolarization slope"
 ax0 = ax[5,0]
 ax1 = ax[5,1]
 plot_distributions(total_units[total_units["Waveform duration"]<waveform_dur_thr], ax0, ax1, param, legend)
-ax[5,0].set_xlim(0,3)
-ax[5,1].set_xlim(0,3)
+param="Waveform recovery slope"
+ax0 = ax[6,0]
+ax1 = ax[6,1]
+plot_distributions(total_units[total_units["Waveform duration"]<waveform_dur_thr], ax0, ax1, param, legend)
+ax[6,0].set_xlim(-1,.1)
+ax[6,1].set_xlim(-1,.1)
+param="Waveform PT ratio"
+ax0 = ax[7,0]
+ax1 = ax[7,1]
+plot_distributions(total_units[total_units["Waveform duration"]<waveform_dur_thr], ax0, ax1, param, legend)
+ax[7,0].set_xlim(0,3)
+ax[7,1].set_xlim(0,3)
 
 param="Waveform duration"
-ax0 = ax[0,2]
-ax1 = ax[0,3]
+ax0 = ax[2,2]
+ax1 = ax[2,3]
 legend = True
 plot_distributions(total_units[total_units["Waveform duration"]>waveform_dur_thr], ax0, ax1, param, legend)
 param="Firing rate"
-ax0 = ax[1,2]
-ax1 = ax[1,3]
-legend = False
-plot_distributions(total_units[(total_units["Waveform duration"]>waveform_dur_thr)&(total_units["presence_ratio"]>presence_ratio_thr)], ax0, ax1, param, legend)
-ax[1,2].set_xlim(-5,20)
-ax[1,3].set_xlim(-5,20)
-param="Waveform amplitude"
-ax0 = ax[2,2]
-ax1 = ax[2,3]
-plot_distributions(total_units[total_units["Waveform duration"]>waveform_dur_thr], ax0, ax1, param, legend)
-param="Waveform repolarization slope"
 ax0 = ax[3,2]
 ax1 = ax[3,3]
-plot_distributions(total_units[total_units["Waveform duration"]>waveform_dur_thr], ax0, ax1, param, legend)
-param="Waveform recovery slope"
+legend = False
+plot_distributions(total_units[(total_units["Waveform duration"]>waveform_dur_thr)&(total_units["presence_ratio"]>presence_ratio_thr)], ax0, ax1, param, legend)
+ax[3,2].set_xlim(-5,20)
+ax[3,3].set_xlim(-5,20)
+param="Waveform amplitude"
 ax0 = ax[4,2]
 ax1 = ax[4,3]
 plot_distributions(total_units[total_units["Waveform duration"]>waveform_dur_thr], ax0, ax1, param, legend)
-ax[4,2].set_xlim(-.5,.1)
-ax[4,3].set_xlim(-.5,.1)
-param="Waveform PT ratio"
+param="Waveform repolarization slope"
 ax0 = ax[5,2]
 ax1 = ax[5,3]
 plot_distributions(total_units[total_units["Waveform duration"]>waveform_dur_thr], ax0, ax1, param, legend)
-ax[5,2].set_xlim(0,1)
-ax[5,3].set_xlim(0,1)
+param="Waveform recovery slope"
+ax0 = ax[6,2]
+ax1 = ax[6,3]
+plot_distributions(total_units[total_units["Waveform duration"]>waveform_dur_thr], ax0, ax1, param, legend)
+ax[6,2].set_xlim(-.5,.1)
+ax[6,3].set_xlim(-.5,.1)
+param="Waveform PT ratio"
+ax0 = ax[7,2]
+ax1 = ax[7,3]
+plot_distributions(total_units[total_units["Waveform duration"]>waveform_dur_thr], ax0, ax1, param, legend)
+ax[7,2].set_xlim(0,1)
+ax[7,3].set_xlim(0,1)
 fig.tight_layout()
 
-#% start: automatic generated code from pylustrator
-plt.figure(1).ax_dict = {ax.get_label(): ax for ax in plt.figure(1).axes}
-import matplotlib as mpl
-plt.figure(1).text(0.5, 0.5, 'New Text', transform=plt.figure(1).transFigure)  # id=plt.figure(1).texts[0].new
-plt.figure(1).texts[0].set_position([0.036000, 0.981250])
-plt.figure(1).texts[0].set_text("A")
-plt.figure(1).texts[0].set_weight("bold")
-plt.figure(1).text(0.5, 0.5, 'New Text', transform=plt.figure(1).transFigure)  # id=plt.figure(1).texts[1].new
-plt.figure(1).texts[1].set_position([0.512000, 0.981250])
-plt.figure(1).texts[1].set_text("B")
-plt.figure(1).texts[1].set_weight("bold")
-plt.figure(1).text(0.5, 0.5, 'New Text', transform=plt.figure(1).transFigure)  # id=plt.figure(1).texts[2].new
-plt.figure(1).texts[2].set_position([0.138189, 0.988976])
-plt.figure(1).texts[2].set_text("Putative inh (waveform duration < 0.4 ms)")
-plt.figure(1).text(0.5, 0.5, 'New Text', transform=plt.figure(1).transFigure)  # id=plt.figure(1).texts[3].new
-plt.figure(1).texts[3].set_position([0.629134, 0.988976])
-plt.figure(1).texts[3].set_text("Putative exc (waveform duration > 0.4 ms)")
-#% end: automatic generated code from pylustrator
 
-plt.show()
+#plt.show()
+
 plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_13", dpi=300)
+
 
 
 
