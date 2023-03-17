@@ -14,7 +14,7 @@ palette_ML['Lateral ripple engagement'] = (0.29408557, 0.13721193, 0.38442775)
 palette_ML['Medial ripple engagement'] = (0.92891402, 0.68494686, 0.50173994)
 palette_ML['No preference'] = (0.8,.8,.8)
 
-_ = pd.DataFrame(summary_units_df_sub[(summary_units_df_sub['Firing rate (0-120 ms) medial']>0.025)&
+_ = pd.DataFrame(summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) medial']>0.025)&
                      (summary_units_df_sub['Parent brain region']=='HPF' )]['Ripple type engagement'].value_counts())
 
 

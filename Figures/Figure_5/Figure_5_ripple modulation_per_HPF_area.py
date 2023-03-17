@@ -18,7 +18,7 @@ order= ['CA1',  'CA3', 'DG', 'ProS', 'SUB']
 
 dv = 'Ripple modulation (0-50 ms)'
 ylabel = 'Early ripple modulation (0-50 ms)'
-filter_spiking = summary_units_df_sub['Firing rate (0-120 ms) medial']>0.025
+filter_spiking = summary_units_df_sub['Firing rate (0-50 ms) medial']>0.025
 point_plot_modulation_ripples(summary_units_df_sub, dv, parent_area, order,filter_spiking,axs[0], ylabel)
 axs[0].get_legend().remove()
 dv = 'Ripple modulation (50-120 ms)'

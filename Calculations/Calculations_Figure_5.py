@@ -62,7 +62,6 @@ summary_units_df_sub = summary_units_df_sub.rename(columns={"Ecephys structure a
 
 summary_units_df_sub["M-L"] = summary_units_df_sub["L-R"] - 5691.510009765625
 
-
 def conditions_type_engagement(s):
     if (s['Ripple modulation (0-50 ms) medial'] > .5) | (s['Ripple modulation (0-50 ms) lateral'] > .5):
         if ((s['Ripple modulation (0-50 ms) medial']) / (s['Ripple modulation (0-50 ms) lateral'] + 1e-9)) > 2:
@@ -81,9 +80,9 @@ def conditions_ripple_engagement(s):
     else:
         return 'No engagement'
 
-summary_units_df_sub['Ripple type engagement'] = summary_units_df_sub[(summary_units_df_sub['Firing rate (0-120 ms) medial']>0.025)\
+summary_units_df_sub['Ripple type engagement'] = summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) medial']>0.025)\
                                                                      ].apply(conditions_type_engagement, axis=1)
-summary_units_df_sub['Ripple engagement'] = summary_units_df_sub[(summary_units_df_sub['Firing rate (0-120 ms) medial']>0.025)\
+summary_units_df_sub['Ripple engagement'] = summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) medial']>0.025)\
                                                                  ].apply(conditions_ripple_engagement, axis=1)
 
 with open(f"{ output_folder_figures_calculations}/temp_data_figure_5.pkl", "wb") as fp:

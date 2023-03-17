@@ -157,7 +157,12 @@ results = {"Distance explains most of the ripple strength correlation variabilit
             f"we did, however, found differences in firing rate, waveform duration, and waveform shape (recovery slope and peak-through ratio, Supplementary Figure 13)."
             f" Firing rate and waveform duration in putative excitatory neurons exhibited respectively "
             f"a left- and right-shifted distribution in the lateral section, reflecting lower firing rate and slower action potentials. "
-            f"Putative inhibitory interneurons in the lateral section showed both a slower action potential and a higher firing rate"}
+            f"Putative inhibitory interneurons in the lateral section showed both a slower action potential and a higher firing rate.",
+
+           "Ripple seed location is associated with different pattern of modulation across brain regions":
+           "To understand the effect of medial and lateral ripples on individual neurons in different brain regions we calculated a modulation index"
+           "subtracting the baseline spiking rate from the spiking rate during the ripple and dividing by the baseline"
+           }
 
 if Adapt_for_Nature_style is True:
     results = Naturize_text(results)

@@ -76,7 +76,8 @@ pd.DataFrame(np.vstack(exc_med), columns=time*1000).mean().plot( color=palette_M
 
 pd.DataFrame(np.vstack(inh_lat), columns=time*1000).mean().plot( color=palette_ML["Lateral"], ax=ax1)
 pd.DataFrame(np.vstack(inh_med), columns=time*1000).mean().plot( color=palette_ML["Medial"], ax=ax1)
-
+ax1.set_xlim((0.25,1.5))
+ax2.set_xlim((0.25,1.5))
 ax1.set_xlabel("Time (ms)")
 ax2.set_xlabel("Time (ms)")
 
