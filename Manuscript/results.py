@@ -160,21 +160,22 @@ results = {"Distance explains most of the ripple strength correlation variabilit
             f"Putative inhibitory interneurons in the lateral section showed both a slower action potential and a higher firing rate.",
 
            "Location of ripple seed is associated with different pattern of modulation across brain regions":
-           "To understand the effect of medial and lateral ripples in different brain regions we looked at  "
-           "ripple modulation of spiking rate in individual clusters. A cluster was considered to be modulated if it "
-           "increased spiking rate during ripples by at least 50%. Clusters belonging to the thalamus (TH) and midbrain (MB) "
-           f'were hardly modulated (MB: {100-round(ripple_mod_mean.loc["MB"]["No engagement"]*100, 2)} ± {round(ripple_mod_sem.loc["MB"]["No engagement"] *100, 2)} %, '
+           "To investigate how medial and lateral ripples affect various brain regions, we examined the modulation of spiking rate during ripples in individual clusters. "
+            "A cluster was deemed modulated if it exhibited at least a 50% increase in spiking rate during ripples. "
+           f'We found that clusters located in the thalamus (TH) and midbrain (MB) were hardly modulated (MB: {100-round(ripple_mod_mean.loc["MB"]["No engagement"]*100, 2)} ± {round(ripple_mod_sem.loc["MB"]["No engagement"] *100, 2)} %, '
            f'TH: {round(100-ripple_mod_mean.loc["TH"]["No engagement"]*100, 2)} ± {round(ripple_mod_sem.loc["TH"]["No engagement"] *100, 2)} %), ' \
-           'with baseline spiking rate explaining almost the totality of variance in spiking rate during ripples. Only a small minority of '
+           'with baseline spiking rate explaining nearly all the variance in spiking rate during ripples. In contrast, only a small fraction of '
            f'cortical neurons were modulated (Isocortex: {round(100-ripple_mod_mean.loc["Isocortex"]["No engagement"]*100, 2)} ± '
-           f'{round(ripple_mod_sem.loc["Isocortex"]["No engagement"] *100, 2)} %)) in contrast to the majority of hippocampal neurons '
+           f'{round(ripple_mod_sem.loc["Isocortex"]["No engagement"] *100, 2)} %))  while the majority of hippocampal (HPF) neurons showed ripple modulation. '
+           f'In both cases the baseline spiking rate explained a big portion of the variance in spiking rate during ripples (Figure 5A).'
            f'(HPF: {round(100-ripple_mod_mean.loc["HPF"]["No engagement"]*100, 2)} ± {round(ripple_mod_sem.loc["HPF"]["No engagement"] *100, 2)} %). Neurons in the cortex'
-           f' that were modulated (at least 50% increase) by both medial and lateral ripples tended to be located in deeper layers, whereas neurons modulated more strongly by medial ripples were'
-           f' recorded more superficially. Only a small number of neurons exhibited greater engagement in association with lateral ripples (Supplementary Figure 14). '
-           f'In both cases the baseline spiking rate explained a big portion of the variance in spiking rate during ripples (Figure 5A). The relationship between'
+           f' that were modulated (at least 50% increase) by both medial and lateral ripples tended to be located in deeper layers, '
+           f'whereas neurons modulated more strongly by medial ripples were'
+           f' recorded more superficially. Only a small number of cortical neurons exhibited greater engagement in association with lateral ripples (Supplementary Figure 14). '
+           f' The relationship between'
            f' baseline spiking and spiking during ripples was similar in medial and lateral ripples (Supplementary Figure 15). Modulation '
-           f'by medial and lateral ripples was significantly different on hippocampal neurons in a 120 ms window post-ripple start altough with a '
-           f'modest effect size. A stronger effect was observed in the 50-120 ms window, here medial ripples had a notably stronger '
+           f'by medial and lateral ripples was significantly different in hippocampal neurons in a 120 ms window post-ripple start altough with a '
+           f'only modest effect size. A stronger effect was observed in the 50-120 ms window, here medial ripples had a notably stronger '
            f'modulatory effect (Supplementary Figure 16A). A significant difference was also observed in cortical neurons and in TH, also here medial ripples were observed '
            f'to induce stronger modulation (Supplementary Figure 16B). To gain insight into the mechanism underlying differences between medial and lateral ripples '
            f'we focused our analysis on modulation in the early (0-50 ms) and late phase (50-120 ms) in different hippocampal subfield (Figure 5C). In the early phase '
