@@ -211,7 +211,7 @@ results = {"Distance explains most of the ripple strength correlation variabilit
            f'difference for either medial or lateral ripples. Our analysis revealed that the majority of neurons did '
            f'not display a strong preference ({round(autopcts[0]*100,2)} %), whereas {round(autopcts[1]*100,2)} % of neurons responded '
            f'preferentially to lateral ripples and {round(autopcts[2]*100,2)} % to medial ripples (Figure 5F). Hippocampal subfield, however, exhibited '
-           f'striking differences, specifically, SUB had a negligible proportion of neurons exhibiting a'
+           f'striking differences, specifically, SUB had a small proportion of neurons exhibiting a'
            f' preference for medial ripples, while DG exhibited the opposite pattern (Supplementary Figure 19). '
            f'These results suggest a fundamental difference between medial and lateral ripples in terms of their '
            f'engagement of brain regions, highlighting that these differences exist even before the ripples are detected. '
