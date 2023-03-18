@@ -64,7 +64,7 @@ discussion = "Our results show for the first time that strong ripples propagate 
              "ripples that are able to strongly engage networks in the entire top half of the hippocampal formation for an extended time. \n" \
              "Functional differences between ripples are supported by our finding that the ripple origination point has an influence on the " \
              "engagement of various hippocampal subfields. Interestingly, even before the onset of ripples, these functional differences can be observed. " \
-             "The results indicate that lateral ripples show significant engagement of CA3, which aligns with the traditional view that CA3 is the primary " \
+             "These results indicate that lateral ripples show significant engagement of CA3, which aligns with the traditional view that CA3 is the primary " \
              "generator of ripples {Buzsáki, 1986 #1196, Buzsáki, 1989 #1197, Csicsvari, 2000 #1195}. On the other hand, medial ripples demonstrate stronger engagement of ProS and " \
              "SUB subfields, supporting the more recent " \
              "hypothesis that output structures in the hippocampus are also capable of generating ripples {Imbrosci, 2021 #1194}. These functional differences may have important " \
