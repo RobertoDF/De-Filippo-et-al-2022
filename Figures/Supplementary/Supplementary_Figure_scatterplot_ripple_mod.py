@@ -20,5 +20,5 @@ plt.figure(1).text(0.4677672955974843, 0.4968503937007874, 'Lateral ripple seed'
 #% end: automatic generated code from pylustrator
 #plt.show()
 
-plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_14", dpi=300)
+plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_15", dpi=300)
 

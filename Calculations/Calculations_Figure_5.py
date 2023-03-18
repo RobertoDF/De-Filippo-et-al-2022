@@ -2,7 +2,7 @@ from allensdk.brain_observatory.ecephys.ecephys_project_cache import EcephysProj
 import pandas as pd
 import dill
 import numpy as np
-from Utils.Settings import window_spike_hist,output_folder_figures_calculations, output_folder_calculations, neuropixel_dataset, var_thr, minimum_ripples_count_spike_analysis, minimum_ripples_count_generated_in_lateral_or_medial_spike_analysis
+from Utils.Settings import minimum_firing_rate_hz, output_folder_figures_calculations, output_folder_calculations, neuropixel_dataset, var_thr, minimum_ripples_count_spike_analysis, minimum_ripples_count_generated_in_lateral_or_medial_spike_analysis
 
 manifest_path = f"{neuropixel_dataset}/manifest.json"
 
@@ -80,10 +80,18 @@ def conditions_ripple_engagement(s):
     else:
         return 'No engagement'
 
-summary_units_df_sub['Ripple type engagement'] = summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) medial']>0.025)\
-                                                                     ].apply(conditions_type_engagement, axis=1)
-summary_units_df_sub['Ripple engagement'] = summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) medial']>0.025)\
+summary_units_df_sub['Ripple type engagement'] = summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) medial']>minimum_firing_rate_hz) |
+                                                        (summary_units_df_sub['Firing rate (0-50 ms) lateral']>minimum_firing_rate_hz)].apply(conditions_type_engagement, axis=1)
+summary_units_df_sub['Ripple engagement'] = summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) medial']>minimum_firing_rate_hz) |
+                                                        (summary_units_df_sub['Firing rate (0-50 ms) lateral']>minimum_firing_rate_hz)
                                                                  ].apply(conditions_ripple_engagement, axis=1)
+
+
+summary_units_df_sub['Diff pre-ripple modulation (20-0 ms)'] = (summary_units_df_sub['Pre-ripple modulation medial'] - summary_units_df_sub['Pre-ripple modulation lateral'])
+summary_units_df_sub['Diff ripple modulation (0-50 ms)'] = (summary_units_df_sub['Ripple modulation (0-50 ms) medial'] - summary_units_df_sub['Ripple modulation (0-50 ms) lateral'])
+summary_units_df_sub['Diff ripple modulation (50-120 ms)'] = (summary_units_df_sub['Ripple modulation (50-120 ms) medial'] - summary_units_df_sub['Ripple modulation (50-120 ms) lateral'])
+summary_units_df_sub['Diff firing rate (0-50 ms)'] = (summary_units_df_sub['Firing rate (0-50 ms) medial'] - summary_units_df_sub['Firing rate (0-50 ms) lateral'])
+summary_units_df_sub['Diff firing rate (50-120 ms)'] = (summary_units_df_sub['Firing rate (50-120 ms) medial'] - summary_units_df_sub['Firing rate (50-120 ms) lateral'])
 
 with open(f"{ output_folder_figures_calculations}/temp_data_figure_5.pkl", "wb") as fp:
     dill.dump(summary_units_df_sub, fp)

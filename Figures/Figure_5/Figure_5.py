@@ -23,8 +23,10 @@ plt.figure(1).set_size_inches(18/2.54, 18/2.54, forward=True)
 plt.figure(1).ax_dict["/alzheimer/Roberto/Allen_Institute/temp/Figure_5_brainrender_cells.png"].set_position([0.662764, 0.768361, 0.322524, 0.215934])
 plt.figure(1).axes[0].set_position([0.365154, 0.733812, 0.273050, 0.250483])
 plt.figure(1).axes[0].texts[0].set(position=(0.6, 0.47312), text='*', ha='center', va='center', fontsize=10.0)
-plt.figure(1).axes[0].texts[0].set_position([0.600000, 0.508943])
+plt.figure(1).axes[0].texts[0].set_position([0.600000, 0.658145])
 plt.figure(1).axes[0].texts[1].set(position=(0.6000000000000001, 0.5930220150660972), text='p-value = 1.55e-04', ha='center', va='center', fontsize=6.0)
+plt.figure(1).axes[0].texts[2].set(position=(0.5999999999999996, 0.39654257012823724), text='CLES = 0.539', ha='center', va='center', fontsize=6.0)
+plt.figure(1).axes[0].texts[2].set_position([0.600000, 0.500532])
 plt.figure(1).axes[1].set_position([0.045381, 0.733812, 0.278315, 0.250483])
 plt.figure(1).axes[2].set_position([0.683038, 0.592709, 0.302250, 0.166989])
 plt.figure(1).axes[3].set_position([0.683038, 0.396432, 0.302250, 0.166989])
@@ -41,10 +43,8 @@ plt.figure(1).axes[8].get_legend()._set_loc((0.364736, 0.762754))
 plt.figure(1).axes[9].set_position([0.683038, -0.000317, 0.327780, 0.327780])
 plt.figure(1).axes[9].title.set_position([0.500000, 0.959705])
 plt.figure(1).axes[9].texts[1].set_position([-0.263583, 0.219591])
-plt.figure(1).axes[9].texts[3].set(position=(0.45282411566654124, -0.3936372953250426), text='9.75 %', ha='center', va='center', fontsize=10.0, color='white', weight='bold')
-plt.figure(1).axes[9].texts[3].set_position([0.589701, -0.417222])
-plt.figure(1).axes[9].texts[5].set(position=(0.5874896594909168, -0.12188478162283675), text='6.51 %', ha='center', va='center', fontsize=10.0, color='white', weight='bold')
-plt.figure(1).axes[9].texts[5].set_position([0.678741, -0.121885])
+plt.figure(1).axes[9].texts[3].set(position=(0.589701, -0.417222), text='10.40 %', ha='center', va='center', fontsize=5.0, color='white', weight='bold')
+plt.figure(1).axes[9].texts[5].set(position=(0.678741, -0.121885), text='5.31 %', ha='center', va='center', fontsize=7.0, color='white', weight='bold')
 plt.figure(1).text(0.48758235782825293, 0.9648019132785688, 'HPF', transform=plt.figure(1).transFigure, color='#7ed04b', weight='bold')  # id=plt.figure(1).texts[0].new
 plt.figure(1).text(0.0049504950495049905, 0.980905233380481, 'A', transform=plt.figure(1).transFigure, weight='bold')  # id=plt.figure(1).texts[1].new
 plt.figure(1).text(0.34582743988684583, 0.980905233380481, 'B', transform=plt.figure(1).transFigure, weight='bold')  # id=plt.figure(1).texts[2].new
@@ -53,7 +53,7 @@ plt.figure(1).text(0.0049504950495049506, 0.6499292786421497, 'D', transform=plt
 plt.figure(1).text(0.0049504950495049506, 0.32602545968882596, 'E', transform=plt.figure(1).transFigure, weight='bold')  # id=plt.figure(1).texts[5].new
 plt.figure(1).text(0.3458274398868458, 0.32602545968882596, 'G', transform=plt.figure(1).transFigure, weight='bold')  # id=plt.figure(1).texts[6].new
 #% end: automatic generated code from pylustrator
-#plt.show()
+plt.show()
 
 if Adapt_for_Nature_style is True:
     Naturize()

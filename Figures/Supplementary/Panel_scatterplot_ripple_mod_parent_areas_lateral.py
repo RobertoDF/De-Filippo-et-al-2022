@@ -17,7 +17,7 @@ for area in summary_units_df_sub['Parent brain region'].unique():
 
 g = sns.FacetGrid(summary_units_df_sub, col='Parent brain region', hue='Parent brain region',
                   palette=palette_parent_areas, col_order=['HPF', 'Isocortex', 'MB', 'TH'])
-g.map_dataframe(sns.regplot, x='Firing rate (0-120 ms) lateral', y='Firing rate (120-0 ms) lateral',  scatter_kws=dict(s=3, alpha=.3))
+g.map_dataframe(sns.regplot, x='Firing rate (0-120 ms) lateral', y='Firing rate (120-0 ms) lateral',  scatter_kws=dict(s=1, alpha=.1))
 g.map_dataframe(lambda data, **kws: plt.axline((0, 0), slope=1, alpha=.5, linestyle='--', color='k'))
 
 
@@ -40,8 +40,8 @@ g.map_dataframe(annotate)
 
 def plot_diag(data, **kws):
     ax = plt.gca()
-    ax.plot([0, ax.get_ylim()[1]], [0, ax.get_ylim()[1] / 2], alpha=.5, linestyle='--', color='r')
-    ax.plot([0, ax.get_ylim()[1] / 2], [0, ax.get_ylim()[1]], alpha=.5, linestyle='--', color='r')
+    ax.plot([0, ax.get_ylim()[1]], [0, ax.get_ylim()[1] / (5/3)], alpha=.5, linestyle='--', color='r')
+    #ax.plot([0, ax.get_ylim()[1] / 2], [0, ax.get_ylim()[1]], alpha=.5, linestyle='--', color='r')
 
 
 g.map_dataframe(plot_diag)

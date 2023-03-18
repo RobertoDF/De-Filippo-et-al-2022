@@ -205,7 +205,7 @@ def plot_dist_ripple_mod(data, param, ax0):
                     hue='Ripple seed', palette=palette_ML, ax=ax0, fill=True, gridsize=500, cut=0)
     ax0.set_xlim((-1, 15))
     ax0.axvline(0,color= 'k', linestyle='--')
-    ax0.axvline(1,color= 'r', linestyle='--')
+    ax0.axvline(.5,color= 'r', linestyle='--')
     ax0.get_yaxis().set_visible(False)
 
     ax0.spines[['left']].set_visible(False)
@@ -216,21 +216,24 @@ def plot_dist_ripple_mod(data, param, ax0):
 
     if norm_test["normal"].all():
         p_val = pg.ttest(data[data["Ripple seed"] == "Medial"][param],
-               data[data["Ripple seed"] == "Lateral"][param])["p-val"][0]
+               data[data["Ripple seed"] == "Lateral"][param], paired=True)["p-val"][0]
         print("ttest: ", p_val)
 
     else:
-        p_val = pg.mwu(data[data["Ripple seed"]=="Medial"][param], data[data["Ripple seed"]=="Lateral"][param])["p-val"][0]
-        cles = pg.mwu(data[data["Ripple seed"]=="Medial"][param], data[data["Ripple seed"]=="Lateral"][param])["CLES"][0]
+        p_val = pg.wilcoxon(data[data["Ripple seed"]=="Medial"][param], data[data["Ripple seed"]=="Lateral"][param])["p-val"][0]
+        cles = pg.wilcoxon(data[data["Ripple seed"]=="Medial"][param], data[data["Ripple seed"]=="Lateral"][param])["CLES"][0]
         print("mwu p-val and CLES: ", p_val, cles)
 
     if p_val<.05:
-        ax0.text(.6, .7, "*",
+        ax0.text(.6, .8, "*",
                     transform=ax0.transAxes,
                     fontsize=15, ha='center', va='center');
-        ax0.text(.6, .8,  f"p-value = {'{:.2e}'.format(p_val)}",
+        ax0.text(.6, .7,  f"p-value = {'{:.2e}'.format(p_val)}",
                         transform=ax0.transAxes,
                         fontsize=10, ha='center', va='center');
+        ax0.text(.6, .6, f"CLES = {round(cles, 3)}",
+                 transform=ax0.transAxes,
+                 fontsize=10, ha='center', va='center');
 
 def point_plot_modulation_ripples(data, dv, parent_area, order, filter_spiking, axs, ylabel, ylim = [-.5,2], palette=palette_HPF):
 
@@ -251,9 +254,9 @@ def point_plot_modulation_ripples(data, dv, parent_area, order, filter_spiking, 
     for area in _['Brain region'].unique():
         sub = _[_['Brain region']==area]
         if pg.normality(sub, group='Type', dv=dv)['normal'].all():
-            test = pg.ttest(sub[sub['Type']=='Medial'][dv], sub[sub['Type']=='Lateral'][dv])['p-val']
+            test = pg.ttest(sub[sub['Type']=='Medial'][dv], sub[sub['Type']=='Lateral'][dv], paired=True)['p-val']
         else:
-            test = pg.mwu(sub[sub['Type']=='Medial'][dv], sub[sub['Type']=='Lateral'][dv])['p-val']
+            test = pg.wilcoxon(sub[sub['Type']=='Medial'][dv], sub[sub['Type']=='Lateral'][dv])['p-val']
 
         if test[0] < .05:
             stat.append(((area, 'Medial'), (area, 'Lateral')))

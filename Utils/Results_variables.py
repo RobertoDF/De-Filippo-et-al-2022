@@ -1,5 +1,5 @@
 import dill
-from Utils.Settings import presence_ratio_thr, waveform_PT_ratio_thr, isi_violations_thr, amplitude_cutoff_thr, clip_ripples_clusters, var_thr, output_folder_figures_calculations, output_folder_calculations, minimum_ripples_count_generated_in_lateral_or_medial_spike_analysis
+from Utils.Settings import minimum_firing_rate_hz, presence_ratio_thr, waveform_PT_ratio_thr, isi_violations_thr, amplitude_cutoff_thr, clip_ripples_clusters, var_thr, output_folder_figures_calculations, output_folder_calculations, minimum_ripples_count_generated_in_lateral_or_medial_spike_analysis
 from scipy.stats import sem
 import numpy as np
 from tqdm import tqdm
@@ -314,3 +314,65 @@ res_lateral_local_ml = partial_corr(data=trajectories_by_seed[(trajectories_by_s
              y='Lag (ms)', covar='rescaled A-P (µm)', x=['rescaled M-L (µm)'], method='pearson')
 
 
+########### Figure 5
+
+
+with open(f"{output_folder_figures_calculations}/temp_data_figure_5.pkl", 'rb') as f:
+    summary_units_df_sub = dill.load(f)
+
+
+ripple_mod_mean = pd.DataFrame(summary_units_df_sub.groupby(['Parent brain region', 'Session id'])['Ripple engagement'].value_counts(normalize=True))\
+            .rename(columns={'Ripple engagement':'value'}).reset_index().groupby(['Parent brain region', 'Ripple engagement'])['value'].mean()
+
+ripple_mod_sem = pd.DataFrame(summary_units_df_sub.groupby(['Parent brain region', 'Session id'])['Ripple engagement'].value_counts(normalize=True))\
+            .rename(columns={'Ripple engagement':'value'}).reset_index().groupby(['Parent brain region', 'Ripple engagement'])['value'].sem()
+
+
+
+area = 'SUB'
+r_sq_sub=summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) medial']>0.1) & (summary_units_df_sub['Brain region']==area )]\
+                                        [["Diff pre-ripple modulation (20-0 ms)", 'Diff firing rate (0-50 ms)' , 'Diff ripple modulation (0-50 ms)',  'Diff ripple modulation (50-120 ms)',
+                                          'Ripple modulation (0-50 ms) medial','Ripple modulation (0-50 ms) lateral', 'M-L',
+                                            'A-P', 'D-V']]\
+                .corr().loc[["Diff pre-ripple modulation (20-0 ms)", 'Diff ripple modulation (0-50 ms)', 'Diff ripple modulation (50-120 ms)', 'Diff firing rate (0-50 ms)', \
+                         'Ripple modulation (0-50 ms) medial','Ripple modulation (0-50 ms) lateral'], ["M-L", "A-P", "D-V"]]**2
+area = 'DG'
+r_sq_dg=summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) medial']>0.1) & (summary_units_df_sub['Brain region']==area )]\
+                                        [["Diff pre-ripple modulation (20-0 ms)", 'Diff firing rate (0-50 ms)' , 'Diff ripple modulation (0-50 ms)',  'Diff ripple modulation (50-120 ms)',
+                                          'Ripple modulation (0-50 ms) medial','Ripple modulation (0-50 ms) lateral', 'M-L',
+                                            'A-P', 'D-V']]\
+                .corr().loc[["Diff pre-ripple modulation (20-0 ms)", 'Diff ripple modulation (0-50 ms)', 'Diff ripple modulation (50-120 ms)', 'Diff firing rate (0-50 ms)', \
+                         'Ripple modulation (0-50 ms) medial','Ripple modulation (0-50 ms) lateral'], ["M-L", "A-P", "D-V"]]**2
+
+area = 'CA1'
+r_sq_ca1=summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) medial']>0.1) & (summary_units_df_sub['Brain region']==area )]\
+                                        [["Diff pre-ripple modulation (20-0 ms)", 'Diff firing rate (0-50 ms)' , 'Diff ripple modulation (0-50 ms)',  'Diff ripple modulation (50-120 ms)',
+                                          'Ripple modulation (0-50 ms) medial','Ripple modulation (0-50 ms) lateral', 'M-L',
+                                            'A-P', 'D-V']]\
+                .corr().loc[["Diff pre-ripple modulation (20-0 ms)", 'Diff ripple modulation (0-50 ms)', 'Diff ripple modulation (50-120 ms)', 'Diff firing rate (0-50 ms)', \
+                         'Ripple modulation (0-50 ms) medial','Ripple modulation (0-50 ms) lateral'], ["M-L", "A-P", "D-V"]]**2
+
+area = 'CA3'
+r_sq_ca3=summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) medial']>0.1) & (summary_units_df_sub['Brain region']==area )]\
+                                        [["Diff pre-ripple modulation (20-0 ms)", 'Diff firing rate (0-50 ms)' , 'Diff ripple modulation (0-50 ms)',  'Diff ripple modulation (50-120 ms)',
+                                          'Ripple modulation (0-50 ms) medial','Ripple modulation (0-50 ms) lateral', 'M-L',
+                                            'A-P', 'D-V']]\
+                .corr().loc[["Diff pre-ripple modulation (20-0 ms)", 'Diff ripple modulation (0-50 ms)', 'Diff ripple modulation (50-120 ms)', 'Diff firing rate (0-50 ms)', \
+                         'Ripple modulation (0-50 ms) medial','Ripple modulation (0-50 ms) lateral'], ["M-L", "A-P", "D-V"]]**2
+
+area = 'ProS'
+r_sq_pros=summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) medial']>0.1) & (summary_units_df_sub['Brain region']==area )]\
+                                        [["Diff pre-ripple modulation (20-0 ms)", 'Diff firing rate (0-50 ms)' , 'Diff ripple modulation (0-50 ms)',  'Diff ripple modulation (50-120 ms)',
+                                          'Ripple modulation (0-50 ms) medial','Ripple modulation (0-50 ms) lateral', 'M-L',
+                                            'A-P', 'D-V']]\
+                .corr().loc[["Diff pre-ripple modulation (20-0 ms)", 'Diff ripple modulation (0-50 ms)', 'Diff ripple modulation (50-120 ms)', 'Diff firing rate (0-50 ms)', \
+                         'Ripple modulation (0-50 ms) medial','Ripple modulation (0-50 ms) lateral'], ["M-L", "A-P", "D-V"]]**2
+
+
+_ = pd.DataFrame(summary_units_df_sub[((summary_units_df_sub['Firing rate (0-50 ms) medial']>minimum_firing_rate_hz) |
+                                                        (summary_units_df_sub['Firing rate (0-50 ms) lateral']>minimum_firing_rate_hz))&
+                     (summary_units_df_sub['Parent brain region']=='HPF' )]['Ripple type engagement'].value_counts())
+
+
+
+autopcts = _.values.squeeze()/_.values.squeeze().sum()

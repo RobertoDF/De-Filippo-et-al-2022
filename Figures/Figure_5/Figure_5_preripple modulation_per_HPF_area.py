@@ -4,6 +4,7 @@ import pandas as pd
 import dill
 import matplotlib.pyplot as plt
 from Utils.Utils import point_plot_modulation_ripples
+from Utils.Settings import minimum_firing_rate_hz
 
 with open(f"{output_folder_figures_calculations}/temp_data_figure_5.pkl", 'rb') as f:
     summary_units_df_sub = dill.load(f)
@@ -18,7 +19,8 @@ parent_area='HPF'
 order= ['CA1',  'CA3', 'DG', 'ProS', 'SUB']
 dv = 'Pre-ripple modulation'
 ylabel='Pre-ripple modulation (20-0ms)'
-filter_spiking = summary_units_df_sub['Firing rate (20-0 ms) medial']>0.025
+filter_spiking = (summary_units_df_sub['Firing rate (0-50 ms) medial']>minimum_firing_rate_hz) |\
+                                                        (summary_units_df_sub['Firing rate (0-50 ms) lateral']>minimum_firing_rate_hz)
 ylim = [-.25, .5]
 point_plot_modulation_ripples(summary_units_df_sub, dv,parent_area,order,filter_spiking, axs, ylabel, ylim)
 

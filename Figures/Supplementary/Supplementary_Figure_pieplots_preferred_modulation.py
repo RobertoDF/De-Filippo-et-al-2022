@@ -1,6 +1,6 @@
 import dill
 import matplotlib.pyplot as plt
-from Utils.Settings import output_folder_figures_calculations, output_folder_supplementary
+from Utils.Settings import output_folder_figures_calculations, output_folder_supplementary, minimum_firing_rate_hz
 from Utils.Utils import acronym_color_map, point_plot_modulation_ripples
 from Utils.Style import palette_ML
 import pylustrator
@@ -11,7 +11,7 @@ pylustrator.start()
 with open(f"{output_folder_figures_calculations}/temp_data_figure_5.pkl", 'rb') as f:
     summary_units_df_sub = dill.load(f)
 
-data = pd.DataFrame(summary_units_df_sub[(summary_units_df_sub['Firing rate (0-120 ms) medial']>0.025)&
+data = pd.DataFrame(summary_units_df_sub[(summary_units_df_sub['Firing rate (0-120 ms) medial']>minimum_firing_rate_hz )&
                      (summary_units_df_sub['Parent brain region']=='HPF' )].groupby('Brain region')['Ripple type engagement'].value_counts())
 
 fig, axs = plt.subplots(1,5)
@@ -40,4 +40,4 @@ plt.figure(1).axes[4].texts[3].set_position([0.597037, -0.259074])
 #% end: automatic generated code from pylustrator
 #plt.show()
 
-plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_18", dpi=300)
+plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_19", dpi=300)

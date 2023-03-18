@@ -68,6 +68,8 @@ isi_violations_thr = .5
 amplitude_cutoff_thr = .1
 presence_ratio_thr = .1
 
+minimum_firing_rate_hz = 0.1
+
 # Nature style figure letters
 
 Adapt_for_Nature_style = False

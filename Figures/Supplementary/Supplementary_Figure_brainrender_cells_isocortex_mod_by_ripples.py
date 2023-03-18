@@ -3,7 +3,7 @@ from PIL import Image
 from brainrender import Scene, settings
 from brainrender.actors import Points
 import dill
-from Utils.Settings import output_folder_supplementary, output_folder_figures_calculations
+from Utils.Settings import output_folder_supplementary, output_folder_figures_calculations, minimum_firing_rate_hz
 from Utils.Style import palette_ML
 from rich import print
 from Utils.Utils import rgb2hex
@@ -26,7 +26,9 @@ with open(f"{output_folder_figures_calculations}/temp_data_figure_5.pkl", 'rb') 
 
 scene = Scene()
 
-data = summary_units_df_sub[(summary_units_df_sub["Parent brain region"]=="Isocortex") &
+data = summary_units_df_sub[((summary_units_df_sub['Firing rate (0-50 ms) medial']>minimum_firing_rate_hz) |\
+                                                        (summary_units_df_sub['Firing rate (0-50 ms) lateral']>minimum_firing_rate_hz)) &
+                            (summary_units_df_sub["Parent brain region"]=="Isocortex") &
                     (summary_units_df_sub['Ripple modulation (0-50 ms) lateral'] > .5) &
                             (summary_units_df_sub['Ripple modulation (0-50 ms) medial'] < .5) ]
 
@@ -62,11 +64,11 @@ cam0:{
      'distance': 20661,
    }
 
-vm = VideoMaker(scene, output_folder_supplementary, "Supplementary_Figure_brainrender_cells")
+vm = VideoMaker(scene, output_folder_supplementary, "Supplementary_Figure_14")
 
 # make a video with the custom make frame function
 # this just rotates the scene
-vm.make_video(azimuth=2, duration=10, fps=15)
+vm.make_video(azimuth=2, duration=20, fps=15)
 
 """
 scene.render(zoom=1.0, camera=cam0)

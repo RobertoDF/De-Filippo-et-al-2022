@@ -53,4 +53,4 @@ plt.figure(1).text(0.661949685534591, 0.9339622641509431, 'C', transform=plt.fig
 #% end: automatic generated code from pylustrator
 #plt.show()
 
-plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_17", dpi=300)
+plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_18", dpi=300)

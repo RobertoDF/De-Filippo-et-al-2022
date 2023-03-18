@@ -40,8 +40,8 @@ g.map_dataframe(annotate)
 
 def plot_diag(data, **kws):
     ax = plt.gca()
-    ax.plot([0, ax.get_ylim()[1]], [0, ax.get_ylim()[1] / 2], alpha=.5, linestyle='--', color='r')
-    ax.plot([0, ax.get_ylim()[1] / 2], [0, ax.get_ylim()[1]], alpha=.5, linestyle='--', color='r')
+    ax.plot([0, ax.get_ylim()[1]], [0, ax.get_ylim()[1] / (5/3)], alpha=.5, linestyle='--', color='r')
+    #ax.plot([0, ax.get_ylim()[1] / 2], [0, ax.get_ylim()[1]], alpha=.5, linestyle='--', color='r')
 
 
 g.map_dataframe(plot_diag)
