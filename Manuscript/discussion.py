@@ -35,12 +35,12 @@ discussion = "Our results show for the first time that strong ripples propagate 
              "Consistent with a duration gradient along the longitudinal axis, the temporal hippocampus has been shown to " \
              "produce shorter ripples both in awake and sleep conditions {Sosa, 2020 #1154}. \n"\
             "What is the reason that enables the septal pole to generate longer ripples? There might be for example underlying electrophysiological" \
-             " differences between the septal and intermediate hippocampus. Looking at units electrophysiological features we found some differences in the waveform shape and " \
-             "duration. We can hypothesize that slower action potentials and, consequentially, " \
+             " differences between the septal and intermediate hippocampus. Upon closer examination of the electrophysiological features of the neurons, " \
+             "we were able to discern significant differences in the shape and duration of their waveform. We can hypothesize that slower action potentials and, consequentially, " \
              "longer refractory periods hinder the ability" \
              " to sustain protracted high frequency spiking. Accordingly, we found an increased firing rate and a smaller waveform duration in putative excitatory " \
-             "neurons of the septal pole. " \
-             "This might contribute to explain the prolonged ripples observed in the septal pole. " \
+             "neurons of the septal pole. Moreover, putative inhibitory neurons in the septal pole showed reduced firing. " \
+             "These differences might contribute to explain the prolonged ripples observed in the septal pole. " \
              "We can also speculate that the neuromodulatory inputs gradient, monoamine fibers have been shown to be stronger in the ventral part {Strange, 2014 #1158}, " \
              "might influence neurons responses. Serotonin {ul Haq, 2016 #1165; Wang, 2015 #1170}, noradrenaline {Ul Haq, 2012 #1166; Novitskaya, 2016 #1171} and acetylcholine {Zhang, 2021 #1167} " \
              "have all been shown to suppress ripples. In accordance with this, some ripples are coupled with a reduced activation of the locus coeruleus" \
@@ -61,5 +61,21 @@ discussion = "Our results show for the first time that strong ripples propagate 
              "Kheirbek, 2013 #1126;McGlinchey, 2018 #1125;Fanselow, 2010 #1150;Maras, 2014 #1130;Bradfield, 2020 #1131;Qin, 2020 #1132}. " \
              "Our results can contribute to explain the specific role of septal hippocampus in memory-demanding tasks with" \
              " its ability of generating particularly long " \
-             "ripples that are able to strongly engage networks in the entire top half of the hippocampal formation for an extended time. " \
+             "ripples that are able to strongly engage networks in the entire top half of the hippocampal formation for an extended time. \n" \
+             "Functional differences between ripples are supported by our finding that the ripple origination point has an influence on the " \
+             "engagement of various hippocampal subfields. Interestingly, even before the onset of ripples, these functional differences can be observed. " \
+             "The results indicate that lateral ripples show significant engagement of CA3, which aligns with the traditional view that CA3 is the primary " \
+             "generator of ripples {Buzsáki, 1986 #1196, Buzsáki, 1989 #1197, Csicsvari, 2000 #1195}. On the other hand, medial ripples demonstrate stronger engagement of ProS and " \
+             "SUB subfields, supporting the more recent " \
+             "hypothesis that output structures in the hippocampus are also capable of generating ripples {Imbrosci, 2021 #1194}. These functional differences may have important " \
+             "implications for our understanding of hippocampal network dynamics and their contribution to memory processing. The fact that different " \
+             "subfields are preferentially engaged during different types of ripples suggests that different ripple patterns may play distinct roles " \
+             "in memory processing. Additionally, the finding that lateral ripples exhibit stronger engagement of CA3 before the onset of ripples suggests " \
+             "that CA3 may play a more critical role in initiating lateral ripples. In contrast, the stronger engagement of ProS and SUB subfields before " \
+             "medial ripple onset suggests that these structures may be involved in the initiation of medial ripples. " \
+             "These differences in ripple initiation and engagement patterns provide insights into the underlying mechanisms of " \
+             "hippocampal network dynamics and their potential role in memory processing. " \
+             "Understanding these differences may shed light on the functional significance " \
+             "of ripples in the brain and their role in memory consolidation and retrieval. \n" \
+
 

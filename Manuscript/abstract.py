@@ -18,7 +18,11 @@ abstract = "Hippocampal ripples are highly synchronous neural events critical fo
            " longer ripples that engage more neurons " \
            "and elicit spiking activity for an extended time even at considerable distances. " \
            "Accordingly, a substantial portion of the variance in strong ripple duration" \
-           f" (R² = {r_strong}) is explained by the ripple generation location on the longitudinal axis. " \
-           "Our results are consistent with a possible distinctive role of the hippocampal septal pole in conditions of high memory demand. "
+           f" (R² = {r_strong}) is explained by the ripple generation location on the longitudinal axis, " \
+           f"in agreement with a possible distinctive role of the hippocampal septal pole in conditions of high memory demand. " \
+           f"Moreover, we observed that the location of the ripple generation has a significant " \
+           f"impact on the modulation of individual neurons in different hippocampal subfields, even before the onset of the ripple. " \
+           f"This finding suggests that the ripple generation location plays a crucial role in shaping the neural activity in the hippocampus. " \
+
 
 #%%

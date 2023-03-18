@@ -106,7 +106,22 @@ legends = {"Figure 1. Ripple strength correlation depends significantly on dista
             f"{round(fig_4_summary_spiking_late[fig_4_summary_spiking_late['Location seed'] == 'Medial seed']['Spiking rate per 10 ms'].sem(), 3)}, "
             f"late/lateral seed = {round(fig_4_summary_spiking_late[fig_4_summary_spiking_late['Location seed'] == 'Lateral seed']['Spiking rate per 10 ms'].mean(), 2)} ± "
             f"{round(fig_4_summary_spiking_late[fig_4_summary_spiking_late['Location seed'] == 'Lateral seed']['Spiking rate per 10 ms'].sem(), 3)}, "
-            f"p-value = {'{:.2e}'.format(fig_4_ttest_late_spiking['p-val'].values[0])}, Student's t-test."}
+            f"p-value = {'{:.2e}'.format(fig_4_ttest_late_spiking['p-val'].values[0])}, Student's t-test.",
+
+           "Figure 5. Ripple seed location influences the pattern of ripple modulation across various regions of the brain.":
+           "(A) Relationship between baseline (120 ms before ripple start) and ripple (0-120 ms) firing rate for clusters recorded in Isocortex, HPF, TH and MB. Dashed black line represents absence of any influence, "
+           "dashed red line represents a 50% increased spiking rate. "
+           "(B) Ripple modulation of hippocampal clusters in response to lateral and medial ripples. Dashed black line represents absence of any influence, "
+           "dashed red line represents a 50% increased spiking rate. Wilcoxon signed-rank test. "
+           "(C) Top: Rendering of all clusters recorded in the hippocampal formation color-coded by subfield. Middle: kernel density plot showing "
+           "distribution of clusters along the M-L axis, Dashed lines represents medial and lateral limits. Bottom: Stacked kernel density plot showing "
+           "distribution of clusters along the M-L axis. "
+           "(D) Ripple modulation in response to lateral and medial ripples during the early (left) and late (right) "
+           "ripple phase. Wilcoxon signed-rank test or Student's t-test (if normality established). "
+           "(E) Ripple modulation in response to lateral and medial ripples before ripple start (20 ms). Wilcoxon signed-rank test or Student's t-test (if normality established). "
+           "(F) Left: Relationship between modulation by lateral and medial ripples. Dashed black line represents absence of difference and two-fold differences in both directions. "
+           "Right: Pie chart representing hippocampal neurons preference in ripple engagement."
+           }
 
 
 if Adapt_for_Nature_style is True:

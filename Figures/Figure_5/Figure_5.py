@@ -51,9 +51,9 @@ plt.figure(1).text(0.34582743988684583, 0.980905233380481, 'B', transform=plt.fi
 plt.figure(1).text(0.6584158415841584, 0.980905233380481, 'C', transform=plt.figure(1).transFigure, weight='bold')  # id=plt.figure(1).texts[3].new
 plt.figure(1).text(0.0049504950495049506, 0.6499292786421497, 'D', transform=plt.figure(1).transFigure, weight='bold')  # id=plt.figure(1).texts[4].new
 plt.figure(1).text(0.0049504950495049506, 0.32602545968882596, 'E', transform=plt.figure(1).transFigure, weight='bold')  # id=plt.figure(1).texts[5].new
-plt.figure(1).text(0.3458274398868458, 0.32602545968882596, 'G', transform=plt.figure(1).transFigure, weight='bold')  # id=plt.figure(1).texts[6].new
+plt.figure(1).text(0.3458274398868458, 0.32602545968882596, 'F', transform=plt.figure(1).transFigure, weight='bold')  # id=plt.figure(1).texts[6].new
 #% end: automatic generated code from pylustrator
-plt.show()
+#plt.show()
 
 if Adapt_for_Nature_style is True:
     Naturize()

@@ -101,7 +101,42 @@ legends_supplementary = {
       f"(D) Cumulative distribution plot of waveform duration (p-value={'{:.2e}'.format(p_val_ks_wav_dur_exc)}), firing rate (p-value={'{:.2e}'.format(p_val_ks_fir_rate_exc)}), "
       f"waveform amplitude (p-value={'{:.2e}'.format(p_val_ks_wav_amp_exc)}), waveform repolarization slope (p-value={'{:.2e}'.format(p_val_ks_wav_repolarization_slope_exc)}), "
       f"waveform recovery slope (p-value={'{:.2e}'.format(p_val_ks_wav_rec_slope_exc)}) and waveform peak-through ratio (p-value={'{:.2e}'.format(p_val_ks_wav_PT_ratio_exc)}) grouped by hippocampal section."
-      "Asterisks mean p < 0.05, Kolgomorov-Smirnov test."
+      "Asterisks mean p < 0.05, Kolgomorov-Smirnov test.",
+
+"Supplementary Figure 14. Cortical clusters showing ripple engagement":
+    "In pink clusters showing medial ripples engagement, in purple clusters showing lateral ripples engagement and in red clusters showing "
+    "engagement both in medial and lateral ripples.",
+
+"Supplementary Figure 15. Cortical clusters showing ripple engagement":
+    "(A) Relationship between baseline (120 ms before ripple start) and medial ripple (0-120 ms) firing rate for clusters recorded in  HPF, Isocortex, MB and TH. Dashed black line represents absence of any influence, "
+           "dashed red line represents a 50% increased spiking rate. "
+    "(B) Relationship between baseline (120 ms before ripple start) and lateral ripple (0-120 ms) firing rate for clusters recorded in  HPF, Isocortex, MB and TH. Dashed black line represents absence of any influence, "
+           "dashed red line represents a 50% increased spiking rate. ",
+
+"Supplementary Figure 16. Ripple modulation across HPF, Isocortex, MB and TH":
+"(A) Left: Early (0-50 ms) ripple modulation of hippocampal clusters in response to lateral and medial ripples. Dashed black line represents absence of any influence, "
+           "dashed red line represents a 50% increased spiking rate. Wilcoxon signed-rank test. Right: "
+"Late (50-120 ms) ripple modulation of hippocampal clusters in response to lateral and medial ripples. Dashed black line represents absence of any influence, "
+           "dashed red line represents a 50% increased spiking rate. Wilcoxon signed-rank test. "
+"(B) Ripple modulation of cortical (left), MB (middle) and TH (right) clusters in response to lateral and medial ripples. Dashed black line represents absence of any influence, "
+           "dashed red line represents a 50% increased spiking rate. Wilcoxon signed-rank test",
+
+"Supplementary Figure 17. Ripple modulation across HPF, Isocortex, MB and TH":
+"(A) Ripple modulation in response to lateral and medial ripples during the early  "
+           "ripple phase in cortical (top), MB (middle) and TH (bottom) clusters. Wilcoxon signed-rank test or Student's t-test (if normality established). "
+"(B) Ripple modulation in response to lateral and medial ripples during the late  "
+           "ripple phase in cortical (top), MB (middle) and TH (bottom) clusters. Wilcoxon signed-rank test or Student's t-test (if normality established). ",
+
+"Supplementary Figure 18. Pre-ripple modulation across HPF, Isocortex, MB and TH":
+"(A) Pre-ripple modulation in response to lateral and medial ripples during the early  "
+           "ripple phase in cortical clusters. Wilcoxon signed-rank test or Student's t-test (if normality established). "
+"(B) Ripple modulation in response to lateral and medial ripples during the late  "
+           "ripple phase in MB clusters. Wilcoxon signed-rank test or Student's t-test (if normality established). " \
+"(C) Ripple modulation in response to lateral and medial ripples during the late  "
+           "ripple phase in TH clusters. Wilcoxon signed-rank test or Student's t-test (if normality established). ",
+
+"Supplementary Figure 19. Clusters preference in ripple engagement by hippocampal subfields.":
+    "Preference in ripple engagement in CA1, CA3, DG, ProS and SUB."
 }
 
 if Adapt_for_Nature_style is True:
