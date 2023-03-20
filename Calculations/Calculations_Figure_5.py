@@ -80,19 +80,22 @@ def conditions_ripple_engagement(s):
     else:
         return 'No engagement'
 
-summary_units_df_sub['Ripple type engagement'] = summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) medial']>minimum_firing_rate_hz) |
-                                                        (summary_units_df_sub['Firing rate (0-50 ms) lateral']>minimum_firing_rate_hz)].apply(conditions_type_engagement, axis=1)
-summary_units_df_sub['Ripple engagement'] = summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) medial']>minimum_firing_rate_hz) |
-                                                        (summary_units_df_sub['Firing rate (0-50 ms) lateral']>minimum_firing_rate_hz)
-                                                                 ].apply(conditions_ripple_engagement, axis=1)
+summary_units_df_sub_decent_firing = summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) medial']>minimum_firing_rate_hz) |
+                                                        (summary_units_df_sub['Firing rate (0-50 ms) lateral']>minimum_firing_rate_hz)].copy()
+summary_units_df_sub_decent_firing['Ripple type engagement'] = summary_units_df_sub_decent_firing.apply(conditions_type_engagement, axis=1)
+summary_units_df_sub_decent_firing['Ripple engagement'] = summary_units_df_sub_decent_firing.apply(conditions_ripple_engagement, axis=1)
 
 
-summary_units_df_sub['Diff pre-ripple modulation (20-0 ms)'] = (summary_units_df_sub['Pre-ripple modulation medial'] - summary_units_df_sub['Pre-ripple modulation lateral'])
-summary_units_df_sub['Diff ripple modulation (0-50 ms)'] = (summary_units_df_sub['Ripple modulation (0-50 ms) medial'] - summary_units_df_sub['Ripple modulation (0-50 ms) lateral'])
-summary_units_df_sub['Diff ripple modulation (50-120 ms)'] = (summary_units_df_sub['Ripple modulation (50-120 ms) medial'] - summary_units_df_sub['Ripple modulation (50-120 ms) lateral'])
-summary_units_df_sub['Diff firing rate (0-50 ms)'] = (summary_units_df_sub['Firing rate (0-50 ms) medial'] - summary_units_df_sub['Firing rate (0-50 ms) lateral'])
-summary_units_df_sub['Diff firing rate (50-120 ms)'] = (summary_units_df_sub['Firing rate (50-120 ms) medial'] - summary_units_df_sub['Firing rate (50-120 ms) lateral'])
+
+
+
+summary_units_df_sub_decent_firing['Diff pre-ripple modulation (20-0 ms)'] = (summary_units_df_sub_decent_firing['Pre-ripple modulation medial'] - summary_units_df_sub_decent_firing['Pre-ripple modulation lateral'])
+summary_units_df_sub_decent_firing['Diff ripple modulation (0-50 ms)'] = (summary_units_df_sub_decent_firing['Ripple modulation (0-50 ms) medial'] - summary_units_df_sub_decent_firing['Ripple modulation (0-50 ms) lateral'])
+summary_units_df_sub_decent_firing['Diff ripple modulation (50-120 ms)'] = (summary_units_df_sub_decent_firing['Ripple modulation (50-120 ms) medial'] - summary_units_df_sub_decent_firing['Ripple modulation (50-120 ms) lateral'])
+summary_units_df_sub_decent_firing['Diff firing rate (0-50 ms)'] = (summary_units_df_sub_decent_firing['Firing rate (0-50 ms) medial'] - summary_units_df_sub_decent_firing['Firing rate (0-50 ms) lateral'])
+summary_units_df_sub_decent_firing['Diff firing rate (50-120 ms)'] = (summary_units_df_sub_decent_firing['Firing rate (50-120 ms) medial'] - summary_units_df_sub_decent_firing['Firing rate (50-120 ms) lateral'])
+
 
 with open(f"{ output_folder_figures_calculations}/temp_data_figure_5.pkl", "wb") as fp:
-    dill.dump(summary_units_df_sub, fp)
+    dill.dump(summary_units_df_sub_decent_firing, fp)
 

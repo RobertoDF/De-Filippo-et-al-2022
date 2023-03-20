@@ -200,10 +200,10 @@ def color_to_labels(axs, which_axes, minor_or_major, pos=1, *args, **kwargs):
                     color = [0, 0, 0]
                 xtick.set_color(color)
 
-def plot_dist_ripple_mod(data, param, ax0):
+def plot_dist_ripple_mod(data, param, ax0, xlim):
     g = sns.kdeplot(data=data, x=param,
                     hue='Ripple seed', palette=palette_ML, ax=ax0, fill=True, gridsize=500, cut=0)
-    ax0.set_xlim((-1, 15))
+    ax0.set_xlim(xlim)
     ax0.axvline(0,color= 'k', linestyle='--')
     ax0.axvline(.5,color= 'r', linestyle='--')
     ax0.get_yaxis().set_visible(False)

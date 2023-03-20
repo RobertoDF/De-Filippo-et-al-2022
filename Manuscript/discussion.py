@@ -64,15 +64,16 @@ discussion = "Our results show for the first time that strong ripples propagate 
              "ripples that are able to strongly engage networks in the entire top half of the hippocampal formation for an extended time. \n" \
              "Functional differences between ripples are supported by our finding that the ripple origination point has an influence on the " \
              "engagement of various hippocampal subfields. Interestingly, even before the onset of ripples, these functional differences can be observed. " \
-             "These results indicate that lateral ripples show significant engagement of CA3, which aligns with the traditional view that CA3 is the primary " \
-             "generator of ripples {Buzsáki, 1986 #1196, Buzsáki, 1989 #1197, Csicsvari, 2000 #1195}. On the other hand, medial ripples demonstrate stronger engagement of ProS and " \
+             "These results indicate that lateral ripples show significant engagement of CA3, suggesting " \
+             "that CA3 may play a more critical role in initiating lateral ripples. Thisis in accordance  with the traditional view that CA3 is the primary " \
+             "generator of ripples {Buzsáki, 1986 #1196, Buzsáki, 1989 #1197, Csicsvari, 2000 #1195}. On the other hand, medial ripples demonstrate stronger" \
+             " engagement of ProS and " \
              "SUB subfields, supporting the more recent " \
-             "hypothesis that output structures in the hippocampus are also capable of generating ripples {Imbrosci, 2021 #1194}. These functional differences may have important " \
+             "hypothesis that output structures in the hippocampus are also capable of generating ripples {Imbrosci, 2021 #1194}. These functional " \
+             "differences may have important " \
              "implications for our understanding of hippocampal network dynamics and their contribution to memory processing. The fact that different " \
              "subfields are preferentially engaged during different types of ripples suggests that different ripple patterns may play distinct roles " \
-             "in memory processing. Additionally, the finding that lateral ripples exhibit stronger engagement of CA3 before the onset of ripples suggests " \
-             "that CA3 may play a more critical role in initiating lateral ripples. In contrast, the stronger engagement of ProS and SUB subfields before " \
-             "medial ripple onset suggests that these structures may be involved in the initiation of medial ripples. " \
+             "in memory processing. " \
              "These differences in ripple initiation and engagement patterns provide insights into the underlying mechanisms of " \
              "hippocampal network dynamics and their potential role in memory processing. " \
              "Understanding these differences may shed light on the functional significance " \

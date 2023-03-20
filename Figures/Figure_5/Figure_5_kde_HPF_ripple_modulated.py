@@ -18,5 +18,6 @@ _['Ripple seed'] = _["Ripple seed"].str.capitalize()
 
 data = _[_['Parent brain region']=='HPF']
 param = 'Ripple modulation (0-120 ms)'
-plot_dist_ripple_mod(data, param, ax0)
+xlim = (-1, 6)
+plot_dist_ripple_mod(data, param, ax0, xlim)
 plt.show()

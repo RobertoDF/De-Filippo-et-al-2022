@@ -19,7 +19,8 @@ _['Ripple seed'] = _["Ripple seed"].str.capitalize()
 
 data = _[_['Parent brain region']=='HPF']
 param = 'Ripple modulation (0-50 ms)'
-plot_dist_ripple_mod(data, param, axs[0])
+xlim = (-1, 10)
+plot_dist_ripple_mod(data, param, axs[0], xlim)
 
 _ = summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) medial']>minimum_firing_rate_hz) |
                                                         (summary_units_df_sub['Firing rate (0-50 ms) lateral']>minimum_firing_rate_hz)][['Ripple modulation (50-120 ms) medial', 'Ripple modulation (50-120 ms) lateral', 'Parent brain region']]
@@ -29,5 +30,6 @@ _['Ripple seed'] = _["Ripple seed"].str.capitalize()
 
 data = _[_['Parent brain region']=='HPF']
 param = 'Ripple modulation (50-120 ms)'
-plot_dist_ripple_mod(data, param, axs[1])
+xlim = (-1, 5)
+plot_dist_ripple_mod(data, param, axs[1], xlim)
 plt.show()
