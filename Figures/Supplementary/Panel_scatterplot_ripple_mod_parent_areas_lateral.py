@@ -17,7 +17,7 @@ for area in summary_units_df_sub['Parent brain region'].unique():
 
 g = sns.FacetGrid(summary_units_df_sub, col='Parent brain region', hue='Parent brain region',
                   palette=palette_parent_areas, col_order=['HPF', 'Isocortex', 'MB', 'TH'])
-g.map_dataframe(sns.regplot, x='Firing rate (0-120 ms) lateral', y='Firing rate (120-0 ms) lateral',  scatter_kws=dict(s=1, alpha=.1))
+g.map_dataframe(sns.regplot, x='Firing rate (0-120 ms) lateral', y='Firing rate (120-0 ms) lateral',  scatter_kws=dict(s=1, alpha=.3))
 g.map_dataframe(lambda data, **kws: plt.axline((0, 0), slope=1, alpha=.5, linestyle='--', color='k'))
 
 

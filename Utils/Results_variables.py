@@ -378,3 +378,28 @@ _ = pd.DataFrame(summary_units_df_sub[((summary_units_df_sub['Firing rate (0-50 
 
 
 autopcts = _.values.squeeze()/_.values.squeeze().sum()
+
+
+
+
+
+data = summary_units_df_sub[((summary_units_df_sub['Firing rate (0-50 ms) medial']>minimum_firing_rate_hz) |\
+                                                        (summary_units_df_sub['Firing rate (0-50 ms) lateral']>minimum_firing_rate_hz)) &
+                            (summary_units_df_sub["Parent brain region"]=="Isocortex")]
+
+
+data_lat = data[(data['Ripple modulation (0-50 ms) lateral'] > .25) &
+                            (data['Ripple modulation (0-50 ms) medial'] < .25) ]
+
+
+data_med = data[(data['Ripple modulation (0-50 ms) medial']>.25) &
+                            (data['Ripple modulation (0-50 ms) lateral'] < .25)
+                            ]
+
+data_both = data[(data['Ripple modulation (0-50 ms) medial']>.25) &
+                            (data['Ripple modulation (0-50 ms) lateral'] > .25)]
+
+data_both_or = data[(data["Parent brain region"]=="Isocortex") &
+                 ((data['Ripple modulation (0-50 ms) medial']>.25) |
+                            (data['Ripple modulation (0-50 ms) lateral'] > .25))
+                            ]

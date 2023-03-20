@@ -117,8 +117,9 @@ legends = {"Figure 1. Ripple strength correlation depends significantly on dista
            "distribution of clusters along the M-L axis, Dashed lines represents medial and lateral limits. Bottom: Stacked kernel density plot showing "
            "distribution of clusters along the M-L axis. "
            "(D) Ripple modulation in response to lateral and medial ripples during the early (left) and late (right) "
-           "ripple phase. Wilcoxon signed-rank test or Student's t-test (if normality established). "
-           "(E) Ripple modulation in response to lateral and medial ripples before ripple start (20 ms). Wilcoxon signed-rank test or Student's t-test (if normality established). "
+           "ripple phase. Errorbar represents the standard error of the mean. Wilcoxon signed-rank test or Student's t-test (if normality established). "
+           "(E) Ripple modulation in response to lateral and medial ripples before ripple start (20 ms).  Errorbar represents the standard error of the mean. "
+           "Wilcoxon signed-rank test or Student's t-test (if normality established). "
            "(F) Left: Relationship between modulation by lateral and medial ripples. Dashed black line represents absence of difference and two-fold differences in both directions. "
            "Right: Pie chart representing hippocampal neurons preference in ripple engagement."
            }

@@ -28,30 +28,35 @@ scene = Scene()
 
 data = summary_units_df_sub[((summary_units_df_sub['Firing rate (0-50 ms) medial']>minimum_firing_rate_hz) |\
                                                         (summary_units_df_sub['Firing rate (0-50 ms) lateral']>minimum_firing_rate_hz)) &
-                            (summary_units_df_sub["Parent brain region"]=="Isocortex") &
-                    (summary_units_df_sub['Ripple modulation (0-50 ms) lateral'] > .5) &
-                            (summary_units_df_sub['Ripple modulation (0-50 ms) medial'] < .5) ]
+                            (summary_units_df_sub["Parent brain region"]=="Isocortex")]
+
+
+data_lat = data[((data['Firing rate (0-50 ms) medial']>minimum_firing_rate_hz) |\
+                                                        (data['Firing rate (0-50 ms) lateral']>minimum_firing_rate_hz)) &
+                            (data["Parent brain region"]=="Isocortex") &
+                    (data['Ripple modulation (0-50 ms) lateral'] > .25) &
+                            (data['Ripple modulation (0-50 ms) medial'] < .25) ]
 
 ca1 = scene.add_brain_region("CA1", alpha=0.15, color="#754668")
 
 # Add to scene
-scene.add(Points(data[["A-P", "D-V", "L-R"]].values, name="CELLS", radius=50, alpha=.5, colors=rgb2hex(palette_ML["Lateral"])))
+scene.add(Points(data_lat[["A-P", "D-V", "L-R"]].values, name="CELLS", radius=50, alpha=.5, colors=rgb2hex(palette_ML["Lateral"])))
 
-data = summary_units_df_sub[(summary_units_df_sub["Parent brain region"]=="Isocortex") &
-                    (summary_units_df_sub['Ripple modulation (0-50 ms) medial']>.5) &
-                            (summary_units_df_sub['Ripple modulation (0-50 ms) lateral'] < .5)
+data_med = data[(data["Parent brain region"]=="Isocortex") &
+                    (data['Ripple modulation (0-50 ms) medial']>.25) &
+                            (data['Ripple modulation (0-50 ms) lateral'] < .25)
                             ]
 
 
-scene.add(Points(data[["A-P", "D-V", "L-R"]].values, name="CELLS", radius=50,  alpha=.5, colors=rgb2hex(palette_ML["Medial"])))
+scene.add(Points(data_med[["A-P", "D-V", "L-R"]].values, name="CELLS", radius=50,  alpha=.5, colors=rgb2hex(palette_ML["Medial"])))
 
-data = summary_units_df_sub[(summary_units_df_sub["Parent brain region"]=="Isocortex") &
-                    (summary_units_df_sub['Ripple modulation (0-50 ms) medial']>.5) &
-                            (summary_units_df_sub['Ripple modulation (0-50 ms) lateral'] > .5)
+data_both = data[(data["Parent brain region"]=="Isocortex") &
+                    (data['Ripple modulation (0-50 ms) medial']>.25) &
+                            (data['Ripple modulation (0-50 ms) lateral'] > .25)
                             ]
 
 
-scene.add(Points(data[["A-P", "D-V", "L-R"]].values, name="CELLS", radius=50,  alpha=.5, colors="r"))
+scene.add(Points(data_both[["A-P", "D-V", "L-R"]].values, name="CELLS", radius=50,  alpha=.5, colors="r"))
 #ca3 = scene.add_brain_region("CA3", alpha=0.15, color="#FF4365")
 
 
@@ -64,7 +69,7 @@ cam0:{
      'distance': 20661,
    }
 
-vm = VideoMaker(scene, output_folder_supplementary, "Supplementary_Figure_14")
+vm = VideoMaker(scene, output_folder_supplementary, "Supplementary_Figure_16")
 
 # make a video with the custom make frame function
 # this just rotates the scene

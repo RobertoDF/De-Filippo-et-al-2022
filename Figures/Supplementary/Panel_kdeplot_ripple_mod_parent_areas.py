@@ -49,7 +49,7 @@ param = 'Ripple modulation (0-120 ms)'
 g = sns.FacetGrid(_[_['Parent brain region']!='HPF'], col='Parent brain region', sharex=False, sharey=False, col_order=['Isocortex', 'MB', 'TH'])
 g.map_dataframe(sns.kdeplot, x='Ripple modulation (0-120 ms)', hue='Ripple seed', palette=palette_ML, fill=True, gridsize=500)
 g.refline(x=0)
-g.refline(x=1, color='r')
+g.refline(x=.5, color='r')
 g.set(xlim=(-1, 3))
 g.set(yticks=[])
 g.map_dataframe(func_annotate)
