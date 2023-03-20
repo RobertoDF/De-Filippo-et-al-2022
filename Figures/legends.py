@@ -112,7 +112,7 @@ legends = {"Figure 1. Ripple strength correlation depends significantly on dista
            "(A) Relationship between baseline (120 ms before ripple start) and ripple (0-120 ms) firing rate for clusters recorded in Isocortex, HPF, TH and MB. Dashed black line represents absence of any influence, "
            "dashed red line represents a 50% increased spiking rate. "
            "(B) Ripple modulation of hippocampal clusters in response to lateral and medial ripples. Dashed black line represents absence of any influence, "
-           "dashed red line represents a 50% increased spiking rate. Wilcoxon signed-rank test. "
+           "dashed red line represents a 50% increased spiking rate. CLES=commn-language effect size. Wilcoxon signed-rank test. "
            "(C) Top: Rendering of all clusters recorded in the hippocampal formation color-coded by subfield. Middle: kernel density plot showing "
            "distribution of clusters along the M-L axis, Dashed lines represents medial and lateral limits. Bottom: Stacked kernel density plot showing "
            "distribution of clusters along the M-L axis. "

@@ -195,7 +195,9 @@ def count_clusters(group):
     _.index=["Medial", "Lateral"]
     return _
 
-normalized_cluster_count_per_probe = total_clusters.query("Location=='Medial'| Location=='Lateral'").groupby("session_id").apply(lambda group: count_clusters(group))
+total_clusters_CA1 = total_clusters[total_clusters["ecephys_structure_acronym"]=="CA1"]
+
+normalized_cluster_count_per_probe = total_clusters_CA1.query("Location=='Medial'| Location=='Lateral'").groupby("session_id").apply(lambda group: count_clusters(group))
 pg.normality(normalized_cluster_count_per_probe)
 test_cluster_count = pg.mwu(normalized_cluster_count_per_probe["Medial"], normalized_cluster_count_per_probe["Lateral"])["p-val"][0]
 

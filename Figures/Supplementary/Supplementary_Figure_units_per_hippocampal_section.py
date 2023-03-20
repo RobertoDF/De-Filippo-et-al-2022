@@ -11,7 +11,7 @@ from Utils.Style import palette_ML
 import Utils.Style
 
 
-with open(f'{output_folder_calculations}/HPF_waveforms.pkl', 'rb') as f:
+with open(f'{output_folder_calculations}/CA1_waveforms.pkl', 'rb') as f:
     exc_lat, exc_med, inh_lat, inh_med, time = dill.load(f)
 
 
@@ -22,6 +22,8 @@ total_units = total_clusters[(total_clusters["waveform_PT_ratio"]<waveform_PT_ra
                              (total_clusters["isi_violations"]<isi_violations_thr)&
                              (total_clusters["amplitude_cutoff"]<amplitude_cutoff_thr)&
                              (total_clusters["presence_ratio"]>presence_ratio_thr)]
+
+total_units = total_units[total_units["ecephys_structure_acronym"]=="CA1"]
 
 total_units = total_units.rename(columns={"waveform_duration": "Waveform duration", "firing_rate":"Firing rate", "waveform_amplitude":"Waveform amplitude",
                                           "waveform_repolarization_slope":"Waveform repolarization slope", "waveform_recovery_slope":"Waveform recovery slope",
@@ -71,13 +73,13 @@ ax1 = plt.subplot2grid((8, 4), (0, 0), colspan=2, rowspan=2)
 
 ax2 = plt.subplot2grid((8, 4), (0, 2), colspan=2, rowspan=2)
 
-pd.DataFrame(np.vstack(exc_lat), columns=time*1000).mean().plot( color=palette_ML["Lateral"], ax=ax2)
-pd.DataFrame(np.vstack(exc_med), columns=time*1000).mean().plot( color=palette_ML["Medial"], ax=ax2)
+pd.DataFrame(np.vstack(exc_lat), columns=time*1000).mean().plot(linewidth=2, color=palette_ML["Lateral"], ax=ax2)
+pd.DataFrame(np.vstack(exc_med), columns=time*1000).mean().plot(linewidth=2, color=palette_ML["Medial"], ax=ax2)
 
-pd.DataFrame(np.vstack(inh_lat), columns=time*1000).mean().plot( color=palette_ML["Lateral"], ax=ax1)
-pd.DataFrame(np.vstack(inh_med), columns=time*1000).mean().plot( color=palette_ML["Medial"], ax=ax1)
-ax1.set_xlim((0.25,1.5))
-ax2.set_xlim((0.25,1.5))
+pd.DataFrame(np.vstack(inh_lat), columns=time*1000).mean().plot(linewidth=2, color=palette_ML["Lateral"], ax=ax1)
+pd.DataFrame(np.vstack(inh_med), columns=time*1000).mean().plot(linewidth=2, color=palette_ML["Medial"], ax=ax1)
+ax1.set_xlim((0.25, 2))
+ax2.set_xlim((0.25, 2))
 ax1.set_xlabel("Time (ms)")
 ax2.set_xlabel("Time (ms)")
 

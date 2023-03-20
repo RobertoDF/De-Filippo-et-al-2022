@@ -152,12 +152,12 @@ results = {"Distance explains most of the ripple strength correlation variabilit
             f" number of engaged neurons and a higher spiking rate per cell, both in putative excitatory and inhibitory neurons. "
             f"The disparity in network engagement can possibly "
             f"be in part explained by electrophysiological differences across hippocampal sections (e.g. higher firing rate). "
-            f"We did not find differences in the number of firing neurons across the entire hippocampal formation (medial = {round(normalized_cluster_count_per_probe['Medial'].mean(), 2)}, "
+            f"We did not find differences in the number of firing neurons across the CA1 subfield (medial = {round(normalized_cluster_count_per_probe['Medial'].mean(), 2)}, "
             f"lateral = {round(normalized_cluster_count_per_probe['Lateral'].mean(), 2)}, p-value = {'{:.2e}'.format(test_cluster_count)}, Mann-Whitney U test), " 
-            f"we did, however, found differences in firing rate, waveform duration, and waveform shape (recovery slope and peak-through ratio, Supplementary Figure 13)."
+            f"we did, however, found differences in firing rate, waveform duration, and waveform shape (recovery slope and peak-through ratio, Supplementary Figure 13) in putative excitatory neurons."
             f" Firing rate and waveform duration in putative excitatory neurons exhibited respectively "
             f"a left- and right-shifted distribution in the lateral section, reflecting lower firing rate and slower action potentials. "
-            f"Putative inhibitory interneurons in the lateral section showed both a slower action potential and a higher firing rate.",
+            f"Putative inhibitory interneurons in the lateral section showed both a higher firing rate.",
 
            "Location of ripple seed is associated with different pattern of modulation across brain regions":
            "To investigate how medial and lateral ripples affect various brain regions, we examined the modulation of spiking rate during ripples in individual clusters. "
@@ -176,7 +176,7 @@ results = {"Distance explains most of the ripple strength correlation variabilit
            f' The relationship between'
            f' baseline spiking and spiking during ripples was similar in medial and lateral ripples (Supplementary Figure 15). '
            f'This similarity accounted for most of the variability observed in all cases. '
-           f'There was a significant difference in modulation of hippocampal neurons by medial and lateral ripples within a 120 ms window after the start of the ripple event. '
+           f'We found a significant difference in modulation of hippocampal neurons by medial and lateral ripples within a 120 ms window after the start of the ripple event. '
            f'However, the effect size was modest (Figure 5B). A stronger effect was observed in the 50-120 ms window, here medial ripples had a notably stronger '
            f'modulatory effect (Supplementary Figure 16A). Significant differences were also observed in cortical neurons and in TH, with medial ripples '
            f'inducing stronger modulation (Supplementary Figure 16B). To understand the mechanism underlying these differences between medial and lateral ripples '

@@ -13,17 +13,68 @@ manifest_path = os.path.join(neuropixel_dataset, "manifest.json")
 
 cache = EcephysProjectCache.from_warehouse(manifest=manifest_path)
 
+
+
 with open(f'{output_folder_calculations}/clean_ripples_calculations.pkl', 'rb') as f:
     ripples_calcs = dill.load(f)
 
 
 sessions = cache.get_session_table()
 
+
+all_areas_recorded = [item for sublist in sessions['ecephys_structure_acronyms'].to_list() for item in sublist]
+
+count_areas_recorded = pd.Series(all_areas_recorded).value_counts()
+
+with open(f"{output_folder_calculations}/units_summary_with_added_metrics.pkl", 'rb') as f:
+    spikes_summary = dill.load(f)
+
+summary_units_df = pd.concat(spikes_summary.values())
+
+neurons_per_area = summary_units_df.groupby('ecephys_structure_acronym').size()
+
+summary_units_df['Ripple modulation (0-50 ms) medial'] = (summary_units_df['Firing rate (0-50 ms) medial'] - summary_units_df['Firing rate (120-0 ms) medial'] )/ \
+                                                            ( summary_units_df['Firing rate (120-0 ms) medial'])
+summary_units_df['Ripple modulation (0-50 ms) lateral'] = (summary_units_df['Firing rate (0-50 ms) lateral'] - summary_units_df['Firing rate (120-0 ms) lateral']) / \
+                                                            (summary_units_df['Firing rate (120-0 ms) lateral'])
+summary_units_df['Ripple modulation (50-120 ms) medial'] = (summary_units_df['Firing rate (50-120 ms) medial']- summary_units_df['Firing rate (120-0 ms) medial']) / \
+                                                               ( summary_units_df['Firing rate (120-0 ms) medial'])
+summary_units_df['Ripple modulation (50-120 ms) lateral'] = (summary_units_df['Firing rate (50-120 ms) lateral']- summary_units_df['Firing rate (120-0 ms) lateral']) / \
+                                                               ( summary_units_df['Firing rate (120-0 ms) lateral'])
+summary_units_df['Ripple modulation (0-120 ms) medial'] = (summary_units_df['Firing rate (0-120 ms) medial'] - summary_units_df['Firing rate (120-0 ms) medial'])/ \
+                                                            (summary_units_df['Firing rate (120-0 ms) medial'] )
+summary_units_df['Ripple modulation (0-120 ms) lateral'] = (summary_units_df['Firing rate (0-120 ms) lateral']-summary_units_df['Firing rate (120-0 ms) lateral'])/\
+                                                            ( summary_units_df['Firing rate (120-0 ms) lateral'])
+
+summary_units_df['Pre-ripple modulation medial'] = (summary_units_df['Firing rate (20-0 ms) medial'] - summary_units_df['Firing rate (120-20 ms) medial'] ) / \
+                                                (summary_units_df['Firing rate (120-20 ms) medial'] )
+summary_units_df['Pre-ripple modulation lateral'] = (summary_units_df['Firing rate (20-0 ms) lateral']-summary_units_df['Firing rate (120-20 ms) lateral']) /  \
+                                            (summary_units_df['Firing rate (120-20 ms) lateral'])
+
+
+summary_units_df_sub = summary_units_df[(summary_units_df['ecephys_structure_acronym'].isin(count_areas_recorded[count_areas_recorded>8].index))&
+                                        (summary_units_df['ecephys_structure_acronym'].isin(neurons_per_area[neurons_per_area>100].index))&
+                                       (summary_units_df['ecephys_structure_acronym']!='grey')&
+                                       (summary_units_df['ecephys_structure_acronym']!='HPF')]
+
+summary_units_df_sub = summary_units_df_sub[~(summary_units_df_sub['Ripple modulation (0-50 ms) medial'].isin([np.nan, np.inf, -np.inf])) &
+                        ~(summary_units_df_sub['Ripple modulation (0-50 ms) lateral'].isin([np.nan, np.inf, -np.inf])) &
+                        ~(summary_units_df_sub['Ripple modulation (50-120 ms) medial'].isin([np.nan, np.inf, -np.inf])) &
+                        ~(summary_units_df_sub['Ripple modulation (50-120 ms) lateral'].isin([np.nan, np.inf, -np.inf])) &
+                        ~(summary_units_df_sub['Ripple modulation (0-120 ms) medial'].isin([np.nan, np.inf, -np.inf])) &
+                        ~(summary_units_df_sub['Ripple modulation (0-120 ms) lateral'].isin([np.nan, np.inf, -np.inf])) &
+                        ~(summary_units_df_sub['Pre-ripple modulation medial'].isin([np.nan, np.inf, -np.inf]))&
+                        ~(summary_units_df_sub['Pre-ripple modulation lateral'].isin([np.nan, np.inf, -np.inf]))]
+
+
+summary_units_df_sub.columns = summary_units_df_sub.columns.str.replace('_', ' ')
+summary_units_df_sub.columns = summary_units_df_sub.columns.str.capitalize()
+
+
 sessions_ids_no_CA1 = []
 for idx, data in sessions.iterrows():
     if "CA1" not in data["ecephys_structure_acronyms"]:
         sessions_ids_no_CA1.append(idx)
-
 
 
 manifest_path = f"{neuropixel_dataset}/manifest.json"
@@ -56,7 +107,8 @@ with open(f"{output_folder_figures_calculations}/temp_data_figure_1.pkl", "rb") 
 quartiles_distance = summary_corrs[summary_corrs["Comparison"] == "CA1-CA1"]["Distance (µm)"].quantile(
     [0.25, 0.5, 0.75])
 
-methods = {"Dataset": f"Our analysis was based on the Visual Coding - Neuropixels dataset provided by the Allen Institute and available at "
+
+methods = {"Dataset": f"Our analysis was based on the Visual Coding - Neuropixels dataset of head-fixed recordings in awake mice provided by the Allen Institute and available at "
                       f"https://allensdk.readthedocs.io/en/latest/visual_coding_neuropixels.html. "
                       f"We excluded {len(sessions_ids_no_CA1)} sessions because of absence of "
                       f"recording electrodes in CA1 (session ids={', '.join(map(str, sessions_ids_no_CA1))}). "
@@ -77,7 +129,10 @@ methods = {"Dataset": f"Our analysis was based on the Visual Coding - Neuropixel
                       f"{round(sessions.loc[ripples_calcs.keys()]['channel_count'].sem(), 2)}. Probes in each session were numbered according to the position "
                       f"on the M-L axis, with probe number 0 being the most medial. Channels with ambiguous area annotations were discarded (e.g. HPF instead of CA1). "
                       f"We found a number of of small artifacts in a variety of sessions, all this timepoints were excluded from the analysis (for more informations: "
-                      f"https://github.com/RobertoDF/Allen_visual_dataset_artifacts). Further details about data acquisition can be found at "
+                      f"https://github.com/RobertoDF/Allen_visual_dataset_artifacts). "
+                      f"Each recording session had a length of ~3 hour. In each experiment a series of visual stimuli were presented in front of the animal (gabors, drifting gratings, "
+                      f"static gratings, natural images, movies, flashes). Mice did not undergo any training associated with these stimuli. "
+                      "Further details about data acquisition can be found at "
                       f"https://brainmapportal-live-4cc80a57cd6e400d854-f7fdcae.divio-media.net/filer_public/80/75/8075a100-ca64-429a-b39a-569121b612b2/neuropixels_visual_coding_-_white_paper_v10.pdf. "
                       "Visualization of recording locations was performed with brainrender {Claudi, 2021 #1134}.",
 
@@ -95,9 +150,9 @@ methods = {"Dataset": f"Our analysis was based on the Visual Coding - Neuropixel
                            f"periodogram with constant detrending (scipy.signal.periodogram) on the raw LFP trace, "
                            f"we checked the presence of a peak >"
                            f" {ripple_power_sp_thr} Hz, candidates not fulfilling this condition were discarded, this condition was meant to "
-                             f"reduce the number of detected false positives. Ripple candidates detected during running epochs "
-                             f"were discarded, an animal was considered to be running if his standardized speed was higher than the 10th percentile plus 0.06. "
-                             f"Candidates were also discarded if no behavioral data was available. Code for the detection of ripples resides in 'Calculate_ripples.py'. ",
+                            f"reduce the number of detected false positives. Ripple candidates detected during running epochs "
+                            f"were discarded, an animal was considered to be running if his standardized speed was higher than the 10th percentile plus 0.06. "
+                            f"Candidates were also discarded if no behavioral data was available. Code for the detection of ripples resides in 'Calculate_ripples.py'. ",
 
         "Correlation and lag analysis": "In each session we uniquely used ripples from the CA1 channel with the strongest ripple activity, "
                                         f"we looked at the LFP activity in all brain areas recorded in a window of {start_w*1000} ms pre ripple start and {stop_w*1000} ms post ripple start, this "
@@ -129,12 +184,16 @@ methods = {"Dataset": f"Our analysis was based on the Visual Coding - Neuropixel
                                               f"the 0-50 ms and 50-120 ms post ripple start windows. "
                                               f"The degree of association between ripple lags and M-L or A-P axis was calculated using partial correlation (https://pingouin-stats.org/build/html/generated/pingouin.partial_corr.html), "
                                               f"in this way we could remove the effect of the other axis. ",
-        "Units selection and features calculations": f"Clusters were filtered according to the following parameters: Waveform peak-trough ratio < {waveform_PT_ratio_thr}, "
+        "Units selection, electrophisiological features calculations and ripple modulation": f"Clusters were filtered according to the following parameters: Waveform peak-trough ratio < {waveform_PT_ratio_thr}, "
                            f"ISI violations < {isi_violations_thr}, "
                            f"amplitude cutoff < {amplitude_cutoff_thr} and "
                            f"Presence ratio > {presence_ratio_thr}. "
                            f"For an explanation of the parameters see "
                            f"https://github.com/AllenInstitute/ecephys_spike_sorting/blob/master/ecephys_spike_sorting/modules/quality_metrics/README.md and "
                            f"https://brainmapportal-live-4cc80a57cd6e400d854-f7fdcae.divio-media.net/filer_public/80/75/8075a100-ca64-429a-b39a-569121b612b2/neuropixels_visual_coding_-_white_paper_v10.pdf. "
-                           f"Firing rate was calculated on all clusters with presence ratio > {presence_ratio_thr}."
+                           f"Firing rate was calculated on all clusters with presence ratio > {presence_ratio_thr}. "
+                           f"Ripple modulation was calculated only for sessions with at least one recording in both the lateral and medial section"
+                           f" (n={summary_units_df_sub['Session id'].unique().shape[0]}) and only in clusters with firing rate > presence_ratio_thr spikes/s. "
+                           f"Ripple modulation was calculated as ('ripple spiking rate' - 'baseline spiking rate') / 'baseline spiking rate'"
+
            }
