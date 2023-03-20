@@ -44,7 +44,7 @@ plt.figure(1).axes[9].set_position([0.683038, -0.000317, 0.327780, 0.327780])
 plt.figure(1).axes[9].title.set_position([0.500000, 0.959705])
 plt.figure(1).axes[9].texts[1].set_position([-0.263583, 0.219591])
 plt.figure(1).axes[9].texts[3].set(position=(0.589701, -0.417222), text='10.40 %', ha='center', va='center', fontsize=5.0, color='white', weight='bold')
-plt.figure(1).axes[9].texts[5].set(position=(0.678741, -0.121885), text='5.31 %', ha='center', va='center', fontsize=7.0, color='white', weight='bold')
+plt.figure(1).axes[9].texts[5].set(position=(0.678741, -0.121885), text='5.31 %', ha='center', va='center', fontsize=5.0, color='white', weight='bold')
 plt.figure(1).text(0.48758235782825293, 0.9648019132785688, 'HPF', transform=plt.figure(1).transFigure, color='#7ed04b', weight='bold')  # id=plt.figure(1).texts[0].new
 plt.figure(1).text(0.0049504950495049905, 0.980905233380481, 'A', transform=plt.figure(1).transFigure, weight='bold')  # id=plt.figure(1).texts[1].new
 plt.figure(1).text(0.34582743988684583, 0.980905233380481, 'B', transform=plt.figure(1).transFigure, weight='bold')  # id=plt.figure(1).texts[2].new

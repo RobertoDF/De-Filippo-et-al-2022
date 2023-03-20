@@ -58,7 +58,7 @@ total_units = total_clusters[(total_clusters["waveform_PT_ratio"]<5)&(total_clus
 
 
 
-total_units_inh = total_units[total_units["Waveform duration"]<waveform_dur_thr]
+total_units_inh = total_units[total_units["waveform_duration"]<waveform_dur_thr]
 
 param="waveform_duration"
 p_val_wav_dur_inh = pg.mwu(total_units_inh[total_units_inh["Location"] == "Medial"][param],
@@ -117,7 +117,7 @@ p_val_ks_fir_rate_inh = ks_2samp(total_units_inh[total_units_inh["Location"] == 
              total_units_inh[total_units_inh["Location"] == "Lateral"][param])[1]
 
 
-total_units_exc = total_units[total_units["Waveform duration"]>=waveform_dur_thr]
+total_units_exc = total_units[total_units["waveform_duration"]>=waveform_dur_thr]
 
 param="waveform_duration"
 p_val_wav_dur_exc = pg.mwu(total_units_exc[total_units_exc["Location"] == "Medial"][param],
