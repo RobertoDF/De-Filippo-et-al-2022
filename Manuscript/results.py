@@ -166,11 +166,10 @@ results = {"Distance explains most of the ripple strength correlation variabilit
            f'We found that clusters located in the thalamus (TH) and midbrain (MB) were hardly modulated (MB: {round(100-ripple_mod_mean.loc["MB"]["No engagement"]*100, 2)} '
            f'± {round(ripple_mod_sem.loc["MB"]["Ripple engagement"] *100, 2)} %, '
            f'TH: {round(100-ripple_mod_mean.loc["TH"]["No engagement"]*100, 2)} ± {round(ripple_mod_sem.loc["TH"]["No engagement"] *100, 2)} %), ' #I use ""No engagement" because few sessions have ripple engagement at all, value_counts is misleading....
-           'with baseline spiking rate explaining nearly all the variance in spiking rate during ripples. Only a small fraction of '
+           'with baseline spiking rate explaining nearly all the variance in spiking rate during ripples (Figure 5A). Only a small fraction of '
            f'cortical neurons were modulated (Isocortex: {round(100-ripple_mod_mean.loc["Isocortex"]["No engagement"]*100, 2)} ± '
            f'{round(ripple_mod_sem.loc["Isocortex"]["No engagement"] *100, 2)} %), in contrast,  the majority of hippocampal (HPF) neurons showed ripple modulation '
            f'(HPF: {round(ripple_mod_mean.loc["HPF"]["Ripple engagement"]*100, 2)} ± {round(ripple_mod_sem.loc["HPF"]["Ripple engagement"] *100, 2)} %). '
-           f'In both cases the baseline spiking rate explained a big portion of the variance in spiking rate during ripples (Figure 5A). '
            f'The relationship between baseline spiking and spiking during ripples was similar in medial and lateral ripples, '
            f'accounting for most of the observed variability (Supplementary Figure 14). We found a modest difference in '
            f'modulation of hippocampal neurons by medial and lateral ripples within a 120 ms window after the start of '
