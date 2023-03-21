@@ -109,7 +109,9 @@ legends = {"Figure 1. Ripple strength correlation depends significantly on dista
             f"p-value = {'{:.2e}'.format(fig_4_ttest_late_spiking['p-val'].values[0])}, Student's t-test.",
 
            "Figure 5. Ripple seed location influences the pattern of ripple modulation across various regions of the brain.":
-           "(A) Relationship between baseline (120 ms before ripple start) and ripple (0-120 ms) firing rate for clusters recorded in Isocortex, HPF, TH and MB. Dashed black line represents absence of any influence, "
+           "(A) Relationship between baseline (120 ms before ripple start) and ripple (0-120 ms) firing rate for clusters recorded in Isocortex, HPF, TH and MB. "
+           "Spiking rates were calculated"
+           " as the mean between responses to lateral and medial ripples. Dashed black line represents absence of any influence, "
            "dashed red line represents a 50% increased spiking rate. "
            "(B) Ripple modulation of hippocampal clusters in response to lateral and medial ripples. Dashed black line represents absence of any influence, "
            "dashed red line represents a 50% increased spiking rate. CLES=commn-language effect size. Wilcoxon signed-rank test. "
@@ -120,7 +122,7 @@ legends = {"Figure 1. Ripple strength correlation depends significantly on dista
            "ripple phase. Errorbar represents the standard error of the mean. Wilcoxon signed-rank test or Student's t-test (if normality established). "
            "(E) Ripple modulation in response to lateral and medial ripples before ripple start (20 ms).  Errorbar represents the standard error of the mean. "
            "Wilcoxon signed-rank test or Student's t-test (if normality established). "
-           "(F) Left: Relationship between modulation by lateral and medial ripples. Dashed black line represents absence of difference and two-fold differences in both directions. "
+           "(F) Left: Relationship between modulation by lateral and medial ripples in hippocampal neurons. Dashed black line represents absence of difference and two-fold differences in both directions. "
            "Right: Pie chart representing hippocampal neurons preference in ripple engagement."
            }
 

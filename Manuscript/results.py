@@ -162,7 +162,7 @@ results = {"Distance explains most of the ripple strength correlation variabilit
 
            "Location of ripple seed is associated with different pattern of modulation across brain regions":
            "To investigate how medial and lateral ripples affect various brain regions, we examined the modulation of spiking rate during ripples in individual clusters. "
-            "A cluster was deemed modulated if it exhibited at least a 50% increase in spiking rate during ripples. "
+            "A cluster was deemed modulated if it exhibited at least a 50% increase in spiking rate during either medial or lateral ripples. "
            f'We found that clusters located in the thalamus (TH) and midbrain (MB) were hardly modulated (MB: {round(100-ripple_mod_mean.loc["MB"]["No engagement"]*100, 2)} '
            f'± {round(ripple_mod_sem.loc["MB"]["Ripple engagement"] *100, 2)} %, '
            f'TH: {round(100-ripple_mod_mean.loc["TH"]["No engagement"]*100, 2)} ± {round(ripple_mod_sem.loc["TH"]["No engagement"] *100, 2)} %), ' #I use ""No engagement" because few sessions have ripple engagement at all, value_counts is misleading....
