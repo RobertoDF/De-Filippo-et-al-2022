@@ -63,9 +63,9 @@ discussion = "Our results show for the first time that strong ripples propagate 
              " its ability of generating particularly long " \
              "ripples that are able to strongly engage networks in the entire top half of the hippocampal formation for an extended time. \n" \
              "Functional differences between ripples are supported by our finding that the ripple origination point has an influence on the " \
-             "engagement of various hippocampal subfields. Interestingly, even before the onset of ripples, these functional differences can be observed. " \
-             "Our analysis revealed that the dentate gyrus (DG), CA1, and CA3 subfields of the hippocampus were more strongly engaged during the early phase" \
-             " of ripples in comparison to the subiculum (SUB). In the late phase, all subfields, including the prosubiculum (ProS), " \
+             "engagement of various hippocampal subfields. Interestingly, these functional differences can be observed even before the onset of ripples. " \
+             "Our analysis revealed that DG, CA1, and CA3 subfields of the hippocampus were more strongly engaged during the early phase" \
+             "in response to medial ripples, the opposite was true for SUB. In the late phase, all subfields, including ProS, " \
              "showed stronger modulation in response to medial ripples. Moreover, the analysis of pre-ripple activity showed that ProS and " \
              "SUB exhibited stronger modulation in response to medial ripples, while DG and, especially, CA3 displayed weaker modulation compared to lateral ripples.  " \
              "These results indicate that CA3 may play a more critical role in initiating lateral ripples, in accordance  with the traditional view " \
@@ -79,7 +79,7 @@ discussion = "Our results show for the first time that strong ripples propagate 
              "brain regions, such as the cortex {Aggleton, 2015 #1199, Naber, 1998 #1200}. It is possible that the weaker engagement of " \
              "the subiculum during lateral ripples " \
              "may reflect a more localized processing of information within the hippocampus, while the stronger engagement of the " \
-             "subiculum during medial ripples may reflect a more global transfer of information to other brain regions. These functional " \
+             "subiculum during medial ripples may reflect a more global transfer of information to other brain regions, as. These functional " \
              "differences may have important " \
              "implications for our understanding of hippocampal network dynamics and their contribution to memory processing. The fact that different " \
              "subfields are preferentially engaged during different types of ripples suggests that different ripple patterns may play distinct roles " \
