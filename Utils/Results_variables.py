@@ -332,14 +332,16 @@ ripple_mod_sem = pd.DataFrame(summary_units_df_sub.groupby(['Parent brain region
 
 
 area = 'SUB'
-r_sq_sub=summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) medial']>0.1) & (summary_units_df_sub['Brain region']==area )]\
+r_sq_sub=summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) medial']>minimum_firing_rate_hz) |
+                                                        (summary_units_df_sub['Firing rate (0-50 ms) lateral']>minimum_firing_rate_hz) & (summary_units_df_sub['Brain region']==area )]\
                                         [["Diff pre-ripple modulation (20-0 ms)", 'Diff firing rate (0-50 ms)' , 'Diff ripple modulation (0-50 ms)',  'Diff ripple modulation (50-120 ms)',
                                           'Ripple modulation (0-50 ms) medial','Ripple modulation (0-50 ms) lateral', 'M-L',
                                             'A-P', 'D-V']]\
                 .corr().loc[["Diff pre-ripple modulation (20-0 ms)", 'Diff ripple modulation (0-50 ms)', 'Diff ripple modulation (50-120 ms)', 'Diff firing rate (0-50 ms)', \
                          'Ripple modulation (0-50 ms) medial','Ripple modulation (0-50 ms) lateral'], ["M-L", "A-P", "D-V"]]**2
 area = 'DG'
-r_sq_dg=summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) medial']>0.1) & (summary_units_df_sub['Brain region']==area )]\
+r_sq_dg=summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) medial']>minimum_firing_rate_hz) |
+                                                        (summary_units_df_sub['Firing rate (0-50 ms) lateral']>minimum_firing_rate_hz) & (summary_units_df_sub['Brain region']==area )]\
                                         [["Diff pre-ripple modulation (20-0 ms)", 'Diff firing rate (0-50 ms)' , 'Diff ripple modulation (0-50 ms)',  'Diff ripple modulation (50-120 ms)',
                                           'Ripple modulation (0-50 ms) medial','Ripple modulation (0-50 ms) lateral', 'M-L',
                                             'A-P', 'D-V']]\
@@ -347,7 +349,8 @@ r_sq_dg=summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) medial
                          'Ripple modulation (0-50 ms) medial','Ripple modulation (0-50 ms) lateral'], ["M-L", "A-P", "D-V"]]**2
 
 area = 'CA1'
-r_sq_ca1=summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) medial']>0.1) & (summary_units_df_sub['Brain region']==area )]\
+r_sq_ca1=summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) medial']>minimum_firing_rate_hz) |
+                                                        (summary_units_df_sub['Firing rate (0-50 ms) lateral']>minimum_firing_rate_hz) & (summary_units_df_sub['Brain region']==area )]\
                                         [["Diff pre-ripple modulation (20-0 ms)", 'Diff firing rate (0-50 ms)' , 'Diff ripple modulation (0-50 ms)',  'Diff ripple modulation (50-120 ms)',
                                           'Ripple modulation (0-50 ms) medial','Ripple modulation (0-50 ms) lateral', 'M-L',
                                             'A-P', 'D-V']]\
@@ -355,7 +358,8 @@ r_sq_ca1=summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) media
                          'Ripple modulation (0-50 ms) medial','Ripple modulation (0-50 ms) lateral'], ["M-L", "A-P", "D-V"]]**2
 
 area = 'CA3'
-r_sq_ca3=summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) medial']>0.1) & (summary_units_df_sub['Brain region']==area )]\
+r_sq_ca3=summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) medial']>minimum_firing_rate_hz) |
+                                                        (summary_units_df_sub['Firing rate (0-50 ms) lateral']>minimum_firing_rate_hz) & (summary_units_df_sub['Brain region']==area )]\
                                         [["Diff pre-ripple modulation (20-0 ms)", 'Diff firing rate (0-50 ms)' , 'Diff ripple modulation (0-50 ms)',  'Diff ripple modulation (50-120 ms)',
                                           'Ripple modulation (0-50 ms) medial','Ripple modulation (0-50 ms) lateral', 'M-L',
                                             'A-P', 'D-V']]\
@@ -363,7 +367,8 @@ r_sq_ca3=summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) media
                          'Ripple modulation (0-50 ms) medial','Ripple modulation (0-50 ms) lateral'], ["M-L", "A-P", "D-V"]]**2
 
 area = 'ProS'
-r_sq_pros=summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) medial']>0.1) & (summary_units_df_sub['Brain region']==area )]\
+r_sq_pros=summary_units_df_sub[(summary_units_df_sub['Firing rate (0-50 ms) medial']>minimum_firing_rate_hz) |
+                                                        (summary_units_df_sub['Firing rate (0-50 ms) lateral']>minimum_firing_rate_hz) & (summary_units_df_sub['Brain region']==area )]\
                                         [["Diff pre-ripple modulation (20-0 ms)", 'Diff firing rate (0-50 ms)' , 'Diff ripple modulation (0-50 ms)',  'Diff ripple modulation (50-120 ms)',
                                           'Ripple modulation (0-50 ms) medial','Ripple modulation (0-50 ms) lateral', 'M-L',
                                             'A-P', 'D-V']]\
