@@ -122,8 +122,8 @@ legends = {"Figure 1. Ripple strength correlation depends significantly on dista
            "ripple phase. Errorbar represents the standard error of the mean. Wilcoxon signed-rank test or Student's t-test (if normality established). "
            "(E) Ripple modulation in response to lateral and medial ripples before ripple start (20 ms).  Errorbar represents the standard error of the mean. "
            "Wilcoxon signed-rank test or Student's t-test (if normality established). "
-           "(F) Left: Relationship between modulation by lateral and medial ripples in hippocampal neurons. Dashed black line represents absence of difference and two-fold differences in both directions. "
-           "Right: Pie chart representing hippocampal neurons preference in ripple engagement."
+           "(F) Left: Relationship between modulation by lateral and medial ripples in hippocampal clusters. Dashed black line represents absence of difference and two-fold differences in both directions. "
+           "Right: Pie chart representing hippocampal clusters preference in ripple engagement."
            }
 
 

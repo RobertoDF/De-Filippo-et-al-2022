@@ -105,10 +105,10 @@ legends_supplementary = {
 
 "Supplementary Figure 14. Spiking rate modulation in medial and lateral ripples across brain regions":
     "(A) Relationship between baseline (120 ms before ripple start) and medial ripple (0-50 ms) firing rate for clusters recorded in  HPF, Isocortex, MB and TH. In the Isocortex and MB plot "
-    "we excluded the minority of neurons showing modulation >50% in response to either lateral or medial ripples(grey dots). Dashed black line represents absence of any influence, "
+    "we excluded the minority of clusters showing modulation >50% in response to either lateral or medial ripples(grey dots). Dashed black line represents absence of any influence, "
            "dashed red line represents a 50% increased spiking rate. "
     "(B) Relationship between baseline (120 ms before ripple start) and lateral ripple (0-50 ms) firing rate for clusters recorded in  HPF, Isocortex, MB and TH. In the Isocortex and MB plot "
-    "we excluded the minority of neurons showing modulation >50% in response to either lateral or medial ripples (grey dots). Dashed black line represents absence of any influence, "
+    "we excluded the minority of clusters showing modulation >50% in response to either lateral or medial ripples (grey dots). Dashed black line represents absence of any influence, "
            "dashed red line represents a 50% increased spiking rate. ",
 
 "Supplementary Figure 15. Ripple modulation across HPF, Isocortex, MB and TH":

@@ -379,6 +379,15 @@ _ = pd.DataFrame(summary_units_df_sub[((summary_units_df_sub['Firing rate (0-50 
 
 autopcts = _.values.squeeze()/_.values.squeeze().sum()
 
+data = pd.DataFrame(summary_units_df_sub[((summary_units_df_sub['Firing rate (0-50 ms) medial']>minimum_firing_rate_hz) |
+                                                        (summary_units_df_sub['Firing rate (0-50 ms) lateral']>minimum_firing_rate_hz))&
+                     (summary_units_df_sub['Parent brain region']=='HPF' )].groupby('Brain region')['Ripple type engagement'].value_counts())
+
+dict_autopcts = {}
+for q, area in zip(range(5), data.index.get_level_values('Brain region').unique()):
+
+    dict_autopcts [area] = data.loc[area].values.squeeze() / data.loc[area].values.squeeze().sum()
+
 
 
 
