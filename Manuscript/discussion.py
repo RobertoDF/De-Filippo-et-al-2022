@@ -70,13 +70,13 @@ discussion = "Our results show for the first time that strong ripples propagate 
              "SUB exhibited stronger modulation in response to medial ripples, while DG and, especially, CA3 displayed weaker modulation compared to lateral ripples.  " \
              "These results indicate that CA3 may play a more critical role in initiating lateral ripples, in accordance  with the traditional view " \
              "that CA3 is the primary " \
-             "generator of ripples {Buzsáki, 1986 #1196, Buzsáki, 1989 #1197, Csicsvari, 2000 #1195}. On the other hand, " \
+             "generator of ripples {Buzsáki, 1986 #1196; Buzsáki, 1989 #1197; Csicsvari, 2000 #1195}. On the other hand, " \
              "medial ripples demonstrate stronger" \
              " engagement of ProS and " \
              "SUB subfields before ripple start, supporting the more recent " \
              "hypothesis that output structures in the hippocampus are also capable of generating ripples {Imbrosci, 2021 #1194}. " \
              "The subicular complex has been suggested to play a role in the transfer of information from the hippocampus to other " \
-             "brain regions, such as the cortex {Aggleton, 2015 #1199, Naber, 1998 #1200}. It is possible that the weaker engagement of " \
+             "brain regions, such as the cortex {Aggleton, 2015 #1199; Naber, 1998 #1200}. It is possible that the weaker engagement of " \
              "the subiculum during lateral ripples " \
              "may reflect a more localized processing of information within the hippocampus, while the stronger engagement of the " \
              "subiculum during medial ripples may reflect a more global transfer of information to other brain regions. "\
