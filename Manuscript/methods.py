@@ -194,6 +194,6 @@ methods = {"Dataset": f"Our analysis was based on the Visual Coding - Neuropixel
                            f"Firing rate was calculated on all clusters with presence ratio > {presence_ratio_thr}. "
                            f"Ripple modulation was calculated only for sessions with at least one recording in both the lateral and medial section"
                            f" (n={summary_units_df_sub['Session id'].unique().shape[0]}) and only in clusters with firing rate > {presence_ratio_thr} spikes/s. "
-                           f"Ripple modulation was calculated as ('ripple spiking rate' - 'baseline spiking rate') / 'baseline spiking rate'"
+                           f"Ripple modulation was calculated as ('ripple spiking rate' - 'baseline spiking rate') / 'baseline spiking rate'."
 
            }
