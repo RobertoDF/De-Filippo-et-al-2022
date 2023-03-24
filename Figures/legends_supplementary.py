@@ -120,8 +120,8 @@ legends_supplementary = {
            "dashed red line represents a 50% increased spiking rate. Wilcoxon signed-rank test",
 
 "Supplementary Figure 16. Cortical clusters showing ripple engagement":
-    "In pink clusters showing medial ripples engagement, in purple clusters showing lateral ripples engagement and in red clusters showing "
-    "engagement both in medial and lateral ripples.",
+    "In pink clusters showing medial ripples engagement (at least 25%), in purple clusters showing lateral ripples engagement (at least 25%) and in red clusters showing "
+    "engagement (at least 25%) both in medial and lateral ripples.",
 
 "Supplementary Figure 17. Ripple modulation across HPF, Isocortex, MB and TH":
 "(A) Ripple modulation in response to lateral and medial ripples during the early  "
