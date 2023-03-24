@@ -206,7 +206,7 @@ results = {"Distance explains most of the ripple strength correlation variabilit
            f'when compared to lateral ripples (Figure 5E). In this window, the M-L position explained only a minimal proportion of the variance '
            f'in ProS ({round(r_sq_pros.loc["Diff pre-ripple modulation (20-0 ms)", "M-L"]*100, 2)} %), SUB '
            f'({round(r_sq_sub.loc["Diff pre-ripple modulation (20-0 ms)", "M-L"]*100, 2)} %) and CA3 '
-           f'({round(r_sq_ca3.loc["Diff pre-ripple modulation (20-0 ms)", "M-L"]*100, 2)} %) but a substantial proportion in DG '
+           f'({round(r_sq_ca3.loc["Diff pre-ripple modulation (20-0 ms)", "M-L"]*100, 2)} %) but a more substantial proportion in DG '
            f'({round(r_sq_dg.loc["Diff pre-ripple modulation (20-0 ms)", "M-L"]*100, 2)} %). In both the early and late ripple phases, '
            f'medial ripples elicited significantly more modulation across multiple cortical regions (Supplementary Figure 17). '
            f'This effect was also observed before the onset of ripples (Supplementary Figure 18). '
