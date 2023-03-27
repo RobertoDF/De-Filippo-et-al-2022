@@ -19,4 +19,4 @@ if Adapt_for_Nature_style is True:
 plt.figure(1).set_size_inches(17.940000/2.54, 18.830000/2.54, forward=True)
 #plt.show()
 
-plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_10", dpi=300)
+plt.savefig(f"{output_folder_supplementary}/Figure 4-Figure supplement 1", dpi=300)

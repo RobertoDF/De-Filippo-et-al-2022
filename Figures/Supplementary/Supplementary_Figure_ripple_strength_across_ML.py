@@ -33,4 +33,4 @@ g.map_offdiag(corrfunc, y_pos=.8)
 
 
 #plt.show()
-plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_8", dpi=300)
+plt.savefig(f"{output_folder_supplementary}/Figure 3-Figure supplement 3", dpi=300)

@@ -5,7 +5,7 @@ from Utils.Utils import Naturize_text
 results = {"Distance explains most of the ripple strength correlation variability.":
             f"We studied ripple propagation along the hippocampal longitudinal axis in" \
              " an open-access dataset provided by the Allen Institute. "
-            "We analyzed the LFP signals across the visual cortex, hippocampal formation and brain stem (Supplementary Figure 1) simultaneous to ripples detected "
+            "We analyzed the LFP signals across the visual cortex, hippocampal formation and brain stem (Figure 1-Figure supplement 1) simultaneous to ripples detected "
             f"in the CA1 of {summary_table['Session'].unique().shape[0]} animals (average session duration = "
             f"{round(np.mean(list(sessions_durations.values())),1)} ± {round(sem(list(sessions_durations.values())),1)} seconds, average ripple incidence during non-running epochs = "
             f"{round(np.mean(list(ripple_freq_total.values()))*10,2)} ± {round(sem(list(ripple_freq_total.values()))*10,2)} per 10s). "
@@ -14,14 +14,14 @@ results = {"Distance explains most of the ripple strength correlation variabilit
             f"Ripple strength (∫Ripple) was calculated as the integral of the filtered LFP envelope "
             f"between the start and end points for every detected ripple. "
             f"Ripple strength and duration are highly correlated in each session (mean r = {round(r_ripple_duration_amplitude_list.mean()[0],2)} ± "
-            f"{round(r_ripple_duration_amplitude_list.sem()[0],3)}, Supplementary Figure 2). "
+            f"{round(r_ripple_duration_amplitude_list.sem()[0],3)}, Figure 1-Figure supplement 2). "
             f"Notably ripple strength correlates significantly better "
-            f"with the hippocampal population spiking rate on a ripple-to-ripple basis compared to ripple duration alone (p-value = {t_test_corr_spikes_vs_dur_or_strength}, Supplementary Figure 3). "
+            f"with the hippocampal population spiking rate on a ripple-to-ripple basis compared to ripple duration alone (p-value = {t_test_corr_spikes_vs_dur_or_strength}, Figure 1-Figure supplement 3). "
             f"Clear ripples were observed uniquely in "
             f"the hippocampal formation (CA1, CA2, CA3, DG, SUB, ProS). Likewise, ripple-induced voltage "
             f"deflections (RIVD, integral of the unfiltered LFP envelope) "
-            f"were also noticeably stronger in hippocampal areas (Supplementary Figure 4B-F). Ripple strength was noticeably irregular in single sessions both across time and space, even"
-            f" within the CA1 region (Supplementary Figure 4C). "
+            f"were also noticeably stronger in hippocampal areas (Figure 1-Figure supplement 4B-F). Ripple strength was noticeably irregular in single sessions both across time and space, even"
+            f" within the CA1 region (Figure 1-Figure supplement 4C). "
             f"We focused on the variability in ripple strength across pairs of CA1 recording locations "
             f"with clear ripple activity (n CA1 pairs = {summary_corrs[summary_corrs['Comparison'] == 'CA1-CA1'].shape[0]},"
             f" n sessions = {summary_corrs['Session'].unique().shape[0]}). "
@@ -52,7 +52,7 @@ results = {"Distance explains most of the ripple strength correlation variabilit
             f"on the medio-lateral (M-L) axis alone (R² = {round(corr_table_distance['Distance (µm)']['M-L (µm)']**2,3)}). "
             f"To simplify our analysis we therefore focused only on this spatial dimension. "
             f"The septal half of the hippocampus was therefore divided along the M-L axis in three sections with equal number of recordings:"
-            f" medial, central and lateral (Supplementary Figure 5). "
+            f" medial, central and lateral (Figure 1-Figure supplement 5). "
             f"Strong ripples identified in the medial section, in opposition to common ripples, showed a markedly positive lag "
             f"(lag = {fig1_mean_lag_strong_ref_medial} ± {fig1_sem_lag_strong_ref_medial} ms) indicative of a "
             f"preferred medial→lateral travelling direction (Figure 1H top). "
@@ -97,7 +97,7 @@ results = {"Distance explains most of the ripple strength correlation variabilit
             f"the propagation idiosyncrasies: major unbalances in seeds location cause propagation patterns with clear directionality, "
             f"on the contrary, lag measurements hovering around zero are the result of "
             f"averaging between two similarly numbered groups of ripples with opposite direction of propagation. Notably, "
-            f"propagation speed did not change depending on the seed location (Supplementary Figure 6) and the antero-posterior (A-P) axis "
+            f"propagation speed did not change depending on the seed location (Figure 3-Figure supplement 1) and the antero-posterior (A-P) axis "
             f"did not explain a considerable amount of variability in lag (R² medial = {round(res_medial_local_ap['r'][0]**2,4)} , "
             f"p-value = {'{:.2e}'.format(res_medial_local_ap['p-val'][0])}, "
             f"R² lateral = {round(res_lateral_local_ap['r'][0]**2,4)}, p-value = {'{:.2e}'.format(res_lateral_local_ap['p-val'][0])}),"
@@ -108,12 +108,12 @@ results = {"Distance explains most of the ripple strength correlation variabilit
             f" generated in the lateral section remains nevertheless unclear. Using a 'strength conservation index' (SCI) "
             f"we measured the ability of a ripple to retain its strength during propagation "
             f"(a ripple with SCI = 1 is in the top 10% in all hippocampal sections). We observed that ripples generated laterally "
-            f"were effectively less able to retain their strength propagating towards the medial pole (Supplementary Figure 7). "
+            f"were effectively less able to retain their strength propagating towards the medial pole (Figure 3-Figure supplement 2). "
             f"This result is not simply "
             f"explained by differences in ripple strength along the M-L axis,"
-            f" as no such gradient was observed (R² = {round(r_ML_strength**2,4)}, Supplementary Figure 8). Curiously, "
+            f" as no such gradient was observed (R² = {round(r_ML_strength**2,4)}, Figure 3-Figure supplement 3). Curiously, "
             f"ripple amplitude showed a weak trend in the opposite direction (r = {round(r_ML_amp,2)}, p-value = {'{:.2e}'.format(p_ML_amp)}), "
-            f"with higher amplitude ripples in the lateral section (Supplementary Figure 9).",
+            f"with higher amplitude ripples in the lateral section (Figure 3-Figure supplement 4).",
 
             "The hippocampal medial pole can generate longer ripples able to better engage neural networks.":
             f"To understand the reason behind the differential propagation we focused uniquely on the central section, "
@@ -131,7 +131,7 @@ results = {"Distance explains most of the ripple strength correlation variabilit
             f'Surprisingly, in the 50-120 ms window post ripple start ("late phase"), medial ripples could elicit significantly higher '
             f"spiking activity than lateral ripples along"
             f" the entire M-L axis (Figure 4E). Dividing clusters in putative excitatory and inhibitory using the waveform duration "
-            f"we observed the same effect in both types of neurons (Supplementary Figure 10). "
+            f"we observed the same effect in both types of neurons (Figure 4-Figure supplement 1). "
             f"In accordance with this result, we found that the medial hippocampal section is able to generate longer "
             f"ripples (Figure 4F). An important portion of the variance "
             f"in ripple duration is indeed explained by location on the M-L axis both in common (R² = {r_common}) and especially "
@@ -139,7 +139,7 @@ results = {"Distance explains most of the ripple strength correlation variabilit
             f"The observed extended spiking could be due to a increased number of neurons participating in the ripple,"
             f" to a higher spiking rate per neuron or a combination of "
             f"these two elements. "
-            f"Fraction of active neurons and spiking rate were both significantly higher in medial ripples (Supplementary Figure 11). "
+            f"Fraction of active neurons and spiking rate were both significantly higher in medial ripples (Figure 4-Figure supplement 2). "
             f"Focusing only on the late phase "
             f"the difference in fraction of active neurons per ripples between medial and lateral ripples was even more "
             f"striking (Cohen's d = {str(round(ttest_late_clus_per_ripple['cohen-d'].values[0], 2))}, Figure 4G). Inversely, "
@@ -148,14 +148,14 @@ results = {"Distance explains most of the ripple strength correlation variabilit
             f"caused a significant and considerable increase in spiking rate in the late phase (Cohen's d = {str(round(ttest_late_spiking['cohen-d'].values[0], 2))}, Figure 4H). "
             f"Dividing again the clusters into putative excitatory and inhibitory, significant differences between medial and lateral ripples "
             f"were present only in the late phase. Spiking frequency and number of engaged neurons were significantly higher in medial ripples both in putative excitatory"
-            f" and inhibitory clusters (Supplementary Figure 12). In summary, the prolonged spiking observed in medial ripples was caused both by an increased"
+            f" and inhibitory clusters (Figure 4-Figure supplement 3). In summary, the prolonged spiking observed in medial ripples was caused both by an increased"
             f" number of engaged neurons and a higher spiking rate per cell, both in putative excitatory and inhibitory neurons. "
             f"The disparity in network engagement can possibly "
             f"be in part explained by electrophysiological differences across hippocampal sections (e.g. higher firing rate). "
             f"We did not find differences in the number of firing neurons across the CA1 subfield (medial = {round(normalized_cluster_count_per_probe['Medial'].mean(), 2)}, "
             f"lateral = {round(normalized_cluster_count_per_probe['Lateral'].mean(), 2)}, p-value = {'{:.2e}'.format(test_cluster_count)}, Mann-Whitney U test), " 
             f"we did, however, found differences in firing rate, waveform duration, and waveform shape "
-            f"(recovery slope and peak-through ratio, Supplementary Figure 13) in putative excitatory neurons."
+            f"(recovery slope and peak-through ratio, Figure 4-Figure supplement 4) in putative excitatory neurons."
             f" Firing rate and waveform duration in putative excitatory neurons exhibited respectively "
             f"a left- and right-shifted distribution in the lateral section, reflecting lower firing rate and slower action potentials. "
             f"Putative inhibitory interneurons in the lateral section showed a higher firing rate.",
@@ -171,17 +171,17 @@ results = {"Distance explains most of the ripple strength correlation variabilit
            f'{round(ripple_mod_sem.loc["Isocortex"]["No engagement"] *100, 2)} %), in contrast,  the majority of hippocampal (HPF) clusters showed ripple modulation '
            f'(HPF: {round(ripple_mod_mean.loc["HPF"]["Ripple engagement"]*100, 2)} ± {round(ripple_mod_sem.loc["HPF"]["Ripple engagement"] *100, 2)} %). '
            f'The relationship between baseline spiking and spiking during ripples was similar in medial and lateral ripples, '
-           f'accounting for most of the observed variability (Supplementary Figure 14). We found a modest difference in '
+           f'accounting for most of the observed variability (Figure 5-Figure supplement 1). We found a modest difference in '
            f'modulation of hippocampal clusters by medial and lateral ripples within a 120 ms window after the start of '
            f'the ripple event (Figure 5B). A stronger effect was observed when isolating early and late phase. For example, '
            f'in the 50-120 ms window medial ripples '
-           f'showed a notably stronger modulatory effect (Supplementary Figure 15A). Significant differences were also '
+           f'showed a notably stronger modulatory effect (Figure 5-Figure supplement 2A). Significant differences were also '
            f'observed in cortical clusters and in TH, with medial ripples inducing stronger modulation '
-           f'(Supplementary Figure 15B). It is worth noting that the magnitude of this modulation is much '
+           f'(Figure 5-Figure supplement 2B). It is worth noting that the magnitude of this modulation is much '
            f'smaller compared to the modulation observed in HPF. '
            f'Clusters in the cortex'
-           f' that were modulated (by at least 25%, n={data_both_or.shape[0]}/{data.shape[0]}) by medial and lateral ripples were generally found in deeper layers, {data_med.shape[0]} clusters were '
-           f'modulated only by medial ripples and {data_lat.shape[0]} only by lateral ripples (Supplementary Figure 16). '
+           f' that were modulated (by at least 25%, n={data_both_or.shape[0]}/{data.shape[0]}) by medial and lateral ripples were generally found in deeper layers (Figure 5-Video 1), {data_med.shape[0]} clusters were '
+           f'modulated only by medial ripples and {data_lat.shape[0]} only by lateral ripples. '
            f'To understand the mechanism underlying the differences in modulation between medial and lateral ripples '
            f'we focused on the early (0-50 ms) and late ripple phase (50-120 ms) in various hippocampal subfield (Figure 5C). In the early phase '
            f'we found a significantly stronger engagement of the dentate gyrus (DG), CA1 and CA3 areas and weaker engagement of the subiculum (SUB) by lateral ripples. '
@@ -208,8 +208,8 @@ results = {"Distance explains most of the ripple strength correlation variabilit
            f'({round(r_sq_sub.loc["Diff pre-ripple modulation (20-0 ms)", "M-L"]*100, 2)} %) and CA3 '
            f'({round(r_sq_ca3.loc["Diff pre-ripple modulation (20-0 ms)", "M-L"]*100, 2)} %) but a more substantial proportion in DG '
            f'({round(r_sq_dg.loc["Diff pre-ripple modulation (20-0 ms)", "M-L"]*100, 2)} %). In both the early and late ripple phases, '
-           f'medial ripples elicited significantly more modulation across multiple cortical regions (Supplementary Figure 17). '
-           f'This effect was also observed before the onset of ripples (Supplementary Figure 18). '
+           f'medial ripples elicited significantly more modulation across multiple cortical regions (Figure 5-Figure supplement 3). '
+           f'This effect was also observed before the onset of ripples (Figure 5-Figure supplement 4). '
            f'Furthermore, we investigated whether neurons exhibit a preference for medial or lateral ripples. '
            f'To address this question, we identified clusters that exhibited at least a two-fold modulation '
            f'difference for either medial or lateral ripples (with absolute modulation of at least 50%). Our analysis revealed that the majority of clusters did '
@@ -218,7 +218,7 @@ results = {"Distance explains most of the ripple strength correlation variabilit
            f'Interestingly, our analysis also revealed that these preferences for lateral or medial ripples varied '
            f'considerably across hippocampal subfields, with striking differences observed between the different subfields. '
            f'Specifically, DG exhibited the highest proportion ({round(dict_autopcts["DG"][1]*100,2)} %) of neurons responsive to lateral ripples. In contrast, SUB displayed '
-           f'the highest proportion ({round(dict_autopcts["SUB"][1]*100,2)} %) of neurons responsive to medial ripples (Supplementary Figure 19). '
+           f'the highest proportion ({round(dict_autopcts["SUB"][1]*100,2)} %) of neurons responsive to medial ripples (Figure 5-Figure supplement 5). '
            f'These results suggest a fundamental difference between medial and lateral ripples in terms of their '
            f'engagement of brain regions, highlighting that these differences exist even before the ripples are detected. '
            f'Notably, most of these differences are not explained by the location of the neuron along the M-L axis. '

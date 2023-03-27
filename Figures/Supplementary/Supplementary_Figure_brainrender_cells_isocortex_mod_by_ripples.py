@@ -69,7 +69,7 @@ cam0:{
      'distance': 20661,
    }
 
-vm = VideoMaker(scene, output_folder_supplementary, "Supplementary_Figure_16")
+vm = VideoMaker(scene, output_folder_supplementary, "Figure_5-Video_1")
 
 # make a video with the custom make frame function
 # this just rotates the scene

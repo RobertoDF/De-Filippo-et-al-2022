@@ -114,4 +114,4 @@ ax.text(.5, .8, f"*", horizontalalignment='left',
 
 plt.xlabel("")
 #plt.show()
-plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_3.png", dpi=300)
+plt.savefig(f"{output_folder_supplementary}/Figure 1-Figure supplement 3", dpi=300)

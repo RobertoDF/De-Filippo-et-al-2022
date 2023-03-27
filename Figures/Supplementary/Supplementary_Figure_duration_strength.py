@@ -63,5 +63,5 @@ r_list = pd.DataFrame(r_list, columns=["r"])
 #plt.show()
 print(r_list.mean(), r_list.sem())
 #plt.show()
-plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_2", dpi=300)
+plt.savefig(f"{output_folder_supplementary}/Figure 1-Figure supplement 2", dpi=300)
 

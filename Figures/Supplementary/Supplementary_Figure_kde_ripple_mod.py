@@ -25,4 +25,4 @@ plt.figure(1).text(0.011182108626198079, 0.502991026919242, 'B', transform=plt.f
 if Adapt_for_Nature_style is True:
     Naturize()
 
-plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_15", dpi=300)
+plt.savefig(f"{output_folder_supplementary}/Figure 5-Figure supplement 2", dpi=300)

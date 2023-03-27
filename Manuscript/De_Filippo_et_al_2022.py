@@ -5,6 +5,7 @@ from Manuscript.discussion import discussion
 from Manuscript.introduction import introduction
 from Manuscript.methods import methods
 from Figures.legends import legends
+from Figures.legends_supplementary import legends_supplementary
 from Utils.Settings import manuscript_folder
 # to work with citations use {Abi-Saab, 1999 #888}. A Endnote travelling library is provided in the manuscript folder.
 
@@ -33,9 +34,10 @@ acknowledgements = "This study was supported by the German Research Foundation D
                    "for support with brainrender. " \
                 "The authors declare that they have no competing interests. "
 
-contributions = "Conceptualization, data curation, formal analysis, investigation, visualization: RDF. Writing - original draft: RDF. " \
+"""contributions = "Conceptualization, data curation, formal analysis, investigation, visualization: RDF. Writing - original draft: RDF. " \
                 "Writing - review & editing: RDF, DS. " \
                 "Funding acquisition: DS."
+"""
 
 data_availability = "All the code used to process the dataset is available at https://github.com/RobertoDF/De-Filippo-et-al-2022, pre-computed data structures "\
                     "can be downloaded at 10.6084/m9.figshare.20209913. "\
@@ -45,8 +47,9 @@ data_availability = "All the code used to process the dataset is available at ht
 
 context = {'title': title, "authors": authors, "affiliations": affiliations, "correspondence_to": correspondence_to,
            "keywords": keywords, "abstract": abstract, "introduction": introduction,
-           "discussion": discussion, "methods": methods, "results": results, "legends": legends, "acknowledgements": acknowledgements,
-           "contributions": contributions, "data_availability": data_availability}
+           "discussion": discussion, "methods": methods, "results": results, "legends": legends, "supplementary_legends": legends_supplementary,
+           "acknowledgements": acknowledgements,
+          "data_availability": data_availability}
 
 doc.render(context, autoescape=True)
 

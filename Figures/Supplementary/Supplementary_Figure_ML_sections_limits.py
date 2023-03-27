@@ -32,6 +32,6 @@ plt.figure(1).texts[2].set_position([0.004052, 0.527444])
 plt.figure(1).texts[2].set_text("C")
 plt.figure(1).texts[2].set_weight("bold")
 #% end: automatic generated code from pylustrator
-plt.show()
+#plt.show()
 
-plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_5", dpi=300)
+plt.savefig(f"{output_folder_supplementary}/Figure 1-Figure supplement 5", dpi=300)

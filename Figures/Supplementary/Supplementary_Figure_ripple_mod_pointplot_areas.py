@@ -71,4 +71,4 @@ plt.figure(1).text(0.48952095808383245, 0.9735792622133592, 'B', transform=plt.f
 #% end: automatic generated code from pylustrator
 #plt.show()
 
-plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_17", dpi=300)
+plt.savefig(f"{output_folder_supplementary}/Figure 5-Figure supplement 3", dpi=300)

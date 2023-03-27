@@ -42,4 +42,4 @@ plt.figure(1).axes[4].texts[3].set_position([0.597037, -0.259074])
 #% end: automatic generated code from pylustrator
 plt.show()
 
-plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_19", dpi=300)
+plt.savefig(f"{output_folder_supplementary}/Figure 5-Figure supplement 5", dpi=300)

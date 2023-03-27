@@ -165,7 +165,7 @@ fig.tight_layout()
 
 #plt.show()
 
-plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_13", dpi=300)
+plt.savefig(f"{output_folder_supplementary}/Figure 4-Figure supplement 4", dpi=300)
 
 
 

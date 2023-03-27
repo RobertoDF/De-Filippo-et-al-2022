@@ -104,6 +104,6 @@ plt.figure(1).texts[15].set_weight("bold")
 #% end: automatic generated code from pylustrator
 #plt.show()
 
-plt.savefig(f"{output_folder_supplementary}/Supplementary_Figure_12", dpi=300)
+plt.savefig(f"{output_folder_supplementary}/Figure 4-Figure supplement 3", dpi=300)
 
 
