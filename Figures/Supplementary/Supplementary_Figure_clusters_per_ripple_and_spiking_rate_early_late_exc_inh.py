@@ -20,7 +20,6 @@ plt.figure(1).axes[2].set_ylim(0.043275815698154654, 0.5121126146247941)
 plt.figure(1).axes[2].set_yticks([0.1, 0.2, 0.30000000000000004, 0.4, 0.5])
 plt.figure(1).axes[2].set_yticklabels(["0.1", "0.2", "0.3", "0.4", "0.5"], fontsize=5)
 plt.figure(1).axes[2].set_position([0.125000, 0.589969, 0.337458, 0.345966])
-plt.figure(1).axes[2].yaxis.labelpad = -0.721239
 plt.figure(1).axes[2].yaxis.labelpad = 2.0
 plt.figure(1).axes[3].set_position([0.546621, 0.589969, 0.337458, 0.345966])
 plt.figure(1).text(0.5, 0.5, 'New Text', transform=plt.figure(1).transFigure)  # id=plt.figure(1).texts[0].new
@@ -41,56 +40,16 @@ plt.figure(1).texts[3].set_fontsize(6)
 plt.figure(1).texts[3].set_ha("center")
 plt.figure(1).texts[3].set_position([0.707635, 0.973451])
 plt.figure(1).texts[3].set_text("Late phase (50-120 ms)")
-plt.figure(1).text(0.5, 0.5, 'New Text', transform=plt.figure(1).transFigure)  # id=plt.figure(1).texts[4].new
-plt.figure(1).texts[4].set_fontsize(6)
-plt.figure(1).texts[4].set_position([0.316372, 0.442478])
-plt.figure(1).texts[4].set_text("*")
-plt.figure(1).texts[4].set_weight("bold")
-plt.figure(1).text(0.5, 0.5, 'New Text', transform=plt.figure(1).transFigure)  # id=plt.figure(1).texts[5].new
-plt.figure(1).texts[5].set_fontsize(6)
-plt.figure(1).texts[5].set_position([0.740044, 0.442478])
-plt.figure(1).texts[5].set_text("*")
-plt.figure(1).texts[5].set_weight("bold")
-plt.figure(1).text(0.5, 0.5, 'New Text', transform=plt.figure(1).transFigure)  # id=plt.figure(1).texts[6].new
-plt.figure(1).texts[6].set_fontsize(6)
-plt.figure(1).texts[6].set_position([0.316372, 0.918142])
-plt.figure(1).texts[6].set_text("*")
-plt.figure(1).texts[6].set_weight("bold")
-plt.figure(1).text(0.5, 0.5, 'New Text', transform=plt.figure(1).transFigure)  # id=plt.figure(1).texts[7].new
-plt.figure(1).texts[7].set_fontsize(6)
-plt.figure(1).texts[7].set_position([0.740044, 0.918142])
-plt.figure(1).texts[7].set_text("*")
-plt.figure(1).texts[7].set_weight("bold")
-plt.figure(1).text(0.5, 0.5, 'New Text', transform=plt.figure(1).transFigure)  # id=plt.figure(1).texts[8].new
-plt.figure(1).texts[8].set_fontsize(6)
-plt.figure(1).texts[8].set_position([0.216817, 0.420354])
-plt.figure(1).texts[8].set_text("*")
-plt.figure(1).texts[8].set_weight("bold")
-plt.figure(1).text(0.5, 0.5, 'New Text', transform=plt.figure(1).transFigure)  # id=plt.figure(1).texts[9].new
-plt.figure(1).texts[9].set_fontsize(6)
-plt.figure(1).texts[9].set_position([0.639385, 0.422089])
-plt.figure(1).texts[9].set_text("*")
-plt.figure(1).texts[9].set_weight("bold")
-plt.figure(1).text(0.5, 0.5, 'New Text', transform=plt.figure(1).transFigure)  # id=plt.figure(1).texts[10].new
-plt.figure(1).texts[10].set_fontsize(6)
-plt.figure(1).texts[10].set_position([0.779868, 0.404289])
-plt.figure(1).texts[10].set_text("*")
-plt.figure(1).texts[10].set_weight("bold")
-plt.figure(1).text(0.5, 0.5, 'New Text', transform=plt.figure(1).transFigure)  # id=plt.figure(1).texts[11].new
-plt.figure(1).texts[11].set_fontsize(6)
-plt.figure(1).texts[11].set_position([0.256637, 0.881637])
-plt.figure(1).texts[11].set_text("*")
-plt.figure(1).texts[11].set_weight("bold")
-plt.figure(1).text(0.5, 0.5, 'New Text', transform=plt.figure(1).transFigure)  # id=plt.figure(1).texts[12].new
-plt.figure(1).texts[12].set_fontsize(6)
-plt.figure(1).texts[12].set_position([0.778761, 0.881637])
-plt.figure(1).texts[12].set_text("*")
-plt.figure(1).texts[12].set_weight("bold")
-plt.figure(1).text(0.5, 0.5, 'New Text', transform=plt.figure(1).transFigure)  # id=plt.figure(1).texts[13].new
-plt.figure(1).texts[13].set_fontsize(6)
-plt.figure(1).texts[13].set_position([0.639385, 0.898740])
-plt.figure(1).texts[13].set_text("*")
-plt.figure(1).texts[13].set_weight("bold")
+plt.figure(1).text(0.316372, 0.43605951476251564, '*', transform=plt.figure(1).transFigure, fontsize=6.0, weight='bold')  # id=plt.figure(1).texts[4].new
+plt.figure(1).text(0.7400439999999998, 0.4360595147625157, '*', transform=plt.figure(1).transFigure, fontsize=6.0, weight='bold')  # id=plt.figure(1).texts[5].new
+plt.figure(1).text(0.316372, 0.9373974557124495, '*', transform=plt.figure(1).transFigure, fontsize=6.0, weight='bold')  # id=plt.figure(1).texts[6].new
+plt.figure(1).text(0.7400439999999999, 0.9168583029525033, '*', transform=plt.figure(1).transFigure, fontsize=6.0, weight='bold')  # id=plt.figure(1).texts[7].new
+plt.figure(1).text(0.25920439409499346, 0.3951313620025668, '*', transform=plt.figure(1).transFigure, fontsize=6.0, weight='bold')  # id=plt.figure(1).texts[8].new
+plt.figure(1).text(0.6872285, 0.4028335442875478, '*', transform=plt.figure(1).transFigure, fontsize=6.0, weight='bold')  # id=plt.figure(1).texts[9].new
+plt.figure(1).text(0.7798679999999995, 0.37219657381257987, '*', transform=plt.figure(1).transFigure, fontsize=6.0, weight='bold')  # id=plt.figure(1).texts[10].new
+plt.figure(1).text(0.261771788189987, 0.8919065763799722, '*', transform=plt.figure(1).transFigure, fontsize=6.0, weight='bold')  # id=plt.figure(1).texts[11].new
+plt.figure(1).text(0.7798679999999995, 0.8456934826700876, '*', transform=plt.figure(1).transFigure, fontsize=6.0, weight='bold')  # id=plt.figure(1).texts[12].new
+plt.figure(1).text(0.6872285, 0.8816369999999999, '*', transform=plt.figure(1).transFigure, fontsize=6.0, weight='bold')  # id=plt.figure(1).texts[13].new
 plt.figure(1).text(0.5, 0.5, 'New Text', transform=plt.figure(1).transFigure)  # id=plt.figure(1).texts[14].new
 plt.figure(1).texts[14].set_fontsize(6)
 plt.figure(1).texts[14].set_position([0.639385, 0.239655])

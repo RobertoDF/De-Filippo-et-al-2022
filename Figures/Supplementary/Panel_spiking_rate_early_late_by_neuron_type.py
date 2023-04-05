@@ -31,6 +31,9 @@ def neuron_classifier(row):
 
 fig, axs = plt.subplots(1, 2, figsize=(16, 8))
 
+PROPS = {
+    'medianprops':{'color':'white'},
+}
 tot_summary_early["Neuron type"] = tot_summary_early.apply(neuron_classifier, axis=1)
 tot_summary_late["Neuron type"] = tot_summary_late.apply(neuron_classifier, axis=1)
 
@@ -47,7 +50,7 @@ x="Neuron type"
 hue_order=["Medial seed", "Lateral seed"]
 order=["Putative exc", "Putative inh"]
 ax = sns.boxplot(data=data, x=x, y=y, hue=hue, showfliers=False, ax=axs[0], palette=palette_ML,
-            order=order, hue_order=hue_order)
+            order=order, hue_order=hue_order, **PROPS)
 
 ax.get_legend().remove()
 
@@ -103,7 +106,7 @@ if pvalues.shape[0]>0:
     annot = Annotator(ax, pairs=pairs, data=data,
                       hue=hue, y=y, x=x, hue_order=hue_order, order=order)
     (annot
-     .configure(test=None, test_short_name="custom test",  text_format='star', loc='inside', verbose=0, text_offset=0)
+     .configure(test=None, test_short_name="custom test",  text_format='star', loc='inside', verbose=0, line_height=0.05,  line_offset=20, text_offset=20)
      .set_pvalues(pvalues=pvalues)
      .set_custom_annotations([""]*len(pvalues))
      .annotate())
@@ -183,7 +186,7 @@ if pvalues.shape[0]>0:
     annot = Annotator(ax, pairs=pairs, data=data,
                       hue=hue, y=y, x=x, hue_order=hue_order, order=order)
     (annot
-     .configure(test=None, test_short_name="custom test",  text_format='star', loc='inside', verbose=0, text_offset=0)
+     .configure(test=None, test_short_name="custom test",  text_format='star', loc='inside', verbose=0, line_height=0.05, line_offset=20, text_offset=20)
      .set_pvalues(pvalues=pvalues)
      .set_custom_annotations([""]*len(pvalues))
      .annotate())
