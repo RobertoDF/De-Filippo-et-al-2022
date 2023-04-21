@@ -22,22 +22,23 @@ legends = {"Figure 1. Ripple strength correlation depends significantly on dista
                    f"Short distance = {fig1_mean_lagplot_summary[1]} ± {fig1_sem_lagplot_summary[1]} ms, p-value = { p_value_ttest_lag}, "
                    f"Student's t-test; "
                    f"bottom: long distance = {fig1_mean_abs_lagplot_summary[0]} ± {fig1_sem_abs_lagplot_summary[0]} ms, "
-                   f"Short distance = {fig1_mean_abs_lagplot_summary[1]} ± {fig1_sem_abs_lagplot_summary[1]} ms, p-value = { p_value_ttest_abs_lag}, Student's t-test). "
+                   f"Short distance = {fig1_mean_abs_lagplot_summary[1]} ± {fig1_sem_abs_lagplot_summary[1]} ms, "
+                   f"p-value = { p_value_ttest_abs_lag}, Student's t-test, asterisks mean p-value < 0.05). "
                    f"(H) Lag comparison in long distance pairs between common and strong ripples with reference located in"
                    f"the medial (top) or lateral hippocampal section (bottom)"
                    f" (top: strong ripples={fig1_mean_lag_strong_ref_medial} ± {fig1_sem_lag_strong_ref_medial} ms, "
                    f"common ripples = {fig1_mean_lag_common_ref_medial} ± {fig1_sem_lag_common_ref_medial} ms, "
-                   f"p-values = {p_value_ttest_lag_ref_medial}, Student's t-test, "
+                   f"p-value = {p_value_ttest_lag_ref_medial}, Student's t-test, "
                    f"bottom: strong ripples={fig1_mean_lag_strong_ref_lateral} ± {fig1_sem_lag_strong_ref_lateral} ms, "
                    f"common ripples = {fig1_mean_lag_common_ref_lateral} ± {fig1_sem_lag_common_ref_lateral} ms, "
-                   f"p-values = {p_value_ttest_lag_ref_lateral}, Student's t-test). "
+                   f"p-value = {p_value_ttest_lag_ref_lateral}, Student's t-test, asterisks mean p-value < 0.05). "
                    f"(I) Lag comparison in long distance pairs between ripples with reference located in "
                    f"the medial and lateral section in common (top) or strong ripples (bottom)"
                    f" (top: medial reference = {fig1_mean_lag_ref_medial_common} ± {fig1_sem_lag_ref_medial_common} ms, "
-                   f"lateral reference = {fig1_mean_lag_ref_lateral_common} ± {fig1_sem_lag_ref_lateral_common} ms, p-values = {p_value_ttest_common}, Student's t-test, "
+                   f"lateral reference = {fig1_mean_lag_ref_lateral_common} ± {fig1_sem_lag_ref_lateral_common} ms, p-value = {p_value_ttest_common}, Student's t-test, "
                    f"bottom: strong ripples = {fig1_mean_lag_ref_medial_strong} ± {fig1_sem_lag_ref_medial_strong} ms, "
                    f"common ripples = {fig1_mean_lag_ref_lateral_strong} ± {fig1_sem_lag_ref_lateral_strong} ms, "
-                   f"p-values = {p_value_ttest_strong}, Student's t-test).",
+                   f"p-value = {p_value_ttest_strong}, Student's t-test, asterisks mean p-value < 0.05)",
            
            "Figure 2. Direction-dependent differences in ripple propagation along the hippocampal longitudinal axis.":
                     f"(A) Recording locations for session {session_id_fig2}. Circles colors represents medio-lateral" \
@@ -95,7 +96,7 @@ legends = {"Figure 1. Ripple strength correlation depends significantly on dista
             f" ± {round(fig_4_summary_fraction_active_clusters_per_ripples_late[fig_4_summary_fraction_active_clusters_per_ripples_late['Location seed']=='Medial seed']['Fraction active neurons per ripple (%)'].sem()* 100,2)}, "
             f" late/lateral seed = {round(fig_4_summary_fraction_active_clusters_per_ripples_late[fig_4_summary_fraction_active_clusters_per_ripples_late['Location seed']=='Lateral seed']['Fraction active neurons per ripple (%)'].mean()* 100,2)}"
             f" ± {round(fig_4_summary_fraction_active_clusters_per_ripples_late[fig_4_summary_fraction_active_clusters_per_ripples_late['Location seed']=='Lateral seed']['Fraction active neurons per ripple (%)'].sem()* 100,2)}, "
-            f"p-value = {'{:.2e}'.format(fig_4_ttest_late_fraction['p-val'].values[0])}, Student's t-test. "
+            f"p-value = {'{:.2e}'.format(fig_4_ttest_late_fraction['p-val'].values[0])}, Student's t-test. Asterisks mean p-value < 0.05. "
             f"(H) Average spiking rate medial (pink) and lateral (purple) ripples. "
             f"Early/medial seed = {round(fig_4_summary_spiking_early[fig_4_summary_spiking_early['Location seed'] == 'Medial seed']['Spiking rate per 10 ms'].mean(), 2)} ± "
             f"{round(fig_4_summary_spiking_early[fig_4_summary_spiking_early['Location seed'] == 'Medial seed']['Spiking rate per 10 ms'].sem(), 3)}, "
@@ -106,7 +107,7 @@ legends = {"Figure 1. Ripple strength correlation depends significantly on dista
             f"{round(fig_4_summary_spiking_late[fig_4_summary_spiking_late['Location seed'] == 'Medial seed']['Spiking rate per 10 ms'].sem(), 3)}, "
             f"late/lateral seed = {round(fig_4_summary_spiking_late[fig_4_summary_spiking_late['Location seed'] == 'Lateral seed']['Spiking rate per 10 ms'].mean(), 2)} ± "
             f"{round(fig_4_summary_spiking_late[fig_4_summary_spiking_late['Location seed'] == 'Lateral seed']['Spiking rate per 10 ms'].sem(), 3)}, "
-            f"p-value = {'{:.2e}'.format(fig_4_ttest_late_spiking['p-val'].values[0])}, Student's t-test.",
+            f"p-value = {'{:.2e}'.format(fig_4_ttest_late_spiking['p-val'].values[0])}, Student's t-test. Asterisks mean p-value < 0.05.",
 
            "Figure 5. Ripple seed location influences the pattern of ripple modulation across various regions of the brain.":
            "(A) Relationship between baseline (120 ms before ripple start) and ripple (0-120 ms) firing rate for clusters recorded in Isocortex, HPF, TH and MB. "
@@ -114,14 +115,16 @@ legends = {"Figure 1. Ripple strength correlation depends significantly on dista
            " as the mean between responses to lateral and medial ripples. Dashed black line represents absence of any influence, "
            "dashed red line represents a 50% increased spiking rate. "
            "(B) Ripple modulation of hippocampal clusters in response to lateral and medial ripples. Dashed black line represents absence of any influence, "
-           "dashed red line represents a 50% increased spiking rate. CLES=commn-language effect size. Wilcoxon signed-rank test. "
+           "dashed red line represents a 50% increased spiking rate. CLES=commn-language effect size. Wilcoxon signed-rank test. Asterisk means p-value < 0.05."
            "(C) Top: Rendering of all clusters recorded in the hippocampal formation color-coded by subfield. Middle: kernel density plot showing "
            "distribution of clusters along the M-L axis, Dashed lines represents medial and lateral limits. Bottom: Stacked kernel density plot showing "
            "distribution of clusters along the M-L axis. "
            "(D) Ripple modulation in response to lateral and medial ripples during the early (left) and late (right) "
            "ripple phase. Errorbar represents the standard error of the mean. Wilcoxon signed-rank test or Student's t-test (if normality established). "
+           "Asterisks mean p-value < 0.05."
            "(E) Ripple modulation in response to lateral and medial ripples before ripple start (20 ms).  Errorbar represents the standard error of the mean. "
            "Wilcoxon signed-rank test or Student's t-test (if normality established). "
+           "Asterisks mean p-value < 0.05."
            "(F) Left: Relationship between modulation by lateral and medial ripples in hippocampal clusters. Dashed black line represents absence of difference and two-fold differences in both directions. "
            "Right: Pie chart representing hippocampal clusters preference in ripple engagement."
            }

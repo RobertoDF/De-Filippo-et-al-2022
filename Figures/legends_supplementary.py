@@ -46,8 +46,8 @@ legends_supplementary = {
 
    "Figure 3-Figure supplement 2. Strength conservation in medially and laterally generated ripples.":
       "(A) Strength conservation index in strong ripples grouped by reference location. Ripples generated in the lateral section show"
-      f"significantly lower strength conservation (p={round(pvalues_supp_4, 9)}, Student's t-test).  "
-      "(B) Strength conservation index in common ripples grouped by reference location.",
+      f"significantly lower strength conservation (p-value = {round(pvalues_supp_4, 9)}, Student's t-test, asterisks mean p-value < 0.05).  "
+      "(B) Strength conservation index in common ripples grouped by reference location (Student's t-test, asterisks mean p-value < 0.05).",
 
    "Figure 3-Figure supplement 3. Spatial location does not influence ∫Ripple.":
       "Relationship between Z-scored ∫Ripple (top row) or ∫Ripple (bottom row) and each spatial axis (M-L, A-P or D-V). Spatial location "
@@ -86,22 +86,24 @@ legends_supplementary = {
       "seed location and putative neuron identity. Asterisks mean p < 0.05, ANOVA with pairwise Tukey post-hoc test.",
 
 "Figure 4-Figure supplement 4. Units features in medial and lateral sections.":
-      f"(A) Kernel density estimate plot of waveform duration (p-value={'{:.2e}'.format(p_val_wav_dur_inh)}), firing rate (p-value={'{:.2e}'.format(p_val_fir_rate_inh)}), "
+      f"(A) Top: Average spike waveform of putative inhibitory neurons in medial or lateral sections. "
+      f"Bottom, left column: Kernel density estimate plot of waveform duration (p-value={'{:.2e}'.format(p_val_wav_dur_inh)}), firing rate (p-value={'{:.2e}'.format(p_val_fir_rate_inh)}), "
       f"waveform amplitude (p-value={'{:.2e}'.format(p_val_wav_amp_inh)}), waveform repolarization slope (p-value={'{:.2e}'.format(p_val_wav_repolarization_slope_inh)}), "
       f"waveform recovery slope (p-value={'{:.2e}'.format(p_val_wav_rec_slope_inh)}) and waveform peak-through ratio (p-value={'{:.2e}'.format(p_val_wav_PT_ratio_inh)}) grouped by hippocampal section."
-      "Asterisks mean p<0.05, Mann-Whitney U test. "
-      f"(B) Cumulative distribution plot of waveform duration (p-value={'{:.2e}'.format(p_val_ks_wav_dur_inh)}), firing rate (p-value={'{:.2e}'.format(p_val_ks_fir_rate_inh)}), "
+      "Asterisks mean p-value < 0.05, Mann-Whitney U test. "
+      f"Bottom, right column: Cumulative distribution plot of waveform duration (p-value={'{:.2e}'.format(p_val_ks_wav_dur_inh)}), firing rate (p-value={'{:.2e}'.format(p_val_ks_fir_rate_inh)}), "
       f"waveform amplitude (p-value={'{:.2e}'.format(p_val_ks_wav_amp_inh)}), waveform repolarization slope (p-value={'{:.2e}'.format(p_val_ks_wav_repolarization_slope_inh)}), "
       f"waveform recovery slope (p-value={'{:.2e}'.format(p_val_ks_wav_rec_slope_inh)}) and waveform peak-through ratio (p-value={'{:.2e}'.format(p_val_ks_wav_PT_ratio_inh)}) grouped by hippocampal section."
-      "Asterisks mean p < 0.05, Kolgomorov-Smirnov test."
-      f"(C) Kernel density estimate plot of waveform duration (p-value={'{:.2e}'.format(p_val_wav_dur_exc)}), firing rate (p-value={'{:.2e}'.format(p_val_fir_rate_exc)}), "
+      "Asterisks mean p-value < 0.05, Kolgomorov-Smirnov test."
+      f"(B) Top: Average spike waveform of putative excitatory neurons in medial or lateral sections. "
+      f"Bottom, left column: Kernel density estimate plot of waveform duration (p-value={'{:.2e}'.format(p_val_wav_dur_exc)}), firing rate (p-value={'{:.2e}'.format(p_val_fir_rate_exc)}), "
       f"waveform amplitude (p-value={'{:.2e}'.format(p_val_wav_amp_exc)}), waveform repolarization slope (p-value={'{:.2e}'.format(p_val_wav_repolarization_slope_exc)}), "
       f"waveform recovery slope (p-value={'{:.2e}'.format(p_val_wav_rec_slope_exc)}) and waveform peak-through ratio (p-value={'{:.2e}'.format(p_val_wav_PT_ratio_exc)}) grouped by hippocampal section."
-      "Asterisks mean p<0.05, Mann-Whitney U test. "
-      f"(D) Cumulative distribution plot of waveform duration (p-value={'{:.2e}'.format(p_val_ks_wav_dur_exc)}), firing rate (p-value={'{:.2e}'.format(p_val_ks_fir_rate_exc)}), "
+      "Asterisks mean p-value < 0.05, Mann-Whitney U test. "
+      f"Bottom, right column: Cumulative distribution plot of waveform duration (p-value={'{:.2e}'.format(p_val_ks_wav_dur_exc)}), firing rate (p-value={'{:.2e}'.format(p_val_ks_fir_rate_exc)}), "
       f"waveform amplitude (p-value={'{:.2e}'.format(p_val_ks_wav_amp_exc)}), waveform repolarization slope (p-value={'{:.2e}'.format(p_val_ks_wav_repolarization_slope_exc)}), "
       f"waveform recovery slope (p-value={'{:.2e}'.format(p_val_ks_wav_rec_slope_exc)}) and waveform peak-through ratio (p-value={'{:.2e}'.format(p_val_ks_wav_PT_ratio_exc)}) grouped by hippocampal section."
-      "Asterisks mean p < 0.05, Kolgomorov-Smirnov test.",
+      "Asterisks mean p-value < 0.05, Kolgomorov-Smirnov test.",
 
 "Figure 5-Figure supplement 1. Spiking rate modulation in medial and lateral ripples across brain regions.":
     "(A) Relationship between baseline (120 ms before ripple start) and medial ripple (0-50 ms) firing rate for clusters recorded in  HPF, Isocortex, MB and TH. In the Isocortex and MB plot "
@@ -115,9 +117,9 @@ legends_supplementary = {
 "(A) Left: Early (0-50 ms) ripple modulation of hippocampal clusters in response to lateral and medial ripples. Dashed black line represents absence of any influence, "
            "dashed red line represents a 50% increased spiking rate. Wilcoxon signed-rank test. Right: "
 "Late (50-120 ms) ripple modulation of hippocampal clusters in response to lateral and medial ripples. Dashed black line represents absence of any influence, "
-           "dashed red line represents a 50% increased spiking rate. Wilcoxon signed-rank test. "
+           "dashed red line represents a 50% increased spiking rate. Wilcoxon signed-rank test. Asterisks mean p-value < 0.05."
 "(B) Ripple modulation of cortical (left), MB (middle) and TH (right) clusters in response to lateral and medial ripples. Dashed black line represents absence of any influence, "
-           "dashed red line represents a 50% increased spiking rate. Wilcoxon signed-rank test",
+           "dashed red line represents a 50% increased spiking rate. Wilcoxon signed-rank test. Asterisks mean p-value < 0.05.",
 
 "Figure 5-Video 1. Cortical clusters showing ripple engagement.":
     "In pink clusters showing medial ripples engagement (at least 25%), in purple clusters showing lateral ripples engagement (at least 25%) and in red clusters showing "
@@ -125,15 +127,17 @@ legends_supplementary = {
 
 "Figure 5-Figure supplement 3. Ripple modulation across HPF, Isocortex, MB and TH.":
 "(A) Ripple modulation in response to lateral and medial ripples during the early  "
-           "ripple phase in cortical (top), MB (middle) and TH (bottom) clusters. Wilcoxon signed-rank test or Student's t-test (if normality established). "
+           "ripple phase in cortical (top), MB (middle) and TH (bottom) clusters. "
+"Wilcoxon signed-rank test or Student's t-test (if normality established). Asterisks mean p-value < 0.05."
 "(B) Ripple modulation in response to lateral and medial ripples during the late  "
-           "ripple phase in cortical (top), MB (middle) and TH (bottom) clusters. Wilcoxon signed-rank test or Student's t-test (if normality established). ",
+           "ripple phase in cortical (top), MB (middle) and TH (bottom) clusters. "
+"Wilcoxon signed-rank test or Student's t-test (if normality established). Asterisks mean p-value < 0.05.",
 
 "Figure 5-Figure supplement 4. Pre-ripple modulation across HPF, Isocortex, MB and TH.":
 "(A) Pre-ripple modulation in response to lateral and medial ripples during the early  "
-           "ripple phase in cortical clusters. Wilcoxon signed-rank test or Student's t-test (if normality established). "
+           "ripple phase in cortical clusters. Wilcoxon signed-rank test or Student's t-test (if normality established). Asterisks mean p-value < 0.05."
 "(B) Ripple modulation in response to lateral and medial ripples during the late  "
-           "ripple phase in MB clusters. Wilcoxon signed-rank test or Student's t-test (if normality established). " \
+           "ripple phase in MB clusters. Wilcoxon signed-rank test or Student's t-test (if normality established). Asterisks mean p-value < 0.05." \
 "(C) Ripple modulation in response to lateral and medial ripples during the late  "
            "ripple phase in TH clusters. Wilcoxon signed-rank test or Student's t-test (if normality established). ",
 

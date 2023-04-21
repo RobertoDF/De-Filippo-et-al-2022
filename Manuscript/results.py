@@ -155,7 +155,7 @@ results = {"Distance explains most of the ripple strength correlation variabilit
             f"We did not find differences in the number of firing neurons across the CA1 subfield (medial = {round(normalized_cluster_count_per_probe['Medial'].mean(), 2)}, "
             f"lateral = {round(normalized_cluster_count_per_probe['Lateral'].mean(), 2)}, p-value = {'{:.2e}'.format(test_cluster_count)}, Mann-Whitney U test), " 
             f"we did, however, found differences in firing rate, waveform duration, and waveform shape "
-            f"(recovery slope and peak-through ratio, Figure 4-Figure supplement 4) in putative excitatory neurons."
+            f"(recovery slope and peak-trough ratio, Figure 4-Figure supplement 4) in putative excitatory neurons."
             f" Firing rate and waveform duration in putative excitatory neurons exhibited respectively "
             f"a left- and right-shifted distribution in the lateral section, reflecting lower firing rate and slower action potentials. "
             f"Putative inhibitory interneurons in the lateral section showed a higher firing rate.",
