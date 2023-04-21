@@ -1,4 +1,4 @@
-# Code for the reproduction of De Filippo et al., 2022.
+# Code for the reproduction of [De Filippo et al., 2022](https://elifesciences.org/articles/85488).
 The ***complete*** manuscript (text included) can be reproduced using the Python code present in this repository. Each number present in the text is an f-String that can be traced back to a data structure (see [PySciPaper](https://github.com/RobertoDF/PySciPaper)).
 
 ![Abstract](Manuscript/Abstract_De_Filippo_et_al_2022.jpg "Figure 1")
@@ -15,7 +15,7 @@ Figure 3         |  Figure 4 | Figure 5
 
 ### Instructions
 
-1. Clone this repository and download the pre-computed data from ~~[here](10.6084/m9.figshare.20209913)~~ a private link (available to reviewers only). It will be public upon publication.
+1. Clone this repository and download the pre-computed data from [here](https://figshare.com/s/d1c93882d6438646dd64). It will be public upon publication.
 2. Open a terminal and cd to this repository `cd <De-Filippo-et-al-2022>`
 3. Create conda environment: `conda create --name De-Filippo-et-al-2022 python=3.7` (if conda is not installed see [here](https://docs.conda.io/projects/conda/en/latest/user-guide/install/index.html)) and activate environment `conda activate De-Filippo-et-al-2022`
 4. Install dependencies `pip install --no-deps -r requirements_analysis.txt`     
