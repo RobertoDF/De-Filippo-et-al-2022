@@ -1,5 +1,5 @@
 # Code for the reproduction of [De Filippo et al., 2022](https://elifesciences.org/articles/85488).
-The ***complete*** manuscript (text included) can be reproduced using the Python code present in this repository. Each number present in the text is an f-String that can be traced back to a data structure (see [PySciPaper](https://github.com/RobertoDF/PySciPaper)).
+The ***complete*** manuscript (text included) can be reproduced using the Python code present in this repository. Each number present in the text is an f-String that can be traced back to a data structure (see [End2EndPaper](https://github.com/RobertoDF/End2EndPaper)).
 
 ![Abstract](Manuscript/Abstract_De_Filippo_et_al_2022.jpg "Figure 1")
 
